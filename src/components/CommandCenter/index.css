@@ -1,0 +1,15 @@
+.command-center {
+    position: absolute;
+    left: calc(50% - 25vw);
+    top: 24px;
+    z-index: 901;
+    width: 50vw;
+    height: 94vh;
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+    border: 1px solid var(--card-border-color);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 16px;
+    border-radius: var(--card-border-radius);
+}

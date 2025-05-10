@@ -1,0 +1,21 @@
+.task-status-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    flex: 1;
+}
+
+.task-status-section-tasks {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    column-gap: 24px;
+    overflow-x: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.task-status-section-tasks::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}

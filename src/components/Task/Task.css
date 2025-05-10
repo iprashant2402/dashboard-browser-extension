@@ -1,0 +1,49 @@
+.taskContainer {
+    position: relative;
+    overflow: auto;
+    height: 100%;
+    width: 243px;
+    min-width: 243px;
+    padding: var(--card-padding);
+    background-color: var(--card-alt-bg-color);
+    border: 1px solid var(--card-alt-border-color);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: var(--card-border-radius);
+    cursor: grab;
+    color: var(--card-alt-text-color);
+}
+
+.taskContainer h3:read-write:focus {
+    outline: none;
+}
+
+.taskContainer h3, .taskContainer p {
+    cursor: text;
+    background-color: var(--card-bg-color);
+}
+
+.taskContainer h3[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: var(--muted-text-color); 
+}
+
+.taskContainer p[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: var(--muted-text-color); 
+}
+
+.taskContainer p:read-write:focus {
+    outline: none;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+p {
+    font-size: 0.8rem;
+    font-weight: 400;
+}

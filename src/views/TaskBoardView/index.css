@@ -1,0 +1,78 @@
+.task-board-container {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: calc(100vw - 48px);
+    height: calc(100vh - 48px);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.task-board-bg {
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+    border: 1px solid var(--card-border-color);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 16px;
+    border-radius: var(--card-border-radius);
+    transform-origin: top right;
+}
+
+.task-board-summary {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+}
+
+.task-board-summary p {
+    color: var(--muted-text-color);
+}
+
+.task-board-summary:hover {
+    scale: 1.05;
+    transition: all 0.2s ease-in-out;
+}
+
+.task-board-summary:not(:hover) {
+    transition: all 0.2s ease-in-out;
+    scale: 1;
+}
+
+.task-board-view {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.task-board-view-col {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    padding: 16px 0;
+    flex: 1;
+}
+
+.close-btn, .expand-btn {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.expand-btn {
+    right: 48px;
+}
+
+.close-btn:hover, .expand-btn:hover {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 50%;
+}

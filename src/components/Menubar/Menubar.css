@@ -1,0 +1,21 @@
+.menubar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: fit-content;
+    height: 50px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--card-bg-color);
+}

@@ -1,0 +1,70 @@
+.clock {
+  border-radius: 8px;
+  background: transparent;
+  transition: all 0.3s ease;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.clock-time {
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--card-text-color);
+  display: flex;
+  align-items: center;
+}
+
+.hours, .minutes, .seconds {
+  min-width: 2.5ch;
+  text-align: center;
+}
+
+.time-separator {
+  margin: 0 2px;
+}
+
+.period {
+  font-size: 1rem;
+  margin-left: 8px;
+  align-self: flex-start;
+  margin-top: 8px;
+  color: var(--card-text-color);;
+}
+
+.clock-date {
+  position: relative;
+  left: 10px;
+  top: -8px;
+  font-size: 0.8rem;
+  color: var(--card-text-color);
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .clock-time {
+    font-size: 2rem;
+  }
+  
+  .clock-date {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clock-time {
+    font-size: 1.8rem;
+  }
+  
+  .clock-date {
+    font-size: 0.8rem;
+  }
+} 

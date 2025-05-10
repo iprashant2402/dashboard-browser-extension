@@ -1,0 +1,75 @@
+#root {
+    background: var(--layout-bg-color);
+    background-size: cover;
+    background-position: right 35% bottom 45%;
+    color: var(--layout-text-color);
+    width: 100%;
+    height: 100%;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.jt-space-between {
+    justify-content: space-between;
+}
+
+.jt-space-around {
+    justify-content: space-around;
+}
+
+.jt-space-evenly {
+    justify-content: space-evenly;
+}
+
+.ai-center {
+    align-items: center;
+}
+
+.ai-start {
+    align-items: start;
+}
+
+.ai-end {
+    align-items: end;
+}
+
+/* Text */
+
+.txt-underline {
+    text-decoration: underline;
+}
+
+/* Button */
+
+.btn {
+    background: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: var(--card-border-radius);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-clear {
+    background: transparent;
+    border: none;
+}
+
+.btn-clear:hover {
+    background: transparent;
+    border: none;
+}
+
+.btn-clear:active {
+    background: transparent;
+    border: none;
+}
