@@ -1,0 +1,16 @@
+.project-list {
+    height: 100%;
+    flex: 1;
+    flex-grow: 1;
+}
+
+.project-list h1 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.project-list p {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--muted-text-color);
+}

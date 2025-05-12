@@ -23,15 +23,12 @@ export const TaskBoardView = () => {
                         className="task-board-view task-board-bg"
                         initial={{
                             scale: 0.2,
-                            opacity: 0
                         }}
                         animate={{
                             scale: 1,
-                            opacity: 1
                         }}
                         exit={{
                             scale: 0.2,
-                            opacity: 0
                         }}
                         transition={{
                             duration: 0.1,
@@ -48,7 +45,7 @@ export const TaskBoardView = () => {
                                     <button title='Close' className="btn btn-clear txt-underline close-btn" onClick={actions.handleClose}><IoClose size={20} /></button>
                                 </div>
                             </div>
-                            <div className="task-board-view-col">
+                            <div className="task-board-view-row">
                                 <TaskStatusSection title="To do" />
                                 <TaskStatusSection title="In progress" />
                                 <TaskStatusSection title="Done" />

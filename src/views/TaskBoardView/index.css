@@ -9,13 +9,13 @@
 }
 
 .task-board-bg {
-    background-color: var(--card-bg-color);
-    color: var(--card-text-color);
-    border: 1px solid var(--card-border-color);
+    background-color: var(--task-board-bg-color);
+    color: var(--task-board-text-color);
+    border: 1px solid var(--task-board-border-color);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    padding: 16px;
-    border-radius: var(--card-border-radius);
+    padding: var(--task-board-padding);
+    border-radius: var(--task-board-border-radius);
     transform-origin: top right;
 }
 
@@ -44,16 +44,19 @@
 .task-board-view {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
     height: 100%;
+    overflow: hidden;
 }
 
-.task-board-view-col {
+.task-board-view-row {
     display: flex;
-    flex-direction: column;
-    row-gap: 24px;
+    flex-direction: row;
+    column-gap: 64px;
     padding: 16px 0;
     flex: 1;
+    justify-content: flex-start;
+    height: 100%;
+    overflow: hidden;
 }
 
 .close-btn, .expand-btn {

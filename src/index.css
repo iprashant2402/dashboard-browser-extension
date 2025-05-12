@@ -10,15 +10,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --layout-bg-color: #030d17;
   /* --layout-bg-color: url('/scene-bg.jpg'); */
-  --layout-bg-color: rgb(7, 8, 23);
   --layout-text-color: #FFFFFF;
-  --primary-color: #112DC1;
+  --primary-color: #16825D;
   --secondary-color: #6A1E55;
   --tertiary-color: #A64D79;
-  --muted-text-color: #767d9a;
+  --muted-text-color: hsla(0, 0%, 100%, 0.4);
 
-  --card-bg-color: rgba(13, 24, 36, 0.12);
+  --card-bg-color: rgba(11, 20, 28, 0.5);
   --card-alt-bg-color: rgba(10, 13, 28, 1);
   --card-text-color: #FFFFFF;
   --card-alt-text-color: #E1E5EE;
@@ -26,11 +26,59 @@
   --card-alt-border-color: rgba(255, 255, 255, 0.1);
   --card-border-radius: 8px;
   --card-padding: 16px 24px;
+  --card-blur: 16px;
+
+  --task-board-bg-color: rgba(0, 0, 0);
+  --task-board-text-color: #FFFFFF;
+  --task-board-border-color: none;
+  --task-board-border-radius: 8px;
+  --task-board-padding: 16px 24px;
+
+  --task-card-bg-color: rgb(11, 20, 28);
+  --task-card-text-color: #FFFFFF;
+  --task-card-border-color: rgba(255, 255, 255, 0.1);
+  --task-card-border-radius: 8px;
+  --task-card-padding: 20px 16px;
+
+  /* --project-list-panel-bg-color: rgb(11, 20, 28); */
+  --project-list-panel-bg-color: rgb(11, 20, 28);
+  --project-list-panel-border-color: rgba(255, 255, 255, 0.1);
+  --project-list-panel-border-radius: 8px;
+  --project-list-panel-padding: 16px 24px;
+
+  --command-center-bg-color: rgb(11, 20, 28);
+  --command-center-border-color: none;
+  --command-center-border-radius: 8px;
+  --command-center-padding: 16px 24px;
+
+  --primary-button-bg-color: #16825D;
+  --primary-button-text-color: #FFFFFF;
+  --primary-button-border-color: none;
+  --primary-button-border-radius: 50px;
+  --primary-button-padding: 8px 12px;
+
+  --secondary-button-bg-color: #6A1E55;
+  --secondary-button-text-color: #FFFFFF;
+  --secondary-button-border-color: none;
+  --secondary-button-border-radius: 50px;
+  --secondary-button-padding: 8px 12px;
+
+  --clear-button-bg-color: transparent;
+  --clear-button-text-color: #16825D;
+  --clear-button-border-color: none;
+  --clear-button-border-radius: 0;
+  --clear-button-padding: 0;
+
+  --outline-button-bg-color: transparent;
+  --outline-button-text-color: #16825D;
+  --outline-button-border-color: #16825D;
+  --outline-button-border-radius: 50px;
+  --outline-button-padding: 8px 12px;
 }
 
 html, body {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -46,4 +94,5 @@ h1, h2, h3, h4, h5, h6, p {
   margin-block-end: 0;
   margin-inline-start: 0;
   margin-inline-end: 0;
+  letter-spacing: 0.02em;
 }

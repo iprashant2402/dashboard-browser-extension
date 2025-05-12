@@ -1,0 +1,28 @@
+.home-view {
+    height: 100%;
+    flex: 1;
+    flex-grow: 1;
+    gap: 48px;
+}
+
+.panel-col {
+    border-radius: var(--card-border-radius);
+    flex: 1;
+    flex-grow: 1;
+}
+
+.command-center-container {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    position: relative;
+    flex: 2;
+}
+
+.project-list-panel {
+    background: var(--project-list-panel-bg-color);
+    border-radius: var(--project-list-panel-border-radius);
+    padding: var(--project-list-panel-padding);
+    backdrop-filter: blur(var(--card-blur));
+    -webkit-backdrop-filter: blur(var(--card-blur));
+}

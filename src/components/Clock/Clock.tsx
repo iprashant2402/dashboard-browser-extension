@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Clock.css';
+import { formatDate } from '../../utils/helpers';
 
 interface ClockProps {
   showSeconds?: boolean;
@@ -51,18 +52,6 @@ const Clock: React.FC<ClockProps> = ({
     };
   };
   
-  // Format the date
-  const formatDate = () => {
-    const options: Intl.DateTimeFormatOptions = { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    };
-    
-    return date.toLocaleDateString(undefined, options);
-  };
-  
   const { hours, minutes, seconds, period } = formatTime();
   
   return (
@@ -82,7 +71,7 @@ const Clock: React.FC<ClockProps> = ({
         )}
       </div>
       <div className="clock-date">
-        {formatDate()}
+        {formatDate(date)}
       </div>
     </div>
   );
