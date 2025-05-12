@@ -19,6 +19,8 @@ import {
   UNDO_COMMAND,
 } from 'lexical';
 import {useCallback, useEffect, useRef, useState} from 'react';
+import { BiAlignJustify, BiAlignLeft, BiAlignMiddle, BiAlignRight, BiBold, BiItalic, BiStrikethrough, BiUnderline } from 'react-icons/bi';
+import { IoArrowRedo, IoArrowUndo } from 'react-icons/io5';
 
 const LowPriority = 1;
 
@@ -90,7 +92,7 @@ export default function ToolbarPlugin() {
         }}
         className="toolbar-item spaced"
         aria-label="Undo">
-        <i className="format undo" />
+        <IoArrowUndo size={18} />
       </button>
       <button
         disabled={!canRedo}
@@ -99,7 +101,7 @@ export default function ToolbarPlugin() {
         }}
         className="toolbar-item"
         aria-label="Redo">
-        <i className="format redo" />
+        <IoArrowRedo size={18} />
       </button>
       <Divider />
       <button
@@ -108,7 +110,7 @@ export default function ToolbarPlugin() {
         }}
         className={'toolbar-item spaced ' + (isBold ? 'active' : '')}
         aria-label="Format Bold">
-        <i className="format bold" />
+        <BiBold size={18} />
       </button>
       <button
         onClick={() => {
@@ -116,7 +118,7 @@ export default function ToolbarPlugin() {
         }}
         className={'toolbar-item spaced ' + (isItalic ? 'active' : '')}
         aria-label="Format Italics">
-        <i className="format italic" />
+        <BiItalic size={18} />
       </button>
       <button
         onClick={() => {
@@ -124,7 +126,7 @@ export default function ToolbarPlugin() {
         }}
         className={'toolbar-item spaced ' + (isUnderline ? 'active' : '')}
         aria-label="Format Underline">
-        <i className="format underline" />
+        <BiUnderline size={18} />
       </button>
       <button
         onClick={() => {
@@ -132,7 +134,7 @@ export default function ToolbarPlugin() {
         }}
         className={'toolbar-item spaced ' + (isStrikethrough ? 'active' : '')}
         aria-label="Format Strikethrough">
-        <i className="format strikethrough" />
+        <BiStrikethrough size={18} />
       </button>
       <Divider />
       <button
@@ -141,7 +143,7 @@ export default function ToolbarPlugin() {
         }}
         className="toolbar-item spaced"
         aria-label="Left Align">
-        <i className="format left-align" />
+        <BiAlignLeft size={18} />
       </button>
       <button
         onClick={() => {
@@ -149,7 +151,7 @@ export default function ToolbarPlugin() {
         }}
         className="toolbar-item spaced"
         aria-label="Center Align">
-        <i className="format center-align" />
+        <BiAlignMiddle size={18} />
       </button>
       <button
         onClick={() => {
@@ -157,7 +159,7 @@ export default function ToolbarPlugin() {
         }}
         className="toolbar-item spaced"
         aria-label="Right Align">
-        <i className="format right-align" />
+        <BiAlignRight size={18} />
       </button>
       <button
         onClick={() => {
@@ -165,7 +167,7 @@ export default function ToolbarPlugin() {
         }}
         className="toolbar-item"
         aria-label="Justify Align">
-        <i className="format justify-align" />
+        <BiAlignJustify size={18} />
       </button>{' '}
     </div>
   );

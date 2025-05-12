@@ -22,7 +22,7 @@ import EditorTheme from './editorTheme';
 import ToolbarPlugin from './plugins/ToolbarPlugin';
 import {parseAllowedColor, parseAllowedFontSize} from './styleConfig';
 
-const placeholder = 'Enter some rich text...';
+const placeholder = 'Jot down your thoughts or anything else...';
 
 const removeStylesExportDOM = (
   editor: LexicalEditor,
@@ -125,7 +125,7 @@ const editorConfig = {
       export: exportMap,
       import: constructImportMap(),
     },
-    namespace: 'React.js Demo',
+    namespace: 'Scratchpad',
     nodes: [ParagraphNode, TextNode],
     onError(error: Error) {
       throw error;

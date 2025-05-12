@@ -11,7 +11,7 @@
   }
   
   .editor-inner {
-    background: var(--layout-bg-color);
+    background: transparent;
     position: relative;
     height: 100%;
     overflow-y: scroll;
@@ -260,6 +260,7 @@
     background: var(--layout-bg-color);
     padding: 4px;
     vertical-align: middle;
+    justify-content: space-between;
   }
   
   .toolbar button.toolbar-item {
@@ -304,12 +305,12 @@
   }
   
   .toolbar .toolbar-item:hover:not([disabled]) {
-    background-color: #eee;
+    background-color: var(--layout-bg-color);
   }
   
   .toolbar .divider {
     width: 1px;
-    background-color: #eee;
+    background-color: var(--card-border-color);
     margin: 0 4px;
   }
   
@@ -335,44 +336,4 @@
     margin-right: 8px;
     line-height: 16px;
     background-size: contain;
-  }
-  
-  i.undo {
-    background-image: url(icons/arrow-counterclockwise.svg);
-  }
-  
-  i.redo {
-    background-image: url(icons/arrow-clockwise.svg);
-  }
-  
-  i.bold {
-    background-image: url(icons/type-bold.svg);
-  }
-  
-  i.italic {
-    background-image: url(icons/type-italic.svg);
-  }
-  
-  i.underline {
-    background-image: url(icons/type-underline.svg);
-  }
-  
-  i.strikethrough {
-    background-image: url(icons/type-strikethrough.svg);
-  }
-  
-  i.left-align {
-    background-image: url(icons/text-left.svg);
-  }
-  
-  i.center-align {
-    background-image: url(icons/text-center.svg);
-  }
-  
-  i.right-align {
-    background-image: url(icons/text-right.svg);
-  }
-  
-  i.justify-align {
-    background-image: url(icons/justify.svg);
   }
