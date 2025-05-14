@@ -1,13 +1,13 @@
 .mascot {
     width: 100%;
     height: 500px;
+    position: relative;
+    z-index: 900;
+    top: 0;
+    left: 0;
 }
 
 .mascot-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 900;
+    flex: 1;
+    flex-grow: 1;
 }

@@ -1,0 +1,44 @@
+.button {
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.button-label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.button.primary {
+    background-color: var(--primary-button-bg-color);
+    color: var(--primary-button-text-color);
+    border-radius: var(--primary-button-border-radius);
+    padding: var(--primary-button-padding);
+    border: var(--primary-button-border-color);
+}
+
+.button.secondary {
+    background-color: var(--secondary-button-bg-color);
+    color: var(--secondary-button-text-color);
+    border-radius: var(--secondary-button-border-radius);
+    padding: var(--secondary-button-padding);
+    border: var(--secondary-button-border-color);
+}
+
+.button.clear {
+    background-color: var(--clear-button-bg-color);
+    color: var(--clear-button-text-color);
+    border-radius: var(--clear-button-border-radius);
+    padding: var(--clear-button-padding);
+    border: var(--clear-button-border-color);
+}
+
+.button.outline {
+    background-color: var(--outline-button-bg-color);
+    color: var(--outline-button-text-color);
+    border: 1px solid var(--outline-button-border-color);
+    border-radius: var(--outline-button-border-radius);
+    padding: var(--outline-button-padding);
+}

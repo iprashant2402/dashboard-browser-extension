@@ -1,0 +1,38 @@
+.home-view {
+    height: 100%;
+    flex: 1;
+    flex-grow: 1;
+    gap: 48px;
+}
+
+.panel-col {
+    border-radius: var(--card-border-radius);
+    flex: 1;
+    flex-grow: 1;
+}
+
+.command-center-container {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    position: relative;
+    flex: 3;
+}
+
+.notes-list-panel {
+    flex: 1;
+    background: var(--notes-list-panel-bg-color);
+    border-radius: var(--notes-list-panel-border-radius);
+    padding: var(--notes-list-panel-padding);
+    backdrop-filter: blur(var(--card-blur));
+    -webkit-backdrop-filter: blur(var(--card-blur));
+}
+
+.project-list-panel {
+    flex: 1;
+    background: var(--project-list-panel-bg-color);
+    border-radius: var(--project-list-panel-border-radius);
+    padding: var(--project-list-panel-padding);
+    backdrop-filter: blur(var(--card-blur));
+    -webkit-backdrop-filter: blur(var(--card-blur));
+}

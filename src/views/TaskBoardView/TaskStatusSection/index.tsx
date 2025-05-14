@@ -3,8 +3,13 @@ import "./index.css";
 
 export const TaskStatusSection = ({ title }: { title: string }) => {
     return <div className="task-status-section">
-        <h3>{title}</h3>
+        <h2>{title}</h2>
         <div className="task-status-section-tasks">
+            <Task />
+            <Task />
+            <Task />
+            <Task />
+            <Task />
             <Task />
             <Task />
             <Task />

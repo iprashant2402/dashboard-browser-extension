@@ -3,12 +3,10 @@ import { useFrame } from "@react-three/fiber";
 import "./index.css";
 import { Mesh } from "three";
 import { useRef, useState } from "react";
-import { CommandCenter } from "../CommandCenter";
 
 export const MascotContainer = () => {
 
     return <div className="mascot">
-        <CommandCenter />
         <Canvas className="mascot-canvas">
             <Mascot />
         </Canvas>
