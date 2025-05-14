@@ -19,7 +19,7 @@
     overflow-y: hidden;
 }
 
-.command-center h1 {
+.command-center-title {
     font-size: 16px;
     font-weight: 600;
     color: var(--muted-text-color);

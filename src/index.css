@@ -46,6 +46,11 @@
   --project-list-panel-border-radius: 8px;
   --project-list-panel-padding: 16px 24px;
 
+  --notes-list-panel-bg-color: rgb(11, 20, 28);
+  --notes-list-panel-border-color: rgba(255, 255, 255, 0.1);
+  --notes-list-panel-border-radius: 8px;
+  --notes-list-panel-padding: 16px 24px;
+
   --command-center-bg-color: rgb(11, 20, 28);
   --command-center-border-color: none;
   --command-center-border-radius: 8px;

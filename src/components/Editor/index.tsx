@@ -1,6 +1,6 @@
 import './index.css'
 import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
-import {LexicalComposer} from '@lexical/react/LexicalComposer';
+import {InitialConfigType, LexicalComposer} from '@lexical/react/LexicalComposer';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
@@ -17,10 +17,12 @@ import {
   ParagraphNode,
   TextNode,
 } from 'lexical';
-
 import EditorTheme from './editorTheme';
-import ToolbarPlugin from './plugins/ToolbarPlugin';
 import {parseAllowedColor, parseAllowedFontSize} from './styleConfig';
+import RichTextNodesCreatorPlugin from './plugins/RichTextNodesCreatorPlugin';
+import { HeadingNode } from '@lexical/rich-text';
+import { MarkdownShortcutPlugin } from './plugins/MarkdownShortcutPlugin';
+import ToolbarPlugin from './plugins/ToolbarPlugin';
 
 const placeholder = 'Jot down your thoughts or anything else...';
 
@@ -120,17 +122,17 @@ const constructImportMap = (): DOMConversionMap => {
     return importMap;
   };
 
-const editorConfig = {
-    html: {
-      export: exportMap,
-      import: constructImportMap(),
-    },
+const editorConfig: InitialConfigType = {
     namespace: 'Scratchpad',
-    nodes: [ParagraphNode, TextNode],
+    nodes: [ParagraphNode, TextNode, HeadingNode] as Array<Klass<LexicalNode>>,
     onError(error: Error) {
       throw error;
     },
     theme: EditorTheme,
+    html: {
+      export: exportMap,
+      import: constructImportMap(),
+    }
   };
 
 export const Editor = () => {
@@ -140,6 +142,7 @@ export const Editor = () => {
       <div className="editor-container">
         <ToolbarPlugin />
         <div className="editor-inner">
+        {/* <RichTextNodesCreatorPlugin /> */}
           <RichTextPlugin
             contentEditable={
               <ContentEditable
@@ -154,6 +157,7 @@ export const Editor = () => {
           />
           <HistoryPlugin />
           <AutoFocusPlugin />
+          <MarkdownShortcutPlugin />
         </div>
       </div>
     </LexicalComposer>

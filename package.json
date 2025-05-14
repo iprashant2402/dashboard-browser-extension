@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@lexical/react": "^0.31.0",
+    "@lexical/code": "^0.31.1",
+    "@lexical/markdown": "^0.31.1",
+    "@lexical/react": "^0.31.1",
+    "@lexical/rich-text": "^0.31.1",
+    "@lexical/selection": "^0.31.1",
     "@react-three/fiber": "^9.1.2",
     "@tanstack/react-query": "^5.75.7",
     "@types/three": "^0.176.0",
