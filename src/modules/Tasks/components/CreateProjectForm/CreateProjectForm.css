@@ -1,0 +1,30 @@
+.create-project-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.create-project-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    gap: 1rem;
+}
+
+.create-project-form input {
+    width: 100%;
+    padding: 8px 6px;
+    border: none;
+    border-bottom: 1px solid var(--card-border-color);
+    background: transparent;
+    color: var(--text-color);
+}
+
+.create-project-form input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--primary-color);
+}
+

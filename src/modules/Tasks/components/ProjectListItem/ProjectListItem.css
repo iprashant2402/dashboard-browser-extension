@@ -1,0 +1,19 @@
+.project-list-item {
+    cursor: pointer;
+}
+
+.project-list-item-settings-cta {
+    visibility: hidden;
+}
+
+.project-list-item:hover .project-list-item-settings-cta {
+    visibility: visible;
+}
+
+.project-list-item h4 {
+    font-size: 14px;
+}
+
+.project-list-item:hover h4 {
+    color: var(--primary-color);
+}

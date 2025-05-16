@@ -3,12 +3,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
 }
 
 .button-label {
     font-weight: 600;
     font-size: 14px;
     line-height: 16px;
+    text-align: left;
 }
 
 .button.primary {

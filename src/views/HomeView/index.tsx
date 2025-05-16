@@ -1,7 +1,7 @@
 import "./index.css";
 import { Layout } from "../../components/Layout";
 import { CommandCenter } from "../../components/CommandCenter";
-import { ProjectList } from "../../components/ProjectList";
+import { ProjectListPanel } from "../../components/ProjectListPanel";
 import { NotebookList } from "../../components/NotebookList";
 
 export const HomeView = () => {
@@ -16,7 +16,7 @@ export const HomeView = () => {
                     <CommandCenter />
                 </div>
                 <div className="column panel-col project-list-panel">
-                    <ProjectList />
+                    <ProjectListPanel />
                 </div>
             </div>
         </Layout>
