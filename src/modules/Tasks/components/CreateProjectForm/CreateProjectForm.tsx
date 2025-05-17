@@ -18,7 +18,7 @@ export const CreateProjectForm = (props: { onSubmit: (project: Project) => void 
 
     return <div className="create-project-form-container">
         <form className="create-project-form" onSubmit={handleSubmit}>
-            <input type="text" placeholder="Project name" value={projectName} onChange={(e) => setProjectName(e.target.value)} />
+            <input type="text" placeholder="create new board" value={projectName} onChange={(e) => setProjectName(e.target.value)} />
             <Button variant="clear" type="submit" icon={<IoAddCircleOutline size={24} />} />
         </form>
     </div>

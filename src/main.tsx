@@ -6,6 +6,13 @@ import './index.css'
 import App from './App.tsx'
 import { localDB } from './utils/LocalDBStorage.ts'
 import { ReactQueryProvider } from './providers/ReactQueryProvider.tsx'
+import { ThemeProvider } from './modules/Themes/ThemeProvider.tsx'
+import './modules/Themes/themeConfigs/ocean.css'
+import './modules/Themes/themeConfigs/comfort.css'
+import './modules/Themes/themeConfigs/midnightEmber.css'
+import './modules/Themes/themeConfigs/northernLights.css'
+import './modules/Themes/themeConfigs/goldenHour.css'
+import './modules/Themes/themeConfigs/morningDew.css'
 
 // getColorsFromWallpaper().then((wallpaperColor) => {
 //     const { r, g, b } = wallpaperColor as RGB;
@@ -17,7 +24,9 @@ await localDB.init();
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ReactQueryProvider>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </ReactQueryProvider>
   </StrictMode>,
 )
