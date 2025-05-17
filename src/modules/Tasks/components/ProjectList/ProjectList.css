@@ -27,7 +27,8 @@
     flex-direction: column;
     gap: 16px;
     height: 100%;
-}   
+    padding: var(--project-list-panel-padding);
+}
 
 .project-list-items {
     display: flex;
@@ -38,7 +39,14 @@
     overflow-y: scroll;
 }
 
+.project-list-header {
+    padding: var(--project-list-panel-padding);
+}
+
 .project-list-footer {
     position: relative;
     width: 100%;
+    background-color: var(--card-bg-color);
+    padding: var(--project-list-panel-padding);
+    padding: 8px 16px;
 }

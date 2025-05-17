@@ -19,10 +19,8 @@ import {
 } from 'lexical';
 import EditorTheme from './editorTheme';
 import {parseAllowedColor, parseAllowedFontSize} from './styleConfig';
-import RichTextNodesCreatorPlugin from './plugins/RichTextNodesCreatorPlugin';
 import { HeadingNode } from '@lexical/rich-text';
 import { MarkdownShortcutPlugin } from './plugins/MarkdownShortcutPlugin';
-import ToolbarPlugin from './plugins/ToolbarPlugin';
 
 const placeholder = 'Jot down your thoughts or anything else...';
 

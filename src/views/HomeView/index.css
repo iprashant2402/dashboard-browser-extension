@@ -28,6 +28,7 @@
     padding: var(--notes-list-panel-padding);
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
+    overflow: clip;
 }
 
 .project-list-panel {
@@ -35,9 +36,9 @@
     background: var(--project-list-panel-bg-color);
     border-radius: var(--project-list-panel-border-radius);
     border: 1px solid var(--project-list-panel-border-color);
-    padding: var(--project-list-panel-padding);
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
+    overflow: clip;
 }
 
 .footer-bar {

@@ -15,9 +15,9 @@ export const ProjectList = () => {
             <div className="project-list-items">
                 {state.projects?.map((project) => <ProjectListItem key={project.id} project={project} />)}
             </div>
-            <div className="row jt-center project-list-footer">
+        </div>
+        <div className="row jt-center project-list-footer">
                 <CreateProjectForm onSubmit={actions.handleCreateProjectSubmit} />
-            </div>
         </div>
     </div>
 }

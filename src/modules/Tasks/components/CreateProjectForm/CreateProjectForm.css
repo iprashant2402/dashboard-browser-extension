@@ -18,13 +18,16 @@
     width: 100%;
     padding: 8px 6px;
     border: none;
-    border-bottom: 1px solid var(--card-border-color);
     background: transparent;
     color: var(--text-color);
 }
 
+.create-project-form input::placeholder {
+    color: var(--muted-text-color);
+}
+
+
 .create-project-form input:focus {
     outline: none;
-    border-bottom: 1px solid var(--primary-color);
 }
 
