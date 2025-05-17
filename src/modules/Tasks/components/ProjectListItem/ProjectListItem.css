@@ -22,6 +22,11 @@
     font-weight: 500;
 }
 
+.project-list-item h4:focus {
+    outline: none;
+    border-bottom: 1px solid var(--primary-color);
+}
+
 .project-list-item:hover h4 {
     color: var(--primary-color);
 }

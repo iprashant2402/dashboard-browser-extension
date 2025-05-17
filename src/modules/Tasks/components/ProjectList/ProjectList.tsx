@@ -13,7 +13,12 @@ export const ProjectList = () => {
         </div>
         <div className="project-list-container">
             <div className="project-list-items">
-                {state.projects?.map((project) => <ProjectListItem key={project.id} project={project} />)}
+                {state.projects?.map((project) => <ProjectListItem 
+                    key={project.id} 
+                    project={project} 
+                    handleRename={actions.handleRenameProject}
+                    handleDelete={actions.handleDeleteProject}
+                />)}
             </div>
         </div>
         <div className="row jt-center project-list-footer">

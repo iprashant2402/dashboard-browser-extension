@@ -2,6 +2,7 @@ import { Project } from "../types/Project";
 import { useCallback } from "react";
 import { useFetchAllProjectsQuery } from "./useFetchAllProjectsQuery";
 import { useCreateProject, useUpdateProject } from "./useCreateProject";
+import { useDeleteProject } from "./useDeleteProject";
 
 export const useProjectList = () => {
     const { data: projects, isLoading: isFetchingProjects, error: fetchProjectsError, refetch } = useFetchAllProjectsQuery();
@@ -9,6 +10,10 @@ export const useProjectList = () => {
         { onSuccess: () => refetch() }
     );
     const { mutate: updateProject, isPending: isUpdatingProject, isError: isUpdatingProjectError } = useUpdateProject(
+        { onSuccess: () => refetch() }
+    );
+
+    const { mutate: deleteProject, isPending: isDeletingProject, isError: isDeletingProjectError } = useDeleteProject(
         { onSuccess: () => refetch() }
     );
 
@@ -20,6 +25,14 @@ export const useProjectList = () => {
         updateProject(args);
     }, [updateProject]);
 
+    const handleDeleteProject = useCallback((id: string) => {
+        deleteProject(id);
+    }, [deleteProject]);
+
+    const handleRenameProject = useCallback((id: string, name: string) => {
+        updateProject({ id, project: { name } });
+    }, [updateProject]);
+
     return {
         state: {
             projects,
@@ -28,11 +41,15 @@ export const useProjectList = () => {
             isCreatingProject,
             isCreatingProjectError,
             isUpdatingProject,
-            isUpdatingProjectError
+            isUpdatingProjectError,
+            isDeletingProject,
+            isDeletingProjectError
         },
         actions: {
             handleCreateProjectSubmit,
-            handleUpdateProjectSubmit
+            handleUpdateProjectSubmit,
+            handleDeleteProject,
+            handleRenameProject
         }
     }
 }
