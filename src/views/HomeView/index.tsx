@@ -1,8 +1,9 @@
 import "./index.css";
 import { Layout } from "../../components/Layout";
 import { CommandCenter } from "../../components/CommandCenter";
-import { ProjectListPanel } from "../../components/ProjectListPanel";
 import { NotebookList } from "../../components/NotebookList";
+import { ProjectList } from "../../modules/Tasks/components/ProjectList/ProjectList";
+import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";
 
 export const HomeView = () => {
 
@@ -15,8 +16,13 @@ export const HomeView = () => {
                 <div className="column panel-col command-center-container">
                     <CommandCenter />
                 </div>
-                <div className="column panel-col project-list-panel">
-                    <ProjectListPanel />
+                <div className="column panel-col">
+                    <div className="column project-list-panel">
+                        <ProjectList />
+                    </div>
+                    <div className="footer-bar">
+                        <PreferencesToolbar />
+                    </div>
                 </div>
             </div>
         </Layout>

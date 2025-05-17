@@ -1,6 +1,6 @@
-export type Theme = 'ocean' | 'morning-dew' | 'golden-hour' | 'midnight-ember' | 'northern-lights';
+export type Theme = 'ocean' | 'morning-dew' | 'golden-hour' | 'midnight-ember' | 'northern-lights' | 'comfort';
 
-export const THEMES: Theme[] = ['ocean', 'morning-dew', 'golden-hour', 'midnight-ember', 'northern-lights'];
+export const THEMES: Theme[] = ['ocean', 'morning-dew', 'golden-hour', 'midnight-ember', 'northern-lights', 'comfort'];
 
 export const DEFAULT_THEME: Theme = 'ocean';
 
@@ -10,4 +10,5 @@ export const THEME_DISPLAY_NAMES: Record<Theme, string> = {
     'golden-hour': 'Golden Hour',
     'midnight-ember': 'Midnight Ember',
     'northern-lights': 'Northern Lights',
+    'comfort': 'Comfort',
 }

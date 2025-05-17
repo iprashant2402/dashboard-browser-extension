@@ -6,27 +6,31 @@ import './index.css'
 import App from './App.tsx'
 import { localDB } from './utils/LocalDBStorage.ts'
 import { ReactQueryProvider } from './providers/ReactQueryProvider.tsx'
-import { ThemeProvider } from './modules/Themes/ThemeProvider.tsx'
 import './modules/Themes/themeConfigs/ocean.css'
 import './modules/Themes/themeConfigs/comfort.css'
 import './modules/Themes/themeConfigs/midnightEmber.css'
 import './modules/Themes/themeConfigs/northernLights.css'
 import './modules/Themes/themeConfigs/goldenHour.css'
 import './modules/Themes/themeConfigs/morningDew.css'
-
-// getColorsFromWallpaper().then((wallpaperColor) => {
-//     const { r, g, b } = wallpaperColor as RGB;
-//     document.documentElement.style.setProperty('--card-bg-color', `rgba(${r}, ${g}, ${b}, 0.5)`);
-// });
+import { UserPreferencesProvider } from './modules/UserPreferences/components/UserPreferencesProvider.tsx'
+import { storage } from './utils/storage.ts'
+import { THEMES } from './modules/Tasks/types/Theme.ts'
+import { UserPreference } from './modules/UserPreferences/types/UserPreference.ts'
 
 await localDB.init();
+
+const userPreferences = storage.getItem<UserPreference>('userPreferences');
+if (userPreferences?.theme) {
+  document.body.classList.remove(...THEMES);
+  document.body.classList.add(userPreferences.theme);
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ReactQueryProvider>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
+        <UserPreferencesProvider>
+          <App />
+        </UserPreferencesProvider>
     </ReactQueryProvider>
   </StrictMode>,
 )

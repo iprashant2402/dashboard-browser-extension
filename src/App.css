@@ -34,6 +34,10 @@
     justify-content: space-evenly;
 }
 
+.jt-end {
+    justify-content: flex-end;
+}
+
 .ai-center {
     align-items: center;
 }
