@@ -1,11 +1,11 @@
 import "./index.css";
-import { Editor } from "../Editor";
+import { Outlet } from "react-router";
 
 export const CommandCenter = () => {
 
     return <div className="command-center">
         <div className="command-center-content">
-        <Editor />
+            <Outlet />
         </div>
     </div>;
 }

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 export const ProjectListItem = (props: {
     project: Project,
+    handleClick: (id: string) => void,
     handleRename: (id: string, name: string) => void,
     handleDelete: (id: string) => void,
 }) => {
@@ -44,7 +45,7 @@ export const ProjectListItem = (props: {
         setIsMenuOpen(false);
     };
 
-    return <div className="project-list-item">
+    return <div className="project-list-item" onClick={() => props.handleClick(props.project.id)}>
         <div className="row jt-space-between">
             <h4 contentEditable={isRenaming ? 'plaintext-only' : 'false'} ref={nameRef} id="project-list-item-name">{props.project.name}</h4>
             <IoEllipsisHorizontal onClick={openMenu} className="project-list-item-settings-cta" />

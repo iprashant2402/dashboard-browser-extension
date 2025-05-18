@@ -1,6 +1,6 @@
 import "./index.css";
 import { Layout } from "../../components/Layout";
-import { CommandCenter } from "../../components/CommandCenter";
+import { CommandCenter } from "../CommandCenter";
 import { NotebookList } from "../../components/NotebookList";
 import { ProjectList } from "../../modules/Tasks/components/ProjectList/ProjectList";
 import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";

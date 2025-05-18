@@ -1,7 +1,7 @@
 .taskContainer {
     position: relative;
     width: 100%;
-    width: 243px;
+    width: 100%;
     height: fit-content;
     padding: var(--task-card-padding);
     background-color: var(--task-card-bg-color);
@@ -20,17 +20,18 @@
     column-gap: 12px;
 }
 
-.taskContainer h3:read-write:focus {
+.taskContainer h5:read-write:focus {
     outline: none;
-    text-decoration: underline;
+    border-bottom: 1px solid var(--primary-color);
 }
 
-.taskContainer h3, .taskContainer p {
+.taskContainer h5, .taskContainer p {
     cursor: text;
 }
 
 .taskContainer p:read-write:focus {
     outline: none;
+    border-bottom: 1px solid var(--primary-color);
 }
 
 h3 {

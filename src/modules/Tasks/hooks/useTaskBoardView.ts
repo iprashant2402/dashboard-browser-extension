@@ -1,14 +1,16 @@
-import { useCallback, useState } from "react";
-import { expandToFullscreen } from "../../utils/helpers";
-import { useCreateTask } from "./useCreateTask";
+import { useCallback } from "react";
+import { expandToFullscreen } from "../../../utils/helpers";
+import { useNavigate, useParams } from "react-router";
 
-export const useTaskBoardView = () => {
-    const [isExpanded, setIsExpanded] = useState(false);
-    
-    const createNewTask = useCreateTask();
+export const useTaskBoardView = () => {    
+    const navigate = useNavigate();
+    const { id } = useParams();
+    const createNewTask = () => {
+        console.log('create new task');
+    };
 
     const handleViewFullBoard = useCallback(() => {
-        setIsExpanded(true);
+        
     }, []);
 
     const handleExpandToFullscreen = useCallback(() => {
@@ -16,12 +18,12 @@ export const useTaskBoardView = () => {
     }, []);
 
     const handleClose = useCallback(() => {
-        setIsExpanded(false);
+        navigate(-1);
     }, []);
 
     return {
         state: {
-            isExpanded,
+            projectId: id,
         },
         actions: {
             handleViewFullBoard,

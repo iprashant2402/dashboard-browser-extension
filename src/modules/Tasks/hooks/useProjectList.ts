@@ -3,8 +3,10 @@ import { useCallback } from "react";
 import { useFetchAllProjectsQuery } from "./useFetchAllProjectsQuery";
 import { useCreateProject, useUpdateProject } from "./useCreateProject";
 import { useDeleteProject } from "./useDeleteProject";
+import { useNavigate } from "react-router";
 
 export const useProjectList = () => {
+    const navigate = useNavigate();
     const { data: projects, isLoading: isFetchingProjects, error: fetchProjectsError, refetch } = useFetchAllProjectsQuery();
     const { mutate: createProject, isPending: isCreatingProject, isError: isCreatingProjectError } = useCreateProject(
         { onSuccess: () => refetch() }
@@ -33,6 +35,10 @@ export const useProjectList = () => {
         updateProject({ id, project: { name } });
     }, [updateProject]);
 
+    const handleProjectClick = useCallback((id: string) => {
+        navigate(`/task-board/${id}`);
+    }, [navigate]);
+
     return {
         state: {
             projects,
@@ -49,7 +55,8 @@ export const useProjectList = () => {
             handleCreateProjectSubmit,
             handleUpdateProjectSubmit,
             handleDeleteProject,
-            handleRenameProject
+            handleRenameProject,
+            handleProjectClick
         }
     }
 }

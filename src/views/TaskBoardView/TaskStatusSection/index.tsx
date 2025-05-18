@@ -1,22 +1,10 @@
-import { Task } from "../../../components/Task/Task";
 import "./index.css";
+import { Task } from "../../../modules/Tasks/components/Task/Task";
 
 export const TaskStatusSection = ({ title }: { title: string }) => {
     return <div className="task-status-section">
-        <h2>{title}</h2>
+        <h4 className="task-status-section-title">{title}</h4>
         <div className="task-status-section-tasks">
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
             <Task />
         </div>
     </div>;

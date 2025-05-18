@@ -8,7 +8,6 @@
 .panel-col {
     border-radius: var(--card-border-radius);
     flex: 1;
-    flex-grow: 1;
     row-gap: 16px;
 }
 
@@ -18,6 +17,7 @@
     padding: 0;
     position: relative;
     flex: 3;
+    overflow-x: hidden;
 }
 
 .notes-list-panel {
@@ -38,7 +38,7 @@
     border: 1px solid var(--project-list-panel-border-color);
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
-    overflow: clip;
+    overflow: hidden;
 }
 
 .footer-bar {

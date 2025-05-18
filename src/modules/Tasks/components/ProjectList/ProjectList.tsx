@@ -16,6 +16,7 @@ export const ProjectList = () => {
                 {state.projects?.map((project) => <ProjectListItem 
                     key={project.id} 
                     project={project} 
+                    handleClick={actions.handleProjectClick}
                     handleRename={actions.handleRenameProject}
                     handleDelete={actions.handleDeleteProject}
                 />)}
