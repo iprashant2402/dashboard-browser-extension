@@ -20,6 +20,8 @@
 .project-list-item h4 {
     font-size: 14px;
     font-weight: 500;
+    display: inline-block;
+    width: 100%;
 }
 
 .project-list-item h4:focus {

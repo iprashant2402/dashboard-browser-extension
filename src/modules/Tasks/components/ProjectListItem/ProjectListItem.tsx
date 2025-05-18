@@ -4,7 +4,7 @@ import "./ProjectListItem.css";
 import { Button } from "../../../../components/Button";
 import { useEffect, useRef, useState } from "react";
 
-export const ProjectListItem = (props: { 
+export const ProjectListItem = (props: {
     project: Project,
     handleRename: (id: string, name: string) => void,
     handleDelete: (id: string) => void,
@@ -13,31 +13,24 @@ export const ProjectListItem = (props: {
     const [isRenaming, setIsRenaming] = useState(false);
     const nameRef = useRef<HTMLHeadingElement>(null);
 
+    const onBlur = () => {
+        setIsRenaming(false);
+        if (!nameRef.current) return;
+        const textContent = nameRef.current.textContent;
+        if (textContent && textContent.length > 0) props.handleRename(props.project.id, textContent);
+        else nameRef.current.innerText = props.project.name;
+        nameRef.current?.removeEventListener('blur', onBlur);
+    };
+
     useEffect(() => {
         if (isRenaming) {
             setIsMenuOpen(false);
-            if(!nameRef.current) return;
+            if (!nameRef.current) return;
+            nameRef.current.addEventListener('blur', onBlur);
             nameRef.current.focus();
             window.getSelection()?.selectAllChildren(nameRef.current);
         }
     }, [isRenaming]);
-
-    useEffect(() => {
-        if(!nameRef.current) return;
-        const onBlur = () => {
-            setIsRenaming(false);
-            if (!nameRef.current) return;
-            console.log('nameRef.current.innerText', nameRef.current.innerText);
-            if (nameRef.current.innerText?.length > 0) props.handleRename(props.project.id, nameRef.current.innerText);
-            else nameRef.current.innerText = props.project.name;
-            nameRef.current?.removeEventListener('blur', onBlur);
-        }
-
-        nameRef.current.addEventListener('blur', onBlur);
-        return () => {
-            nameRef.current?.removeEventListener('blur', onBlur);
-        }
-    }, [])
 
     const handleDelete = () => {
         props.handleDelete(props.project.id);
@@ -60,7 +53,7 @@ export const ProjectListItem = (props: {
     </div>
 }
 
-const ProjectItemMenu = (props: { 
+const ProjectItemMenu = (props: {
     handleClose: () => void,
     handleRename: () => void,
     handleDelete: () => void,
