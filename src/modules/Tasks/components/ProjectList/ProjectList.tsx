@@ -2,6 +2,7 @@ import { useProjectList } from "../../hooks/useProjectList";
 import "./ProjectList.css";
 import { CreateProjectForm } from "../CreateProjectForm/CreateProjectForm";
 import { ProjectListItem } from "../ProjectListItem/ProjectListItem";
+import { getRandomTaskQuote } from "../../../../utils/quotes";
 
 export const ProjectList = () => {
     const { state, actions } = useProjectList();
@@ -9,7 +10,7 @@ export const ProjectList = () => {
     return <div className="project-list">
         <div className="project-list-header">
             <h1 className="project-list-title">Task <span>Boards</span></h1>
-            <p className="project-list-description">List of all your projects</p>
+            <p className="project-list-description">{getRandomTaskQuote()}</p>
         </div>
         <div className="project-list-container">
             <div className="project-list-items">

@@ -11,6 +11,9 @@ export const CreateProjectForm = (props: { onSubmit: (project: Project) => void 
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if (!projectName || projectName.trim() === "") return;
+
         const id = uuidv4();
         props.onSubmit({ id, name: projectName, allowed_columns: DEFAULT_TASK_STATUSES, createdAt: new Date(), updatedAt: new Date() });
         setProjectName("");
