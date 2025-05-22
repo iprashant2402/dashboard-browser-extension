@@ -1,6 +1,6 @@
 import { createMemoryRouter, Navigate, RouteObject } from "react-router";
 import { HomeView } from "../views/HomeView";
-import { TaskBoardView } from "../views/TaskBoardView";
+import { TaskBoardView } from "../modules/Tasks/components/TaskBoardView";
 import { Editor } from "../components/Editor";
 
 const routes: RouteObject[] = [

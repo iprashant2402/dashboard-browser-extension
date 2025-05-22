@@ -1,6 +1,7 @@
 import { IProjectRepository } from "./IProjectRepository";
 import { Project } from "../types/Project";
 import { localDB } from "../../../utils/LocalDBStorage";
+import { Task } from "../types/Task";
 
 export class LocalProjectRepository implements IProjectRepository {
     async getProjects(): Promise<Project[]> {
@@ -26,6 +27,25 @@ export class LocalProjectRepository implements IProjectRepository {
 
     async deleteProject(id: string): Promise<void> {
         return await localDB.delete('projects', id);
+    }
+
+    async getTasks(projectId: string): Promise<Task[]> {
+        return await localDB.search<Task>('tasks', 'projectId', projectId);
+    }
+
+    async createTask(projectId: string, task: Task): Promise<Task> {
+        return await localDB.add('tasks', { ...task, projectId });
+    }
+
+    async updateTask(taskId: string, task: Partial<Task>): Promise<Task> {
+        const taskToUpdate = await localDB.get<Task>('tasks', taskId);
+        if (!taskToUpdate) throw new Error('TASK_NOT_FOUND');
+        const updatedTask = {...taskToUpdate, ...task};
+        return await localDB.update<Task>('tasks', updatedTask);
+    }
+
+    async deleteTask(taskId: string): Promise<void> {
+        return await localDB.delete('tasks', taskId);
     }
 }
 

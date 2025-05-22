@@ -6,6 +6,9 @@ export class LocalDBStorage {
   private dbVersion: number;
   private db: IDBDatabase | null = null;
   private stores = ['projects', 'tasks', 'notebooks', 'notes'];
+  private indexes: { [key: string]: string[] } = {
+    tasks: ['projectId']
+  }
   
   /**
    * Creates a new LocalDBStorage instance
@@ -43,7 +46,10 @@ export class LocalDBStorage {
         // Create object stores for each data type if they don't exist
         this.stores.forEach(storeName => {
           if (!db.objectStoreNames.contains(storeName)) {
-            db.createObjectStore(storeName, { keyPath: 'id' });
+            const objectStore = db.createObjectStore(storeName, { keyPath: 'id' });
+            this.indexes[storeName]?.forEach(index => {
+              objectStore.createIndex(index, index, { unique: false });
+            });
           }
         });
       };
@@ -158,6 +164,28 @@ export class LocalDBStorage {
       
       request.onerror = (event) => {
         console.error(`Error getting all from ${storeName}:`, (event.target as IDBRequest).error);
+        reject((event.target as IDBRequest).error);
+      };
+    });
+  }
+
+  async search<T>(storeName: string, column: string, value: string): Promise<T[]> {
+    await this.init();
+
+    return new Promise((resolve, reject) => {
+      if (!this.db) {
+        reject(new Error('Database not initialized'));
+        return;
+      }
+
+      const transaction = this.db.transaction(storeName, 'readonly');
+      const store = transaction.objectStore(storeName);
+      const index = store.index(column);
+      const request = index.getAll(value);
+
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = (event) => {
+        console.error(`Error searching in ${storeName}:`, (event.target as IDBRequest).error);
         reject((event.target as IDBRequest).error);
       };
     });

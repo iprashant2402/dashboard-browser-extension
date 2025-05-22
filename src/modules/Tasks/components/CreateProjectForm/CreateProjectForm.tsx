@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Project } from "../../types/Project";
 import "./CreateProjectForm.css";
-import { IoAddCircleOutline } from "react-icons/io5";
+import { IoCheckmarkCircle } from "react-icons/io5";
 import { Button } from "../../../../components/Button";
 import { v4 as uuidv4 } from 'uuid';
 import { DEFAULT_TASK_STATUSES } from "../../config/TaskColumns";
@@ -21,8 +21,13 @@ export const CreateProjectForm = (props: { onSubmit: (project: Project) => void 
 
     return <div className="create-project-form-container">
         <form className="create-project-form" onSubmit={handleSubmit}>
-            <input type="text" placeholder="create new board" value={projectName} onChange={(e) => setProjectName(e.target.value)} />
-            <Button variant="clear" type="submit" icon={<IoAddCircleOutline size={24} />} />
+            <div className="column">
+                <label htmlFor="project-name">What would you like to call your board?</label>
+                <input id="project-name" type="text" placeholder="e.g. Personal/Work etc." value={projectName} onChange={(e) => setProjectName(e.target.value)} />
+            </div>
+            <div className="row jt-end">
+            <Button variant="primary" type="submit" icon={<IoCheckmarkCircle size={24} />} label="Create" />
+            </div>
         </form>
     </div>
 }

@@ -2,7 +2,7 @@
     height: 100%;
     flex: 1;
     flex-grow: 1;
-    gap: 48px;
+    gap: 10px;
 }
 
 .panel-col {
@@ -29,6 +29,7 @@
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
     overflow: clip;
+    view-transition-name: notes-list-panel;
 }
 
 .project-list-panel {
@@ -39,6 +40,7 @@
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
     overflow: hidden;
+    view-transition-name: project-list-panel;
 }
 
 .footer-bar {
@@ -47,4 +49,5 @@
     justify-content: flex-end;
     align-items: center;
     gap: 8px;
+    view-transition-name: footer-bar;
 }

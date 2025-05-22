@@ -9,4 +9,18 @@ declare global {
   }
 }
 
-export {}; 
+declare global {
+  interface Document {
+    startViewTransition?: (callback: () => void) => {
+      ready: Promise<void>;
+      updateCallbackDone: Promise<void>;
+      finished: Promise<void>;
+    };
+  }
+
+  interface CSSStyleDeclaration {
+    viewTransitionName: string;
+  }
+}
+
+export { }; 

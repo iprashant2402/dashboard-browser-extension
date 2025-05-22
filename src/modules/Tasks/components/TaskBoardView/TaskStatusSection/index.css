@@ -1,0 +1,58 @@
+.task-status-section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    row-gap: 12px;
+    min-width: 200px;
+    height: 100%; /* Ensure it takes full height */
+    overflow: hidden; /* Hide overflow at this level */
+}
+
+.task-status-section-title {
+    padding: 0;
+    background-color: var(--layout-bg-color);
+    font-weight: 600;
+    display: inline-block;
+    width: fit-content;
+    padding: 2px 8px;
+    font-size: 12px;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+}
+
+.task-status-section-tasks {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 0 16px 0 0;
+    row-gap: 24px;
+    overflow-y: auto; /* Changed from scroll to auto */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    min-height: 0; /* Critical for flex child scrolling */
+}
+
+.task-status-section-tasks {
+    border-right: 1px dashed var(--task-card-border-color);
+}
+
+.task-status-section:last-child .task-status-section-tasks {
+    border-right: none;
+}
+
+.task-status-section-tasks::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
+
+.task-status-section-add-task {
+    border: 1px dashed var(--card-border-color);
+    color: var(--muted-text-color);
+    background-color: transparent;
+    padding: 8px 16px;
+    border-radius: var(--card-border-radius);
+    outline: none;
+    cursor: pointer;
+    height: 100px;
+}

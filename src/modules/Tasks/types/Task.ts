@@ -14,6 +14,7 @@ export interface TaskStatusMetadata {
     name: string;
     color: string;
     order: number;
+    isTerminal: boolean;
 }
 
 export interface Task {

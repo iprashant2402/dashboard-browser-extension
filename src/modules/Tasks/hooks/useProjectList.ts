@@ -1,11 +1,12 @@
 import { Project } from "../types/Project";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useFetchAllProjectsQuery } from "./useFetchAllProjectsQuery";
 import { useCreateProject, useUpdateProject } from "./useCreateProject";
 import { useDeleteProject } from "./useDeleteProject";
 import { useNavigate } from "react-router";
 
 export const useProjectList = () => {
+    const [isCreateProjectDialogOpen, setIsCreateProjectDialogOpen] = useState(false);
     const navigate = useNavigate();
     const { data: projects, isLoading: isFetchingProjects, error: fetchProjectsError, refetch } = useFetchAllProjectsQuery();
     const { mutate: createProject, isPending: isCreatingProject, isError: isCreatingProjectError } = useCreateProject(
@@ -21,7 +22,8 @@ export const useProjectList = () => {
 
     const handleCreateProjectSubmit = useCallback((project: Project) => {
         createProject(project);
-    }, [createProject]);
+        setIsCreateProjectDialogOpen(false);
+    }, [createProject, setIsCreateProjectDialogOpen]);
 
     const handleUpdateProjectSubmit = useCallback((args: { id: string, project: Partial<Project> }) => {
         updateProject(args);
@@ -36,8 +38,16 @@ export const useProjectList = () => {
     }, [updateProject]);
 
     const handleProjectClick = useCallback((id: string) => {
-        navigate(`/task-board/${id}`);
+            navigate(`/task-board/${id}`);
     }, [navigate]);
+
+    const handleOpenCreateProjectDialog = useCallback(() => {
+        setIsCreateProjectDialogOpen(true);
+    }, [setIsCreateProjectDialogOpen]);
+
+    const handleCloseCreateProjectDialog = useCallback(() => {
+        setIsCreateProjectDialogOpen(false);
+    }, [setIsCreateProjectDialogOpen]);
 
     return {
         state: {
@@ -49,14 +59,17 @@ export const useProjectList = () => {
             isUpdatingProject,
             isUpdatingProjectError,
             isDeletingProject,
-            isDeletingProjectError
+            isDeletingProjectError,
+            isCreateProjectDialogOpen
         },
         actions: {
             handleCreateProjectSubmit,
             handleUpdateProjectSubmit,
             handleDeleteProject,
             handleRenameProject,
-            handleProjectClick
+            handleProjectClick,
+            handleOpenCreateProjectDialog,
+            handleCloseCreateProjectDialog
         }
     }
 }
