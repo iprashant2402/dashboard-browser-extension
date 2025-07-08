@@ -5,11 +5,13 @@ import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
 import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
+import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
 import {
   $isTextNode,
   DOMConversionMap,
   DOMExportOutput,
   DOMExportOutputMap,
+  EditorState,
   isHTMLElement,
   Klass,
   LexicalEditor,
@@ -21,8 +23,18 @@ import EditorTheme from './editorTheme';
 import {parseAllowedColor, parseAllowedFontSize} from './styleConfig';
 import { HeadingNode } from '@lexical/rich-text';
 import { MarkdownShortcutPlugin } from './plugins/MarkdownShortcutPlugin';
+import { useMemo, useRef } from 'react';
+import { Button } from '../Button';
+import { IoCloudDownload } from 'react-icons/io5';
 
-const placeholder = 'Jot down your thoughts or anything else...';
+export interface EditorProps {
+  placeholder?: string;
+  onChange: (content: string) => void;
+  initialState?: string;
+  onSave: (content: string) => void;
+}
+
+const DefaultPlaceholder = 'Jot down your thoughts or anything else...';
 
 const removeStylesExportDOM = (
   editor: LexicalEditor,
@@ -120,20 +132,34 @@ const constructImportMap = (): DOMConversionMap => {
     return importMap;
   };
 
-const editorConfig: InitialConfigType = {
-    namespace: 'Scratchpad',
-    nodes: [ParagraphNode, TextNode, HeadingNode] as Array<Klass<LexicalNode>>,
-    onError(error: Error) {
-      throw error;
-    },
-    theme: EditorTheme,
-    html: {
-      export: exportMap,
-      import: constructImportMap(),
+export const Editor = (props: EditorProps) => {
+  const editorStateRef = useRef<EditorState | undefined>(undefined);
+
+  const editorConfig: InitialConfigType = useMemo(() => {
+    return {
+      namespace: 'Scratchpad',
+      editorState: props.initialState || undefined,
+      nodes: [ParagraphNode, TextNode, HeadingNode] as Array<Klass<LexicalNode>>,
+      onError(error: Error) {
+        throw error;
+      },
+      theme: EditorTheme,
+      html: {
+        export: exportMap,
+        import: constructImportMap(),
+      }
+    };
+  }, [props.initialState]);
+
+  const onClickSave = () => {
+    if (editorStateRef.current) {
+      props.onSave(JSON.stringify(editorStateRef.current));
     }
   };
 
-export const Editor = () => {
+  const onChange = (content: EditorState) => {
+    editorStateRef.current = content;
+  };
 
   return (
     <LexicalComposer initialConfig={editorConfig}>
@@ -145,17 +171,21 @@ export const Editor = () => {
             contentEditable={
               <ContentEditable
                 className="editor-input"
-                aria-placeholder={placeholder}
+                aria-placeholder={props.placeholder || DefaultPlaceholder}
                 placeholder={
-                  <div className="editor-placeholder">{placeholder}</div>
+                  <div className="editor-placeholder">{props.placeholder || DefaultPlaceholder}</div>
                 }
               />
             }
             ErrorBoundary={LexicalErrorBoundary}
           />
+          <OnChangePlugin onChange={onChange} />
           <HistoryPlugin />
           <AutoFocusPlugin />
           <MarkdownShortcutPlugin />
+        </div>
+        <div className="editor-footer">
+        <Button variant="primary" onClick={onClickSave} label="Save" icon={<IoCloudDownload />} />
         </div>
       </div>
     </LexicalComposer>

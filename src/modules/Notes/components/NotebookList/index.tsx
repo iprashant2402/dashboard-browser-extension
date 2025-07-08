@@ -1,17 +1,19 @@
 import "./index.css";
 import { getRandomQuote } from "../../../../utils/quotes";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Button } from "../../../../components/Button";
 import { IoAddCircle } from "react-icons/io5";
-import { Dialog } from "../../../../components/Dialog";
+import { usePageList } from "../../hooks/usePageList";
+import { PageListItem } from "../PageListItem";
 
 export const NotebookList = () => {
     const quote = useMemo(() => getRandomQuote(), []);
-    const [isOpen, setIsOpen] = useState(false);
+    const { state, actions } = usePageList();
 
     return (
         <>
             <div className="notebook-list">
+            <div className="notebook-list-header">
                 <div className="row jt-space-between ai-center">
                     <div>
                         <h1 className="notebook-list-title">Your <span>Pages</span></h1>
@@ -21,18 +23,23 @@ export const NotebookList = () => {
                         <Button
                             variant="clear"
                             icon={<IoAddCircle size={24} />}
-                            onClick={() => setIsOpen(true)}
+                            onClick={actions.handleCreatePageSubmit}
                         />
                     </div>
                 </div>
             </div>
-            <Dialog
-                isOpen={isOpen}
-                onClose={() => setIsOpen(false)}
-                title="Create a new notebook"
-            >
-                <p>This is the dialog content.</p>
-            </Dialog>
+                <div className="notebook-list-container">
+            <div className="notebook-list-items">
+                {state.pages?.map((page) => <PageListItem 
+                    key={page.id} 
+                    page={page} 
+                    handleClick={actions.handlePageClick}
+                    handleRename={actions.handleRenamePage}
+                    handleDelete={actions.handleDeletePage}
+                />)}
+            </div>
+        </div>
+            </div>
         </>
     )
 }

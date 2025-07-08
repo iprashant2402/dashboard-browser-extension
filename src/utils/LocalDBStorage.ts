@@ -5,9 +5,9 @@ export class LocalDBStorage {
   private dbName: string;
   private dbVersion: number;
   private db: IDBDatabase | null = null;
-  private stores = ['projects', 'tasks', 'notebooks', 'notes'];
+  private stores = ['projects', 'tasks', 'pages'];
   private indexes: { [key: string]: string[] } = {
-    tasks: ['projectId']
+    tasks: ['projectId'],
   }
   
   /**
@@ -63,6 +63,7 @@ export class LocalDBStorage {
    * @returns Promise that resolves with the added item
    */
   async add<T extends { id: string }>(storeName: string, item: T): Promise<T> {
+    console.log('add', storeName, item);
     await this.init();
     
     return new Promise((resolve, reject) => {
@@ -255,5 +256,8 @@ export class LocalDBStorage {
   }
 }
 
+const CURRENT_DB_VERSION = 2;
+const DB_NAME = 'appDatabase';
+
 // Create and export a singleton instance
-export const localDB = new LocalDBStorage(); 
+export const localDB = new LocalDBStorage(DB_NAME, CURRENT_DB_VERSION); 

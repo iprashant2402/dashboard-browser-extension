@@ -6,6 +6,11 @@
     cursor: pointer;
 }
 
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .button-label {
     font-weight: 600;
     font-size: 14px;

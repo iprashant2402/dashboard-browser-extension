@@ -1,7 +1,8 @@
-import { createMemoryRouter, Navigate, RouteObject } from "react-router";
+import { createMemoryRouter, RouteObject } from "react-router";
 import { HomeView } from "../views/HomeView";
 import { TaskBoardView } from "../modules/Tasks/components/TaskBoardView";
-import { Editor } from "../components/Editor";
+import { PageEditorNavigationController } from "../modules/Notes/components/PageEditorNavigationController";
+import { PageEditor } from "../modules/Notes/components/PageEditor";
 
 const routes: RouteObject[] = [
     {
@@ -10,11 +11,11 @@ const routes: RouteObject[] = [
         children: [
             {
                 index: true,
-                element: <Navigate to='/editor' />,
+                element: <PageEditorNavigationController />,
             },
             {
-                path: 'editor',
-                element: <Editor />,
+                path: 'editor/:id',
+                element: <PageEditor />,
             },
             {
                 path: 'task-board/:id',

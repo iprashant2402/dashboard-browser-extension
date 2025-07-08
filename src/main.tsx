@@ -19,6 +19,7 @@ import { UserPreferencesProvider } from './modules/UserPreferences/components/Us
 import { storage } from './utils/storage.ts'
 import { THEMES } from './modules/Tasks/types/Theme.ts'
 import { UserPreference } from './modules/UserPreferences/types/UserPreference.ts'
+import { ToastContainer } from './components/Toast/index.ts'
 
 localDB.init().then(() => {
   const userPreferences = storage.getItem<UserPreference>('userPreferences');
@@ -31,7 +32,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ReactQueryProvider>
         <UserPreferencesProvider>
+          <ToastContainer>
           <App />
+          </ToastContainer>
         </UserPreferencesProvider>
     </ReactQueryProvider>
   </StrictMode>,
