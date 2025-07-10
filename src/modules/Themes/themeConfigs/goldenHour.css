@@ -1,0 +1,81 @@
+.golden-hour {
+    /* Layout */
+    --layout-bg-color: #FFFAF3; /* Warm, soft base background reminiscent of a golden sunset */
+    --layout-text-color: #443322; /* Deep brown text for good contrast and warmth */
+    --primary-color: #F2994A; /* Sunset orange used for main actions */
+    --secondary-color: #EB5757; /* Warm red used for secondary highlights */
+    --tertiary-color: #F2C94C; /* Golden yellow for subtle accents */
+    --muted-text-color: rgba(68, 51, 34, 0.5); /* Faded brown for muted/inactive text */
+  
+    /* Cards */
+    --card-bg-color: rgba(255, 255, 255, 0.95); /* Slight transparency for layering effect */
+    --card-alt-bg-color: #FFF6ED; /* Subtle peach tone for variety */
+    --card-text-color: #443322; /* Primary readable text */
+    --card-alt-text-color: #5C4433; /* Slightly darker variant for emphasis */
+    --card-border-color: rgba(242, 153, 74, 0.15); /* Soft orange border to separate card from background */
+    --card-alt-border-color: rgba(242, 153, 74, 0.1); /* Even softer variant for alternates */
+    --card-border-radius: 8px; /* Light rounding for a friendly UI */
+    --card-padding: 16px 24px; /* Balanced padding for card contents */
+    --card-blur: 16px; /* Light blur effect for a layered UI feel */
+  
+    /* Task Board */
+    --task-board-bg-color: #FFFFFF; /* Clean and bright task board background */
+    --task-board-text-color: #443322; /* Consistent text color with layout */
+    --task-board-border-color: none; /* No border for clean separation */
+    --task-board-border-radius: 8px; /* Rounded corners for cohesion */
+    --task-board-padding: 16px 24px; /* Standard internal spacing */
+  
+    /* Task Card */
+    --task-card-bg-color: #FFF4E8; /* Gentle light orange background */
+    --task-card-text-color: #443322; /* High-contrast text */
+    --task-card-border-color: rgba(242, 153, 74, 0.15); /* Soft border with warmth */
+    --task-card-border-radius: 8px; /* Friendly, consistent rounding */
+    --task-card-padding: 20px 16px; /* Comfortable reading space */
+  
+    /* Project List Panel */
+    --project-list-panel-bg-color: #FFF9F0; /* Slightly off-white for soft sectioning */
+    --project-list-panel-border-color: rgba(242, 153, 74, 0.15); /* Warm separation lines */
+    --project-list-panel-border-radius: 8px; /* Consistent UI curvature */
+    --project-list-panel-padding: 16px 24px; /* Adequate padding for list content */
+  
+    /* Notes List Panel */
+    --notes-list-panel-bg-color: #FFF9F0; /* Matches project list for symmetry */
+    --notes-list-panel-border-color: rgba(242, 153, 74, 0.15); /* Delicate separator */
+    --notes-list-panel-border-radius: 8px;
+    --notes-list-panel-padding: 16px 24px;
+  
+    /* Command Center */
+    --command-center-bg-color: #FFFFFF; /* Pure, clean command center */
+    --command-center-border-color: none; /* Seamless into layout */
+    --command-center-border-radius: 8px; /* Rounded look */
+    --command-center-padding: 16px 24px;
+  
+    /* Primary Button */
+    --primary-button-bg-color: #F2994A; /* Sunset orange for action buttons */
+    --primary-button-text-color: #FFFFFF; /* White text for contrast */
+    --primary-button-border-color: none; /* Flat, modern button */
+    --primary-button-border-radius: 50px; /* Pill-shaped buttons */
+    --primary-button-padding: 8px 12px;
+  
+    /* Secondary Button */
+    --secondary-button-bg-color: #EB5757; /* Warm red for secondary actions */
+    --secondary-button-text-color: #FFFFFF; /* Readable white text */
+    --secondary-button-border-color: none;
+    --secondary-button-border-radius: 50px;
+    --secondary-button-padding: 8px 12px;
+  
+    /* Clear Button */
+    --clear-button-bg-color: transparent; /* No fill */
+    --clear-button-text-color: #F2994A; /* Styled like a link */
+    --clear-button-border-color: none;
+    --clear-button-border-radius: 0;
+    --clear-button-padding: 0;
+  
+    /* Outline Button */
+    --outline-button-bg-color: transparent;
+    --outline-button-text-color: #F2994A; /* Text and border match for cohesive feel */
+    --outline-button-border-color: #F2994A;
+    --outline-button-border-radius: 50px;
+    --outline-button-padding: 8px 12px;
+  }
+  

@@ -1,0 +1,84 @@
+.linus {
+    /* Layout */
+    --layout-bg-color: #0D1117; /* GitHub dark mode base */
+    --layout-text-color: #C9D1D9; /* Light gray text for high contrast */
+    --primary-color: #58A6FF; /* Cool blue for highlights */
+    --secondary-color: #8B949E; /* Muted gray for secondary elements */
+    --tertiary-color: #F85149; /* Red for warnings/errors */
+    --muted-text-color: rgba(201, 209, 217, 0.4); /* Dim text for less focus */
+  
+    /* Cards */
+    --card-bg-color: rgba(22, 27, 34, 0.9); /* Very dark gray with transparency */
+    --card-alt-bg-color: #161B22; /* Slightly lighter alternate */
+    --card-text-color: #C9D1D9;
+    --card-alt-text-color: #B1BAC4;
+    --card-border-color: rgba(240, 246, 252, 0.1);
+    --card-alt-border-color: rgba(240, 246, 252, 0.1);
+    --card-border-radius: 6px;
+    --card-padding: 16px 24px;
+    --card-blur: 0; /* Terminals usually don't blur */
+  
+    /* Task Board */
+    --task-board-bg-color: #161B22;
+    --task-board-text-color: #C9D1D9;
+    --task-board-border-color: none;
+    --task-board-border-radius: 6px;
+    --task-board-padding: 16px 24px;
+  
+    /* Task Card */
+    --task-card-bg-color: #0D1117;
+    --task-card-text-color: #C9D1D9;
+    --task-card-border-color: rgba(240, 246, 252, 0.1);
+    --task-card-border-radius: 6px;
+    --task-card-padding: 20px 16px;
+  
+    /* Project List Panel */
+    --project-list-panel-bg-color: #0D1117;
+    --project-list-panel-border-color: rgba(240, 246, 252, 0.1);
+    --project-list-panel-border-radius: 6px;
+    --project-list-panel-padding: 16px 24px;
+  
+    /* Notes List Panel */
+    --notes-list-panel-bg-color: #0D1117;
+    --notes-list-panel-border-color: rgba(240, 246, 252, 0.1);
+    --notes-list-panel-border-radius: 6px;
+    --notes-list-panel-padding: 16px 24px;
+  
+    /* Command Center */
+    --command-center-bg-color: #161B22;
+    --command-center-border-color: none;
+    --command-center-border-radius: 6px;
+    --command-center-padding: 16px 24px;
+  
+    /* Primary Button */
+    --primary-button-bg-color: #58A6FF;
+    --primary-button-text-color: #0D1117;
+    --primary-button-border-color: none;
+    --primary-button-border-radius: 4px;
+    --primary-button-padding: 8px 12px;
+  
+    /* Secondary Button */
+    --secondary-button-bg-color: #30363D;
+    --secondary-button-text-color: #C9D1D9;
+    --secondary-button-border-color: none;
+    --secondary-button-border-radius: 4px;
+    --secondary-button-padding: 8px 12px;
+  
+    /* Clear Button */
+    --clear-button-bg-color: transparent;
+    --clear-button-text-color: #58A6FF;
+    --clear-button-border-color: none;
+    --clear-button-border-radius: 0;
+    --clear-button-padding: 0;
+  
+    /* Outline Button */
+    --outline-button-bg-color: transparent;
+    --outline-button-text-color: #58A6FF;
+    --outline-button-border-color: #58A6FF;
+    --outline-button-border-radius: 4px;
+    --outline-button-padding: 8px 12px;
+  
+    /* Optional: Font (for terminal look) */
+    font-family: 'Courier New', Courier, monospace;
+  }
+  

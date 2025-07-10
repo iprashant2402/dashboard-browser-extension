@@ -2,13 +2,13 @@
     height: 100%;
     flex: 1;
     flex-grow: 1;
-    gap: 48px;
+    gap: 10px;
 }
 
 .panel-col {
     border-radius: var(--card-border-radius);
     flex: 1;
-    flex-grow: 1;
+    row-gap: 16px;
 }
 
 .command-center-container {
@@ -17,22 +17,36 @@
     padding: 0;
     position: relative;
     flex: 3;
+    overflow-x: hidden;
 }
 
 .notes-list-panel {
     flex: 1;
     background: var(--notes-list-panel-bg-color);
     border-radius: var(--notes-list-panel-border-radius);
-    padding: var(--notes-list-panel-padding);
+    border: 1px solid var(--notes-list-panel-border-color);
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
+    overflow: clip;
+    view-transition-name: notes-list-panel;
 }
 
 .project-list-panel {
     flex: 1;
     background: var(--project-list-panel-bg-color);
     border-radius: var(--project-list-panel-border-radius);
-    padding: var(--project-list-panel-padding);
+    border: 1px solid var(--project-list-panel-border-color);
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
+    overflow: hidden;
+    view-transition-name: project-list-panel;
+}
+
+.footer-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    view-transition-name: footer-bar;
 }

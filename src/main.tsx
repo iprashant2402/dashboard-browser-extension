@@ -4,14 +4,39 @@ import { createRoot } from 'react-dom/client'
 import './fonts.css'
 import './index.css'
 import App from './App.tsx'
+import { localDB } from './utils/LocalDBStorage.ts'
+import { ReactQueryProvider } from './providers/ReactQueryProvider.tsx'
+import './modules/Themes/themeConfigs/ocean.css'
+import './modules/Themes/themeConfigs/comfort.css'
+import './modules/Themes/themeConfigs/midnightEmber.css'
+import './modules/Themes/themeConfigs/northernLights.css'
+import './modules/Themes/themeConfigs/goldenHour.css'
+import './modules/Themes/themeConfigs/morningDew.css'
+import './modules/Themes/themeConfigs/linus.css'
+import './modules/Themes/themeConfigs/torvalds.css'
+import './modules/Themes/themeConfigs/comfortLite.css'
+import { UserPreferencesProvider } from './modules/UserPreferences/components/UserPreferencesProvider.tsx'
+import { storage } from './utils/storage.ts'
+import { THEMES } from './modules/Tasks/types/Theme.ts'
+import { UserPreference } from './modules/UserPreferences/types/UserPreference.ts'
+import { ToastContainer } from './components/Toast/index.ts'
 
-// getColorsFromWallpaper().then((wallpaperColor) => {
-//     const { r, g, b } = wallpaperColor as RGB;
-//     document.documentElement.style.setProperty('--card-bg-color', `rgba(${r}, ${g}, ${b}, 0.5)`);
-// });
+localDB.init().then(() => {
+  const userPreferences = storage.getItem<UserPreference>('userPreferences');
+if (userPreferences?.theme) {
+  document.body.classList.remove(...THEMES);
+  document.body.classList.add(userPreferences.theme);
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ReactQueryProvider>
+        <UserPreferencesProvider>
+          <ToastContainer>
+          <App />
+          </ToastContainer>
+        </UserPreferencesProvider>
+    </ReactQueryProvider>
   </StrictMode>,
 )
+});

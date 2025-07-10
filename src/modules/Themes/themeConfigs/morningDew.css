@@ -1,0 +1,81 @@
+.morning-dew {
+    /* Layout */
+    --layout-bg-color: #F9FCF9; /* Gentle, fresh background evoking morning calmness */
+    --layout-text-color: #3A4A3A; /* Dark green-gray ensuring good readability */
+    --primary-color: #4CAF50; /* Vibrant green for primary interactions */
+    --secondary-color: #81C784; /* Soft secondary green for additional accents */
+    --tertiary-color: #A5D6A7; /* Pastel green for subtle highlights */
+    --muted-text-color: rgba(58, 74, 58, 0.5); /* Muted text for subtle, less important content */
+  
+    /* Cards */
+    --card-bg-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for depth */
+    --card-alt-bg-color: #FFFFFF; /* Pure white background for alternative cards */
+    --card-text-color: #3A4A3A; /* Primary dark text on cards */
+    --card-alt-text-color: #506350; /* Slightly lighter variant for alternate cards */
+    --card-border-color: rgba(76, 175, 80, 0.1); /* Soft green border providing gentle contrast */
+    --card-alt-border-color: rgba(76, 175, 80, 0.1); /* Same gentle border for consistency */
+    --card-border-radius: 8px; /* Rounded corners for modern look */
+    --card-padding: 16px 24px; /* Comfortable spacing within cards */
+    --card-blur: 16px; /* Background blur effect for layered feel */
+  
+    /* Task Board */
+    --task-board-bg-color: #FFFFFF; /* Clean white background for task boards */
+    --task-board-text-color: #3A4A3A; /* Dark text ensuring clarity */
+    --task-board-border-color: none; /* No border for a clean look */
+    --task-board-border-radius: 8px; /* Consistent rounding */
+    --task-board-padding: 16px 24px; /* Consistent padding */
+  
+    /* Task Card */
+    --task-card-bg-color: #F1F8F2; /* Very subtle green tint differentiating task cards */
+    --task-card-text-color: #3A4A3A; /* Dark text ensuring readability */
+    --task-card-border-color: rgba(76, 175, 80, 0.1); /* Gentle green border accent */
+    --task-card-border-radius: 8px; /* Consistent rounding */
+    --task-card-padding: 20px 16px; /* Comfortable internal spacing */
+  
+    /* Project List Panel */
+    --project-list-panel-bg-color: #F9FCF9; /* Pure white for clarity */
+    --project-list-panel-border-color: rgba(76, 175, 80, 0.1); /* Subtle green border */
+    --project-list-panel-border-radius: 8px; /* Consistent rounding */
+    --project-list-panel-padding: 16px 24px; /* Consistent spacing */
+  
+    /* Notes List Panel */
+    --notes-list-panel-bg-color: #F9FCF9; /* Pure white providing clean background */
+    --notes-list-panel-border-color: rgba(76, 175, 80, 0.1); /* Soft green border */
+    --notes-list-panel-border-radius: 8px; /* Rounded corners */
+    --notes-list-panel-padding: 16px 24px; /* Uniform padding */
+  
+    /* Command Center */
+    --command-center-bg-color: #FFFFFF; /* Clear white background */
+    --command-center-border-color: none; /* Borderless for minimalism */
+    --command-center-border-radius: 8px; /* Rounded for consistency */
+    --command-center-padding: 16px 24px; /* Comfortable padding */
+  
+    /* Primary Button */
+    --primary-button-bg-color: #4CAF50; /* Vibrant green attracting user's attention */
+    --primary-button-text-color: #FFFFFF; /* High-contrast white text */
+    --primary-button-border-color: none; /* Borderless modern style */
+    --primary-button-border-radius: 50px; /* Fully rounded "pill" shape */
+    --primary-button-padding: 8px 12px; /* Compact, comfortable padding */
+  
+    /* Secondary Button */
+    --secondary-button-bg-color: #81C784; /* Soft secondary green */
+    --secondary-button-text-color: #FFFFFF; /* White for clarity */
+    --secondary-button-border-color: none; /* Clean, borderless look */
+    --secondary-button-border-radius: 50px; /* Rounded edges for modern feel */
+    --secondary-button-padding: 8px 12px; /* Uniform padding */
+  
+    /* Clear Button */
+    --clear-button-bg-color: transparent; /* No background */
+    --clear-button-text-color: #4CAF50; /* Vibrant green text indicating actionability */
+    --clear-button-border-color: none; /* Borderless minimalism */
+    --clear-button-border-radius: 0; /* Sharp corners for differentiation */
+    --clear-button-padding: 0; /* No padding for compactness */
+  
+    /* Outline Button */
+    --outline-button-bg-color: transparent; /* Transparent background showcasing outlines */
+    --outline-button-text-color: #4CAF50; /* Vibrant green text matching the outline */
+    --outline-button-border-color: #4CAF50; /* Clear green outline highlighting button */
+    --outline-button-border-radius: 50px; /* Fully rounded for consistency */
+    --outline-button-padding: 8px 12px; /* Standardized button padding */
+  }
+  
