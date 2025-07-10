@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Insquoo",
     "version": "0.0.1",
-    "description": "Insquoo - A powerful task management and note-taking Chrome extension. Organize projects, track tasks with Kanban boards, and capture notes seamlessly in your browser. Boost your productivity with customizable workflows.",
+    "description": "A powerful task management and note-taking friend. Organize tasks with Kanban boards, and create pages seamlessly in your browser.",
     "icons": {
       "48": "images/vire-logo-icon-48.png",
       "128": "images/vire-logo-icon-128.png",
