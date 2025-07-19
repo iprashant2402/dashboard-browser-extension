@@ -2,6 +2,7 @@ import './index.css'
 import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
 import {MarkdownShortcutPlugin} from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import {InitialConfigType, LexicalComposer} from '@lexical/react/LexicalComposer';
+import {ClickableLinkPlugin} from '@lexical/react/LexicalClickableLinkPlugin';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
@@ -25,11 +26,24 @@ import {parseAllowedColor, parseAllowedFontSize} from './styleConfig';
 import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
 import { CodeNode } from '@lexical/code';
-import { LinkNode } from '@lexical/link';
+import { AutoLinkNode, LinkNode } from '@lexical/link';
 import { ListNode } from '@lexical/list';
 import { ListItemNode } from '@lexical/list';
 import { useMemo, useRef } from 'react';
 import ToolbarPlugin from './plugins/ToolbarPlugin';
+import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
+import { AutoLinkPlugin, createLinkMatcherWithRegExp } from '@lexical/react/LexicalAutoLinkPlugin';
+import { EMAIL_REGEX, URL_REGEX } from '../../utils/helpers';
+
+
+const MATCHERS = [
+   createLinkMatcherWithRegExp(URL_REGEX, (text) => {
+      return text;
+   }),
+   createLinkMatcherWithRegExp(EMAIL_REGEX, (text) => {
+      return `mailto:${text}`;
+   }),
+];
 
 export interface EditorProps {
   placeholder?: string;
@@ -143,7 +157,7 @@ export const Editor = (props: EditorProps) => {
     return {
       namespace: 'Scratchpad',
       editorState: props.initialState || undefined,
-      nodes: [ParagraphNode, TextNode, HeadingNode, HorizontalRuleNode, CodeNode, LinkNode, ListNode, ListItemNode, QuoteNode] as Array<Klass<LexicalNode>>,
+      nodes: [ParagraphNode, TextNode, HeadingNode, HorizontalRuleNode, CodeNode, LinkNode, ListNode, ListItemNode, QuoteNode, AutoLinkNode] as Array<Klass<LexicalNode>>,
       onError(error: Error) {
         throw error;
       },
@@ -182,7 +196,10 @@ export const Editor = (props: EditorProps) => {
           <OnChangePlugin onChange={onChange} />
           <HistoryPlugin />
           <AutoFocusPlugin />
+          <LinkPlugin />
+          <AutoLinkPlugin matchers={MATCHERS} />
           <MarkdownShortcutPlugin />
+          <ClickableLinkPlugin />
         </div>
       </div>
     </LexicalComposer>

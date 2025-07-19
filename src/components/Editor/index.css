@@ -76,9 +76,12 @@
   }
   
   .editor-text-code {
-    padding: 1px 0.25rem;
+    padding: 4px 8px;
     font-family: Menlo, Consolas, Monaco, monospace;
     font-size: 94%;
+    background-color: var(--code-block-background-color);
+    border-radius: 2px;
+    border: 1px solid var(--code-block-border-color);
   }
   
   .editor-link {
