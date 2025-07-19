@@ -66,6 +66,9 @@
     --outline-button-border-color: #16825D;
     --outline-button-border-radius: 50px;
     --outline-button-padding: 8px 16px;
+
+    --code-block-background-color: #ffffff;
+    --code-block-border-color: transparent;
   }
   
 html, body {

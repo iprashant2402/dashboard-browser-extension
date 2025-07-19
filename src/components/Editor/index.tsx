@@ -1,5 +1,6 @@
 import './index.css'
 import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
+import {MarkdownShortcutPlugin} from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import {InitialConfigType, LexicalComposer} from '@lexical/react/LexicalComposer';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
@@ -21,11 +22,14 @@ import {
 } from 'lexical';
 import EditorTheme from './editorTheme';
 import {parseAllowedColor, parseAllowedFontSize} from './styleConfig';
-import { HeadingNode } from '@lexical/rich-text';
-import { MarkdownShortcutPlugin } from './plugins/MarkdownShortcutPlugin';
+import { HeadingNode, QuoteNode } from '@lexical/rich-text';
+import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
+import { CodeNode } from '@lexical/code';
+import { LinkNode } from '@lexical/link';
+import { ListNode } from '@lexical/list';
+import { ListItemNode } from '@lexical/list';
 import { useMemo, useRef } from 'react';
-import { Button } from '../Button';
-import { IoCloudDownload } from 'react-icons/io5';
+import ToolbarPlugin from './plugins/ToolbarPlugin';
 
 export interface EditorProps {
   placeholder?: string;
@@ -139,7 +143,7 @@ export const Editor = (props: EditorProps) => {
     return {
       namespace: 'Scratchpad',
       editorState: props.initialState || undefined,
-      nodes: [ParagraphNode, TextNode, HeadingNode] as Array<Klass<LexicalNode>>,
+      nodes: [ParagraphNode, TextNode, HeadingNode, HorizontalRuleNode, CodeNode, LinkNode, ListNode, ListItemNode, QuoteNode] as Array<Klass<LexicalNode>>,
       onError(error: Error) {
         throw error;
       },
@@ -151,22 +155,18 @@ export const Editor = (props: EditorProps) => {
     };
   }, [props.initialState]);
 
-  const onClickSave = () => {
-    if (editorStateRef.current) {
-      props.onSave(JSON.stringify(editorStateRef.current));
-    }
-  };
-
   const onChange = (content: EditorState) => {
     editorStateRef.current = content;
+    if (content) {
+      props.onChange(JSON.stringify(content));
+    }
   };
 
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-        {/* <ToolbarPlugin /> */}
+      <ToolbarPlugin />
         <div className="editor-inner">
-        {/* <RichTextNodesCreatorPlugin /> */}
           <RichTextPlugin
             contentEditable={
               <ContentEditable
@@ -183,9 +183,6 @@ export const Editor = (props: EditorProps) => {
           <HistoryPlugin />
           <AutoFocusPlugin />
           <MarkdownShortcutPlugin />
-        </div>
-        <div className="editor-footer">
-        <Button variant="primary" onClick={onClickSave} label="Save" icon={<IoCloudDownload />} />
         </div>
       </div>
     </LexicalComposer>

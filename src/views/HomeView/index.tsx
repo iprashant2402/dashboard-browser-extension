@@ -4,6 +4,7 @@ import { CommandCenter } from "../CommandCenter";
 import { NotebookList } from "../../modules/Notes/components/NotebookList";
 import { ProjectList } from "../../modules/Tasks/components/ProjectList/ProjectList";
 import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";
+import { EditorTabsProvider } from "../../modules/Notes/components/EditorTabsProvider";
 
 export const HomeView = () => {
 
@@ -14,7 +15,9 @@ export const HomeView = () => {
                     <NotebookList />
                 </div>
                 <div className="column panel-col command-center-container">
-                    <CommandCenter />
+                    <EditorTabsProvider>
+                        <CommandCenter />
+                    </EditorTabsProvider>
                 </div>
                 <div className="column panel-col">
                     <div className="column project-list-panel">

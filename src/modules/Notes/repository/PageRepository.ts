@@ -13,6 +13,18 @@ class LocalPageRepository implements IPageRepository {
         return await localDB.getAll<Page>('pages');
     }
 
+    async getLastModifiedPage(): Promise<Page | null> {
+        const pages = await localDB.getAll<Page>('pages');
+        if (pages.length < 1) return null;
+        return pages.sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())[0];
+    }
+
+    async getLastAccessedPage(): Promise<Page | null> {
+        const pages = await localDB.getAll<Page>('pages');
+        if (pages.length < 1) return null;
+        return pages.sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())[0];
+    }
+
     async createPage(page: Page): Promise<Page> {
         return await localDB.add('pages', page);
     }

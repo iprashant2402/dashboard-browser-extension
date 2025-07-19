@@ -78,6 +78,9 @@
     --outline-button-border-radius: 4px;
     --outline-button-padding: 8px 12px;
   
+    --code-block-background-color: #11141C;
+    --code-block-border-color: #222733;
+
     /* Optional: Font (for terminal look) */
     font-family: 'Courier New', Courier, monospace;
   }

@@ -77,5 +77,8 @@
     --outline-button-border-color: #F2994A;
     --outline-button-border-radius: 50px;
     --outline-button-padding: 8px 12px;
+
+    --code-block-background-color: #F0F0F0;
+    --code-block-border-color: transparent;
   }
   

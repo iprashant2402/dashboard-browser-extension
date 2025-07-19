@@ -67,6 +67,9 @@
     --outline-button-border-color: #0066CC;
     --outline-button-border-radius: 4px;
     --outline-button-padding: 8px 12px;
+
+    --code-block-background-color: #F0F0F0;
+    --code-block-border-color: transparent;
   
     font-family: 'Courier New', Courier, monospace;
   }

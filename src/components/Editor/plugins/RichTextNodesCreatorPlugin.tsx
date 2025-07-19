@@ -3,6 +3,7 @@ import { $createTextNode, $getRoot, $getSelection, $isNodeSelection, $isRangeSel
 import { $createHeadingNode } from "@lexical/rich-text";
 import { $setBlocksType } from "@lexical/selection";
 import { useCallback } from "react";
+import { Button } from "../../Button";
 
 export default function RichTextNodesCreatorPlugin() {
     const [editor] = useLexicalComposerContext();
@@ -22,8 +23,6 @@ export default function RichTextNodesCreatorPlugin() {
     }, [editor]);
 
     return (
-        <button onClick={handleConvertToHeading}>
-            H1
-        </button>
+        <Button onClick={handleConvertToHeading} variant="clear" label="H1" />
     )
 }

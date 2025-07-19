@@ -1,7 +1,47 @@
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { localPageRepository } from "../../repository/PageRepository";
+import { useCallback, useEffect } from "react";
+import { useNavigate } from "react-router";
+import { useCreatePage } from "../../hooks/pageCrud";
+import { v4 as uuidv4 } from 'uuid';
+
 export const PageEditorNavigationController = () => {
-    return (
-        <div>
-            <h1>Page Editor Navigation Controller</h1>
-        </div>
-    )
+    const navigate = useNavigate();
+    const queryClient = useQueryClient();
+    const { mutateAsync: createPage } = useCreatePage(
+        { onSuccess: () => queryClient.refetchQueries({
+            queryKey: ['pages']
+        }) }
+    );
+    const { data: page, status } = useQuery({
+        queryKey: ['latest-page'],
+        queryFn: () => localPageRepository.getLastAccessedPage(),
+    });
+
+    const createNewPage = useCallback(async () => {
+        try {
+            const newPage = {
+                id: uuidv4(),
+                title: "",
+                content: "",
+                createdAt: new Date(),
+                updatedAt: new Date()
+            };
+            await createPage(newPage);
+            navigate(`/editor/${newPage.id}`);
+        } catch (error) {
+            console.error(error);
+        }
+    }, [createPage, navigate]);
+
+    useEffect(() => {
+        if (status !== 'success') return;
+        if (page) {
+            navigate(`/editor/${page.id}`);
+        } else {
+            createNewPage();
+        }
+    }, [page, navigate]);
+
+    return null;
 }

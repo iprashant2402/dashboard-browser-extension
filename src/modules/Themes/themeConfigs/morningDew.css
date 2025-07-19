@@ -77,5 +77,8 @@
     --outline-button-border-color: #4CAF50; /* Clear green outline highlighting button */
     --outline-button-border-radius: 50px; /* Fully rounded for consistency */
     --outline-button-padding: 8px 12px; /* Standardized button padding */
+
+    --code-block-background-color: #F0F0F0;
+    --code-block-border-color: transparent;
   }
   

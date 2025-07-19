@@ -29,11 +29,7 @@ export const usePageEditor = () => {
 
     const handleOnSavePage = useCallback(async (content: string) => {
         await updatePage({ id: id!, page: { content } });
-        showToast({
-            type: "success",
-            message: "Page updated successfully"
-        });
-    }, [updatePage, showToast, id]);
+    }, [updatePage, id]);
 
     const handleOnSavePageTitle = useCallback(async (title: string) => {
         await updatePage({ id: id!, page: { title } });

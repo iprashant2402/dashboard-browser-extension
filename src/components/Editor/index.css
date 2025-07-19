@@ -31,7 +31,7 @@
   .editor-input {
     height: 100%;
     resize: none;
-    font-size: 15px;
+    font-size: 16px;
     caret-color: var(--text-color);
     position: relative;
     tab-size: 1;
@@ -49,7 +49,7 @@
     text-overflow: ellipsis;
     top: 15px;
     left: 10px;
-    font-size: 15px;
+    font-size: 16px;
     user-select: none;
     display: inline-block;
     pointer-events: none;
@@ -76,7 +76,6 @@
   }
   
   .editor-text-code {
-    background-color: rgb(240, 242, 245);
     padding: 1px 0.25rem;
     font-family: Menlo, Consolas, Monaco, monospace;
     font-size: 94%;
@@ -88,12 +87,14 @@
   }
   
   .editor-code {
-    background-color: var(--card-background-color);
+    background-color: var(--code-block-background-color);
+    border-radius: 2px;
+    border: 1px solid var(--code-block-border-color);
     font-family: Menlo, Consolas, Monaco, monospace;
     display: block;
     padding: 8px 8px 8px 52px;
     line-height: 1.53;
-    font-size: 13px;
+    font-size: 14px;
     margin: 0;
     margin-top: 8px;
     margin-bottom: 8px;
@@ -103,7 +104,7 @@
     position: relative;
   }
   
-  .editor-code:before {
+  /* .editor-code:before {
     content: attr(data-gutter);
     position: absolute;
     background-color: #eee;
@@ -125,7 +126,7 @@
     text-transform: uppercase;
     position: absolute;
     color: rgba(0, 0, 0, 0.5);
-  }
+  } */
   
   .editor-tokenComment {
     color: slategray;
@@ -160,7 +161,7 @@
   }
   
   .editor-paragraph {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     position: relative;
   }
@@ -180,14 +181,14 @@
     font-size: 20px;
     color: var(--text-color);
     font-weight: 700;
-    margin-block-end: 16px;
+    margin-block-end: 14px;
   }
 
   .editor-heading-h3 {
     font-size: 18px;
     color: var(--text-color);
     font-weight: 700;
-    margin-block-end: 6px;
+    margin-block-end: 12px;
   }
   
   .editor-quote {
@@ -275,7 +276,7 @@
     background: var(--command-center-bg-color);
     padding: 4px;
     vertical-align: middle;
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
   
   .toolbar button.toolbar-item {
@@ -286,6 +287,7 @@
     padding: 8px;
     cursor: pointer;
     vertical-align: middle;
+    color: var(--text-color);
   }
   
   .toolbar button.toolbar-item:disabled {
