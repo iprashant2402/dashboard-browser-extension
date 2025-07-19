@@ -1,14 +1,23 @@
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useFetchAllPages } from "./useFetchAllPages";
 import { useCreatePage, useDeletePage, useUpdatePage } from "./pageCrud";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Page } from "../types/Page";
 import { v4 as uuidv4 } from 'uuid';
 import { useToast } from "../../../components/Toast";
 
 export const usePageList = () => {
+    const {pathname} = useLocation();
     const [isCreatePageDialogOpen, setIsCreatePageDialogOpen] = useState(false);
+    const [currentPageId, setCurrentPageId] = useState<string | null>(null);
     const { showToast } = useToast();
+
+    useEffect(() => {
+        const pageId = pathname.split("/").pop();
+        if (pageId) {
+            setCurrentPageId(pageId);
+        }
+    }, [pathname])
 
     const navigate = useNavigate();
     const { data: pages, isLoading: isFetchingPages, error: fetchPagesError, refetch } = useFetchAllPages();
@@ -85,6 +94,7 @@ export const usePageList = () => {
             isCreatingPageError,
             isUpdatingPageError,
             isDeletingPageError,
+            currentPageId
         },
         actions: {
             handleCreatePageSubmit,

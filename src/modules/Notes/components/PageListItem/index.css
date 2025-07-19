@@ -5,6 +5,10 @@
     padding-bottom: 16px;
 }
 
+.page-list-item-active {
+    color: var(--primary-color);
+}
+
 .page-list-item:last-child {
     border-bottom: none;
 }
@@ -22,6 +26,12 @@
     font-weight: 500;
     display: inline-block;
     width: 100%;
+    transition: color 0.2s ease-in-out;
+}
+
+.page-list-item-active h4 {
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 .page-list-item h4:focus {

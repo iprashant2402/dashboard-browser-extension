@@ -4,7 +4,7 @@ import { Page } from "../../types/Page";
 import { Button } from "../../../../components/Button";
 import { useEffect, useRef, useState } from "react";
 
-export const PageListItem = ({ page, handleClick, handleRename, handleDelete }: { page: Page, handleClick: (id: string) => void, handleRename: (id: string, pageTitle: string) => void, handleDelete: (id: string) => void }) => {
+export const PageListItem = ({ page, handleClick, handleRename, handleDelete, isActive }: { page: Page, handleClick: (id: string) => void, handleRename: (id: string, pageTitle: string) => void, handleDelete: (id: string) => void, isActive: boolean }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isRenaming, setIsRenaming] = useState(false);
     const nameRef = useRef<HTMLHeadingElement>(null);
@@ -40,7 +40,7 @@ export const PageListItem = ({ page, handleClick, handleRename, handleDelete }: 
         setIsMenuOpen(false);
     };
 
-    return <div className="page-list-item" onClick={() => handleClick(page.id)}>
+    return <div className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onClick={() => handleClick(page.id)}>
         <div className="row jt-space-between">
             <h4 contentEditable={isRenaming ? 'plaintext-only' : 'false'} ref={nameRef} id="page-list-item-name">{page.title || "Untitled"}</h4>
             <IoEllipsisHorizontal onClick={openMenu} className="page-list-item-settings-cta" />

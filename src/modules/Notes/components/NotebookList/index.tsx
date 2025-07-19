@@ -31,6 +31,7 @@ export const NotebookList = () => {
                 <div className="notebook-list-container">
             <div className="notebook-list-items">
                 {state.pages?.map((page) => <PageListItem 
+                    isActive={state.currentPageId === page.id}
                     key={page.id} 
                     page={page} 
                     handleClick={actions.handlePageClick}
