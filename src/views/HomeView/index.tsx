@@ -2,9 +2,9 @@ import "./index.css";
 import { Layout } from "../../components/Layout";
 import { CommandCenter } from "../CommandCenter";
 import { NotebookList } from "../../modules/Notes/components/NotebookList";
-import { ProjectList } from "../../modules/Tasks/components/ProjectList/ProjectList";
 import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";
 import { EditorTabsProvider } from "../../modules/Notes/components/EditorTabsProvider";
+import Clock from "../../components/Clock/Clock";
 
 export const HomeView = () => {
 
@@ -21,7 +21,7 @@ export const HomeView = () => {
                 </div>
                 <div className="column panel-col">
                     <div className="column project-list-panel">
-                        <ProjectList />
+                        <Clock />
                     </div>
                     <div className="footer-bar">
                         <PreferencesToolbar />

@@ -21,6 +21,7 @@
 
 .time-separator {
   margin: 0 2px;
+  color: var(--primary-color);
 }
 
 .period {
@@ -28,7 +29,7 @@
   margin-left: 8px;
   align-self: flex-start;
   margin-top: 8px;
-  color: var(--card-text-color);;
+  color: var(--primary-color);
 }
 
 .clock-date {
@@ -36,7 +37,7 @@
   left: 10px;
   top: -8px;
   font-size: 0.8rem;
-  color: var(--card-text-color);
+  color: var(--muted-text-color);
 }
 
 @keyframes blink {
