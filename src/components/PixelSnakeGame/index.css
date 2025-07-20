@@ -44,9 +44,22 @@
   font-weight: 500;
   color: var(--primary-color);
   background: var(--card-bg-color);
-  padding: 4px 12px;
+  padding: 8px 12px;
   border-radius: var(--card-border-radius);
   border: 1px solid var(--card-border-color);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.game-score div:first-child {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.game-score div:last-child {
+  color: var(--secondary-color);
+  font-size: 12px;
+  margin-top: 2px;
 }
 
 .game-container {
@@ -89,14 +102,27 @@
   color: var(--card-text-color);
   backdrop-filter: blur(var(--card-blur));
   -webkit-backdrop-filter: blur(var(--card-blur));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .game-over-message h4,
 .game-paused-message h4 {
-  margin: 0 0 12px 0;
+  margin: 0 0 0 0;
+  margin-block-end: 0;
   font-size: 20px;
   font-weight: 600;
   color: var(--primary-color);
+}
+
+.game-over-message h1,
+.game-paused-message h1 {
+  margin: 0 0 0 0;
+  margin-block-start: 0;
+  font-weight: 600;
 }
 
 .game-over-message p,
@@ -126,6 +152,11 @@
 
 .game-instructions strong {
   color: var(--primary-color);
+  font-weight: 600;
+}
+
+.game-score-number {
+  color: var(--text-color);
   font-weight: 600;
 }
 

@@ -27,6 +27,7 @@ interface GameState {
   score: number;
   lives: number;
   isGameWon: boolean;
+  highScore: number;
 }
 
 const CANVAS_WIDTH = 400;
@@ -40,6 +41,25 @@ const BRICK_WIDTH = 45;
 const BRICK_HEIGHT = 20;
 const BRICK_PADDING = 5;
 const INITIAL_BALL_SPEED = 3;
+const HIGH_SCORE_KEY = 'breakout_high_score';
+
+// High score utilities
+const getHighScore = (): number => {
+  try {
+    const stored = localStorage.getItem(HIGH_SCORE_KEY);
+    return stored ? parseInt(stored, 10) : 0;
+  } catch {
+    return 0;
+  }
+};
+
+const setHighScore = (score: number): void => {
+  try {
+    localStorage.setItem(HIGH_SCORE_KEY, score.toString());
+  } catch {
+    // Ignore localStorage errors
+  }
+};
 
 export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [gameState, setGameState] = useState<GameState>({
@@ -51,7 +71,8 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     isPaused: false,
     score: 0,
     lives: 3,
-    isGameWon: false
+    isGameWon: false,
+    highScore: getHighScore()
   });
 
   const gameLoopRef = useRef<number | null>(null);
@@ -88,7 +109,7 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   // Initialize game
   const initializeGame = useCallback(() => {
     paddleXRef.current = CANVAS_WIDTH / 2 - PADDLE_WIDTH / 2;
-    setGameState({
+    setGameState(prev => ({
       paddle: { x: CANVAS_WIDTH / 2 - PADDLE_WIDTH / 2, y: CANVAS_HEIGHT - 30 },
       ball: { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT - 50 },
       ballVelocity: { x: INITIAL_BALL_SPEED, y: -INITIAL_BALL_SPEED },
@@ -97,8 +118,9 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       isPaused: false,
       score: 0,
       lives: 3,
-      isGameWon: false
-    });
+      isGameWon: false,
+      highScore: prev.highScore
+    }));
   }, [initializeBricks]);
 
   // Initialize bricks on first render
@@ -336,6 +358,17 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     };
   }, [handleKeyDown, handleKeyUp]);
 
+  // Handle game over and update high score
+  useEffect(() => {
+    if (gameState.isGameOver || gameState.isGameWon) {
+      if (gameState.score > gameState.highScore) {
+        const newHighScore = gameState.score;
+        setHighScore(newHighScore);
+        setGameState(prev => ({ ...prev, highScore: newHighScore }));
+      }
+    }
+  }, [gameState.isGameOver, gameState.isGameWon, gameState.score, gameState.highScore]);
+
   // Draw game when state changes
   useEffect(() => {
     drawGame();
@@ -353,7 +386,10 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           />
           <h3 className="game-title">Break<span>out</span></h3>
         </div>
-        <div className="game-score">Score: {gameState.score}</div>
+        <div className="game-score">
+          <div>Score: {gameState.score}</div>
+          <div>High Score: {gameState.highScore}</div>
+        </div>
       </div>
       
       <div className="game-container">
@@ -371,6 +407,11 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             <div className="game-over-message">
               <h4>Game Over!</h4>
               <p>Final Score: {gameState.score}</p>
+              {gameState.score === gameState.highScore && gameState.score > 0 && (
+                <p style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>
+                  🎉 New High Score! 🎉
+                </p>
+              )}
               <Button 
                 variant="primary" 
                 label="Play Again" 
@@ -386,6 +427,11 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             <div className="game-won-message">
               <h4>You Won!</h4>
               <p>Final Score: {gameState.score}</p>
+              {gameState.score === gameState.highScore && gameState.score > 0 && (
+                <p style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>
+                  🎉 New High Score! 🎉
+                </p>
+              )}
               <Button 
                 variant="primary" 
                 label="Play Again" 
