@@ -57,6 +57,7 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const gameLoopRef = useRef<number | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseXRef = useRef<number>(0);
+  const paddleXRef = useRef<number>(CANVAS_WIDTH / 2 - PADDLE_WIDTH / 2);
 
   // Initialize bricks
   const initializeBricks = useCallback((): Brick[] => {
@@ -86,6 +87,7 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
   // Initialize game
   const initializeGame = useCallback(() => {
+    paddleXRef.current = CANVAS_WIDTH / 2 - PADDLE_WIDTH / 2;
     setGameState({
       paddle: { x: CANVAS_WIDTH / 2 - PADDLE_WIDTH / 2, y: CANVAS_HEIGHT - 30 },
       ball: { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT - 50 },
@@ -106,23 +108,22 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     }
   }, [gameState.bricks.length, initializeBricks]);
 
-  // Handle mouse movement for paddle
+  // Handle mouse movement for paddle with throttling
   const handleMouseMove = useCallback((event: MouseEvent) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const rect = canvas.getBoundingClientRect();
     const mouseX = event.clientX - rect.left;
-    mouseXRef.current = mouseX;
-
-    if (!gameState.isGameOver && !gameState.isPaused) {
-      setGameState(prev => ({
-        ...prev,
-        paddle: {
-          ...prev.paddle,
-          x: Math.max(0, Math.min(CANVAS_WIDTH - PADDLE_WIDTH, mouseX - PADDLE_WIDTH / 2))
-        }
-      }));
+    
+    // Throttle mouse updates to reduce jitter
+    if (Math.abs(mouseX - mouseXRef.current) > 2) {
+      mouseXRef.current = mouseX;
+      
+      if (!gameState.isGameOver && !gameState.isPaused) {
+        // Update paddle position directly without triggering state update
+        paddleXRef.current = Math.max(0, Math.min(CANVAS_WIDTH - PADDLE_WIDTH, mouseX - PADDLE_WIDTH / 2));
+      }
     }
   }, [gameState.isGameOver, gameState.isPaused]);
 
@@ -136,80 +137,81 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
   // Update ball position and check collisions
   const updateBall = useCallback(() => {
-    if (gameState.isGameOver || gameState.isPaused) return;
+    setGameState(prev => {
+      if (prev.isGameOver || prev.isPaused) return prev;
 
-    const newBall = {
-      x: gameState.ball.x + gameState.ballVelocity.x,
-      y: gameState.ball.y + gameState.ballVelocity.y
-    };
+      const newBall = {
+        x: prev.ball.x + prev.ballVelocity.x,
+        y: prev.ball.y + prev.ballVelocity.y
+      };
 
-    let newVelocity = { ...gameState.ballVelocity };
-    let newScore = gameState.score;
-    let newLives = gameState.lives;
-    let newBricks = [...gameState.bricks];
-    let isGameWon = false;
+      let newVelocity = { ...prev.ballVelocity };
+      let newScore = prev.score;
+      let newLives = prev.lives;
+      let newBricks = [...prev.bricks];
+      let isGameWon = false;
 
-    // Wall collisions
-    if (newBall.x - BALL_RADIUS <= 0 || newBall.x + BALL_RADIUS >= CANVAS_WIDTH) {
-      newVelocity.x = -newVelocity.x;
-    }
-
-    if (newBall.y - BALL_RADIUS <= 0) {
-      newVelocity.y = -newVelocity.y;
-    }
-
-    // Bottom wall - lose life
-    if (newBall.y + BALL_RADIUS >= CANVAS_HEIGHT) {
-      newLives--;
-      if (newLives <= 0) {
-        setGameState(prev => ({ ...prev, isGameOver: true }));
-        return;
-      } else {
-        // Reset ball position
-        newBall.x = CANVAS_WIDTH / 2;
-        newBall.y = CANVAS_HEIGHT - 50;
-        newVelocity = { x: INITIAL_BALL_SPEED, y: -INITIAL_BALL_SPEED };
+      // Wall collisions
+      if (newBall.x - BALL_RADIUS <= 0 || newBall.x + BALL_RADIUS >= CANVAS_WIDTH) {
+        newVelocity.x = -newVelocity.x;
       }
-    }
 
-    // Paddle collision
-    if (checkCollision(newBall, {
-      x: gameState.paddle.x,
-      y: gameState.paddle.y,
-      width: PADDLE_WIDTH,
-      height: PADDLE_HEIGHT
-    })) {
-      newVelocity.y = -Math.abs(newVelocity.y);
-      
-      // Add some angle based on where ball hits paddle
-      const hitPosition = (newBall.x - gameState.paddle.x) / PADDLE_WIDTH;
-      newVelocity.x = (hitPosition - 0.5) * 4;
-    }
-
-    // Brick collisions
-    newBricks.forEach((brick, index) => {
-      if (!brick.isDestroyed && checkCollision(newBall, brick)) {
-        newBricks[index] = { ...brick, isDestroyed: true };
+      if (newBall.y - BALL_RADIUS <= 0) {
         newVelocity.y = -newVelocity.y;
-        newScore += 10;
       }
+
+      // Bottom wall - lose life
+      if (newBall.y + BALL_RADIUS >= CANVAS_HEIGHT) {
+        newLives--;
+        if (newLives <= 0) {
+          return { ...prev, isGameOver: true };
+        } else {
+          // Reset ball position
+          newBall.x = CANVAS_WIDTH / 2;
+          newBall.y = CANVAS_HEIGHT - 50;
+          newVelocity = { x: INITIAL_BALL_SPEED, y: -INITIAL_BALL_SPEED };
+        }
+      }
+
+      // Paddle collision
+      if (checkCollision(newBall, {
+        x: paddleXRef.current,
+        y: prev.paddle.y,
+        width: PADDLE_WIDTH,
+        height: PADDLE_HEIGHT
+      })) {
+        newVelocity.y = -Math.abs(newVelocity.y);
+        
+        // Add some angle based on where ball hits paddle
+        const hitPosition = (newBall.x - paddleXRef.current) / PADDLE_WIDTH;
+        newVelocity.x = (hitPosition - 0.5) * 4;
+      }
+
+      // Brick collisions
+      newBricks.forEach((brick, index) => {
+        if (!brick.isDestroyed && checkCollision(newBall, brick)) {
+          newBricks[index] = { ...brick, isDestroyed: true };
+          newVelocity.y = -newVelocity.y;
+          newScore += 10;
+        }
+      });
+
+      // Check if all bricks are destroyed
+      if (newBricks.every(brick => brick.isDestroyed)) {
+        isGameWon = true;
+      }
+
+      return {
+        ...prev,
+        ball: newBall,
+        ballVelocity: newVelocity,
+        bricks: newBricks,
+        score: newScore,
+        lives: newLives,
+        isGameWon
+      };
     });
-
-    // Check if all bricks are destroyed
-    if (newBricks.every(brick => brick.isDestroyed)) {
-      isGameWon = true;
-    }
-
-    setGameState(prev => ({
-      ...prev,
-      ball: newBall,
-      ballVelocity: newVelocity,
-      bricks: newBricks,
-      score: newScore,
-      lives: newLives,
-      isGameWon
-    }));
-  }, [gameState, checkCollision]);
+  }, [checkCollision]);
 
   // Reset game
   const resetGame = useCallback(() => {
@@ -253,7 +255,7 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     // Draw paddle
     ctx.fillStyle = primaryColor;
     ctx.fillRect(
-      gameState.paddle.x,
+      paddleXRef.current,
       gameState.paddle.y,
       PADDLE_WIDTH,
       PADDLE_HEIGHT
@@ -303,7 +305,7 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     }
 
     if (!gameState.isGameOver && !gameState.isPaused && !gameState.isGameWon) {
-      gameLoopRef.current = setInterval(updateBall, 16); // ~60 FPS
+      gameLoopRef.current = setInterval(updateBall, 20); // ~50 FPS for better performance
     }
 
     return () => {
