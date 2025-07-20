@@ -56,8 +56,8 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
   const gameLoopRef = useRef<number | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseXRef = useRef<number>(0);
   const paddleXRef = useRef<number>(CANVAS_WIDTH / 2 - PADDLE_WIDTH / 2);
+  const keysPressedRef = useRef<Set<string>>(new Set());
 
   // Initialize bricks
   const initializeBricks = useCallback((): Brick[] => {
@@ -108,22 +108,31 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     }
   }, [gameState.bricks.length, initializeBricks]);
 
-  // Handle mouse movement for paddle with throttling
-  const handleMouseMove = useCallback((event: MouseEvent) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  // Handle keyboard input for paddle movement
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
+    keysPressedRef.current.add(event.key.toLowerCase());
+  }, []);
 
-    const rect = canvas.getBoundingClientRect();
-    const mouseX = event.clientX - rect.left;
-    
-    // Throttle mouse updates to reduce jitter
-    if (Math.abs(mouseX - mouseXRef.current) > 2) {
-      mouseXRef.current = mouseX;
-      
-      if (!gameState.isGameOver && !gameState.isPaused) {
-        // Update paddle position directly without triggering state update
-        paddleXRef.current = Math.max(0, Math.min(CANVAS_WIDTH - PADDLE_WIDTH, mouseX - PADDLE_WIDTH / 2));
-      }
+  const handleKeyUp = useCallback((event: KeyboardEvent) => {
+    keysPressedRef.current.delete(event.key.toLowerCase());
+  }, []);
+
+  // Update paddle position based on keyboard input
+  const updatePaddle = useCallback(() => {
+    if (gameState.isGameOver || gameState.isPaused) return;
+
+    const paddleSpeed = 8;
+    const leftKeys = ['arrowleft', 'a', 'left'];
+    const rightKeys = ['arrowright', 'd', 'right'];
+
+    const isLeftPressed = leftKeys.some(key => keysPressedRef.current.has(key));
+    const isRightPressed = rightKeys.some(key => keysPressedRef.current.has(key));
+
+    if (isLeftPressed) {
+      paddleXRef.current = Math.max(0, paddleXRef.current - paddleSpeed);
+    }
+    if (isRightPressed) {
+      paddleXRef.current = Math.min(CANVAS_WIDTH - PADDLE_WIDTH, paddleXRef.current + paddleSpeed);
     }
   }, [gameState.isGameOver, gameState.isPaused]);
 
@@ -294,7 +303,6 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     // Draw UI
     ctx.fillStyle = textColor;
     ctx.font = '16px Arial';
-    ctx.fillText(`Score: ${gameState.score}`, 10, 30);
     ctx.fillText(`Lives: ${gameState.lives}`, CANVAS_WIDTH - 80, 30);
   }, [gameState]);
 
@@ -305,7 +313,10 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     }
 
     if (!gameState.isGameOver && !gameState.isPaused && !gameState.isGameWon) {
-      gameLoopRef.current = setInterval(updateBall, 20); // ~50 FPS for better performance
+      gameLoopRef.current = setInterval(() => {
+        updatePaddle();
+        updateBall();
+      }, 20); // ~50 FPS for better performance
     }
 
     return () => {
@@ -313,13 +324,17 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         clearInterval(gameLoopRef.current);
       }
     };
-  }, [gameState.isGameOver, gameState.isPaused, gameState.isGameWon, updateBall]);
+  }, [gameState.isGameOver, gameState.isPaused, gameState.isGameWon, updateBall, updatePaddle]);
 
-  // Mouse event listener
+  // Keyboard event listeners
   useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [handleMouseMove]);
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [handleKeyDown, handleKeyUp]);
 
   // Draw game when state changes
   useEffect(() => {
@@ -347,6 +362,8 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           width={CANVAS_WIDTH}
           height={CANVAS_HEIGHT}
           className="game-canvas"
+          tabIndex={0}
+          onFocus={() => canvasRef.current?.focus()}
         />
         
         {gameState.isGameOver && (
@@ -406,7 +423,7 @@ export const BreakoutGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       </div>
       
       <div className="game-instructions">
-        <p>Move your <strong>mouse</strong> to control the paddle</p>
+        <p>Use <strong>A/D</strong> or <strong>Arrow Keys</strong> to move</p>
         <p>Break all bricks to win!</p>
       </div>
     </div>
