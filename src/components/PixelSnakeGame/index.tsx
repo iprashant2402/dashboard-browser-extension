@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Button } from '../Button';
-import { IoPlay, IoPause, IoRefresh } from 'react-icons/io5';
+import { IoPlay, IoPause, IoRefresh, IoArrowBack } from 'react-icons/io5';
 import './index.css';
 
 interface Position {
@@ -22,7 +22,7 @@ const INITIAL_SNAKE = [{ x: 5, y: 5 }];
 const INITIAL_DIRECTION = 'RIGHT';
 const GAME_SPEED = 200;
 
-export const PixelSnakeGame: React.FC = () => {
+export const PixelSnakeGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [gameState, setGameState] = useState<GameState>({
     snake: INITIAL_SNAKE,
     food: { x: 10, y: 5 },
@@ -269,7 +269,15 @@ export const PixelSnakeGame: React.FC = () => {
   return (
     <div className="pixel-snake-game">
       <div className="game-header">
-        <h3 className="game-title">Pixel <span>Snake</span></h3>
+        <div className="game-header-left">
+        <Button
+              variant="clear"
+              icon={<IoArrowBack />}
+              onClick={onBack}
+              className="back-button"
+            />
+          <h3 className="game-title">Pixel <span>Snake</span></h3>
+        </div>
         <div className="game-score">Score: {gameState.score}</div>
       </div>
       
