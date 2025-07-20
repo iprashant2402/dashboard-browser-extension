@@ -5,6 +5,7 @@ import { NotebookList } from "../../modules/Notes/components/NotebookList";
 import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";
 import { EditorTabsProvider } from "../../modules/Notes/components/EditorTabsProvider";
 import Clock from "../../components/Clock/Clock";
+import { PixelSnakeGame } from "../../components/PixelSnakeGame";
 
 export const HomeView = () => {
 
@@ -22,6 +23,7 @@ export const HomeView = () => {
                 <div className="column panel-col">
                     <div className="column project-list-panel">
                         <Clock />
+                        <PixelSnakeGame />
                     </div>
                     <div className="footer-bar">
                         <PreferencesToolbar />
