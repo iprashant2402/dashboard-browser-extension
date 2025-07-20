@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Button } from '../Button';
-import { IoPlay, IoPause, IoRefresh } from 'react-icons/io5';
+import { IoPlay, IoPause, IoRefresh, IoArrowBack } from 'react-icons/io5';
 import './index.css';
 
 interface Position {
@@ -15,21 +15,42 @@ interface GameState {
   isGameOver: boolean;
   isPaused: boolean;
   score: number;
+  highScore: number;
 }
 
 const GRID_SIZE = 20;
 const INITIAL_SNAKE = [{ x: 5, y: 5 }];
 const INITIAL_DIRECTION = 'RIGHT';
 const GAME_SPEED = 200;
+const HIGH_SCORE_KEY = 'snake_high_score';
 
-export const PixelSnakeGame: React.FC = () => {
+// High score utilities
+const getHighScore = (): number => {
+  try {
+    const stored = localStorage.getItem(HIGH_SCORE_KEY);
+    return stored ? parseInt(stored, 10) : 0;
+  } catch {
+    return 0;
+  }
+};
+
+const setHighScore = (score: number): void => {
+  try {
+    localStorage.setItem(HIGH_SCORE_KEY, score.toString());
+  } catch {
+    // Ignore localStorage errors
+  }
+};
+
+export const PixelSnakeGame: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [gameState, setGameState] = useState<GameState>({
     snake: INITIAL_SNAKE,
     food: { x: 10, y: 5 },
     direction: INITIAL_DIRECTION,
     isGameOver: false,
     isPaused: false,
-    score: 0
+    score: 0,
+    highScore: getHighScore()
   });
 
   const gameLoopRef = useRef<number | null>(null);
@@ -149,14 +170,15 @@ export const PixelSnakeGame: React.FC = () => {
 
   // Reset game
   const resetGame = useCallback(() => {
-    setGameState({
+    setGameState(prev => ({
       snake: INITIAL_SNAKE,
       food: { x: 10, y: 5 },
       direction: INITIAL_DIRECTION,
       isGameOver: false,
       isPaused: false,
-      score: 0
-    });
+      score: 0,
+      highScore: prev.highScore
+    }));
   }, []);
 
   // Toggle pause
@@ -207,7 +229,7 @@ export const PixelSnakeGame: React.FC = () => {
       .getPropertyValue('--secondary-color')
       .trim() || '#6A1E55';
 
-    console.log(primaryColor, secondaryColor);
+
     
     gameState.snake.forEach((segment, index) => {
       if (index === 0) {
@@ -261,6 +283,17 @@ export const PixelSnakeGame: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [handleKeyPress]);
 
+  // Handle game over and update high score
+  useEffect(() => {
+    if (gameState.isGameOver) {
+      if (gameState.score > gameState.highScore) {
+        const newHighScore = gameState.score;
+        setHighScore(newHighScore);
+        setGameState(prev => ({ ...prev, highScore: newHighScore }));
+      }
+    }
+  }, [gameState.isGameOver, gameState.score, gameState.highScore]);
+
   // Draw game when state changes
   useEffect(() => {
     drawGame();
@@ -269,8 +302,19 @@ export const PixelSnakeGame: React.FC = () => {
   return (
     <div className="pixel-snake-game">
       <div className="game-header">
-        <h3 className="game-title">Pixel <span>Snake</span></h3>
-        <div className="game-score">Score: {gameState.score}</div>
+        <div className="game-header-left">
+        <Button
+              variant="clear"
+              icon={<IoArrowBack />}
+              onClick={onBack}
+              className="back-button"
+            />
+          <h3 className="game-title">Pixel <span>Snake</span></h3>
+        </div>
+        <div className="game-score">
+          <div>Score: {gameState.score}</div>
+          <div>High Score: {gameState.highScore}</div>
+        </div>
       </div>
       
       <div className="game-container">
@@ -286,6 +330,11 @@ export const PixelSnakeGame: React.FC = () => {
             <div className="game-over-message">
               <h4>Game Over!</h4>
               <p>Final Score: {gameState.score}</p>
+              {gameState.score === gameState.highScore && gameState.score > 0 && (
+                <p style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>
+                  🎉 New High Score! 🎉
+                </p>
+              )}
               <Button 
                 variant="primary" 
                 label="Play Again" 

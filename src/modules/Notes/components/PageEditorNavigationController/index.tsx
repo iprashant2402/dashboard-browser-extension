@@ -20,12 +20,14 @@ export const PageEditorNavigationController = () => {
 
     const createNewPage = useCallback(async () => {
         try {
+            const createdAt = new Date();
             const newPage = {
                 id: uuidv4(),
                 title: "",
                 content: "",
-                createdAt: new Date(),
-                updatedAt: new Date()
+                createdAt,
+                updatedAt: createdAt,
+                order: createdAt.getTime(),
             };
             await createPage(newPage);
             navigate(`/editor/${newPage.id}`);

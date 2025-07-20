@@ -4,4 +4,5 @@ export interface Page {
     content?: string;
     createdAt: Date;
     updatedAt: Date;
+    order: number;
 }

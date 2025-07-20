@@ -4,7 +4,24 @@ import { Page } from "../../types/Page";
 import { Button } from "../../../../components/Button";
 import { useEffect, useRef, useState } from "react";
 
-export const PageListItem = ({ page, handleClick, handleRename, handleDelete, isActive }: { page: Page, handleClick: (id: string) => void, handleRename: (id: string, pageTitle: string) => void, handleDelete: (id: string) => void, isActive: boolean }) => {
+interface PageListItemProps { 
+    page: Page, 
+    order: number,
+    handleClick: (id: string) => void, 
+    handleRename: (id: string, pageTitle: string) => void, 
+    handleDelete: (id: string) => void, isActive: boolean,
+    handleUpdatePageOrder: (id: string, order: number) => void
+}
+
+export const PageListItem = ({ 
+    page, 
+    order,
+    handleClick, 
+    handleRename, 
+    handleDelete, 
+    isActive,
+    handleUpdatePageOrder
+}: PageListItemProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isRenaming, setIsRenaming] = useState(false);
     const nameRef = useRef<HTMLHeadingElement>(null);
@@ -40,7 +57,20 @@ export const PageListItem = ({ page, handleClick, handleRename, handleDelete, is
         setIsMenuOpen(false);
     };
 
-    return <div className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onClick={() => handleClick(page.id)}>
+    const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
+        event.dataTransfer.setData('text/plain', page.id);
+    }
+
+    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+        const pageId = event.dataTransfer.getData('text/plain');
+        handleUpdatePageOrder(pageId, page.order + 1);
+    }
+
+    const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+    }
+
+    return <div id={`page-${order}`} draggable onDragStart={handleDragStart} onDrop={handleDrop} onDragOver={handleDragOver} className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onClick={() => handleClick(page.id)}>
         <div className="row jt-space-between">
             <h4 contentEditable={isRenaming ? 'plaintext-only' : 'false'} ref={nameRef} id="page-list-item-name">{page.title || "Untitled"}</h4>
             <IoEllipsisHorizontal onClick={openMenu} className="page-list-item-settings-cta" />

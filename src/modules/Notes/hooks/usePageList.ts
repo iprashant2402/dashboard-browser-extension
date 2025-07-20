@@ -38,20 +38,22 @@ export const usePageList = () => {
 
     const handleCreatePageSubmit = useCallback(async () => {
         try {
-            const page = {
+            const createdAt = new Date();
+            const newPage = {
                 id: uuidv4(),
                 title: "",
                 content: "",
-                createdAt: new Date(),
-                updatedAt: new Date()
+                createdAt,
+                updatedAt: createdAt,
+                order: createdAt.getTime(),
             };
-            await createPage(page);
+            await createPage(newPage);
             showToast({
                 type: "success",
                 message: "Page created successfully"
             });
             setIsCreatePageDialogOpen(false);
-            handlePageClick(page.id);
+            handlePageClick(newPage.id);
         } catch (error) {
             console.error(error);
             showToast({
@@ -67,6 +69,10 @@ export const usePageList = () => {
 
     const handleRenamePage = useCallback(async (id: string, pageTitle: string) => {
         await updatePage({ id, page: { title: pageTitle } });
+    }, [updatePage]);
+
+    const handleUpdatePageOrder = useCallback(async (id: string, order: number) => {
+        await updatePage({ id, page: { order } });
     }, [updatePage]);
 
     const handleDeletePage = useCallback(async (id: string) => {
@@ -103,7 +109,8 @@ export const usePageList = () => {
             handleOpenCreatePageDialog,
             handleCloseCreatePageDialog,
             handlePageClick,
-            handleRenamePage
+            handleRenamePage,
+            handleUpdatePageOrder
         }
     }
 };

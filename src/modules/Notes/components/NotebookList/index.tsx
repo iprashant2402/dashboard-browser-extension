@@ -30,9 +30,11 @@ export const NotebookList = () => {
             </div>
                 <div className="notebook-list-container">
             <div className="notebook-list-items">
-                {state.pages?.map((page) => <PageListItem 
+                {state.pages?.map((page, index) => <PageListItem 
+                    handleUpdatePageOrder={actions.handleUpdatePageOrder}
                     isActive={state.currentPageId === page.id}
-                    key={page.id} 
+                    key={page.id}
+                    order={index}
                     page={page} 
                     handleClick={actions.handlePageClick}
                     handleRename={actions.handleRenamePage}

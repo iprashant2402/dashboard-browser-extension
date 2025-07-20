@@ -41,6 +41,7 @@
     overflow: hidden;
     view-transition-name: project-list-panel;
     align-items: center;
+    row-gap: 16px;
 }
 
 .footer-bar {
