@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "Insquoo",
-    "version": "0.0.1",
-    "description": "A powerful task management and note-taking friend. Organize tasks with Kanban boards, and create pages seamlessly in your browser.",
+    "version": "1.0.0",
+    "description": "A powerful note-taking friend. Make every new tab a notebook, and create pages seamlessly in your browser.",
     "icons": {
       "48": "images/vire-logo-icon-48.png",
       "128": "images/vire-logo-icon-128.png",
