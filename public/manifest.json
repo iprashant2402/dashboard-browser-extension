@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Insquoo",
+    "name": "insquoo",
     "version": "1.0.0",
     "description": "A powerful note-taking friend. Make every new tab a notebook, and create pages seamlessly in your browser.",
     "icons": {
