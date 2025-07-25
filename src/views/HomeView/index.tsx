@@ -6,26 +6,38 @@ import { PreferencesToolbar } from "../../modules/UserPreferences/components/Pre
 import { EditorTabsProvider } from "../../modules/Notes/components/EditorTabsProvider";
 import Clock from "../../components/Clock/Clock";
 import { GameSelector } from "../../components/GameSelector";
+import { ResponsiveTabs } from "../../components/ResponsiveTabs";
 
 export const HomeView = () => {
 
     return (
         <Layout>
             <div className="row home-view">
-                <div className="column panel-col notes-list-panel">
-                    <NotebookList />
-                </div>
-                <div className="column panel-col command-center-container">
-                    <EditorTabsProvider>
-                        <CommandCenter />
-                    </EditorTabsProvider>
-                </div>
-                <div className="column panel-col">
-                    <div className="column project-list-panel">
-                        <Clock />
-                        <GameSelector />
+                {/* Desktop Layout - Hidden on mobile/tablet */}
+                <div className="desktop-layout">
+                    <div className="column panel-col notes-list-panel">
+                        <NotebookList />
                     </div>
-                    <div className="footer-bar">
+                    <div className="column panel-col command-center-container">
+                        <EditorTabsProvider>
+                            <CommandCenter />
+                        </EditorTabsProvider>
+                    </div>
+                    <div className="column panel-col">
+                        <div className="column project-list-panel">
+                            <Clock />
+                            <GameSelector />
+                        </div>
+                        <div className="footer-bar">
+                            <PreferencesToolbar />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Mobile/Tablet Layout - Hidden on desktop */}
+                <div className="mobile-layout">
+                    <ResponsiveTabs />
+                    <div className="mobile-footer-bar">
                         <PreferencesToolbar />
                     </div>
                 </div>

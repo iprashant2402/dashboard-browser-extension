@@ -1,0 +1,195 @@
+.responsive-tabs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.mobile-notes-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-notes-list {
+  height: 100%;
+  overflow-y: auto;
+  animation: slideInLeft 0.3s ease;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-notes-editor {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-editor-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--card-border-color);
+  background: var(--card-alt-bg-color);
+  backdrop-filter: blur(var(--card-blur));
+  -webkit-backdrop-filter: blur(var(--card-blur));
+}
+
+.back-to-list-button {
+  color: var(--primary-color);
+  padding: 8px;
+  border-radius: var(--card-border-radius);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.back-to-list-button:hover {
+  color: var(--secondary-color);
+  background: var(--card-hover-bg-color);
+  transform: scale(1.05);
+}
+
+.page-title-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 8px;
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.notes-list-button {
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: var(--card-border-radius);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.notes-list-button:hover {
+  color: var(--primary-color);
+  background: var(--card-hover-bg-color);
+  transform: scale(1.02);
+}
+
+.mobile-editor-content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+  .mobile-editor-header {
+    padding: 12px 16px;
+    min-height: 56px; /* Better touch target */
+  }
+  
+  .page-title {
+    font-size: 15px;
+  }
+  
+  .back-to-list-button,
+  .notes-list-button {
+    min-height: 40px;
+    min-width: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-editor-header {
+    padding: 10px 12px;
+    gap: 6px;
+    min-height: 48px;
+  }
+  
+  .page-title {
+    font-size: 14px;
+  }
+  
+  .page-title-container {
+    margin: 0 4px;
+  }
+  
+  .notes-list-button span {
+    display: none;
+  }
+}
+
+/* Custom scrollbars for better mobile experience */
+.mobile-notes-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mobile-notes-list::-webkit-scrollbar-track {
+  background: var(--card-bg-color);
+  border-radius: 3px;
+}
+
+.mobile-notes-list::-webkit-scrollbar-thumb {
+  background: var(--muted-text-color);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.mobile-notes-list::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color);
+}
+
+/* Improve performance for animations */
+.mobile-notes-list,
+.mobile-notes-editor {
+  will-change: transform, opacity;
+}
+
+/* High-DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .responsive-tabs {
+    border-width: 0.5px;
+  }
+  
+  .mobile-editor-header {
+    border-bottom-width: 0.5px;
+  }
+} 
