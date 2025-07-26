@@ -1,14 +1,40 @@
 import "./index.css";
 import { getRandomQuote } from "../../../../utils/quotes";
-import { useMemo } from "react";
+import { useMemo, useContext, createContext } from "react";
 import { Button } from "../../../../components/Button";
 import { IoAddCircle } from "react-icons/io5";
 import { usePageList } from "../../hooks/usePageList";
 import { PageListItem } from "../PageListItem";
 
+// Create a context to optionally receive mobile notes functionality
+const MobileNotesOptionalContext = createContext<{
+  setShowEditor?: (show: boolean) => void;
+  setSelectedPageId?: (id: string | null) => void;
+  setSelectedPageTitle?: (title: string | null) => void;
+} | null>(null);
+
 export const NotebookList = () => {
     const quote = useMemo(() => getRandomQuote(), []);
     const { state, actions } = usePageList();
+    
+    // Try to get mobile context if available
+    const mobileContext = useContext(MobileNotesOptionalContext);
+
+    const handlePageClick = (pageId: string) => {
+      // Call the original page click handler
+      actions.handlePageClick(pageId);
+      
+      // If in mobile context, switch to editor view
+      if (mobileContext?.setShowEditor && mobileContext?.setSelectedPageId && mobileContext?.setSelectedPageTitle) {
+        // Find the page title
+        const page = state.pages?.find(p => p.id === pageId);
+        const pageTitle = page?.title || "Untitled";
+        
+        mobileContext.setSelectedPageId(pageId);
+        mobileContext.setSelectedPageTitle(pageTitle);
+        mobileContext.setShowEditor(true);
+      }
+    };
 
     return (
         <>
@@ -36,7 +62,7 @@ export const NotebookList = () => {
                     key={page.id}
                     order={index}
                     page={page} 
-                    handleClick={actions.handlePageClick}
+                    handleClick={handlePageClick}
                     handleRename={actions.handleRenamePage}
                     handleDelete={actions.handleDeletePage}
                 />)}
@@ -46,3 +72,5 @@ export const NotebookList = () => {
         </>
     )
 }
+
+export { MobileNotesOptionalContext };
