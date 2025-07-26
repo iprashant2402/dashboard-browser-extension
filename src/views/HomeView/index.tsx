@@ -5,6 +5,7 @@ import { NotebookList } from "../../modules/Notes/components/NotebookList";
 import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";
 import { EditorTabsProvider } from "../../modules/Notes/components/EditorTabsProvider";
 import { ResponsiveTabs } from "../../components/ResponsiveTabs";
+import { TopSites } from "../../modules/Browser/components/TopSites/TopSites";
 
 export const HomeView = () => {
 
@@ -14,7 +15,7 @@ export const HomeView = () => {
                 {/* Desktop Layout - Hidden on mobile/tablet */}
                 <div className="desktop-layout">
                     <div className="column panel-col">
-                    
+                        <TopSites />
                     </div>
                     <div className="column panel-col command-center-container">
                         <EditorTabsProvider>

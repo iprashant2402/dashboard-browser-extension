@@ -1,0 +1,52 @@
+[
+    {
+        "title": "Insquoo",
+        "url": "http://localhost:3000/",
+        "favicon": "http://localhost:3000/favicon.ico"
+    },
+    {
+        "title": "Home - Netflix",
+        "url": "https://www.netflix.com/browse",
+        "favicon": "https://www.netflix.com/favicon.ico"
+    },
+    {
+        "title": "Inbox (73,939) - iprashant2402@gmail.com - Gmail",
+        "url": "https://gmail.com/",
+        "favicon": "https://gmail.com/favicon.ico"
+    },
+    {
+        "title": "JioHotstar - Watch TV Shows, Movies, Specials, Live Cricket & Football",
+        "url": "https://www.hotstar.com/in/1540040183/live/watch",
+        "favicon": "https://www.hotstar.com/favicon.ico"
+    },
+    {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/",
+        "favicon": "https://www.linkedin.com/favicon.ico"
+    },
+    {
+        "title": "(164) YouTube",
+        "url": "https://www.youtube.com/",
+        "favicon": "https://www.youtube.com/favicon.ico"
+    },
+    {
+        "title": "GitHub",
+        "url": "https://github.com/",
+        "favicon": "https://github.com/favicon.ico"
+    },
+    {
+        "title": "Insquoo",
+        "url": "https://insquoo.com/",
+        "favicon": "https://insquoo.com/favicon.ico"
+    },
+    {
+        "title": "Cloud Computing Services - Amazon Web Services (AWS)",
+        "url": "https://aws.amazon.com/",
+        "favicon": "https://aws.amazon.com/favicon.ico"
+    },
+    {
+        "title": "ChatGPT",
+        "url": "https://chatgpt.com/",
+        "favicon": "https://chatgpt.com/favicon.ico"
+    }
+]
