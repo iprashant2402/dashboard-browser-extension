@@ -31,7 +31,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  max-height: 90vh;
+  max-height: 90dvh;
   transform: scale(0.95);
   transition: transform 0.3s ease;
 }
@@ -62,12 +62,12 @@
 
 .dialog-full {
   width: 90vw;
-  height: 90vh;
+  height: 90dvh;
 }
 
 .dialog-position-top {
   align-self: flex-start;
-  margin-top: 5vh;
+  margin-top: 5dvh;
 }
 
 .dialog-position-right {
@@ -77,12 +77,12 @@
 
 .dialog-position-bottom {
   align-self: flex-end;
-  margin-bottom: 5vh;
+  margin-bottom: 5dvh;
 }
 
 .dialog-position-left {
   margin-right: auto;
-  margin-left: 5vw;
+  margin-left: 5dvw;
 }
 
 .dialog-header {

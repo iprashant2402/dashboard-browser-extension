@@ -3,8 +3,8 @@
     background-size: cover;
     background-position: right 35% bottom 45%;
     color: var(--layout-text-color);
-    width: 100vw;
-    height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
 }
 
 .row {
