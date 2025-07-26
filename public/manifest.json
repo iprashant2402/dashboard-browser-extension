@@ -9,6 +9,10 @@
       "512": "images/vire-logo-icon-512.png",
       "1024": "images/vire-logo-icon-1024.png"
     },
+    "permissions": [
+      "topSites",
+      "search"
+    ],
     "chrome_url_overrides": {
       "newtab": "index.html"
     }

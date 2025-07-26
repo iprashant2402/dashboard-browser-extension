@@ -179,7 +179,7 @@ export const Editor = (props: EditorProps) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-      <ToolbarPlugin />
+      {/* <ToolbarPlugin /> */}
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={
