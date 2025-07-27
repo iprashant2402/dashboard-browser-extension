@@ -8,6 +8,10 @@ export const TopSites = () => {
         window.open(url, '_self');
     };
 
+    if (topSites.length === 0) {
+        return null;
+    }
+
     return (
         <div className="top-sites-container">
             <div className="top-sites-header">
