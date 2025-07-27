@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "insquoo",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A powerful note-taking friend. Make every new tab a notebook, and create pages seamlessly in your browser.",
     "icons": {
       "48": "images/vire-logo-icon-48.png",
@@ -10,8 +10,7 @@
       "1024": "images/vire-logo-icon-1024.png"
     },
     "permissions": [
-      "topSites",
-      "search"
+      "topSites"
     ],
     "chrome_url_overrides": {
       "newtab": "index.html"
