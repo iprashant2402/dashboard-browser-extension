@@ -82,6 +82,8 @@
     background-color: var(--code-block-background-color);
     border-radius: 2px;
     border: 1px solid var(--code-block-border-color);
+    margin-bottom: 8px;
+    margin-top: 8px;
   }
   
   .editor-link {
@@ -164,9 +166,10 @@
   }
   
   .editor-paragraph {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
     position: relative;
+    margin-bottom: 8px;
   }
   
   .editor-paragraph:last-child {

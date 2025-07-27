@@ -29,8 +29,7 @@ import { CodeNode } from '@lexical/code';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
 import { ListNode } from '@lexical/list';
 import { ListItemNode } from '@lexical/list';
-import { useMemo, useRef } from 'react';
-import ToolbarPlugin from './plugins/ToolbarPlugin';
+import { ReactElement, useMemo, useRef } from 'react';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { AutoLinkPlugin, createLinkMatcherWithRegExp } from '@lexical/react/LexicalAutoLinkPlugin';
 import { EMAIL_REGEX, URL_REGEX } from '../../utils/helpers';
@@ -46,7 +45,7 @@ const MATCHERS = [
 ];
 
 export interface EditorProps {
-  placeholder?: string;
+  placeholder?: string | React.ReactNode;
   onChange: (content: string) => void;
   initialState?: string;
   onSave: (content: string) => void;
@@ -185,10 +184,12 @@ export const Editor = (props: EditorProps) => {
             contentEditable={
               <ContentEditable
                 className="editor-input"
-                aria-placeholder={props.placeholder || DefaultPlaceholder}
-                placeholder={
+                aria-placeholder={DefaultPlaceholder}
+                placeholder={ !props.placeholder || typeof props.placeholder === 'string' ? (
                   <div className="editor-placeholder">{props.placeholder || DefaultPlaceholder}</div>
-                }
+                ): (
+                  <div>{props.placeholder}</div>
+                )}
               />
             }
             ErrorBoundary={LexicalErrorBoundary}

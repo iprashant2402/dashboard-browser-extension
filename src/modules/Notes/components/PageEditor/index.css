@@ -4,3 +4,38 @@
     flex: 1;
     height: 100%;
 }
+
+.page-editor-placeholder {
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 15px;
+    left: 10px;
+    user-select: none;
+    display: inline-block;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.page-editor-placeholder p {
+    font-size: 16px;
+    color: var(--muted-text-color);
+    margin-bottom: 4px;
+}
+
+.instruction {
+    font-size: 16px;
+    color: var(--muted-text-color);
+    margin-bottom: 16px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.instruction-highlight {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: 500;
+    color: var(--text-color);
+}
