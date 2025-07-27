@@ -40,7 +40,7 @@
   
     --command-center-bg-color: #FFFFFF;
     --command-center-border-color: rgba(0, 0, 0, 0.1);
-    --command-center-border-radius: 0;
+    --command-center-border-radius: 12px;
     --command-center-padding: 16px 24px;
   
     --primary-button-bg-color: #16825D;
