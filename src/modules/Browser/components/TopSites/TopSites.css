@@ -1,0 +1,219 @@
+.top-sites-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--project-list-panel-bg-color);
+    border-radius: var(--project-list-panel-border-radius);
+    border: 1px solid var(--project-list-panel-border-color);
+    backdrop-filter: blur(var(--card-blur));
+    -webkit-backdrop-filter: blur(var(--card-blur));
+    overflow: hidden;
+}
+
+.top-sites-header {
+    padding: 20px 20px 16px 20px;
+    border-bottom: 1px solid var(--card-border-color);
+}
+
+.top-sites-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: var(--layout-text-color);
+}
+
+.top-sites-title span {
+    color: var(--primary-color);
+}
+
+.top-sites-description {
+    font-size: 11px;
+    color: var(--muted-text-color);
+    margin: 0;
+}
+
+.top-sites-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px;
+}
+
+.top-site-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: var(--card-border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.top-site-item:hover {
+    background: var(--card-hover-bg-color);
+    transform: translateX(2px);
+}
+
+.top-site-item:active {
+    transform: translateX(1px) scale(0.98);
+}
+
+.top-site-thumbnail {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--card-border-radius);
+    background: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.top-site-thumbnail img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.top-site-item:hover .top-site-thumbnail img {
+    transform: scale(1.1);
+}
+
+.top-site-thumbnail.no-favicon {
+    background: var(--primary-color);
+    color: var(--card-bg-color);
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.top-site-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.top-site-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--layout-text-color);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+.top-site-url {
+    font-size: 10px;
+    color: var(--muted-text-color);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+/* Scrollbar styling */
+.top-sites-grid::-webkit-scrollbar {
+    width: 4px;
+}
+
+.top-sites-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.top-sites-grid::-webkit-scrollbar-thumb {
+    background: var(--muted-text-color);
+    border-radius: 2px;
+}
+
+.top-sites-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--text-color);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .top-sites-header {
+        padding: 16px;
+    }
+    
+    .top-sites-grid {
+        padding: 8px;
+    }
+    
+    .top-site-item {
+        padding: 10px;
+    }
+    
+    .top-site-thumbnail {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .top-site-thumbnail img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-sites-container {
+        border-radius: 0;
+        border: none;
+        background: transparent;
+    }
+    
+    .top-sites-header {
+        padding: 12px;
+        border-bottom: none;
+    }
+    
+    .top-sites-title {
+        font-size: 16px;
+    }
+    
+    .top-sites-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .top-site-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 12px 8px;
+        gap: 8px;
+    }
+    
+    .top-site-thumbnail {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .top-site-thumbnail img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .top-site-info {
+        align-items: center;
+    }
+    
+    .top-site-title {
+        font-size: 12px;
+        text-align: center;
+    }
+    
+    .top-site-url {
+        font-size: 10px;
+        text-align: center;
+    }
+}

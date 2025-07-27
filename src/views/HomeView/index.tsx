@@ -4,9 +4,8 @@ import { CommandCenter } from "../CommandCenter";
 import { NotebookList } from "../../modules/Notes/components/NotebookList";
 import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";
 import { EditorTabsProvider } from "../../modules/Notes/components/EditorTabsProvider";
-import Clock from "../../components/Clock/Clock";
-import { GameSelector } from "../../components/GameSelector";
 import { ResponsiveTabs } from "../../components/ResponsiveTabs";
+import { TopSites } from "../../modules/Browser/components/TopSites/TopSites";
 
 export const HomeView = () => {
 
@@ -15,8 +14,8 @@ export const HomeView = () => {
             <div className="row home-view">
                 {/* Desktop Layout - Hidden on mobile/tablet */}
                 <div className="desktop-layout">
-                    <div className="column panel-col notes-list-panel">
-                        <NotebookList />
+                    <div className="column panel-col">
+                        <TopSites />
                     </div>
                     <div className="column panel-col command-center-container">
                         <EditorTabsProvider>
@@ -24,9 +23,8 @@ export const HomeView = () => {
                         </EditorTabsProvider>
                     </div>
                     <div className="column panel-col">
-                        <div className="column project-list-panel">
-                            <Clock />
-                            <GameSelector />
+                    <div className="column notes-list-panel">
+                    <NotebookList />
                         </div>
                         <div className="footer-bar">
                             <PreferencesToolbar />
