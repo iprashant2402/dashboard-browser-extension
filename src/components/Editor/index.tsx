@@ -8,31 +8,34 @@ import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
 import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
 import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
+import {ListPlugin} from '@lexical/react/LexicalListPlugin';
 import {
-  $isTextNode,
   DOMConversionMap,
   DOMExportOutput,
   DOMExportOutputMap,
   EditorState,
-  isHTMLElement,
   Klass,
   LexicalEditor,
   LexicalNode,
   ParagraphNode,
   TextNode,
+  KEY_ENTER_COMMAND,
+  COMMAND_PRIORITY_HIGH,
 } from 'lexical';
 import EditorTheme from './editorTheme';
-import {parseAllowedColor, parseAllowedFontSize} from './styleConfig';
 import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
 import { CodeNode } from '@lexical/code';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
 import { ListNode } from '@lexical/list';
 import { ListItemNode } from '@lexical/list';
-import { ReactElement, useMemo, useRef } from 'react';
+import { $isListItemNode, $isListNode } from '@lexical/list';
+import { useMemo, useRef, useEffect } from 'react';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { AutoLinkPlugin, createLinkMatcherWithRegExp } from '@lexical/react/LexicalAutoLinkPlugin';
 import { EMAIL_REGEX, URL_REGEX } from '../../utils/helpers';
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
+import { $getSelection, $isRangeSelection, $createParagraphNode } from 'lexical';
 
 
 const MATCHERS = [
@@ -44,6 +47,57 @@ const MATCHERS = [
    }),
 ];
 
+// Plugin to handle list exit functionality
+function ListExitPlugin(): null {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    return editor.registerCommand(
+      KEY_ENTER_COMMAND,
+      (event) => {
+        const selection = $getSelection();
+        
+        if ($isRangeSelection(selection)) {
+          const anchorNode = selection.anchor.getNode();
+          
+          // Check if we're in a list item
+          if ($isListItemNode(anchorNode) || anchorNode.getParent() && $isListItemNode(anchorNode.getParent())) {
+            const listItemNode = $isListItemNode(anchorNode) ? anchorNode : anchorNode.getParent();
+            
+            // Check if the list item is empty
+            if (listItemNode && $isListItemNode(listItemNode)) {
+              const textContent = listItemNode.getTextContent().trim();
+              
+              if (textContent === '') {
+                // If empty list item and Enter is pressed, exit the list
+                event?.preventDefault();
+                
+                const listNode = listItemNode.getParent();
+                if (listNode && $isListNode(listNode)) {
+                  // Remove the empty list item
+                  listItemNode.remove();
+                  
+                  // Create a new paragraph after the list
+                  const newParagraph = $createParagraphNode();
+                  listNode.insertAfter(newParagraph);
+                  newParagraph.select();
+                  
+                  return true;
+                }
+              }
+            }
+          }
+        }
+        
+        return false;
+      },
+      COMMAND_PRIORITY_HIGH
+    );
+  }, [editor]);
+
+  return null;
+}
+
 export interface EditorProps {
   placeholder?: string | React.ReactNode;
   onChange: (content: string) => void;
@@ -51,103 +105,40 @@ export interface EditorProps {
   onSave: (content: string) => void;
 }
 
-const DefaultPlaceholder = 'Jot down your thoughts or anything else...';
+const DefaultPlaceholder = 'Type something here...'
 
-const removeStylesExportDOM = (
-  editor: LexicalEditor,
-  target: LexicalNode,
-): DOMExportOutput => {
-  const output = target.exportDOM(editor);
-  if (output && isHTMLElement(output.element)) {
-    // Remove all inline styles and classes if the element is an HTMLElement
-    // Children are checked as well since TextNode can be nested
-    // in i, b, and strong tags.
-    for (const el of [
-      output.element,
-      ...output.element.querySelectorAll('[style],[class],[dir="ltr"]'),
-    ]) {
-      el.removeAttribute('class');
-      el.removeAttribute('style');
-      if (el.getAttribute('dir') === 'ltr') {
-        el.removeAttribute('dir');
+function constructImportMap(): DOMConversionMap {
+  const importMap: DOMConversionMap = {};
+
+  // Wrap each node's importDOM with our custom converter
+  [ParagraphNode, TextNode, HeadingNode, CodeNode, LinkNode, ListNode, ListItemNode, QuoteNode, AutoLinkNode].forEach(
+    (node) => {
+      const importFunction = node.importDOM?.();
+      if (importFunction) {
+        Object.keys(importFunction).forEach((key) => {
+          importMap[key] = importFunction[key];
+        });
       }
-    }
-  }
-  return output;
-};
+    },
+  );
+
+  return importMap;
+}
 
 const exportMap: DOMExportOutputMap = new Map<
   Klass<LexicalNode>,
   (editor: LexicalEditor, target: LexicalNode) => DOMExportOutput
 >([
-  [ParagraphNode, removeStylesExportDOM],
-  [TextNode, removeStylesExportDOM],
+  [
+    TextNode,
+    (editor, node) => {
+      const element = document.createElement('span');
+      element.textContent = node.getTextContent();
+      return { element };
+    },
+  ],
 ]);
 
-const getExtraStyles = (element: HTMLElement): string => {
-  // Parse styles from pasted input, but only if they match exactly the
-  // sort of styles that would be produced by exportDOM
-  let extraStyles = '';
-  const fontSize = parseAllowedFontSize(element.style.fontSize);
-  const backgroundColor = parseAllowedColor(element.style.backgroundColor);
-  const color = parseAllowedColor(element.style.color);
-  if (fontSize !== '' && fontSize !== '15px') {
-    extraStyles += `font-size: ${fontSize};`;
-  }
-  if (backgroundColor !== '' && backgroundColor !== 'rgb(255, 255, 255)') {
-    extraStyles += `background-color: ${backgroundColor};`;
-  }
-  if (color !== '' && color !== 'rgb(0, 0, 0)') {
-    extraStyles += `color: ${color};`;
-  }
-  return extraStyles;
-};
-
-const constructImportMap = (): DOMConversionMap => {
-    const importMap: DOMConversionMap = {};
-  
-    // Wrap all TextNode importers with a function that also imports
-    // the custom styles implemented by the playground
-    for (const [tag, fn] of Object.entries(TextNode.importDOM() || {})) {
-      importMap[tag] = (importNode) => {
-        const importer = fn(importNode);
-        if (!importer) {
-          return null;
-        }
-        return {
-          ...importer,
-          conversion: (element) => {
-            const output = importer.conversion(element);
-            if (
-              output === null ||
-              output.forChild === undefined ||
-              output.after !== undefined ||
-              output.node !== null
-            ) {
-              return output;
-            }
-            const extraStyles = getExtraStyles(element);
-            if (extraStyles) {
-              const {forChild} = output;
-              return {
-                ...output,
-                forChild: (child, parent) => {
-                  const textNode = forChild(child, parent);
-                  if ($isTextNode(textNode)) {
-                    textNode.setStyle(textNode.getStyle() + extraStyles);
-                  }
-                  return textNode;
-                },
-              };
-            }
-            return output;
-          },
-        };
-      };
-    }
-  
-    return importMap;
-  };
 
 export const Editor = (props: EditorProps) => {
   const editorStateRef = useRef<EditorState | undefined>(undefined);
@@ -199,6 +190,8 @@ export const Editor = (props: EditorProps) => {
           <AutoFocusPlugin />
           <LinkPlugin />
           <AutoLinkPlugin matchers={MATCHERS} />
+          <ListPlugin />
+          <ListExitPlugin />
           <MarkdownShortcutPlugin />
           <ClickableLinkPlugin />
         </div>
