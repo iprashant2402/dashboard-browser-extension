@@ -3,6 +3,7 @@
     --layout-bg-color: #FFFAF3; /* Warm, soft base background reminiscent of a golden sunset */
     --layout-text-color: #443322; /* Deep brown text for good contrast and warmth */
     --primary-color: #F2994A; /* Sunset orange used for main actions */
+    --primary-color-100: #F2994A1A;
     --secondary-color: #EB5757; /* Warm red used for secondary highlights */
     --tertiary-color: #F2C94C; /* Golden yellow for subtle accents */
     --muted-text-color: rgba(68, 51, 34, 0.5); /* Faded brown for muted/inactive text */

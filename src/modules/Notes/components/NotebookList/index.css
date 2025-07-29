@@ -9,7 +9,7 @@
 }
 
 .notebook-list-title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .notebook-list-description {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     color: var(--muted-text-color);
     font-style: italic;
@@ -46,6 +46,12 @@
 .notebook-list-header {
     padding: var(--notes-list-panel-padding);
     border-bottom: 1px solid var(--notes-list-panel-border-color);
+}
+
+.notebook-list-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .notebook-list-footer {

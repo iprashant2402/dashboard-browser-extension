@@ -3,6 +3,7 @@
     --layout-bg-color: #F9FCF9; /* Gentle, fresh background evoking morning calmness */
     --layout-text-color: #3A4A3A; /* Dark green-gray ensuring good readability */
     --primary-color: #4CAF50; /* Vibrant green for primary interactions */
+    --primary-color-100: #4CAF501A;
     --secondary-color: #81C784; /* Soft secondary green for additional accents */
     --tertiary-color: #A5D6A7; /* Pastel green for subtle highlights */
     --muted-text-color: rgba(58, 74, 58, 0.5); /* Muted text for subtle, less important content */

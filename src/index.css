@@ -14,6 +14,7 @@
   /* --layout-bg-color: url('/scene-bg.jpg'); */
   --layout-text-color: #FFFFFF;
   --primary-color: #16825D;
+  --primary-color-100: #16825D1A;
   --secondary-color: #6A1E55;
   --tertiary-color: #A64D79;
   --muted-text-color: hsla(0, 0%, 100%, 0.4);

@@ -3,6 +3,7 @@
     --layout-bg-color: #0D1117; /* GitHub dark mode base */
     --layout-text-color: #C9D1D9; /* Light gray text for high contrast */
     --primary-color: #58A6FF; /* Cool blue for highlights */
+    --primary-color-100: #58A6FF1A;
     --secondary-color: #8B949E; /* Muted gray for secondary elements */
     --tertiary-color: #F85149; /* Red for warnings/errors */
     --muted-text-color: rgba(201, 209, 217, 0.4); /* Dim text for less focus */
