@@ -39,9 +39,7 @@
 
 .notes-list-panel {
     flex: 1;
-    /* background: var(--notes-list-panel-bg-color); */
     border-radius: var(--notes-list-panel-border-radius);
-    /* border: 1px solid var(--notes-list-panel-border-color); */
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
     overflow: clip;

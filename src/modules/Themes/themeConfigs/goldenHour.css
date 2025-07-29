@@ -42,7 +42,7 @@
     --notes-list-panel-bg-color: #FFF9F0; /* Matches project list for symmetry */
     --notes-list-panel-border-color: rgba(242, 153, 74, 0.15); /* Delicate separator */
     --notes-list-panel-border-radius: 8px;
-    --notes-list-panel-padding: 16px 24px;
+    --notes-list-panel-padding: 16px 12px;
   
     /* Command Center */
     --command-center-bg-color: #FFFFFF; /* Pure, clean command center */

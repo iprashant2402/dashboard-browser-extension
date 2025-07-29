@@ -42,7 +42,7 @@
     --notes-list-panel-bg-color: #0D1117;
     --notes-list-panel-border-color: rgba(240, 246, 252, 0.1);
     --notes-list-panel-border-radius: 6px;
-    --notes-list-panel-padding: 16px 24px;
+    --notes-list-panel-padding: 16px 12px;
   
     /* Command Center */
     --command-center-bg-color: #161B22;
