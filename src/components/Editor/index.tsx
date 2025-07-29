@@ -21,6 +21,7 @@ import {
   TextNode,
   KEY_ENTER_COMMAND,
   COMMAND_PRIORITY_HIGH,
+  FORMAT_TEXT_COMMAND,
 } from 'lexical';
 import EditorTheme from './editorTheme';
 import { HeadingNode, QuoteNode } from '@lexical/rich-text';
@@ -36,6 +37,7 @@ import { AutoLinkPlugin, createLinkMatcherWithRegExp } from '@lexical/react/Lexi
 import { EMAIL_REGEX, URL_REGEX } from '../../utils/helpers';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { $getSelection, $isRangeSelection, $createParagraphNode } from 'lexical';
+import { STRIKETHROUGH } from '@lexical/markdown';
 
 
 const MATCHERS = [
@@ -93,6 +95,36 @@ function ListExitPlugin(): null {
       },
       COMMAND_PRIORITY_HIGH
     );
+  }, [editor]);
+
+  return null;
+}
+
+// Plugin to handle keyboard shortcuts for text formatting
+function KeyboardShortcutsPlugin(): null {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const { ctrlKey, metaKey, shiftKey, key } = event;
+      const isModifierPressed = ctrlKey || metaKey;
+
+      // Handle Ctrl/Cmd+Shift+X for strikethrough
+      if (isModifierPressed && shiftKey && key.toLowerCase() === 'x') {
+        event.preventDefault();
+        editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
+        return;
+      }
+    };
+
+    return editor.registerRootListener((rootElement, prevRootElement) => {
+      if (prevRootElement !== null) {
+        prevRootElement.removeEventListener('keydown', handleKeyDown);
+      }
+      if (rootElement !== null) {
+        rootElement.addEventListener('keydown', handleKeyDown);
+      }
+    });
   }, [editor]);
 
   return null;
@@ -192,7 +224,8 @@ export const Editor = (props: EditorProps) => {
           <AutoLinkPlugin matchers={MATCHERS} />
           <ListPlugin />
           <ListExitPlugin />
-          <MarkdownShortcutPlugin />
+          <KeyboardShortcutsPlugin />
+          <MarkdownShortcutPlugin transformers={[STRIKETHROUGH]} />
           <ClickableLinkPlugin />
         </div>
       </div>
