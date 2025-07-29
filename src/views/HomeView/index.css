@@ -119,3 +119,33 @@
         row-gap: 20px;
     }
 }
+
+.privacy-curtain-toggle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 6px 10px;
+    z-index: 1001;
+    background: var(--card-bg-color);
+}
+
+.privacy-curtain-toggle:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.privacy-curtain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: var(--layout-bg-color);
+}

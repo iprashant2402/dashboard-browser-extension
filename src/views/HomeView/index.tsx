@@ -6,12 +6,24 @@ import { PreferencesToolbar } from "../../modules/UserPreferences/components/Pre
 import { EditorTabsProvider } from "../../modules/Notes/components/EditorTabsProvider";
 import { ResponsiveTabs } from "../../components/ResponsiveTabs";
 import { TopSites } from "../../modules/Browser/components/TopSites/TopSites";
+import { usePrivacyCurtain } from "../../providers/PrivacyCurtainProvider";
+import Clock from "../../components/Clock/Clock";
 
 export const HomeView = () => {
+    const { isPrivacyCurtainEnabled, setIsPrivacyCurtainEnabled } = usePrivacyCurtain();
+
+    const togglePrivacyCurtain = () => {
+        setIsPrivacyCurtainEnabled(!isPrivacyCurtainEnabled);
+    }
 
     return (
         <Layout>
-            <div className="row home-view">
+            {isPrivacyCurtainEnabled && (
+                    <div className="privacy-curtain">
+                        <Clock />
+                    </div>
+                )}
+                    <div className="row home-view">
                 {/* Desktop Layout - Hidden on mobile/tablet */}
                 <div className="desktop-layout">
                     <div className="column panel-col">
@@ -40,6 +52,9 @@ export const HomeView = () => {
                     </div>
                 </div>
             </div>
+            <span className="privacy-curtain-toggle">
+                <p onClick={togglePrivacyCurtain}>{isPrivacyCurtainEnabled ? 'Reveal' : 'Hide'}</p>
+            </span>
         </Layout>
     )
 }
