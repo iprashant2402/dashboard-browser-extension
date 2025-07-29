@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const PrivacyCurtainContext = createContext<{
     isPrivacyCurtainEnabled: boolean;
@@ -18,6 +18,10 @@ const initializePrivacyCurtain = () => {
 
 export const PrivacyCurtainProvider = ({ children }: { children: React.ReactNode }) => {
     const [isPrivacyCurtainEnabled, setIsPrivacyCurtainEnabled] = useState(initializePrivacyCurtain());
+
+    useEffect(() => {
+        localStorage.setItem('isPrivacyCurtainEnabled', isPrivacyCurtainEnabled.toString());
+    }, [isPrivacyCurtainEnabled]);
 
     return (
         <PrivacyCurtainContext.Provider value={{ isPrivacyCurtainEnabled, setIsPrivacyCurtainEnabled }}>
