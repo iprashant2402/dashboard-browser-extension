@@ -15,7 +15,9 @@ export const HomeView = () => {
                 {/* Desktop Layout - Hidden on mobile/tablet */}
                 <div className="desktop-layout">
                     <div className="column panel-col">
-                        <TopSites />
+                    <div className="column notes-list-panel">
+                        <NotebookList />
+                    </div>
                     </div>
                     <div className="column panel-col command-center-container">
                         <EditorTabsProvider>
@@ -23,9 +25,7 @@ export const HomeView = () => {
                         </EditorTabsProvider>
                     </div>
                     <div className="column panel-col">
-                    <div className="column notes-list-panel">
-                    <NotebookList />
-                        </div>
+                    <TopSites />
                         <div className="footer-bar">
                             <PreferencesToolbar />
                         </div>

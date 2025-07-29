@@ -36,6 +36,7 @@ import { AutoLinkPlugin, createLinkMatcherWithRegExp } from '@lexical/react/Lexi
 import { EMAIL_REGEX, URL_REGEX } from '../../utils/helpers';
 import { KeyboardShortcutsPlugin } from './plugins/KeyboardShortcutPlugin';
 import { ListExitPlugin } from './plugins/ListExitPlugin';
+import ToolbarPlugin from './plugins/ToolbarPlugin';
 
 
 const MATCHERS = [
@@ -181,7 +182,7 @@ export const Editor = (props: EditorProps) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-      {/* <ToolbarPlugin /> */}
+      <ToolbarPlugin />
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={

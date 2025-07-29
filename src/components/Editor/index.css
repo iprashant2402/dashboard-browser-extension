@@ -26,6 +26,7 @@
     background: transparent;
     position: relative;
     height: 100%;
+    padding-top: 50px;
   }
   
   .editor-input {
@@ -279,10 +280,14 @@
   
   .toolbar {
     display: flex;
-    background: var(--command-center-bg-color);
+    background: var(--layout-bg-color);
     padding: 4px;
     vertical-align: middle;
     justify-content: flex-end;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
   }
   
   .toolbar button.toolbar-item {

@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-//import topSitesMock from "./topSitesMock.json";
+import topSitesMock from "./topSitesMock.json";
 
 interface TopSite extends chrome.topSites.MostVisitedURL {
     favicon: string;
 }
 
 export const useTopSites = () => {
-    const [topSites, setTopSites] = useState<TopSite[]>([]);
+    const [topSites, setTopSites] = useState<TopSite[]>(topSitesMock);
 
     const fetchTopSites = useCallback(async () => {
         const topSites = await chrome?.topSites?.get();
