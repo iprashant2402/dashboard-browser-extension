@@ -11,6 +11,7 @@ const UserPreferencesContext = createContext({
 
 const loadInitialPreferences = () => {
     const preferences = storage.getItem<UserPreference>(USER_PREFERENCES_KEY);
+    console.log('preferences', preferences);
     if (!preferences) {
         storage.setItem(USER_PREFERENCES_KEY, DEFAULT_USER_PREFERENCE);
     }
@@ -27,7 +28,7 @@ export const UserPreferencesProvider = ({ children }: { children: React.ReactNod
 
     const updatePreferences = useCallback((preferences: Partial<UserPreference>) => {
         const updatedPreferences = { ...userPreferences, ...preferences };
-        storage.setItem('userPreferences', updatedPreferences);
+        storage.setItem(USER_PREFERENCES_KEY, updatedPreferences);
         setUserPreferences(updatedPreferences);
         // update DOM classes if theme is changed
         if (preferences.theme) updateDOMTheme(preferences.theme)
