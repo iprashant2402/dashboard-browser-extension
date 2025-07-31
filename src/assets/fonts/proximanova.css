@@ -1,0 +1,111 @@
+/* ProximaNova Font Family - All Weights */
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('./proximanova/proximanova-thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('./proximanova/proximanova-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('./proximanova/proximanova-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('./proximanova/proximanova-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('./proximanova/proximanova-semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('./proximanova/proximanova-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('./proximanova/proximanova-extrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('./proximanova/proximanova-black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Custom Properties for easy usage */
+:root {
+  --font-proxima-nova: 'ProximaNova', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* Utility classes for different weights */
+.proxima-thin { 
+  font-family: var(--font-proxima-nova);
+  font-weight: 100; 
+}
+
+.proxima-light { 
+  font-family: var(--font-proxima-nova);
+  font-weight: 300; 
+}
+
+.proxima-regular { 
+  font-family: var(--font-proxima-nova);
+  font-weight: 400; 
+}
+
+.proxima-medium { 
+  font-family: var(--font-proxima-nova);
+  font-weight: 500; 
+}
+
+.proxima-semibold { 
+  font-family: var(--font-proxima-nova);
+  font-weight: 600; 
+}
+
+.proxima-bold { 
+  font-family: var(--font-proxima-nova);
+  font-weight: 700; 
+}
+
+.proxima-extrabold { 
+  font-family: var(--font-proxima-nova);
+  font-weight: 800; 
+}
+
+.proxima-black { 
+  font-family: var(--font-proxima-nova);
+  font-weight: 900; 
+}

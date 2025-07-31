@@ -1,0 +1,219 @@
+/* Toggle Component Styles */
+
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggle-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--card-text-color);
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.2;
+}
+
+.toggle-switch {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.toggle-switch:focus {
+  box-shadow: 0 0 0 3px var(--primary-color-100);
+}
+
+.toggle-switch:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.toggle-switch:focus-visible {
+  box-shadow: 0 0 0 3px var(--primary-color-100);
+}
+
+/* Track (background) */
+.toggle-track {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--card-border-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid var(--card-border-color);
+}
+
+.toggle-switch.checked .toggle-track {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Thumb (slider) */
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 
+              0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.toggle-switch.checked .toggle-thumb {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+              0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Size variants */
+.toggle-switch.small {
+  width: 32px;
+  height: 18px;
+}
+
+.toggle-switch.small .toggle-thumb {
+  width: 14px;
+  height: 14px;
+}
+
+.toggle-switch.small.checked .toggle-thumb {
+  transform: translateX(14px);
+}
+
+.toggle-switch.medium {
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-switch.medium .toggle-thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.toggle-switch.medium.checked .toggle-thumb {
+  transform: translateX(20px);
+}
+
+.toggle-switch.large {
+  width: 56px;
+  height: 32px;
+}
+
+.toggle-switch.large .toggle-thumb {
+  width: 28px;
+  height: 28px;
+}
+
+.toggle-switch.large.checked .toggle-thumb {
+  transform: translateX(24px);
+}
+
+/* Hover states */
+.toggle-switch:hover:not(.disabled) .toggle-track {
+  background-color: var(--card-hover-bg-color);
+  border-color: var(--muted-text-color);
+}
+
+.toggle-switch.checked:hover:not(.disabled) .toggle-track {
+  background-color: var(--primary-color);
+  opacity: 0.9;
+}
+
+.toggle-switch:hover:not(.disabled) .toggle-thumb {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+              0 2px 4px rgba(0, 0, 0, 0.06),
+              0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+/* Active states */
+.toggle-switch:active:not(.disabled) .toggle-thumb {
+  transform: scale(0.95);
+}
+
+.toggle-switch.small:active:not(.disabled).checked .toggle-thumb {
+  transform: translateX(14px) scale(0.95);
+}
+
+.toggle-switch.medium:active:not(.disabled).checked .toggle-thumb {
+  transform: translateX(20px) scale(0.95);
+}
+
+.toggle-switch.large:active:not(.disabled).checked .toggle-thumb {
+  transform: translateX(24px) scale(0.95);
+}
+
+/* Disabled state */
+.toggle-switch.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.toggle-switch.disabled .toggle-track {
+  background-color: var(--muted-text-color);
+  border-color: var(--muted-text-color);
+}
+
+.toggle-switch.disabled .toggle-thumb {
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-wrapper .toggle-label {
+  pointer-events: none;
+}
+
+.toggle-switch.disabled + .toggle-label {
+  color: var(--muted-text-color);
+  cursor: not-allowed;
+}
+
+/* Animation for smooth state transitions */
+@keyframes toggleOn {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    transform: translateX(10%) scale(1.1);
+  }
+  100% {
+    transform: translateX(var(--toggle-translate)) scale(1);
+  }
+}
+
+@keyframes toggleOff {
+  0% {
+    transform: translateX(var(--toggle-translate)) scale(1);
+  }
+  50% {
+    transform: translateX(90%) scale(1.1);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .toggle-track {
+    border-width: 2px;
+  }
+  
+  .toggle-thumb {
+    border-width: 2px;
+    border-color: var(--card-text-color);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .toggle-switch,
+  .toggle-track,
+  .toggle-thumb {
+    transition: none;
+  }
+} 

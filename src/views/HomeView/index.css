@@ -39,7 +39,7 @@
 
 .notes-list-panel {
     flex: 1;
-    border-radius: var(--notes-list-panel-border-radius);
+    background: var(--notes-list-panel-bg-color);
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
     overflow: clip;
@@ -66,6 +66,11 @@
     align-items: center;
     gap: 8px;
     view-transition-name: footer-bar;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 6px 10px;
+    z-index: 1001;
 }
 
 .mobile-footer-bar {
@@ -123,7 +128,7 @@
 .privacy-curtain-toggle {
     position: absolute;
     bottom: 0;
-    left: 0;
+    right: 0;
     padding: 6px 10px;
     z-index: 1001;
     background: var(--card-bg-color);

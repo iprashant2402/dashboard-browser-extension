@@ -10,7 +10,7 @@ const PrivacyCurtainContext = createContext<{
 
 const initializePrivacyCurtain = () => {
     const isPrivacyCurtainEnabled = localStorage.getItem('isPrivacyCurtainEnabled');
-    if (isPrivacyCurtainEnabled) {
+    if (isPrivacyCurtainEnabled && isPrivacyCurtainEnabled === 'true') {
         return true;
     }
     return false;

@@ -53,6 +53,7 @@ export interface EditorProps {
   onChange: (content: string) => void;
   initialState?: string;
   onSave: (content: string) => void;
+  showToolbar?: boolean;
 }
 
 const DefaultPlaceholder = 'Jot down your thoughts or anything else...';
@@ -153,7 +154,7 @@ const constructImportMap = (): DOMConversionMap => {
     return importMap;
   };
 
-export const Editor = (props: EditorProps) => {
+export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
   const editorStateRef = useRef<EditorState | undefined>(undefined);
 
   const editorConfig: InitialConfigType = useMemo(() => {
@@ -182,7 +183,7 @@ export const Editor = (props: EditorProps) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-      <ToolbarPlugin />
+        {showToolbar && <ToolbarPlugin />}
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={

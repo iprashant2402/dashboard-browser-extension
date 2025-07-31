@@ -38,9 +38,6 @@ export const HomeView = () => {
                     </div>
                     <div className="column panel-col">
                     <TopSites />
-                        <div className="footer-bar">
-                            <PreferencesToolbar />
-                        </div>
                     </div>
                 </div>
 
@@ -55,6 +52,9 @@ export const HomeView = () => {
             <span className="privacy-curtain-toggle">
                 <p onClick={togglePrivacyCurtain}>{isPrivacyCurtainEnabled ? 'Reveal' : 'Hide'}</p>
             </span>
+            <div className="footer-bar">
+                <PreferencesToolbar />
+            </div>
         </Layout>
     )
 }
