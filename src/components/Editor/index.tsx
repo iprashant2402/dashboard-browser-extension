@@ -8,6 +8,7 @@ import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
 import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
 import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
+import {ListPlugin} from '@lexical/react/LexicalListPlugin';
 import {
   $isTextNode,
   DOMConversionMap,
@@ -33,6 +34,9 @@ import { ReactElement, useMemo, useRef } from 'react';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { AutoLinkPlugin, createLinkMatcherWithRegExp } from '@lexical/react/LexicalAutoLinkPlugin';
 import { EMAIL_REGEX, URL_REGEX } from '../../utils/helpers';
+import { KeyboardShortcutsPlugin } from './plugins/KeyboardShortcutPlugin';
+import { ListExitPlugin } from './plugins/ListExitPlugin';
+import ToolbarPlugin from './plugins/ToolbarPlugin';
 
 
 const MATCHERS = [
@@ -49,6 +53,7 @@ export interface EditorProps {
   onChange: (content: string) => void;
   initialState?: string;
   onSave: (content: string) => void;
+  showToolbar?: boolean;
 }
 
 const DefaultPlaceholder = 'Jot down your thoughts or anything else...';
@@ -149,7 +154,7 @@ const constructImportMap = (): DOMConversionMap => {
     return importMap;
   };
 
-export const Editor = (props: EditorProps) => {
+export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
   const editorStateRef = useRef<EditorState | undefined>(undefined);
 
   const editorConfig: InitialConfigType = useMemo(() => {
@@ -178,7 +183,7 @@ export const Editor = (props: EditorProps) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-      {/* <ToolbarPlugin /> */}
+        {showToolbar && <ToolbarPlugin />}
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={
@@ -200,6 +205,9 @@ export const Editor = (props: EditorProps) => {
           <LinkPlugin />
           <AutoLinkPlugin matchers={MATCHERS} />
           <MarkdownShortcutPlugin />
+          <ListPlugin />
+          <ListExitPlugin />
+          <KeyboardShortcutsPlugin />
           <ClickableLinkPlugin />
         </div>
       </div>

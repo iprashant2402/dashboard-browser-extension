@@ -33,15 +33,13 @@
     align-items: center;
     padding: 0;
     position: relative;
-    flex: 3;
+    flex: 4;
     overflow-x: hidden;
 }
 
 .notes-list-panel {
     flex: 1;
-    /* background: var(--notes-list-panel-bg-color); */
-    border-radius: var(--notes-list-panel-border-radius);
-    /* border: 1px solid var(--notes-list-panel-border-color); */
+    background: var(--notes-list-panel-bg-color);
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
     overflow: clip;
@@ -68,6 +66,11 @@
     align-items: center;
     gap: 8px;
     view-transition-name: footer-bar;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 6px 10px;
+    z-index: 1001;
 }
 
 .mobile-footer-bar {
@@ -120,4 +123,62 @@
     .panel-col {
         row-gap: 20px;
     }
+}
+
+.privacy-curtain-toggle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 6px 10px;
+    z-index: 1001;
+    background: var(--card-bg-color);
+}
+
+.privacy-curtain-toggle:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.privacy-curtain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: var(--layout-bg-color);
+    
+    /* Add fade animations */
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Class for fade out animation */
+.privacy-curtain.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
 }

@@ -1,18 +1,64 @@
 .top-sites-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    background: var(--project-list-panel-bg-color);
-    border-radius: var(--project-list-panel-border-radius);
+    background: transparent;
     border: 1px solid var(--project-list-panel-border-color);
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
     overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+/* Collapsed state - only header visible */
+.top-sites-container.collapsed {
+    height: 70px;
+}
+
+/* Expanded state - full content visible */
+.top-sites-container.expanded {
+    height: 100%;
+    min-height: 300px;
 }
 
 .top-sites-header {
     padding: 20px 20px 16px 20px;
     border-bottom: 1px solid var(--card-border-color);
+    position: relative;
+    background: var(--card-bg-color);
+    transition: border-bottom-color 0.3s ease;
+}
+
+.top-sites-container.collapsed .top-sites-header {
+    border-bottom-color: transparent;
+}
+
+.top-sites-container.expanded .top-sites-header {
+    border-bottom-color: var(--card-border-color);
+}
+
+/* Add hover indicator to header */
+.top-sites-header::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--muted-text-color);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.6;
+}
+
+.top-sites-container.expanded .top-sites-header::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.top-sites-container:hover .top-sites-header::after {
+    opacity: 1;
 }
 
 .top-sites-title {
@@ -20,6 +66,11 @@
     font-weight: 600;
     margin: 0 0 4px 0;
     color: var(--layout-text-color);
+    transition: color 0.2s ease;
+}
+
+.top-sites-container:hover .top-sites-title {
+    color: var(--primary-color);
 }
 
 .top-sites-title span {
@@ -30,24 +81,70 @@
     font-size: 11px;
     color: var(--muted-text-color);
     margin: 0;
+    transition: opacity 0.3s ease;
+}
+
+.top-sites-container.collapsed .top-sites-description {
+    opacity: 0.7;
+}
+
+.top-sites-container.expanded .top-sites-description {
+    opacity: 1;
 }
 
 .top-sites-grid {
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 12px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+    overflow: hidden;
+    height: 0;
+}
+
+.top-sites-container.expanded .top-sites-grid {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+    height: auto;
+    flex: 1;
 }
 
 .top-site-item {
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     gap: 12px;
     border-radius: var(--card-border-radius);
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: slideInItems 0.4s ease forwards;
+}
+
+@keyframes slideInItems {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.top-sites-container.expanded .top-site-item:nth-child(1) { animation-delay: 0.1s; }
+.top-sites-container.expanded .top-site-item:nth-child(2) { animation-delay: 0.15s; }
+.top-sites-container.expanded .top-site-item:nth-child(3) { animation-delay: 0.2s; }
+.top-sites-container.expanded .top-site-item:nth-child(4) { animation-delay: 0.25s; }
+.top-sites-container.expanded .top-site-item:nth-child(5) { animation-delay: 0.3s; }
+.top-sites-container.expanded .top-site-item:nth-child(n+6) { animation-delay: 0.35s; }
+
+.top-sites-container.collapsed .top-site-item {
+    animation: none;
+    opacity: 0;
+    transform: translateX(-10px);
 }
 
 .top-site-item:hover {
@@ -72,6 +169,7 @@
     overflow: hidden;
     position: relative;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
 }
 
 .top-site-thumbnail img {
@@ -79,6 +177,11 @@
     height: 24px;
     object-fit: contain;
     transition: transform 0.2s ease;
+}
+
+.top-site-item:hover .top-site-thumbnail {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
 }
 
 .top-site-item:hover .top-site-thumbnail img {
@@ -109,6 +212,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.2;
+    transition: color 0.2s ease;
+}
+
+.top-site-item:hover .top-site-title {
+    color: var(--primary-color);
 }
 
 .top-site-url {
@@ -140,6 +248,10 @@
 
 /* Responsive design */
 @media (max-width: 1200px) {
+    .top-sites-container.collapsed {
+        height: 60px;
+    }
+    
     .top-sites-header {
         padding: 16px;
     }
@@ -164,22 +276,23 @@
 }
 
 @media (max-width: 768px) {
+    /* Disable accordion on mobile - always expanded */
     .top-sites-container {
+        height: auto !important;
         border-radius: 0;
         border: none;
         background: transparent;
     }
     
-    .top-sites-header {
-        padding: 12px;
-        border-bottom: none;
-    }
-    
-    .top-sites-title {
-        font-size: 16px;
+    .top-sites-container.collapsed,
+    .top-sites-container.expanded {
+        height: auto !important;
     }
     
     .top-sites-grid {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        height: auto !important;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 8px;
@@ -187,10 +300,26 @@
     }
     
     .top-site-item {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+        animation: none !important;
         flex-direction: column;
         text-align: center;
         padding: 12px 8px;
         gap: 8px;
+    }
+    
+    .top-sites-header {
+        padding: 12px;
+        border-bottom: none;
+    }
+    
+    .top-sites-header::after {
+        display: none;
+    }
+    
+    .top-sites-title {
+        font-size: 16px;
     }
     
     .top-site-thumbnail {

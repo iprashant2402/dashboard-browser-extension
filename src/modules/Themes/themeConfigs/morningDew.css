@@ -3,6 +3,7 @@
     --layout-bg-color: #F9FCF9; /* Gentle, fresh background evoking morning calmness */
     --layout-text-color: #3A4A3A; /* Dark green-gray ensuring good readability */
     --primary-color: #4CAF50; /* Vibrant green for primary interactions */
+    --primary-color-100: #4CAF501A;
     --secondary-color: #81C784; /* Soft secondary green for additional accents */
     --tertiary-color: #A5D6A7; /* Pastel green for subtle highlights */
     --muted-text-color: rgba(58, 74, 58, 0.5); /* Muted text for subtle, less important content */
@@ -42,7 +43,7 @@
     --notes-list-panel-bg-color: #F9FCF9; /* Pure white providing clean background */
     --notes-list-panel-border-color: rgba(76, 175, 80, 0.1); /* Soft green border */
     --notes-list-panel-border-radius: 8px; /* Rounded corners */
-    --notes-list-panel-padding: 16px 24px; /* Uniform padding */
+    --notes-list-panel-padding: 16px 12px; /* Uniform padding */
   
     /* Command Center */
     --command-center-bg-color: #FFFFFF; /* Clear white background */

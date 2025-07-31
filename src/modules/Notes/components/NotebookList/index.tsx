@@ -40,8 +40,7 @@ export const NotebookList = () => {
         <>
             <div className="notebook-list">
             <div className="notebook-list-header">
-                <div className="row jt-space-between ai-center">
-                    <div>
+                    <div className="notebook-list-header-left">
                         <h1 className="notebook-list-title">Your <span>Pages</span></h1>
                         <p className="notebook-list-description">{quote}</p>
                     </div>
@@ -52,7 +51,6 @@ export const NotebookList = () => {
                             onClick={actions.handleCreatePageSubmit}
                         />
                     </div>
-                </div>
             </div>
                 <div className="notebook-list-container">
             <div className="notebook-list-items">

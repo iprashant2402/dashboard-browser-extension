@@ -2,6 +2,7 @@
   --layout-bg-color: #131316;
   --layout-text-color: #F3EFEA;
   --primary-color: #FF7F50;
+  --primary-color-100: #FF7F501A;
   --secondary-color: #6A0572;
   --tertiary-color: #FC9F5B;
   --muted-text-color: hsla(30, 10%, 80%, 0.5);
@@ -36,7 +37,7 @@
   --notes-list-panel-bg-color: #191920;
   --notes-list-panel-border-color: rgba(255, 127, 80, 0.1);
   --notes-list-panel-border-radius: 8px;
-  --notes-list-panel-padding: 16px 24px;
+  --notes-list-panel-padding: 16px 12px;
 
   --command-center-bg-color: #191920;
   --command-center-border-color: none;

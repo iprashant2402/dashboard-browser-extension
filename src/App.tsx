@@ -1,11 +1,14 @@
 import './App.css'
 import { RouterProvider } from 'react-router'
 import { router } from './routes'
+import { PrivacyCurtainProvider } from './providers/PrivacyCurtainProvider'
 
 function App() {
 
   return (
-    <RouterProvider router={router} />
+    <PrivacyCurtainProvider>
+      <RouterProvider router={router} />
+    </PrivacyCurtainProvider>
   )
 }
 

@@ -31,7 +31,7 @@
   .editor-input {
     height: 100%;
     resize: none;
-    font-size: 16px;
+    font-size: 14px;
     caret-color: var(--text-color);
     position: relative;
     tab-size: 1;
@@ -198,9 +198,8 @@
   }
   
   .editor-quote {
-    margin: 0;
-    margin-left: 20px;
-    font-size: 15px;
+    margin: 8px 0 8px 12px;
+    font-size: 14px;
     color: var(--muted-text-color);
     border-left-color: var(--border-color);
     border-left-width: 4px;
@@ -211,17 +210,18 @@
   .editor-list-ol {
     padding: 0;
     margin: 0;
-    margin-left: 16px;
+    margin-left: 12px;
   }
   
   .editor-list-ul {
     padding: 0;
     margin: 0;
-    margin-left: 16px;
+    margin-left: 12px;
   }
   
   .editor-listitem {
-    margin: 8px 32px 8px 32px;
+    margin: 8px 18px 8px 18px;
+    font-size: 14px;
   }
   
   .editor-nested-listitem {
@@ -279,10 +279,14 @@
   
   .toolbar {
     display: flex;
-    background: var(--command-center-bg-color);
+    background: var(--layout-bg-color);
     padding: 4px;
     vertical-align: middle;
     justify-content: flex-end;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
   }
   
   .toolbar button.toolbar-item {

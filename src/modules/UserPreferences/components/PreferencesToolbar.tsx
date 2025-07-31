@@ -2,22 +2,34 @@ import { Theme, THEME_DISPLAY_NAMES, THEMES } from "../../Tasks/types/Theme";
 import { useUserPreferences } from "./UserPreferencesProvider"
 import "./PreferencesToolbar.css";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useState } from "react";
+import { Dialog } from "../../../components/Dialog";
+import { Button } from "../../../components/Button";
+import { PreferencesForm } from "./PreferencesForm";
 
 export const PreferencesToolbar = () => {
-    const { userPreferences, updatePreferences } = useUserPreferences();
+    const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
 
-    const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        updatePreferences({ theme: event.target.value as Theme });
+    const handleSettingsMenuOpen = () => {
+        setIsSettingsMenuOpen(true);
+    }
+
+    const handleSettingsMenuClose = () => {
+        setIsSettingsMenuOpen(false);
     }
 
     return (
+        <>
         <div className="preferences-toolbar">
-            <label htmlFor="theme-select"><IoSettingsOutline size={14} /></label>
-            <select id="theme-select" value={userPreferences.theme} onChange={handleThemeChange}>
-                {THEMES.map((theme) => (
-                    <option key={theme} value={theme}>{THEME_DISPLAY_NAMES[theme]}</option>
-                ))}
-            </select>
+            <Button variant="clear" icon={<IoSettingsOutline size={16} />} onClick={handleSettingsMenuOpen} />
         </div>
+        <Dialog
+            isOpen={isSettingsMenuOpen}
+            onClose={handleSettingsMenuClose}
+            title="Settings"
+        >
+            <PreferencesForm onClose={handleSettingsMenuClose} />
+        </Dialog>
+        </>
     )
 }

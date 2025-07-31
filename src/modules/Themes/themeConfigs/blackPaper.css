@@ -2,6 +2,7 @@
     --layout-bg-color: #000000;
     --layout-text-color: #FFFFFF;
     --primary-color: #FFFFFF;
+    --primary-color-100: #FFFFFF1A;
     --secondary-color: #FFFFFF;
     --tertiary-color: #FFFFFF;
     --muted-text-color: rgba(255, 255, 255, 0.6);
@@ -38,9 +39,9 @@
     --notes-list-panel-bg-color: rgba(255, 255, 255, 0.05);
     --notes-list-panel-border-color: rgba(255, 255, 255, 0.1);
     --notes-list-panel-border-radius: 8px;
-    --notes-list-panel-padding: 16px 24px;
+    --notes-list-panel-padding: 16px 12px;
   
-    --command-center-bg-color: rgba(255, 255, 255, 0.03);
+    --command-center-bg-color: rgba(0, 0, 0);
     --command-center-border-color: none;
     --command-center-border-radius: 8px;
     --command-center-padding: 16px 24px;
@@ -74,3 +75,11 @@
     
     --text-color: #FFFFFF;
 } 
+
+.black-paper .toggle-track {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.black-paper .toggle-switch.checked .toggle-track {
+    background-color: green;
+}

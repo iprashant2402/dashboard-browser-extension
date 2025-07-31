@@ -14,6 +14,7 @@
   /* --layout-bg-color: url('/scene-bg.jpg'); */
   --layout-text-color: #FFFFFF;
   --primary-color: #16825D;
+  --primary-color-100: #16825D1A;
   --secondary-color: #6A1E55;
   --tertiary-color: #A64D79;
   --muted-text-color: hsla(0, 0%, 100%, 0.4);
@@ -49,7 +50,7 @@
   --notes-list-panel-bg-color: rgb(11, 20, 28);
   --notes-list-panel-border-color: rgba(255, 255, 255, 0.1);
   --notes-list-panel-border-radius: 8px;
-  --notes-list-panel-padding: 16px 24px;
+  --notes-list-panel-padding: 16px 12px;
 
   --command-center-bg-color: rgb(11, 20, 28);
   --command-center-border-color: rgba(255, 255, 255, 0.1);

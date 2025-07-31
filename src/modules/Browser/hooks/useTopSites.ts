@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-//import topSitesMock from "./topSitesMock.json";
 
 interface TopSite extends chrome.topSites.MostVisitedURL {
     favicon: string;

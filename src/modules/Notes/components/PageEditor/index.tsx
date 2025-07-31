@@ -1,13 +1,16 @@
 import { Editor } from "../../../../components/Editor";
+import { useUserPreferences } from "../../../UserPreferences/components/UserPreferencesProvider";
 import { usePageEditor } from "../../hooks/usePageEditor";
 import "./index.css";
 
 export const PageEditor = () => {
     const { state, actions } = usePageEditor();
+    const { userPreferences } = useUserPreferences();
 
     return (
         <div className="page-editor">
             {state.pageFetchStatus === "success" && <Editor 
+                showToolbar={userPreferences.editorToolbarEnabled}
                 onChange={actions.handleOnSavePage}
                 initialState={state.page?.content}
                 onSave={actions.handleOnSavePage}
@@ -25,6 +28,7 @@ export const PageEditor = () => {
                         <span className="instruction"><span className="instruction-highlight">cmd + B</span> to create a bold text</span><br />
                         <span className="instruction"><span className="instruction-highlight">cmd + I</span> to create an italic text</span><br />
                         <span className="instruction"><span className="instruction-highlight">cmd + U</span> to create an underline text</span><br />
+                        <span className="instruction"><span className="instruction-highlight">cmd + shift + X</span> to create a strikethrough text</span><br />
                         <span className="instruction"><span className="instruction-highlight">`</span> to create inline code</span><br />
                         <span className="instruction"><span className="instruction-highlight">```</span> + <span className="instruction-highlight">space</span> to create a code snippet</span><br />
                         <span className="instruction"><span className="instruction-highlight">[](url)</span> to create a link</span><br />

@@ -5,10 +5,11 @@
     flex-direction: column;
     gap: 16px;
     overflow-y: hidden;
+    
 }
 
 .notebook-list-title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
 }
 
@@ -17,7 +18,7 @@
 }
 
 .notebook-list-description {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     color: var(--muted-text-color);
     font-style: italic;
@@ -36,7 +37,7 @@
 .notebook-list-items {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
     flex: 1;
     height: 100%;
     overflow-y: scroll;
@@ -44,6 +45,18 @@
 
 .notebook-list-header {
     padding: var(--notes-list-panel-padding);
+    border-bottom: 1px solid var(--notes-list-panel-border-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.notebook-list-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .notebook-list-footer {
