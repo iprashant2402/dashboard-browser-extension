@@ -7,7 +7,7 @@
     --tertiary-color: #000000;
     --muted-text-color: rgba(0, 0, 0, 0.6);
   
-    --card-bg-color: rgba(0, 0, 0, 0.03);
+    --card-bg-color: rgb(251, 251, 251);
     --card-alt-bg-color: rgba(0, 0, 0, 0.05);
     --card-text-color: #000000;
     --card-alt-text-color: rgba(0, 0, 0, 0.9);
@@ -75,3 +75,7 @@
     
     --text-color: #000000;
 } 
+
+.white-paper .preferences-menu-select {
+    background-color: rgba(0, 0, 0, 0.05);
+}

@@ -24,6 +24,7 @@
 
 .dialog {
   background-color: var(--card-bg-color, #fff);
+  backdrop-filter: blur(var(--card-blur, 0px));
   color: var(--card-text-color, #000);
   border: 1px solid var(--card-border-color, rgba(255, 255, 255, 0.1));
   border-radius: var(--card-border-radius, 8px);
@@ -95,8 +96,9 @@
 
 .dialog-title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 14px;
   font-weight: 600;
+  color: var(--card-text-color);
 }
 
 .dialog-close-button {
