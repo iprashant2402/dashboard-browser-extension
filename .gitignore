@@ -16,6 +16,8 @@ dist.crx
 dist.pem
 dist.zip
 
+.firebase/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
