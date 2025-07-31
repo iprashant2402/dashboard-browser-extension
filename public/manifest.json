@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "insquoo",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A powerful note-taking friend. Make every new tab a notebook, and create pages seamlessly in your browser.",
     "icons": {
       "48": "images/vire-logo-icon-48.png",
