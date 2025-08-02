@@ -5,7 +5,6 @@ import { NotebookList } from "../../modules/Notes/components/NotebookList";
 import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";
 import { EditorTabsProvider } from "../../modules/Notes/components/EditorTabsProvider";
 import { ResponsiveTabs } from "../../components/ResponsiveTabs";
-import { TopSites } from "../../modules/Browser/components/TopSites/TopSites";
 import { usePrivacyCurtain } from "../../providers/PrivacyCurtainProvider";
 import Clock from "../../components/Clock/Clock";
 
@@ -35,9 +34,6 @@ export const HomeView = () => {
                         <EditorTabsProvider>
                             <CommandCenter />
                         </EditorTabsProvider>
-                    </div>
-                    <div className="column panel-col">
-                    <TopSites />
                     </div>
                 </div>
 

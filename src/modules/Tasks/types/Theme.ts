@@ -1,6 +1,6 @@
 export type Theme = 'ocean' | 'morning-dew' | 'golden-hour' | 'midnight-ember' | 'northern-lights' | 'comfort' | 'comfort-lite' | 'linus' | 'torvalds' | 'black-paper' | 'white-paper';
 
-export const THEMES: Theme[] = ['ocean', 'morning-dew', 'golden-hour', 'midnight-ember', 'northern-lights', 'comfort', 'comfort-lite', 'linus', 'torvalds', 'black-paper', 'white-paper'];
+export const THEMES: Theme[] = ['ocean', 'morning-dew', 'golden-hour', 'midnight-ember', 'northern-lights', 'comfort', 'linus', 'black-paper', 'white-paper'];
 
 export const DEFAULT_THEME: Theme = 'ocean';
 
