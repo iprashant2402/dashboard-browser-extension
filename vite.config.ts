@@ -9,7 +9,7 @@ export default defineConfig({
     // generates 'manifest.webmanifest' file on build
     manifest: {
       // caches the assets/icons mentioned (assets/* includes all the assets present in your src/ directory) 
-      name: 'insquoo: a powerful note-taking friend',
+      name: 'insquoo',
       short_name: 'insquoo',
       start_url: '/',
       background_color: '#F3F7FC',
