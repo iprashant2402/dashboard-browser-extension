@@ -11,7 +11,6 @@ const UserPreferencesContext = createContext({
 
 const loadInitialPreferences = () => {
     const preferences = storage.getItem<UserPreference>(USER_PREFERENCES_KEY);
-    console.log('preferences', preferences);
     if (!preferences) {
         storage.setItem(USER_PREFERENCES_KEY, DEFAULT_USER_PREFERENCE);
     }

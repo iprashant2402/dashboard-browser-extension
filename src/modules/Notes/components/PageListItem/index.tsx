@@ -73,7 +73,6 @@ export const PageListItem = ({
 
     const randomColor = useMemo(() => {
         const color = randomPastel();
-        console.log(color);
         return `hsl(${color.h}, ${color.s}%, ${color.l}%)`;
     }, []);
 

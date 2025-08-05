@@ -2,7 +2,6 @@ import React from 'react';
 import { IoArrowBack, IoList } from 'react-icons/io5';
 import { NotebookList, MobileNotesOptionalContext } from '../../modules/Notes/components/NotebookList';
 import { CommandCenter } from '../../views/CommandCenter';
-import { EditorTabsProvider } from '../../modules/Notes/components/EditorTabsProvider';
 import { Button } from '../Button';
 import { MobileNotesProvider, useMobileNotes } from './MobileNotesContext';
 import './index.css';
@@ -43,9 +42,7 @@ const MobileNotesView: React.FC = () => {
             />
           </div>
           <div className="mobile-editor-content">
-            <EditorTabsProvider>
               <CommandCenter />
-            </EditorTabsProvider>
           </div>
         </div>
       )}
