@@ -3,7 +3,6 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 16px;
     overflow-y: hidden;
     
 }
@@ -27,10 +26,9 @@
 .notebook-list-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     flex: 1;
     overflow-y: scroll;
-    padding: var(--notes-list-panel-padding);
+    padding: 24px 18px;
     padding-bottom: 0px;
 }
 
@@ -44,7 +42,7 @@
 }
 
 .notebook-list-header {
-    padding: var(--notes-list-panel-padding);
+    padding: 20px 18px 18px;
     border-bottom: 1px solid var(--notes-list-panel-border-color);
     display: flex;
     flex-direction: row;

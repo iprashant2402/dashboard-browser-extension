@@ -279,7 +279,7 @@
   
   .toolbar {
     display: flex;
-    background-color: var(--command-center-bg-color);
+    background-color: var(--layout-bg-color);;
     padding: 4px;
     vertical-align: middle;
     justify-content: flex-end;
