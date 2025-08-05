@@ -62,3 +62,8 @@
 .page-list-item-menu li {
     padding: 10px 0;
 }
+
+.item-title-container {
+    align-items: center;
+    gap: 12px;
+}

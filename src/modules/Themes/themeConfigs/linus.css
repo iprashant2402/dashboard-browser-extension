@@ -40,13 +40,13 @@
     --project-list-panel-padding: 16px 24px;
   
     /* Notes List Panel */
-    --notes-list-panel-bg-color: #0D1117;
+    --notes-list-panel-bg-color: #161B22;
     --notes-list-panel-border-color: rgba(240, 246, 252, 0.1);
     --notes-list-panel-border-radius: 6px;
     --notes-list-panel-padding: 16px 12px;
   
     /* Command Center */
-    --command-center-bg-color: #161B22;
+    --command-center-bg-color: #0D1117;
     --command-center-border-color: none;
     --command-center-border-radius: 6px;
     --command-center-padding: 16px 24px;

@@ -12,6 +12,7 @@
   color: var(--card-text-color);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .hours, .minutes, .seconds {
@@ -35,9 +36,10 @@
 .clock-date {
   position: relative;
   left: 10px;
-  top: -8px;
-  font-size: 0.8rem;
+  top: -18px;
+  font-size: 1rem;
   color: var(--muted-text-color);
+  justify-content: center;
 }
 
 @keyframes blink {

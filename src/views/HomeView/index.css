@@ -2,7 +2,7 @@
     height: 100%;
     flex: 1;
     flex-grow: 1;
-    gap: 10px;
+    column-gap: 24px;
 }
 
 /* Desktop Layout */
@@ -10,7 +10,7 @@
     display: flex;
     height: 100%;
     width: 100%;
-    gap: 10px;
+    gap: 24px;
 }
 
 /* Mobile Layout - Hidden by default */
@@ -23,7 +23,6 @@
 }
 
 .panel-col {
-    border-radius: var(--card-border-radius);
     flex: 1;
     row-gap: 16px;
 }
@@ -40,6 +39,8 @@
 .notes-list-panel {
     flex: 1;
     background: var(--notes-list-panel-bg-color);
+    border: solid var(--notes-list-panel-border-color);
+    border-width: 0 1px 0 0;
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
     overflow: clip;

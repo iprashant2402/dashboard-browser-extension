@@ -63,7 +63,6 @@ export class LocalDBStorage {
    * @returns Promise that resolves with the added item
    */
   async add<T extends { id: string }>(storeName: string, item: T): Promise<T> {
-    console.log('add', storeName, item);
     await this.init();
     
     return new Promise((resolve, reject) => {
