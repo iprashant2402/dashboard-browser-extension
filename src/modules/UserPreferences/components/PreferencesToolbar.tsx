@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Dialog } from "../../../components/Dialog";
 import { Button } from "../../../components/Button";
 import { PreferencesForm } from "./PreferencesForm";
+import { AuthButton } from "../../Auth";
 
 export const PreferencesToolbar = () => {
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
@@ -20,6 +21,7 @@ export const PreferencesToolbar = () => {
         <>
         <div className="preferences-toolbar">
             <Button variant="clear" icon={<IoSettingsOutline size={16} />} onClick={handleSettingsMenuOpen} />
+            <AuthButton />
         </div>
         <Dialog
             isOpen={isSettingsMenuOpen}
