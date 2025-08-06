@@ -105,7 +105,7 @@ export const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
     <Dialog
       isOpen={isOpen}
       onClose={onClose}
-      title={'Account'}
+      title={'Your account'}
     >
       <div className="auth-dialog-content">
         {isAuthenticated && user ? (
