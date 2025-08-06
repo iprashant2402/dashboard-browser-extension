@@ -1,3 +1,4 @@
+import { Button } from "../../../../components/Button";
 import { AuthFormMode } from "./AuthDialog"
 
 export const AuthLogin = (props: {
@@ -50,16 +51,12 @@ export const AuthLogin = (props: {
               </div>
 
               <div className="auth-form-actions">
-                <button 
-                  type="submit" 
-                  className="auth-form-submit"
+                <Button
+                  variant="primary"
+                  type="submit"
+                  label={isLoading ? 'Signing in...' : 'Sign In'}
                   disabled={isLoading}
-                >
-                  {isLoading 
-                    ? ('Signing in...') 
-                    : ('Sign In')
-                  }
-                </button>
+                />
               </div>
             </form>
         <div className="auth-form-toggle">
