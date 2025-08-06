@@ -56,14 +56,14 @@
     --primary-button-text-color: #FFFFFF; /* High-contrast white text */
     --primary-button-border-color: none; /* Borderless modern style */
     --primary-button-border-radius: 50px; /* Fully rounded "pill" shape */
-    --primary-button-padding: 8px 12px; /* Compact, comfortable padding */
+    --primary-button-padding: 12px 16px; /* Compact, comfortable padding */
   
     /* Secondary Button */
     --secondary-button-bg-color: #81C784; /* Soft secondary green */
     --secondary-button-text-color: #FFFFFF; /* White for clarity */
     --secondary-button-border-color: none; /* Clean, borderless look */
     --secondary-button-border-radius: 50px; /* Rounded edges for modern feel */
-    --secondary-button-padding: 8px 12px; /* Uniform padding */
+    --secondary-button-padding: 12px 16px; /* Uniform padding */
   
     /* Clear Button */
     --clear-button-bg-color: transparent; /* No background */
@@ -77,7 +77,7 @@
     --outline-button-text-color: #4CAF50; /* Vibrant green text matching the outline */
     --outline-button-border-color: #4CAF50; /* Clear green outline highlighting button */
     --outline-button-border-radius: 50px; /* Fully rounded for consistency */
-    --outline-button-padding: 8px 12px; /* Standardized button padding */
+    --outline-button-padding: 12px 16px; /* Standardized button padding */
 
     --code-block-background-color: #F0F0F0;
     --code-block-border-color: transparent;
