@@ -27,7 +27,7 @@
 .auth-form-group label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--layout-text-color);
 }
 
 .auth-form-input {
@@ -35,7 +35,7 @@
   border: 1px solid var(--card-border-color);
   border-radius: var(--card-border-radius);
   background: var(--card-bg-color);
-  color: var(--text-color);
+  color: var(--layout-text-color);
   font-size: 14px;
   transition: border-color 0.2s ease;
 }
@@ -43,10 +43,6 @@
 .auth-form-input:focus {
   outline: none;
   border-color: var(--primary-color);
-}
-
-.auth-form-input::placeholder {
-  color: var(--text-muted-color);
 }
 
 .auth-form-row {
@@ -178,7 +174,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--layout-text-color);
 }
 
 .user-info p {
@@ -201,7 +197,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 14px;
-  color: var(--text-color);
+  color: var(--layout-text-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -240,4 +236,20 @@
     text-align: center;
     gap: 12px;
   }
-} 
+}
+
+.auth-login-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px;
+  }
+  
+  .auth-login-title p {
+      color: var(--muted-text-color);
+  }
+  
+  .auth-login-title svg path {
+      fill: var(--primary-button-bg-color);
+  }

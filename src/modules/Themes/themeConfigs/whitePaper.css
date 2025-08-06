@@ -73,7 +73,7 @@
     --code-block-background-color: rgba(0, 0, 0, 0.05);
     --code-block-border-color: rgba(0, 0, 0, 0.12);
     
-    --text-color: #000000;
+    --layout-text-color: #000000;
 } 
 
 .white-paper .preferences-menu-select {

@@ -17,7 +17,7 @@
 
 .auth-button-text {
   font-size: 12px;
-  color: var(--text-color);
+  color: var(--layout-text-color);
 }
 
 .auth-button-loading {

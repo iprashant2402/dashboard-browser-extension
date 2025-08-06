@@ -87,7 +87,7 @@
 .page-title {
   font-size: 16px;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--layout-text-color);
   margin: 0;
   text-align: center;
   white-space: nowrap;
@@ -97,7 +97,7 @@
 }
 
 .notes-list-button {
-  color: var(--text-color);
+  color: var(--layout-text-color);
   font-size: 14px;
   font-weight: 500;
   padding: 8px 12px;
@@ -174,7 +174,7 @@
 }
 
 .mobile-notes-list::-webkit-scrollbar-thumb:hover {
-  background: var(--text-color);
+  background: var(--layout-text-color);
 }
 
 /* Improve performance for animations */
