@@ -46,7 +46,12 @@ class AuthRepository implements IAuthRepository {
       async (error) => {
         const originalRequest = error.config;
         
-        if (error.response?.status === 401 && !originalRequest._retry) {
+        if (error.response?.status === 401 && !originalRequest._retry && (
+            originalRequest.url !== '/api/auth/refresh' ||
+            originalRequest.url !== '/api/auth/login' ||
+            originalRequest.url !== '/api/auth/signup' ||
+            originalRequest.url !== '/api/auth/logout'
+        )) {
           originalRequest._retry = true;
           
           try {
