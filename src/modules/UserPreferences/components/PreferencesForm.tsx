@@ -3,7 +3,7 @@ import { useUserPreferences } from "./UserPreferencesProvider";
 import "./PreferencesForm.css";
 import { Toggle } from "../../../components/Toggle";
 
-export const PreferencesForm = (props: { onClose: () => void }) => {
+export const PreferencesForm = (_: { onClose: () => void }) => {
     const { userPreferences, updatePreferences } = useUserPreferences();
 
     const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
