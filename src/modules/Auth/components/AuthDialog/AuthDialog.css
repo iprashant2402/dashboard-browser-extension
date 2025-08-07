@@ -253,3 +253,7 @@
   .auth-login-title svg path {
       fill: var(--primary-button-bg-color);
   }
+
+  .logout-button {
+    text-decoration: underline;
+  }

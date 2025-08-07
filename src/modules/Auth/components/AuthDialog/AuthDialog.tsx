@@ -4,6 +4,7 @@ import { useAuth } from '../../hooks/useAuth';
 import './AuthDialog.css';
 import { AuthSignup } from './AuthSignup';
 import { AuthLogin } from './AuthLogin';
+import { Button } from '../../../../components/Button';
 
 interface AuthDialogProps {
   isOpen: boolean;
@@ -86,11 +87,13 @@ export const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
     const error = authMode === 'login' ? loginError : signupError;
     if (!error) return null;
     
-    if (error instanceof Error) return error.message;
     if (typeof error === 'object' && error !== null && 'message' in error) {
-      return String((error as any).message);
+      if (error.message === 'EMAIL_ALREADY_EXISTS') return 'Email already exists';
+      if (error.message === 'INVALID_CREDENTIALS') return 'Please check your email and password';
+      if (error.message === 'USER_NOT_FOUND') return 'Please check your email and password';
+      return 'Oops! Something went wrong.';
     }
-    return 'An unexpected error occurred';
+    return 'Oops! Something went wrong.';
   }, [authMode, loginError, signupError]);
 
   const userInitials = useMemo(() => {
@@ -122,13 +125,13 @@ export const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
             </div>
 
             <div className="user-profile-actions">
-              <button 
-                className="user-profile-action logout-action"
+              <Button
+                variant='clear' 
+                label={isLoggingOut ? 'Signing out...' : 'Sign Out'}
                 onClick={handleLogout}
+                className='logout-button'
                 disabled={isLoading}
-              >
-                {isLoggingOut ? 'Signing out...' : 'Sign Out'}
-              </button>
+              />
             </div>
           </div>
         ) : (
