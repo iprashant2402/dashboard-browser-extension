@@ -3,15 +3,11 @@ import { useUserPreferences } from "./UserPreferencesProvider";
 import "./PreferencesForm.css";
 import { Toggle } from "../../../components/Toggle";
 
-export const PreferencesForm = (props: { onClose: () => void }) => {
+export const PreferencesForm = (_: { onClose: () => void }) => {
     const { userPreferences, updatePreferences } = useUserPreferences();
 
     const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         updatePreferences({ theme: event.target.value as Theme });
-    }
-
-    const handleQuickAccessPanelChange = (checked: boolean) => {
-        updatePreferences({ quickAccessPanelEnabled: checked });
     }
 
     const handleEditorToolbarChange = (checked: boolean) => {
@@ -27,10 +23,6 @@ export const PreferencesForm = (props: { onClose: () => void }) => {
                     <option key={theme} value={theme}>{THEME_DISPLAY_NAMES[theme]}</option>
                 ))}
             </select>
-            </div>
-            <div className="preferences-menu-item">
-                <label htmlFor="quick-access-panel-enabled">Show quick access panel?</label>
-                <Toggle id="quick-access-panel-enabled" checked={userPreferences.quickAccessPanelEnabled} onChange={handleQuickAccessPanelChange} />
             </div>
             <div className="preferences-menu-item">
                 <label htmlFor="editor-toolbar-enabled">Show editor toolbar?</label>
