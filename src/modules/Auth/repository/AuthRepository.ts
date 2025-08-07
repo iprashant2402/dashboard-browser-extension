@@ -2,6 +2,13 @@ import axios, { AxiosInstance } from 'axios';
 import { IAuthRepository } from './IAuthRepository';
 import { AuthResponse, LoginRequest, SignupRequest, GoogleAuthRequest, User, UpdateProfileRequest } from '../types/User';
 
+const API_ENDPOINTS_TO_SKIP_REFRESH = [
+  '/api/auth/refresh',
+  '/api/auth/login',
+  '/api/auth/signup',
+  '/api/auth/logout',
+];
+
 class AuthRepository implements IAuthRepository {
   private api: AxiosInstance;
   private baseURL: string = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
@@ -12,9 +19,10 @@ class AuthRepository implements IAuthRepository {
       headers: {
         'Content-Type': 'application/json',
         'rm-platform': 'WEB',
-        'rm-app-version': '1.0.0',
-        'rm-os-version': '14.0',
+        'rm-app-version': import.meta.env.VITE_APP_VERSION,
+        'rm-os-version': '0.0.0',
       },
+      withCredentials: true,
     });
 
     // Initialize device ID if not present
@@ -47,10 +55,7 @@ class AuthRepository implements IAuthRepository {
         const originalRequest = error.config;
         
         if (error.response?.status === 401 && !originalRequest._retry && (
-            originalRequest.url !== '/api/auth/refresh' ||
-            originalRequest.url !== '/api/auth/login' ||
-            originalRequest.url !== '/api/auth/signup' ||
-            originalRequest.url !== '/api/auth/logout'
+            !API_ENDPOINTS_TO_SKIP_REFRESH.includes(originalRequest.url)
         )) {
           originalRequest._retry = true;
           
