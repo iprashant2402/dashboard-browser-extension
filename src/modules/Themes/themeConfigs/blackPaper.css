@@ -1,10 +1,10 @@
 .black-paper {
     --layout-bg-color: #000000;
-    --layout-text-color: #FFFFFF;
-    --primary-color: #FFFFFF;
+    --layout-text-color: #FFFFFFD9;
+    --primary-color: #FFFFFFD9;
     --primary-color-100: #FFFFFF1A;
-    --secondary-color: #FFFFFF;
-    --tertiary-color: #FFFFFF;
+    --secondary-color: #FFFFFFD9;
+    --tertiary-color: #FFFFFFD9;
     --muted-text-color: rgba(255, 255, 255, 0.6);
   
     --card-bg-color: rgba(255, 255, 255, 0.05);

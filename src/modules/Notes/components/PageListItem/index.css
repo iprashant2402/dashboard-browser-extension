@@ -1,7 +1,22 @@
 .page-list-item {
     cursor: pointer;
     position: relative;
-    padding-bottom: 16px;
+    padding: 6px 12px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+}
+
+.item-title {
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    flex: 1;
+    min-width: 0;
+}
+
+.page-list-item:hover {
+    background-color: var(--card-bg-color);
 }
 
 .page-list-item-active {
@@ -23,9 +38,19 @@
 .page-list-item h4 {
     font-size: 14px;
     font-weight: 500;
-    display: inline-block;
+    display: block;
     width: 100%;
     transition: color 0.2s ease-in-out;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.page-list-item h4[contenteditable="plaintext-only"] {
+    text-overflow: unset;
+    overflow: visible;
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 .page-list-item-active h4 {
@@ -66,4 +91,12 @@
 .item-title-container {
     align-items: center;
     gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.page-list-item-icon {
+    path {
+        fill: var(--secondary-color);
+    }
 }
