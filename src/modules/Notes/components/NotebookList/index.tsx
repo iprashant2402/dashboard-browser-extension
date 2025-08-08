@@ -1,11 +1,9 @@
 import "./index.css";
 import { getRandomQuote } from "../../../../utils/quotes";
 import { useMemo, useContext, createContext } from "react";
-import { Button } from "../../../../components/Button";
-import { IoAdd, IoAddCircle } from "react-icons/io5";
+import { IoAddCircle } from "react-icons/io5";
 import { usePageList } from "../../hooks/usePageList";
 import { PageListItem } from "../PageListItem";
-import Clock from "../../../../components/Clock/Clock";
 
 // Create a context to optionally receive mobile notes functionality
 const MobileNotesOptionalContext = createContext<{
