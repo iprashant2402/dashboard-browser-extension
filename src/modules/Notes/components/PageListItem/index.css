@@ -46,6 +46,13 @@
     white-space: nowrap;
 }
 
+.page-list-item h4[contenteditable="plaintext-only"] {
+    text-overflow: unset;
+    overflow: visible;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
 .page-list-item-active h4 {
     color: var(--primary-color);
     font-weight: 600;
