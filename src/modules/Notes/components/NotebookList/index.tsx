@@ -41,7 +41,6 @@ export const NotebookList = () => {
             <div className="notebook-list-header">
                     <div className="notebook-list-header-left">
                         <h1 className="notebook-list-title">insqu<span>oo</span></h1>
-                        <p className="notebook-list-description">{quote}</p>
                     </div>
             </div>
                 <div className="notebook-list-container">

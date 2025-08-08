@@ -1,6 +1,6 @@
 .northern-lights {
     --layout-bg-color: #0C1521;
-    --layout-text-color: #D0F2FF;
+    --layout-text-color: #FFFFFFD9;
     --primary-color: #38BDF8;
     --primary-color-100: #38BDF81A;
     --secondary-color: #6366F1;
@@ -24,7 +24,7 @@
     --task-board-padding: 16px 24px;
   
     --task-card-bg-color: #162130;
-    --task-card-text-color: #FFFFFF;
+    --task-card-text-color: #FFFFFFD9;
     --task-card-border-color: rgba(56, 189, 248, 0.1);
     --task-card-border-radius: 8px;
     --task-card-padding: 20px 16px;
@@ -51,7 +51,7 @@
     --primary-button-padding: 8px 12px;
   
     --secondary-button-bg-color: #6366F1;
-    --secondary-button-text-color: #FFFFFF;
+    --secondary-button-text-color: #FFFFFFD9;
     --secondary-button-border-color: none;
     --secondary-button-border-radius: 50px;
     --secondary-button-padding: 8px 12px;

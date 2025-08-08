@@ -1,13 +1,13 @@
 .comfort {
     --layout-bg-color: #F3F7FC;
-    --layout-text-color: #2C3643;
+    --layout-text-color: #1C1C1C;
     --primary-color: #16825D;
     --primary-color-100: #16825D1A;
     --secondary-color: #A34389;
     --tertiary-color: #C976A0;
     --muted-text-color: rgba(44, 54, 67, 0.5);
   
-    --card-bg-color: rgba(255, 255, 255, 0.8);
+    --card-bg-color: #F3F7FC;
     --card-alt-bg-color: #FFFFFF;
     --card-text-color: #2C3643;
     --card-alt-text-color: #3E4A59;
@@ -29,12 +29,12 @@
     --task-card-border-radius: 10px;
     --task-card-padding: 20px 16px;
   
-    --project-list-panel-bg-color: #FFFFFF;
+    --project-list-panel-bg-color: #fbfbfb;
     --project-list-panel-border-color: rgba(0, 0, 0, 0.05);
     --project-list-panel-border-radius: 12px;
     --project-list-panel-padding: 20px 24px;
   
-    --notes-list-panel-bg-color: #FFFFFF;
+    --notes-list-panel-bg-color: #fbfbfb;
     --notes-list-panel-border-color: rgba(0, 0, 0, 0.05);
     --notes-list-panel-border-radius: 12px;
     --notes-list-panel-padding: 20px 24px;

@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Lato';
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,8 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --layout-bg-color: #030d17;
-  /* --layout-bg-color: url('/scene-bg.jpg'); */
-  --layout-text-color: #FFFFFF;
+  --layout-text-color: #FFFFFFD9;
   --primary-color: #16825D;
   --primary-color-100: #16825D1A;
   --secondary-color: #6A1E55;
@@ -98,10 +97,13 @@ html, body {
   box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   margin-block-start: 0;
   margin-block-end: 0;
   margin-inline-start: 0;
   margin-inline-end: 0;
-  letter-spacing: 0.02em;
 }

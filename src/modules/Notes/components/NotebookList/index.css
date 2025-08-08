@@ -4,12 +4,15 @@
     max-width: 300px;
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;   
+    overflow-y: hidden;
+    gap: 6px;
 }
 
 .notebook-list-title {
-    font-size: 18px;
     font-weight: 600;
+    font-family: 'Lato';
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
 }
 
 .notebook-list-title span {
