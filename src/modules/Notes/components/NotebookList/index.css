@@ -1,7 +1,6 @@
 .notebook-list {
     height: 100%;
     flex: 1;
-    max-width: 300px;
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
