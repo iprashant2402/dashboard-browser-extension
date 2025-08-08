@@ -1,9 +1,9 @@
-import { IoChevronForward, IoChevronForwardCircleOutline, IoChevronForwardOutline, IoEgg, IoEllipse, IoEllipseOutline, IoEllipsisHorizontal, IoPencil, IoReader, IoTrash } from "react-icons/io5";
+import { IoEllipsisHorizontal, IoPencil, IoTrash } from "react-icons/io5";
 import './index.css';
 import { Page } from "../../types/Page";
 import { Button } from "../../../../components/Button";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { randomCool, randomPastel } from "../../../../utils/colors";
+import { useEffect, useRef, useState } from "react";
+import { IoIosPaper } from "react-icons/io";
 
 interface PageListItemProps { 
     page: Page, 
@@ -71,16 +71,13 @@ export const PageListItem = ({
         event.preventDefault();
     }
 
-    const randomColor = useMemo(() => {
-        const color = randomPastel();
-        return `hsl(${color.h}, ${color.s}%, ${color.l}%)`;
-    }, []);
-
-    return <div id={`page-${order}`} draggable onDragStart={handleDragStart} onDrop={handleDrop} onDragOver={handleDragOver} className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onClick={() => handleClick(page.id)}>
+    return <div title={page.title} id={`page-${order}`} draggable onDragStart={handleDragStart} onDrop={handleDrop} onDragOver={handleDragOver} className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onDoubleClick={() => setIsRenaming(true)} onClick={() => handleClick(page.id)}>
         <div className="row jt-space-between">
             <div className="row item-title-container">
-                <span><IoEllipse size={14} color={randomColor} /></span>
+                <span><IoIosPaper size={14} color="var(--muted-text-color)" /></span>
+                <div className="item-title">
                 <h4 contentEditable={isRenaming ? 'plaintext-only' : 'false'} ref={nameRef} id="page-list-item-name">{page.title || "Untitled"}</h4>
+                </div>
             </div>
             <IoEllipsisHorizontal onClick={openMenu} className="page-list-item-settings-cta" />
             {isMenuOpen && <PageItemMenu handleClose={closeMenu} handleRename={setIsRenaming.bind(null, true)} handleDelete={handleDeletePage} />}

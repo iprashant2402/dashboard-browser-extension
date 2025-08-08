@@ -1,14 +1,14 @@
 .notebook-list {
     height: 100%;
     flex: 1;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
-    
+    overflow-y: hidden;   
 }
 
 .notebook-list-title {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -28,33 +28,59 @@
     flex-direction: column;
     flex: 1;
     overflow-y: scroll;
-    padding: 24px 18px;
+    padding: 0px 4px;
     padding-bottom: 0px;
+}
+
+.notebook-list-container-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted-text-color);
+    padding: 8px 0;
+}
+
+.notebook-list-container-title-header {
+    padding: 0 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-page-button {
+    visibility: hidden;
+}
+
+.notebook-list-container-title-header:hover {
+    cursor: pointer;
+    background-color: var(--card-bg-color);
+    border-radius: 4px;
+    .add-page-button {
+        visibility: visible;
+    }
 }
 
 .notebook-list-items {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     flex: 1;
     height: 100%;
     overflow-y: scroll;
 }
 
 .notebook-list-header {
-    padding: 20px 18px 18px;
-    border-bottom: 1px solid var(--notes-list-panel-border-color);
+    padding: 12px 18px 12px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     column-gap: 12px;
+    cursor: default;
 }
 
 .notebook-list-header-left {
     display: flex;
     flex-direction: column;
-    gap: 2px;
 }
 
 .notebook-list-footer {
