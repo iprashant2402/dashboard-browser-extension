@@ -1,5 +1,3 @@
-import { Theme, THEME_DISPLAY_NAMES, THEMES } from "../../Tasks/types/Theme";
-import { useUserPreferences } from "./UserPreferencesProvider"
 import "./PreferencesToolbar.css";
 import { IoSettingsOutline } from "react-icons/io5";
 import { useState } from "react";

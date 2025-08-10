@@ -4,3 +4,18 @@
     height: 100dvh;
     width: 100dvw;
 }
+
+.layout--with-sidebar {
+    flex-direction: row;
+}
+
+.layout--sidebar-right {
+    flex-direction: row-reverse;
+}
+
+.layout__content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}

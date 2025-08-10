@@ -2,7 +2,7 @@ import { IoEllipsisHorizontal, IoPencil, IoTrash } from "react-icons/io5";
 import './index.css';
 import { Page } from "../../types/Page";
 import { Button } from "../../../../components/Button";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { IoIosPaper } from "react-icons/io";
 
 interface PageListItemProps { 
@@ -27,14 +27,14 @@ export const PageListItem = ({
     const [isRenaming, setIsRenaming] = useState(false);
     const nameRef = useRef<HTMLHeadingElement>(null);
 
-    const onBlur = () => {
+    const onBlur = useCallback(() => {
         setIsRenaming(false);
         if (!nameRef.current) return;
         const textContent = nameRef.current.textContent;
         if (textContent && textContent.length > 0) handleRename(page.id, textContent);
         else nameRef.current.innerText = page.title;
         nameRef.current?.removeEventListener('blur', onBlur);
-    };
+    }, [page.id, page.title, handleRename]);
 
     useEffect(() => {
         if (isRenaming) {
@@ -44,7 +44,7 @@ export const PageListItem = ({
             nameRef.current.focus();
             window.getSelection()?.selectAllChildren(nameRef.current);
         }
-    }, [isRenaming]);
+    }, [isRenaming, onBlur]);
 
     const handleDeletePage = () => {
         handleDelete(page.id);
@@ -91,11 +91,13 @@ const PageItemMenu = (props: {
     handleDelete: () => void,
 }) => {
 
+    const { handleClose, handleRename, handleDelete } = props;
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             const menu = document.querySelector('.page-list-item-menu');
             if (menu && !menu.contains(event.target as Node)) {
-                props.handleClose();
+                handleClose();
             }
         };
 
@@ -103,15 +105,15 @@ const PageItemMenu = (props: {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [props.handleClose]);
+    }, [handleClose]);
 
     return <div className="page-list-item-menu">
         <ul>
             <li>
-                <Button variant="clear" label="Rename" onClick={props.handleRename} icon={<IoPencil size={16} />} />
+                <Button variant="clear" label="Rename" onClick={handleRename} icon={<IoPencil size={16} />} />
             </li>
             <li>
-                <Button variant="clear" label="Delete" onClick={props.handleDelete} icon={<IoTrash size={16} />} />
+                <Button variant="clear" label="Delete" onClick={handleDelete} icon={<IoTrash size={16} />} />
             </li>
         </ul>
     </div>;

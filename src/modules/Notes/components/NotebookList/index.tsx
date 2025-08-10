@@ -1,6 +1,5 @@
 import "./index.css";
-import { getRandomQuote } from "../../../../utils/quotes";
-import { useMemo, useContext, createContext } from "react";
+import { useContext, createContext } from "react";
 import { IoAddCircle } from "react-icons/io5";
 import { usePageList } from "../../hooks/usePageList";
 import { PageListItem } from "../PageListItem";
@@ -13,7 +12,6 @@ const MobileNotesOptionalContext = createContext<{
 } | null>(null);
 
 export const NotebookList = () => {
-    const quote = useMemo(() => getRandomQuote(), []);
     const { state, actions } = usePageList();
     
     // Try to get mobile context if available
@@ -38,11 +36,6 @@ export const NotebookList = () => {
     return (
         <>
             <div className="notebook-list">
-            <div className="notebook-list-header">
-                    <div className="notebook-list-header-left">
-                        <h1 className="notebook-list-title">insqu<span>oo</span></h1>
-                    </div>
-            </div>
                 <div className="notebook-list-container">
             <div className="notebook-list-container-title-header">
             <p className="notebook-list-container-title">Your pages</p>

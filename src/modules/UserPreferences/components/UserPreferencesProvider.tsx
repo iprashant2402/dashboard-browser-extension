@@ -23,7 +23,7 @@ export const UserPreferencesProvider = ({ children }: { children: React.ReactNod
     const updateDOMTheme = useCallback((theme: Theme) => {
         document.body.classList.remove(...THEMES);
         document.body.classList.add(theme);
-    }, [userPreferences]);
+    }, []);
 
     const updatePreferences = useCallback((preferences: Partial<UserPreference>) => {
         const updatedPreferences = { ...userPreferences, ...preferences };
@@ -31,7 +31,7 @@ export const UserPreferencesProvider = ({ children }: { children: React.ReactNod
         setUserPreferences(updatedPreferences);
         // update DOM classes if theme is changed
         if (preferences.theme) updateDOMTheme(preferences.theme)
-    }, [userPreferences]);
+    }, [userPreferences, updateDOMTheme]);
 
     return <UserPreferencesContext.Provider value={{ userPreferences, updatePreferences }}>
         {children}

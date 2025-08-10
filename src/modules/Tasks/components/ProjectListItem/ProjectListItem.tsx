@@ -2,7 +2,7 @@ import { IoEllipsisHorizontal, IoPencil, IoTrashBin } from "react-icons/io5";
 import { Project } from "../../types/Project"
 import "./ProjectListItem.css";
 import { Button } from "../../../../components/Button";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const ProjectListItem = (props: {
     project: Project,
@@ -14,14 +14,14 @@ export const ProjectListItem = (props: {
     const [isRenaming, setIsRenaming] = useState(false);
     const nameRef = useRef<HTMLHeadingElement>(null);
 
-    const onBlur = () => {
+    const onBlur = useCallback(() => {
         setIsRenaming(false);
         if (!nameRef.current) return;
         const textContent = nameRef.current.textContent;
         if (textContent && textContent.length > 0) props.handleRename(props.project.id, textContent);
         else nameRef.current.innerText = props.project.name;
         nameRef.current?.removeEventListener('blur', onBlur);
-    };
+    }, [props]);
 
     useEffect(() => {
         if (isRenaming) {
@@ -31,7 +31,7 @@ export const ProjectListItem = (props: {
             nameRef.current.focus();
             window.getSelection()?.selectAllChildren(nameRef.current);
         }
-    }, [isRenaming]);
+    }, [isRenaming, onBlur]);
 
     const handleDelete = () => {
         props.handleDelete(props.project.id);
@@ -59,12 +59,13 @@ const ProjectItemMenu = (props: {
     handleRename: () => void,
     handleDelete: () => void,
 }) => {
+    const { handleClose, handleRename, handleDelete } = props;
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             const menu = document.querySelector('.project-list-item-menu');
             if (menu && !menu.contains(event.target as Node)) {
-                props.handleClose();
+                handleClose();
             }
         };
 
@@ -72,15 +73,15 @@ const ProjectItemMenu = (props: {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [props.handleClose]);
+    }, [handleClose]);
 
     return <div className="project-list-item-menu">
         <ul>
             <li>
-                <Button variant="clear" label="Rename" onClick={props.handleRename} icon={<IoPencil size={16} />} />
+                <Button variant="clear" label="Rename" onClick={handleRename} icon={<IoPencil size={16} />} />
             </li>
             <li>
-                <Button variant="clear" label="Delete" onClick={props.handleDelete} icon={<IoTrashBin size={16} />} />
+                <Button variant="clear" label="Delete" onClick={handleDelete} icon={<IoTrashBin size={16} />} />
             </li>
         </ul>
     </div>

@@ -7,17 +7,6 @@
     gap: 6px;
 }
 
-.notebook-list-title {
-    font-weight: 600;
-    font-family: 'Lato';
-    font-size: 1.2rem;
-    letter-spacing: 0.02em;
-}
-
-.notebook-list-title span {
-    color: var(--primary-color);
-}
-
 .notebook-list-description {
     font-size: 12px;
     font-weight: 400;
@@ -68,21 +57,6 @@
     flex: 1;
     height: 100%;
     overflow-y: scroll;
-}
-
-.notebook-list-header {
-    padding: 12px 18px 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    column-gap: 12px;
-    cursor: default;
-}
-
-.notebook-list-header-left {
-    display: flex;
-    flex-direction: column;
 }
 
 .notebook-list-footer {
