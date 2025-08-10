@@ -6,6 +6,8 @@ import { PreferencesToolbar } from "../../modules/UserPreferences/components/Pre
 import { ResponsiveTabs } from "../../components/ResponsiveTabs";
 import { usePrivacyCurtain } from "../../providers/PrivacyCurtainProvider";
 import Clock from "../../components/Clock/Clock";
+import { Sidebar } from "../../components/Sidebar";
+import { NotebookListHeader } from "../../modules/Notes/components/NotebookList/NotebookListHeader";
 
 export const HomeView = () => {
     const { isPrivacyCurtainEnabled, setIsPrivacyCurtainEnabled } = usePrivacyCurtain();
@@ -15,7 +17,9 @@ export const HomeView = () => {
     }
 
     return (
-        <Layout>
+        <Layout sidebar={<Sidebar header={<NotebookListHeader />}>
+            <NotebookList />
+        </Sidebar>}>
             {isPrivacyCurtainEnabled && (
                     <div className="privacy-curtain">
                         <Clock />
@@ -24,11 +28,11 @@ export const HomeView = () => {
                     <div className="row home-view">
                 {/* Desktop Layout - Hidden on mobile/tablet */}
                 <div className="desktop-layout">
-                    <div className="column panel-col">
+                    {/* <div className="column panel-col">
                     <div className="column notes-list-panel">
                         <NotebookList />
                     </div>
-                    </div>
+                    </div> */}
                     <div className="column panel-col command-center-container">
                             <CommandCenter />
                     </div>

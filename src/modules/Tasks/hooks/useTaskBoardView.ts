@@ -40,7 +40,7 @@ export const useTaskBoardView = () => {
 
     const handleClose = useCallback(() => {
         navigate(-1);
-    }, []);
+    }, [navigate]);
 
     return {
         state: {

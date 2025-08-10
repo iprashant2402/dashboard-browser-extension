@@ -10,10 +10,7 @@ export interface RGB {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext && canvas.getContext('2d');
     let data: ImageData;
-    let width: number;
-    let height: number;
     let i = -4;
-    let length: number;
     const rgb: RGB = { r: 0, g: 0, b: 0 };
     let count = 0;
   
@@ -22,8 +19,8 @@ export interface RGB {
       return defaultRGB;
     }
   
-    height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
-    width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+    const height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
+    const width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
   
     context.drawImage(imgEl, 0, 0);
   
@@ -35,7 +32,7 @@ export interface RGB {
       return defaultRGB;
     }
   
-    length = data.data.length;
+    const length = data.data.length;
   
     while ((i += blockSize * 4) < length) {
       ++count;

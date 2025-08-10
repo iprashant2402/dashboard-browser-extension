@@ -43,7 +43,7 @@ export const PageEditorNavigationController = () => {
         } else {
             createNewPage();
         }
-    }, [page, navigate]);
+    }, [page, navigate, status, createNewPage]);
 
     return null;
 }
