@@ -5,7 +5,6 @@ export interface IAuthRepository {
   signup(userData: SignupRequest): Promise<AuthResponse>;
   googleAuth(googleData: GoogleAuthRequest): Promise<AuthResponse>;
   logout(): Promise<void>;
-  refreshToken(): Promise<{ accessToken: string }>;
   getUserProfile(): Promise<User>;
   updateUserProfile(data: UpdateProfileRequest): Promise<User>;
   searchUsers(query: string): Promise<User[]>;
