@@ -28,7 +28,7 @@ export const PreferencesToolbar = () => {
             onClose={handleSettingsMenuClose}
             title="Settings"
         >
-            <PreferencesForm onClose={handleSettingsMenuClose} />
+            <PreferencesForm />
         </Dialog>
         </>
     )

@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { authRepository } from '../repository/AuthRepository';
 import { LoginRequest, SignupRequest, GoogleAuthRequest, UpdateProfileRequest } from '../types/User';
+import { AxiosError } from 'axios';
 
 // Query keys
 export const AUTH_QUERY_KEYS = {
@@ -24,7 +25,7 @@ export const useAuth = () => {
     queryFn: () => authRepository.getUserProfile(),
     enabled: isAuthenticated,
     staleTime: 5 * 60 * 1000, // 5 minutes
-    retry: (failureCount, error: any) => {
+    retry: (failureCount, error: AxiosError) => {
       // Don't retry if it's an auth error
       if (error?.response?.status === 401) return false;
       return failureCount < 3;

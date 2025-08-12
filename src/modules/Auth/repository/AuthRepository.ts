@@ -11,7 +11,7 @@ const API_ENDPOINTS_TO_SKIP_REFRESH = [
 
 class AuthRepository implements IAuthRepository {
   private api: AxiosInstance;
-  private baseURL: string = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+  private baseURL: string = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api`;
 
   constructor() {
     this.api = axios.create({
@@ -87,7 +87,7 @@ class AuthRepository implements IAuthRepository {
   }
 
   async login(credentials: LoginRequest): Promise<AuthResponse> {
-    const response = await this.api.post('/api/auth/login', credentials);
+    const response = await this.api.post('/auth/login', credentials);
     const authData = response.data;
     
     // Store tokens
@@ -98,7 +98,7 @@ class AuthRepository implements IAuthRepository {
   }
 
   async signup(userData: SignupRequest): Promise<AuthResponse> {
-    const response = await this.api.post('/api/auth/signup', userData);
+    const response = await this.api.post('/auth/signup', userData);
     const authData = response.data;
     
     // Store tokens
@@ -109,7 +109,7 @@ class AuthRepository implements IAuthRepository {
   }
 
   async googleAuth(googleData: GoogleAuthRequest): Promise<AuthResponse> {
-    const response = await this.api.post('/api/auth/google', googleData);
+    const response = await this.api.post('/auth/google', googleData);
     const authData = response.data;
     
     // Store tokens
@@ -130,22 +130,22 @@ class AuthRepository implements IAuthRepository {
   }
 
   async refreshToken(): Promise<{ accessToken: string }> {
-    const response = await this.api.post('/api/auth/refresh');
+    const response = await this.api.post('/auth/refresh');
     return response.data;
   }
 
   async getUserProfile(): Promise<User> {
-    const response = await this.api.get('/api/users/profile');
+    const response = await this.api.get('/users/profile');
     return response.data;
   }
 
   async updateUserProfile(data: UpdateProfileRequest): Promise<User> {
-    const response = await this.api.patch('/api/users/profile', data);
+    const response = await this.api.patch('/users/profile', data);
     return response.data;
   }
 
   async searchUsers(query: string): Promise<User[]> {
-    const response = await this.api.get(`/api/users/search?q=${encodeURIComponent(query)}`);
+    const response = await this.api.get(`/users/search?q=${encodeURIComponent(query)}`);
     return response.data;
   }
 }
