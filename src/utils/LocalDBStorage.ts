@@ -7,9 +7,10 @@ export class LocalDBStorage {
   private dbName: string;
   private dbVersion: number;
   private db: IDBDatabase | null = null;
-  private stores = ['projects', 'tasks', 'pages'];
+  private stores = ['projects', 'tasks', 'pages', 'syncQueue'];
   private indexes: { [key: string]: string[] } = {
     tasks: ['projectId'],
+    syncQueue: ['pageId', 'createdAt'],
   }
   
   /**

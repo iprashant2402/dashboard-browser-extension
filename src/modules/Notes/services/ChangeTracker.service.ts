@@ -90,6 +90,10 @@ export class ChangeTracker {
     this.currentVersion++;
   }
 
+  getPendingChangesCount(): number {
+    return this.pendingChanges.length;
+  }
+
   private serializeNode(node: LexicalNode): unknown {
     return node.exportJSON();
   }
