@@ -149,9 +149,7 @@ export class SyncManager {
   }
 
   private async applyRemoteDeltas(pageId: string, deltas: SimpleDelta[]): Promise<void> {
-    // Apply deltas to local page
-    // This requires implementing delta application logic
-    // Similar to server-side applyDeltaToContent
+    console.log('applyRemoteDeltas', pageId, deltas);
   }
 
   // Utility methods
