@@ -5,7 +5,7 @@ class PersistenceStorage {
         this.storage = window.localStorage;
     }
 
-    public setItem(key: string, value: any) {
+    public setItem(key: string, value: unknown) {
         this.storage.setItem(key, JSON.stringify(value));
     }
 

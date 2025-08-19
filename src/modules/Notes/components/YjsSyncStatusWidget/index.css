@@ -1,0 +1,110 @@
+.yjs-sync-widget {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: var(--background-secondary, #f5f5f5);
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-secondary, #666);
+}
+
+.sync-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sync-icon {
+    font-size: 14px;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.sync-icon.spinning {
+    animation: spin 1s linear infinite;
+}
+
+.sync-icon.error {
+    color: var(--error-color, #dc3545);
+}
+
+.sync-text {
+    white-space: nowrap;
+}
+
+.sync-controls {
+    display: flex;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.sync-button,
+.auto-sync-button,
+.stop-sync-button {
+    padding: 4px 8px;
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 4px;
+    background: var(--background-primary, #fff);
+    color: var(--text-primary, #333);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sync-button:hover,
+.auto-sync-button:hover,
+.stop-sync-button:hover {
+    background: var(--background-hover, #f0f0f0);
+    border-color: var(--border-hover, #ccc);
+}
+
+.sync-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auto-sync-button {
+    background: var(--primary-color, #007bff);
+    color: white;
+    border-color: var(--primary-color, #007bff);
+}
+
+.auto-sync-button:hover {
+    background: var(--primary-hover, #0056b3);
+}
+
+.stop-sync-button {
+    background: var(--warning-color, #ffc107);
+    border-color: var(--warning-color, #ffc107);
+}
+
+.stop-sync-button:hover {
+    background: var(--warning-hover, #e0a800);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.yjs-sync-widget.compact {
+    padding: 4px 8px;
+    font-size: 11px;
+}
+
+.yjs-sync-widget.compact .sync-controls {
+    gap: 4px;
+}
+
+.yjs-sync-widget.compact .sync-button,
+.yjs-sync-widget.compact .auto-sync-button,
+.yjs-sync-widget.compact .stop-sync-button {
+    padding: 2px 6px;
+    font-size: 10px;
+}

@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { localPageRepository } from "../repository/PageRepository";
+import { yjsPageRepository } from "../repository/YjsPageRepository";
 
 export const useFetchAllPages = () => {
     return useQuery({
         queryKey: ['pages'],
-        queryFn: () => localPageRepository.getPages(),
+        queryFn: () => yjsPageRepository.getPages(),
         select: (data) => data.sort((a, b) => {
                 return b.order - a.order;
         })
