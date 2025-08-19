@@ -32,7 +32,7 @@
     height: 100%;
     resize: none;
     font-size: 14px;
-    caret-color: var(--text-color);
+    caret-color: var(--layout-text-color);
     position: relative;
     tab-size: 1;
     outline: 0;
@@ -178,21 +178,21 @@
   
   .editor-heading-h1 {
     font-size: 24px;
-    color: var(--text-color);
+    color: var(--layout-text-color);
     font-weight: 700;
     margin-block-end: 18px;
   }
   
   .editor-heading-h2 {
     font-size: 20px;
-    color: var(--text-color);
+    color: var(--layout-text-color);
     font-weight: 700;
     margin-block-end: 14px;
   }
 
   .editor-heading-h3 {
     font-size: 18px;
-    color: var(--text-color);
+    color: var(--layout-text-color);
     font-weight: 700;
     margin-block-end: 12px;
   }
@@ -297,7 +297,7 @@
     padding: 8px;
     cursor: pointer;
     vertical-align: middle;
-    color: var(--text-color);
+    color: var(--layout-text-color);
   }
   
   .toolbar button.toolbar-item:disabled {

@@ -7,8 +7,8 @@
     --tertiary-color: #C976A0;
     --muted-text-color: rgba(44, 54, 67, 0.5);
   
-    --card-bg-color: #F3F7FC;
-    --card-alt-bg-color: #FFFFFF;
+    --card-bg-color: #FFFFFF;
+    --card-alt-bg-color: #F3F7FC;
     --card-text-color: #2C3643;
     --card-alt-text-color: #3E4A59;
     --card-border-color: rgba(0, 0, 0, 0.05);
@@ -48,13 +48,13 @@
     --primary-button-text-color: #FFFFFF;
     --primary-button-border-color: none;
     --primary-button-border-radius: 50px;
-    --primary-button-padding: 8px 16px;
+    --primary-button-padding: 12px 16px;
   
     --secondary-button-bg-color: #A34389;
     --secondary-button-text-color: #FFFFFF;
     --secondary-button-border-color: none;
     --secondary-button-border-radius: 50px;
-    --secondary-button-padding: 8px 16px;
+    --secondary-button-padding: 12px 16px;
   
     --clear-button-bg-color: transparent;
     --clear-button-text-color: #16825D;
@@ -66,7 +66,7 @@
     --outline-button-text-color: #16825D;
     --outline-button-border-color: #16825D;
     --outline-button-border-radius: 50px;
-    --outline-button-padding: 8px 16px;
+    --outline-button-padding: 12px 16px;
 
     --code-block-background-color: #F0F0F0;
     --code-block-border-color: transparent;

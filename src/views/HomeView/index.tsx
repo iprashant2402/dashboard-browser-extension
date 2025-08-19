@@ -41,9 +41,6 @@ export const HomeView = () => {
                 {/* Mobile/Tablet Layout - Hidden on desktop */}
                 <div className="mobile-layout">
                     <ResponsiveTabs />
-                    <div className="mobile-footer-bar">
-                        <PreferencesToolbar />
-                    </div>
                 </div>
             </div>
             <span className="privacy-curtain-toggle">
