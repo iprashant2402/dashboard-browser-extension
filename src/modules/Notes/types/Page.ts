@@ -1,6 +1,5 @@
 export interface Page {
     id: string;
-    ref_id?: string;
     title: string;
     content?: string;
     version: number;

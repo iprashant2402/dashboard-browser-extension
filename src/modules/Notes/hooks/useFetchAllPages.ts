@@ -6,7 +6,7 @@ export const useFetchAllPages = () => {
         queryKey: ['pages'],
         queryFn: () => localPageRepository.getPages(),
         select: (data) => data.sort((a, b) => {
-                return b.order - a.order;
+                return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         })
     });
 };

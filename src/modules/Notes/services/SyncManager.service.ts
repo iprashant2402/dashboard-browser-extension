@@ -5,6 +5,7 @@ import { Page } from '../types/Page';
 import { SimpleDelta, ConflictInfo, DeltasResponse } from '../types/SyncDeltas';
 import { SyncQueue } from '../utils/sync';
 import { v4 as uuidv4 } from 'uuid';
+import { deltaApplicator } from './DeltaApplicator.service';
 
 export class SyncManager {
   private apiService = pagesSyncRepository;
@@ -149,7 +150,7 @@ export class SyncManager {
   }
 
   private async applyRemoteDeltas(pageId: string, deltas: SimpleDelta[]): Promise<void> {
-    console.log('applyRemoteDeltas', pageId, deltas);
+    await deltaApplicator.applyRemoteDeltas(pageId, deltas);
   }
 
   // Utility methods
