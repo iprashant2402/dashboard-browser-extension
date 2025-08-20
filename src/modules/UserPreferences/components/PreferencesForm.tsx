@@ -1,9 +1,9 @@
 import { Theme, THEME_DISPLAY_NAMES, THEMES } from "../../Tasks/types/Theme"
-import { useUserPreferences } from "./UserPreferencesProvider";
 import "./PreferencesForm.css";
 import { Toggle } from "../../../components/Toggle";
+import { useUserPreferences } from "../hooks/useUserPreferences";
 
-export const PreferencesForm = (_: { onClose: () => void }) => {
+export const PreferencesForm = () => {
     const { userPreferences, updatePreferences } = useUserPreferences();
 
     const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

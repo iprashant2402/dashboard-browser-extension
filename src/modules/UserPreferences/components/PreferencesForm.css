@@ -35,7 +35,7 @@
 .preferences-menu-item label {
     font-size: 14px;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--layout-text-color);
 }
 
 .preferences-menu-item input[type="checkbox"] {

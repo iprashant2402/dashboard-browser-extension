@@ -45,6 +45,7 @@ export const usePageList = () => {
                 content: "",
                 createdAt,
                 updatedAt: createdAt,
+                version: 0,
                 order: createdAt.getTime(),
             };
             await createPage(newPage);
@@ -69,10 +70,6 @@ export const usePageList = () => {
 
     const handleRenamePage = useCallback(async (id: string, pageTitle: string) => {
         await updatePage({ id, page: { title: pageTitle } });
-    }, [updatePage]);
-
-    const handleUpdatePageOrder = useCallback(async (id: string, order: number) => {
-        await updatePage({ id, page: { order } });
     }, [updatePage]);
 
     const handleDeletePage = useCallback(async (id: string) => {
@@ -110,7 +107,6 @@ export const usePageList = () => {
             handleCloseCreatePageDialog,
             handlePageClick,
             handleRenamePage,
-            handleUpdatePageOrder
         }
     }
 };

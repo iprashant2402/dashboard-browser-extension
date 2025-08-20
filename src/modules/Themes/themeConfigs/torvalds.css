@@ -49,13 +49,13 @@
     --primary-button-text-color: #FFFFFF;
     --primary-button-border-color: none;
     --primary-button-border-radius: 4px;
-    --primary-button-padding: 8px 12px;
+    --primary-button-padding: 12px 16px;
   
     --secondary-button-bg-color: #CCCCCC;
     --secondary-button-text-color: #2D2D2D;
     --secondary-button-border-color: none;
     --secondary-button-border-radius: 4px;
-    --secondary-button-padding: 8px 12px;
+    --secondary-button-padding: 12px 16px;
   
     --clear-button-bg-color: transparent;
     --clear-button-text-color: #0066CC;
@@ -67,7 +67,7 @@
     --outline-button-text-color: #0066CC;
     --outline-button-border-color: #0066CC;
     --outline-button-border-radius: 4px;
-    --outline-button-padding: 8px 12px;
+    --outline-button-padding: 12px 16px;
 
     --code-block-background-color: #F0F0F0;
     --code-block-border-color: transparent;

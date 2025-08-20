@@ -28,11 +28,6 @@ export const HomeView = () => {
                     <div className="row home-view">
                 {/* Desktop Layout - Hidden on mobile/tablet */}
                 <div className="desktop-layout">
-                    {/* <div className="column panel-col">
-                    <div className="column notes-list-panel">
-                        <NotebookList />
-                    </div>
-                    </div> */}
                     <div className="column panel-col command-center-container">
                             <CommandCenter />
                     </div>
@@ -41,9 +36,6 @@ export const HomeView = () => {
                 {/* Mobile/Tablet Layout - Hidden on desktop */}
                 <div className="mobile-layout">
                     <ResponsiveTabs />
-                    <div className="mobile-footer-bar">
-                        <PreferencesToolbar />
-                    </div>
                 </div>
             </div>
             <span className="privacy-curtain-toggle">

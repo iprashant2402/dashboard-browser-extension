@@ -56,14 +56,14 @@
     --primary-button-text-color: #0D1117;
     --primary-button-border-color: none;
     --primary-button-border-radius: 4px;
-    --primary-button-padding: 8px 12px;
+    --primary-button-padding: 12px 16px;
   
     /* Secondary Button */
     --secondary-button-bg-color: #30363D;
     --secondary-button-text-color: #C9D1D9;
     --secondary-button-border-color: none;
     --secondary-button-border-radius: 4px;
-    --secondary-button-padding: 8px 12px;
+    --secondary-button-padding: 12px 16px;
   
     /* Clear Button */
     --clear-button-bg-color: transparent;
@@ -77,7 +77,7 @@
     --outline-button-text-color: #58A6FF;
     --outline-button-border-color: #58A6FF;
     --outline-button-border-radius: 4px;
-    --outline-button-padding: 8px 12px;
+    --outline-button-padding: 12px 16px;
   
     --code-block-background-color: #11141C;
     --code-block-border-color: #222733;
