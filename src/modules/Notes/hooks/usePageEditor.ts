@@ -1,21 +1,19 @@
 import { useNavigate, useParams } from "react-router";
-import { useDeletePage, useFetchPage, useUpdatePage } from "./pageCrud";
 import { useCallback } from "react";
 import { useToast } from "../../../components/Toast/ToastContainer";
+import { useFetchPage } from "./useFetchPage";
+import { useUpdatePage } from "./useUpdatePage";
+import { useDeletePage } from "./useDeletePage";
 
 export const usePageEditor = () => {
     const { id } = useParams();
-    const { data: page, refetch, isLoading: isFetchingPage, isError: isPageFetchError, status: pageFetchStatus } = useFetchPage(id);
+    const { data: page, isLoading: isFetchingPage, isError: isPageFetchError, status: pageFetchStatus } = useFetchPage(id);
     const navigate = useNavigate();
     const { showToast } = useToast();
 
-    const { mutateAsync: updatePage, isPending: isUpdatingPage, isError: isUpdatingPageError } = useUpdatePage(
-        { onSuccess: () => refetch() }
-    );
+    const { mutateAsync: updatePage, isPending: isUpdatingPage, isError: isUpdatingPageError } = useUpdatePage();
 
-    const { mutateAsync: deletePage, isPending: isDeletingPage, isError: isDeletingPageError } = useDeletePage(
-        { onSuccess: () => refetch() }
-    );
+    const { mutateAsync: deletePage, isPending: isDeletingPage, isError: isDeletingPageError } = useDeletePage();
 
     const handleDeletePage = useCallback(async (id: string) => {
         await deletePage(id);
@@ -28,11 +26,11 @@ export const usePageEditor = () => {
 
 
     const handleOnSavePage = useCallback(async (content: string) => {
-        await updatePage({ id: id!, page: { content } });
+        await updatePage({ id: id!, page: { content }, sync: false });
     }, [updatePage, id]);
 
     const handleOnSavePageTitle = useCallback(async (title: string) => {
-        await updatePage({ id: id!, page: { title } });
+        await updatePage({ id: id!, page: { title }, sync: true });
         showToast({
             type: "success",
             message: "Page title updated successfully"

@@ -2,7 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { localPageRepository } from "../../repository/PageRepository";
 import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { useCreatePage } from "../../hooks/pageCrud";
+import { useCreatePage } from "../../hooks/useCreatePage";
 import { v4 as uuidv4 } from 'uuid';
 
 export const PageEditorNavigationController = () => {
@@ -27,7 +27,7 @@ export const PageEditorNavigationController = () => {
                 content: "",
                 createdAt,
                 updatedAt: createdAt,
-                order: createdAt.getTime(),
+                version: 0,
             };
             await createPage(newPage);
             navigate(`/editor/${newPage.id}`);

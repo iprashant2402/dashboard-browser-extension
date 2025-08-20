@@ -174,6 +174,7 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
   }, [props.initialState]);
 
   const onChange = (content: EditorState) => {
+    console.log('onChange', content);
     editorStateRef.current = content;
     if (content) {
       props.onChange(JSON.stringify(content));
@@ -199,7 +200,7 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
             }
             ErrorBoundary={LexicalErrorBoundary}
           />
-          <OnChangePlugin onChange={onChange} />
+          <OnChangePlugin onChange={onChange} ignoreSelectionChange={true} />
           <HistoryPlugin />
           <AutoFocusPlugin />
           <LinkPlugin />
