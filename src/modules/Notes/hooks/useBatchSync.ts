@@ -1,7 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { BatchSyncRequest } from "../types/Page";
 import { pagesSyncRepository } from "../api";
 import { localPageRepository } from "../repository/PageRepository";
+import { PAGES_QUERY_KEYS } from "../utils/contants";
 
 const batchSync = async () => {
     const pages = await localPageRepository.getPages();
@@ -18,8 +19,12 @@ const batchSync = async () => {
 };
 
 export const useBatchSync = () => {
+    const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: batchSync,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: PAGES_QUERY_KEYS.allPages });
+        }
     });
 }

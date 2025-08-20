@@ -1,5 +1,5 @@
 import { IPageRepository } from "./IPageRepository";
-import { Page } from "../types/Page";
+import { Page, PageSummary } from "../types/Page";
 import { localDB } from "../../../utils/LocalDBStorage";
 
 class LocalPageRepository implements IPageRepository {
@@ -11,6 +11,17 @@ class LocalPageRepository implements IPageRepository {
 
     async getPages(): Promise<Page[]> {
         return await localDB.getAll<Page>('pages');
+    }
+
+    async getPagesSummary(): Promise<PageSummary[]> {
+        const pages = await localDB.getAll<Page>('pages');
+        return pages.map(page => ({
+            id: page.id,
+            title: page.title,
+            version: page.version,
+            updatedAt: page.updatedAt.toISOString(),
+            isDeleted: false,
+        }));
     }
 
     async getLastModifiedPage(): Promise<Page | null> {

@@ -1,12 +1,12 @@
 import { IoEllipsisHorizontal, IoPencil, IoTrash } from "react-icons/io5";
 import './index.css';
-import { Page } from "../../types/Page";
+import { PageSummary } from "../../types/Page";
 import { Button } from "../../../../components/Button";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { IoIosPaper } from "react-icons/io";
 
 interface PageListItemProps { 
-    page: Page, 
+    page: PageSummary, 
     order: number,
     handleClick: (id: string) => void, 
     handleRename: (id: string, pageTitle: string) => void, 
