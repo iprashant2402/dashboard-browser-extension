@@ -3,9 +3,8 @@ import { Page, PageSummary } from "../types/Page";
 import { localDB } from "../../../utils/LocalDBStorage";
 
 class LocalPageRepository implements IPageRepository {
-    async getPage(id: string): Promise<Page> {
+    async getPage(id: string): Promise<Page | null> {
         const page = await localDB.get<Page>('pages', id);
-        if (!page) throw new Error('PAGE_NOT_FOUND');
         return page;
     }
 

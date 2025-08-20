@@ -36,11 +36,6 @@ export const NotebookList = () => {
     return (
         <>
             <div className="notebook-list">
-            <div className="notebook-list-header">
-                    <div className="notebook-list-header-left">
-                        <h1 className="notebook-list-title">insqu<span>oo</span></h1>
-                    </div>
-            </div>
                 <div className="notebook-list-container">
             <div className="notebook-list-container-title-header">
             <p className="notebook-list-container-title">Your pages</p>
