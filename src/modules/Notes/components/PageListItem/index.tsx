@@ -11,7 +11,6 @@ interface PageListItemProps {
     handleClick: (id: string) => void, 
     handleRename: (id: string, pageTitle: string) => void, 
     handleDelete: (id: string) => void, isActive: boolean,
-    handleUpdatePageOrder: (id: string, order: number) => void
 }
 
 export const PageListItem = ({ 
@@ -21,7 +20,6 @@ export const PageListItem = ({
     handleRename, 
     handleDelete, 
     isActive,
-    handleUpdatePageOrder
 }: PageListItemProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isRenaming, setIsRenaming] = useState(false);
@@ -58,20 +56,7 @@ export const PageListItem = ({
         setIsMenuOpen(false);
     };
 
-    const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
-        event.dataTransfer.setData('text/plain', page.id);
-    }
-
-    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-        const pageId = event.dataTransfer.getData('text/plain');
-        handleUpdatePageOrder(pageId, page.order + 1);
-    }
-
-    const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-        event.preventDefault();
-    }
-
-    return <div title={page.title} id={`page-${order}`} draggable onDragStart={handleDragStart} onDrop={handleDrop} onDragOver={handleDragOver} className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onDoubleClick={() => setIsRenaming(true)} onClick={() => handleClick(page.id)}>
+    return <div title={page.title} id={`page-${order}`} className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onDoubleClick={() => setIsRenaming(true)} onClick={() => handleClick(page.id)}>
         <div className="row jt-space-between">
             <div className="row item-title-container">
                 <span><IoIosPaper size={14} color="var(--muted-text-color)" /></span>

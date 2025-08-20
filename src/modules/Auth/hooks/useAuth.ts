@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { authRepository } from '../repository/AuthRepository';
 import { LoginRequest, SignupRequest, GoogleAuthRequest, UpdateProfileRequest } from '../types/User';
 import { AxiosError } from 'axios';
+import { useBatchSync } from '../../Notes/hooks/useBatchSync';
 
 // Query keys
 export const AUTH_QUERY_KEYS = {
@@ -11,6 +12,7 @@ export const AUTH_QUERY_KEYS = {
 
 export const useAuth = () => {
   const queryClient = useQueryClient();
+  const { mutateAsync: batchSync } = useBatchSync();
 
   // Check if user is authenticated
   const isAuthenticated = !!localStorage.getItem('access_token');
@@ -38,6 +40,7 @@ export const useAuth = () => {
     onSuccess: (data) => {
       queryClient.setQueryData(AUTH_QUERY_KEYS.profile, data.user);
       queryClient.invalidateQueries({ queryKey: AUTH_QUERY_KEYS.user });
+      batchSync();
     },
   });
 
@@ -47,6 +50,7 @@ export const useAuth = () => {
     onSuccess: (data) => {
       queryClient.setQueryData(AUTH_QUERY_KEYS.profile, data.user);
       queryClient.invalidateQueries({ queryKey: AUTH_QUERY_KEYS.user });
+      batchSync();
     },
   });
 

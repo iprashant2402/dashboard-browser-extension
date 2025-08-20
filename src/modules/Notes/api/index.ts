@@ -1,5 +1,5 @@
 import { apiManager } from "../../../utils/ApiManager";
-import { CreatePageRequest, PageCloudRef, PagesListResponse, UpdatePageRequest } from "../types/Page";
+import { BatchSyncRequest, BatchSyncResponse, CreatePageRequest, PageCloudRef, PagesListResponse, UpdatePageRequest } from "../types/Page";
 import { DeltasResponse, SimpleDelta, SyncResponse, SyncStatus } from "../types/SyncDeltas";
 
 class PagesSyncRepository {
@@ -26,6 +26,11 @@ class PagesSyncRepository {
 
     async deletePage(id: string) {
         const response = await apiManager.delete<{success: boolean}>('/pages/' + id);
+        return response.data;
+    }
+
+    async batchSync(pages: BatchSyncRequest) {
+        const response = await apiManager.post<BatchSyncResponse>('/pages/batch-sync', pages);
         return response.data;
     }
 

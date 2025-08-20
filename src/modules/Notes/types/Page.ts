@@ -33,6 +33,7 @@ export interface PagesListResponse {
   }
 
   export interface CreatePageRequest {
+    id: string;
     title: string;
     content?: unknown;
   }
@@ -42,4 +43,14 @@ export interface PagesListResponse {
     content?: unknown;
     lastModifiedAt?: string;
   }
+
+  export interface BatchSyncRequest {
+    pages: CreatePageRequest[];
+  }
   
+  export interface BatchSyncResponse {
+    success: boolean;
+    processedPages: string[];
+    processed: number;
+    failed: number;
+  }
