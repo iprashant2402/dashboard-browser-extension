@@ -48,8 +48,6 @@ export class DeltaApplicator {
           syncedAt: new Date().toISOString()
         });
 
-        console.log(`Applied ${deltas.length} remote deltas to page ${pageId}`);
-
       } catch (error) {
         console.error(`Failed to apply remote deltas to page ${pageId}:`, error);
         throw error;

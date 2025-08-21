@@ -32,8 +32,6 @@ export class AutoSaveManager {
       dirtyNodes
     );
 
-    console.log('changes', changes);
-
     if (changes.length === 0) return;
 
     // Clear existing timeout
@@ -64,8 +62,6 @@ export class AutoSaveManager {
       const delta = this.changeTracker.generateDelta();
       if (delta) {
         await SyncQueue.add(delta);
-
-        console.log('Changes added to sync queue');
         
         // 3. Attempt cloud sync
         await this.syncManager.processSyncQueue();

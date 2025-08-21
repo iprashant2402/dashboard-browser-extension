@@ -1,10 +1,8 @@
-import { ToastData } from '../../../components/Toast';
 import { pagesSyncRepository } from '../api';
 import { localPageRepository } from '../repository/PageRepository';
 import { Page } from '../types/Page';
 import { SimpleDelta, ConflictInfo, DeltasResponse } from '../types/SyncDeltas';
 import { SyncQueue } from '../utils/sync';
-import { v4 as uuidv4 } from 'uuid';
 import { deltaApplicator } from './DeltaApplicator.service';
 
 export class SyncManager {
@@ -110,12 +108,7 @@ export class SyncManager {
       // Apply remote changes
       await this.applyRemoteDeltas(conflict.pageId, remoteDeltas.deltas);
       
-      // Notify user
-      this.notifyUser({
-        type: 'warning',
-        message: 'Conflict detected. Your local changes have been saved as a backup.',
-        id: uuidv4()
-      });
+      console.info('Conflict detected');
     }
   }
 
@@ -182,10 +175,6 @@ export class SyncManager {
 
   private async createBackup(page: Page): Promise<void> {
     console.log('createBackup', page);
-  }
-
-  private notifyUser(notification: ToastData): void {
-    alert(notification.message);
   }
 }
 
