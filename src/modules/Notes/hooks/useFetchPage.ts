@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { localPageRepository } from "../repository/PageRepository";
 import { pagesSyncRepository } from "../api";
+import { ACCESS_TOKEN_KEY } from "../utils/contants";
 
 const fetchPage = async (id: string) => {
     const page = await localPageRepository.getPage(id);
-    const isAuthenticated = !!localStorage.getItem('access_token');
+    const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
     if (!page && isAuthenticated) {
         const remotePage = await pagesSyncRepository.getPage(id);
         if (remotePage) {

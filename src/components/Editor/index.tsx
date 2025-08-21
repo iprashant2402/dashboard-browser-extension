@@ -37,8 +37,6 @@ import { EMAIL_REGEX, URL_REGEX } from '../../utils/helpers';
 import { KeyboardShortcutsPlugin } from './plugins/KeyboardShortcutPlugin';
 import { ListExitPlugin } from './plugins/ListExitPlugin';
 import ToolbarPlugin from './plugins/ToolbarPlugin';
-import { AutoSaveManager } from '../../modules/Notes/services/AutoSave.service';
-import { AutoSaveManagerPlugin } from './plugins/AutoSaveManagerPlugin';
 
 
 const MATCHERS = [
@@ -56,7 +54,6 @@ export interface EditorProps {
   initialState?: string;
   onSave: (content: string) => void;
   showToolbar?: boolean;
-  autoSaveManager?: AutoSaveManager | null;
 }
 
 const DefaultPlaceholder = 'Jot down your thoughts or anything else...';
@@ -202,7 +199,6 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
             }
             ErrorBoundary={LexicalErrorBoundary}
           />
-          {props.autoSaveManager && <AutoSaveManagerPlugin autoSaveManager={props.autoSaveManager} />}
           <OnChangePlugin onChange={onChange} ignoreSelectionChange={true} />
           <HistoryPlugin />
           <AutoFocusPlugin />

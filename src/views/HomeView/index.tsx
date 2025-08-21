@@ -8,9 +8,20 @@ import { usePrivacyCurtain } from "../../providers/PrivacyCurtainProvider";
 import Clock from "../../components/Clock/Clock";
 import { Sidebar } from "../../components/Sidebar";
 import { NotebookListHeader } from "../../modules/Notes/components/NotebookList/NotebookListHeader";
+import { useEffect } from "react";
+import { useBatchSync } from "../../modules/Notes/hooks/useBatchSync";
 
 export const HomeView = () => {
     const { isPrivacyCurtainEnabled, setIsPrivacyCurtainEnabled } = usePrivacyCurtain();
+    const { mutateAsync: batchSync } = useBatchSync();
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            batchSync();
+        }, 30_000);
+        return () => clearInterval(interval);
+
+    }, [batchSync])
 
     const togglePrivacyCurtain = () => {
         setIsPrivacyCurtainEnabled(!isPrivacyCurtainEnabled);

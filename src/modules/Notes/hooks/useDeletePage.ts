@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { localPageRepository } from "../repository/PageRepository";
-import { PAGES_QUERY_KEYS } from "../utils/contants";
+import { ACCESS_TOKEN_KEY, PAGES_QUERY_KEYS } from "../utils/contants";
 import { pagesSyncRepository } from "../api";
 
 const deletePage = async (id: string) => {
-    const isAuthenticated = !!localStorage.getItem('access_token');
+    const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
     if (isAuthenticated) {
         await pagesSyncRepository.deletePage(id);
     }

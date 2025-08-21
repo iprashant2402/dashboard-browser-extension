@@ -3,6 +3,7 @@ import { authRepository } from '../repository/AuthRepository';
 import { LoginRequest, SignupRequest, GoogleAuthRequest, UpdateProfileRequest } from '../types/User';
 import { AxiosError } from 'axios';
 import { useBatchSync } from '../../Notes/hooks/useBatchSync';
+import { ACCESS_TOKEN_KEY } from '../../Notes/utils/contants';
 
 // Query keys
 export const AUTH_QUERY_KEYS = {
@@ -15,7 +16,7 @@ export const useAuth = () => {
   const { mutateAsync: batchSync } = useBatchSync();
 
   // Check if user is authenticated
-  const isAuthenticated = !!localStorage.getItem('access_token');
+  const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
 
   // Get user profile
   const {

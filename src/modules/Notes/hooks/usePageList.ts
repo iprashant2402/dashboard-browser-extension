@@ -61,10 +61,12 @@ export const usePageList = () => {
     }, [createPage, setIsCreatePageDialogOpen, handlePageClick, showToast]);
 
     const handleUpdatePageSubmit = useCallback(async (args: { id: string, page: Partial<Page> }) => {
+        console.log('handleUpdatePageSubmit', args);
         await updatePage({ ...args, sync: false });
     }, [updatePage]);
 
     const handleRenamePage = useCallback(async (id: string, pageTitle: string) => {
+        console.log('handleRenamePage', id, pageTitle);
         await updatePage({ id, page: { title: pageTitle }, sync: true });
     }, [updatePage]);
 

@@ -47,10 +47,33 @@ export interface PagesListResponse {
   export interface BatchSyncRequest {
     pages: CreatePageRequest[];
   }
+
+  export interface ProcessedPageInfo {
+    id: string;
+    version: number;
+    updatedAt: string;
+  }
   
   export interface BatchSyncResponse {
     success: boolean;
-    processedPages: string[];
+    processedPages: ProcessedPageInfo[];
     processed: number;
     failed: number;
+  }
+
+  export type PageSyncStatus = 'NOT_FOUND' | 'OUTDATED' | 'UP_TO_DATE' | 'UPDATE_AVAILABLE';
+
+  export interface CheckPagesStatusRequest {
+    pages: {
+        id: string;
+        updatedAt: string;
+    }[];
+  }
+
+  export interface CheckPagesStatusResponse {
+    pages: {
+        id: string;
+        status: PageSyncStatus;
+        serverUpdatedAt?: string;
+    }[];
   }

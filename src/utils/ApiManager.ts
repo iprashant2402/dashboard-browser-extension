@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { ACCESS_TOKEN_KEY } from "../modules/Notes/utils/contants";
 
 const API_ENDPOINTS_TO_SKIP_REFRESH = [
     '/auth/refresh',
@@ -38,7 +39,7 @@ class ApiManager {
           }
     
           // Add auth token if available
-          const token = localStorage.getItem('access_token');
+          const token = localStorage.getItem(ACCESS_TOKEN_KEY);
           if (token) {
             config.headers['Authorization'] = `Bearer ${token}`;
           }
@@ -58,12 +59,12 @@ class ApiManager {
               
               try {
                 const refreshResponse = await this.refreshToken();
-                localStorage.setItem('access_token', refreshResponse.accessToken);
+                localStorage.setItem(ACCESS_TOKEN_KEY, refreshResponse.accessToken);
                 originalRequest.headers['Authorization'] = `Bearer ${refreshResponse.accessToken}`;
                 return this.api(originalRequest);
               } catch (refreshError) {
                 // Refresh failed, redirect to login
-                localStorage.removeItem('access_token');
+                localStorage.removeItem(ACCESS_TOKEN_KEY);
                 localStorage.removeItem('refresh_token');
                 window.location.reload();
                 return Promise.reject(refreshError);

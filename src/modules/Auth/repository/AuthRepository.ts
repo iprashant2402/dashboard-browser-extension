@@ -1,6 +1,7 @@
 import { IAuthRepository } from './IAuthRepository';
 import { AuthResponse, LoginRequest, SignupRequest, GoogleAuthRequest, User, UpdateProfileRequest } from '../types/User';
 import { apiManager } from '../../../utils/ApiManager';
+import { ACCESS_TOKEN_KEY } from '../../Notes/utils/contants';
 
 class AuthRepository implements IAuthRepository {
   async login(credentials: LoginRequest): Promise<AuthResponse> {
@@ -8,7 +9,7 @@ class AuthRepository implements IAuthRepository {
     const authData = response.data;
     
     // Store tokens
-    localStorage.setItem('access_token', authData.accessToken);
+    localStorage.setItem(ACCESS_TOKEN_KEY, authData.accessToken);
     localStorage.setItem('refresh_token', authData.refreshToken);
     
     return authData;
@@ -19,7 +20,7 @@ class AuthRepository implements IAuthRepository {
     const authData = response.data;
     
     // Store tokens
-    localStorage.setItem('access_token', authData.accessToken);
+    localStorage.setItem(ACCESS_TOKEN_KEY, authData.accessToken);
     localStorage.setItem('refresh_token', authData.refreshToken);
     
     return authData;
@@ -30,7 +31,7 @@ class AuthRepository implements IAuthRepository {
     const authData = response.data;
     
     // Store tokens
-    localStorage.setItem('access_token', authData.accessToken);
+    localStorage.setItem(ACCESS_TOKEN_KEY, authData.accessToken);
     localStorage.setItem('refresh_token', authData.refreshToken);
     
     return authData;
@@ -41,7 +42,7 @@ class AuthRepository implements IAuthRepository {
       await apiManager.post('/auth/logout');
     } finally {
       // Clear tokens regardless of API call success
-      localStorage.removeItem('access_token');
+      localStorage.removeItem(ACCESS_TOKEN_KEY);
       localStorage.removeItem('refresh_token');
     }
   }

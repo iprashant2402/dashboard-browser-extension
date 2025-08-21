@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { localPageRepository } from "../repository/PageRepository";
 import { pagesSyncRepository } from "../api";
-import { PAGES_QUERY_KEYS } from "../utils/contants";
+import { ACCESS_TOKEN_KEY, PAGES_QUERY_KEYS } from "../utils/contants";
 
 const fetchAllPages = async () => {
     const localPages = await localPageRepository.getPagesSummary();
-    const isAuthenticated = !!localStorage.getItem('access_token');
+    const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
     try {
         if (isAuthenticated) {
             const remotePages = await pagesSyncRepository.getPages();

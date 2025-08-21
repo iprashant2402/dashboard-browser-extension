@@ -2,6 +2,7 @@ import { pagesSyncRepository } from '../api';
 import { localPageRepository } from '../repository/PageRepository';
 import { Page } from '../types/Page';
 import { SimpleDelta, ConflictInfo, DeltasResponse } from '../types/SyncDeltas';
+import { ACCESS_TOKEN_KEY } from '../utils/contants';
 import { SyncQueue } from '../utils/sync';
 import { deltaApplicator } from './DeltaApplicator.service';
 
@@ -17,7 +18,7 @@ export class SyncManager {
   // Process sync queue
   async processSyncQueue(): Promise<void> {
     console.info('Processing sync queue')
-    const isAuthenticated = !!localStorage.getItem('access_token');
+    const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
     if (!isAuthenticated) return;
     
     if (this.syncInProgress || !navigator.onLine) return;
@@ -130,7 +131,7 @@ export class SyncManager {
   // Pull remote changes
   private async pullRemoteChanges(): Promise<void> {
     console.info('Pulling remote changes')
-    const isAuthenticated = !!localStorage.getItem('access_token');
+    const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
     if (!isAuthenticated) return;
     console.info('Pulling remote changes:::user logged in')
     try {

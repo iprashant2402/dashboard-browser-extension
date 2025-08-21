@@ -1,15 +1,12 @@
 import { useNavigate, useParams } from "react-router";
-import { useCallback, useRef } from "react";
+import { useCallback } from "react";
 import { useToast } from "../../../components/Toast/ToastContainer";
 import { useFetchPage } from "./useFetchPage";
 import { useUpdatePage } from "./useUpdatePage";
 import { useDeletePage } from "./useDeletePage";
-import { AutoSaveManager } from "../services/AutoSave.service";
-import { syncManager } from "../services/SyncManager.service";
 
 export const usePageEditor = () => {
     const { id } = useParams();
-    const autoSaveManager = useRef(new AutoSaveManager(id!, syncManager));
     const { data: page, isLoading: isFetchingPage, isError: isPageFetchError, status: pageFetchStatus } = useFetchPage(id);
     const navigate = useNavigate();
     const { showToast } = useToast();
@@ -29,10 +26,12 @@ export const usePageEditor = () => {
 
 
     const handleOnSavePage = useCallback(async (content: string) => {
+        console.log('handleOnSavePage', content);
         await updatePage({ id: id!, page: { content }, sync: false });
     }, [updatePage, id]);
 
     const handleOnSavePageTitle = useCallback(async (title: string) => {
+        console.log('handleOnSavePageTitle', title);
         await updatePage({ id: id!, page: { title }, sync: true });
         showToast({
             type: "success",
@@ -56,7 +55,6 @@ export const usePageEditor = () => {
             handleDeletePage,
             handleOnSavePage,
             handleOnSavePageTitle,
-            autoSaveManager
         }
     }
 }

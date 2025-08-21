@@ -2,6 +2,7 @@ import { EditorState } from 'lexical';
 import { ChangeTracker } from './ChangeTracker.service';
 import { SyncManager } from './SyncManager.service';
 import { SyncQueue } from '../utils/sync';
+import { ACCESS_TOKEN_KEY } from '../utils/contants';
 
 export class AutoSaveManager {
   private saveTimeout: number | null = null;
@@ -55,7 +56,7 @@ export class AutoSaveManager {
   }
 
   private async performAutoSave(): Promise<void> {
-    const isAuthenticated = !!localStorage.getItem('access_token');
+    const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
     if (!isAuthenticated) return;
     try {      
       // 2. Generate and queue delta for cloud sync
