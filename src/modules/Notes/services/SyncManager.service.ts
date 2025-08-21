@@ -18,8 +18,12 @@ export class SyncManager {
 
   // Process sync queue
   async processSyncQueue(): Promise<void> {
+    console.info('Processing sync queue')
+    const isAuthenticated = !!localStorage.getItem('access_token');
+    if (!isAuthenticated) return;
+    
     if (this.syncInProgress || !navigator.onLine) return;
-
+    console.info('Processing sync queue:::Starting sync')
     this.syncInProgress = true;
     
     try {
@@ -78,7 +82,8 @@ export class SyncManager {
       try {
         // Get remote deltas to resolve conflict
         const remoteDeltas = await this.apiService.getPageDeltas(
-          conflict.pageId
+          conflict.pageId,
+          conflict.clientVersion
         );
 
         // Simple conflict resolution: last-write-wins with user notification
@@ -131,12 +136,17 @@ export class SyncManager {
 
   // Pull remote changes
   private async pullRemoteChanges(): Promise<void> {
+    console.info('Pulling remote changes')
+    const isAuthenticated = !!localStorage.getItem('access_token');
+    if (!isAuthenticated) return;
+    console.info('Pulling remote changes:::user logged in')
     try {
       const pages = await localPageRepository.getPages();
       
       for (const page of pages) {
         const remoteDeltas = await this.apiService.getPageDeltas(
-          page.id
+          page.id,
+          page.version
         );
         
         if (remoteDeltas.deltas.length > 0) {
@@ -178,3 +188,5 @@ export class SyncManager {
     alert(notification.message);
   }
 }
+
+export const syncManager = new SyncManager();

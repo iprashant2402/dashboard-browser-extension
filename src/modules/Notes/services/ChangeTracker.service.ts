@@ -19,16 +19,18 @@ export class ChangeTracker {
   ): SimpleChange[] {
     const changes: SimpleChange[] = [];
     
-    // Process each dirty node
-    for (const nodeKey of dirtyNodes) {
-      const currentNode = editorState._nodeMap.get(nodeKey);
-      const prevNode = prevEditorState?._nodeMap.get(nodeKey);
-      
-      const change = this.detectNodeChange(currentNode, prevNode, nodeKey);
-      if (change) {
-        changes.push(change);
+    // Process each dirty node within the editor state context
+    editorState.read(() => {
+      for (const nodeKey of dirtyNodes) {
+        const currentNode = editorState._nodeMap.get(nodeKey);
+        const prevNode = prevEditorState?._nodeMap.get(nodeKey);
+        
+        const change = this.detectNodeChange(currentNode, prevNode, nodeKey, editorState, prevEditorState);
+        if (change) {
+          changes.push(change);
+        }
       }
-    }
+    });
     
     // Add to pending changes
     this.pendingChanges.push(...changes);
@@ -39,7 +41,9 @@ export class ChangeTracker {
   private detectNodeChange(
     currentNode: LexicalNode | undefined, 
     prevNode: LexicalNode | undefined, 
-    nodeKey: string
+    nodeKey: string,
+    editorState: EditorState,
+    prevEditorState: EditorState
   ): SimpleChange | null {
     if (!prevNode && currentNode) {
       // Node was inserted
@@ -56,7 +60,7 @@ export class ChangeTracker {
         nodeId: nodeKey,
         operation: 'delete',
       };
-    } else if (prevNode && currentNode && !this.nodesEqual(prevNode, currentNode)) {
+    } else if (prevNode && currentNode && !this.nodesEqual(prevNode, currentNode, prevEditorState)) {
       // Node was updated
       return {
         nodeId: nodeKey,
@@ -136,7 +140,16 @@ export class ChangeTracker {
     return position;
   }
 
-  private nodesEqual(node1: LexicalNode, node2: LexicalNode): boolean {
-    return node1.exportJSON() === node2.exportJSON();
+  private nodesEqual(node1: LexicalNode, node2: LexicalNode, prevEditorState: EditorState): boolean {
+    // Compare serialized versions of the nodes
+    const serialized1 = this.serializeNode(node1);
+    let serialized2: unknown;
+    
+    // Serialize the previous node within its editor state context
+    prevEditorState.read(() => {
+      serialized2 = this.serializeNode(node2);
+    });
+    
+    return JSON.stringify(serialized1) === JSON.stringify(serialized2);
   }
 }

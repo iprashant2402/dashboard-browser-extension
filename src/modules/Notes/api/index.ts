@@ -39,8 +39,8 @@ class PagesSyncRepository {
         return response.data;
     }
 
-    async getPageDeltas(pageId: string) {
-        const response = await apiManager.get<DeltasResponse>('/pages/sync/deltas/' + pageId);
+    async getPageDeltas(pageId: string, since: number) {
+        const response = await apiManager.get<DeltasResponse>('/pages/sync/deltas/' + pageId + '?since=' + since);
         return response.data;
     }
 

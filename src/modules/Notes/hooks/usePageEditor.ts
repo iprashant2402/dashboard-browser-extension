@@ -1,12 +1,15 @@
 import { useNavigate, useParams } from "react-router";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { useToast } from "../../../components/Toast/ToastContainer";
 import { useFetchPage } from "./useFetchPage";
 import { useUpdatePage } from "./useUpdatePage";
 import { useDeletePage } from "./useDeletePage";
+import { AutoSaveManager } from "../services/AutoSave.service";
+import { syncManager } from "../services/SyncManager.service";
 
 export const usePageEditor = () => {
     const { id } = useParams();
+    const autoSaveManager = useRef(new AutoSaveManager(id!, syncManager));
     const { data: page, isLoading: isFetchingPage, isError: isPageFetchError, status: pageFetchStatus } = useFetchPage(id);
     const navigate = useNavigate();
     const { showToast } = useToast();
@@ -52,7 +55,8 @@ export const usePageEditor = () => {
         actions: {
             handleDeletePage,
             handleOnSavePage,
-            handleOnSavePageTitle
+            handleOnSavePageTitle,
+            autoSaveManager
         }
     }
 }

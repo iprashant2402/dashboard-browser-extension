@@ -7,7 +7,17 @@ interface SimpleDeltaWithId extends SimpleDelta {
 
 export const SyncQueue = {
     add: async (delta: SimpleDelta) => {
-        await localDB.add<SimpleDeltaWithId>('syncQueue', { ...delta, id: `${delta.pageId}_${delta.toVersion}` });
+        const deltaWithId = { ...delta, id: `${delta.pageId}_${delta.toVersion}_${delta.timestamp}` };
+        try {
+            await localDB.add<SimpleDeltaWithId>('syncQueue', deltaWithId);
+        } catch (error) {
+            // If add fails due to duplicate key, use update instead
+            if (error instanceof Error && error.name === 'ConstraintError') {
+                await localDB.update<SimpleDeltaWithId>('syncQueue', deltaWithId);
+            } else {
+                throw error;
+            }
+        }
     },
     get: async () => {
         try {
@@ -19,6 +29,15 @@ export const SyncQueue = {
         }
     },
     remove: async (pageId: string, toVersion: number) => {
-        await localDB.delete('syncQueue', `${pageId}_${toVersion}`);
+        // Get all sync queue items to find ones matching pageId and toVersion
+        const allItems = await localDB.getAll<SimpleDeltaWithId>('syncQueue');
+        const itemsToRemove = allItems.filter(item => 
+            item.pageId === pageId && item.toVersion === toVersion
+        );
+        
+        // Remove all matching items
+        for (const item of itemsToRemove) {
+            await localDB.delete('syncQueue', item.id);
+        }
     }
 }

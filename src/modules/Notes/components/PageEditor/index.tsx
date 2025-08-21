@@ -13,6 +13,7 @@ export const PageEditor = () => {
                 showToolbar={userPreferences.editorToolbarEnabled}
                 onChange={actions.handleOnSavePage}
                 initialState={state.page?.content}
+                autoSaveManager={actions.autoSaveManager?.current ?? null}
                 onSave={actions.handleOnSavePage}
                 placeholder={<div className="page-editor-placeholder">
                     <p>Jot down your thoughts or anything else...</p>
