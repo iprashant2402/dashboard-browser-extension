@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "insquoo-chrome-extension"
+    "default": "insquoo-chrome-extension",
+    "staging": "insquoo-stage"
   }
 }
