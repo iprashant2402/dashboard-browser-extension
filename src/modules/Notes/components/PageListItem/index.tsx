@@ -2,8 +2,9 @@ import { IoEllipsisHorizontal, IoPencil, IoTrash } from "react-icons/io5";
 import './index.css';
 import { PageSummary } from "../../types/Page";
 import { Button } from "../../../../components/Button";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { IoIosPaper } from "react-icons/io";
+import dayjs from 'dayjs';
 
 interface PageListItemProps { 
     page: PageSummary, 
@@ -56,12 +57,33 @@ export const PageListItem = ({
         setIsMenuOpen(false);
     };
 
+    const updatedAt = useMemo(() => {
+        const currentTime = dayjs();
+        const pageUpdatedAt = dayjs(page.updatedAt);
+        const diff = currentTime.diff(pageUpdatedAt, 'minutes');
+        if (diff < 1) return 'just now';
+        if (diff < 60) return `${diff} minutes ago`;
+
+        const hoursDiff = currentTime.diff(pageUpdatedAt, 'hours');
+        if (hoursDiff < 24) return `${hoursDiff} hours ago`;
+
+        const daysDiff = currentTime.diff(pageUpdatedAt, 'days');
+        if (daysDiff < 30) return `${daysDiff} days ago`;
+
+        const monthsDiff = currentTime.diff(pageUpdatedAt, 'months');
+        if (monthsDiff < 12) return `${monthsDiff} months ago`;
+
+        const yearsDiff = currentTime.diff(pageUpdatedAt, 'years');
+        return `${yearsDiff} years ago`;
+    }, [page.updatedAt])
+
     return <div title={page.title} id={`page-${order}`} className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onDoubleClick={() => setIsRenaming(true)} onClick={() => handleClick(page.id)}>
         <div className="row jt-space-between">
             <div className="row item-title-container">
                 <span><IoIosPaper size={14} color="var(--muted-text-color)" /></span>
                 <div className="item-title">
                 <h4 contentEditable={isRenaming ? 'plaintext-only' : 'false'} ref={nameRef} id="page-list-item-name">{page.title || "Untitled"}</h4>
+                <p className="item-subtitle">updated {updatedAt}</p>
                 </div>
             </div>
             <IoEllipsisHorizontal onClick={openMenu} className="page-list-item-settings-cta" />

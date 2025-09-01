@@ -1,0 +1,54 @@
+.user-info-card {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    background: var(--card-bg-color);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border-color);
+    border-radius: 4px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    h4 {
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted-text-color);
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    &:hover {
+        background: transparent;
+    }
+}
+
+.user-info-card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    flex: 1;
+    text-align: center;
+}
+
+.user-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 4px;
+    background-color: var(--secondary-color);
+}

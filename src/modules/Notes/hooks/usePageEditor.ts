@@ -26,12 +26,10 @@ export const usePageEditor = () => {
 
 
     const handleOnSavePage = useCallback(async (content: string) => {
-        console.log('handleOnSavePage', content);
         await updatePage({ id: id!, page: { content }, sync: false });
     }, [updatePage, id]);
 
     const handleOnSavePageTitle = useCallback(async (title: string) => {
-        console.log('handleOnSavePageTitle', title);
         await updatePage({ id: id!, page: { title }, sync: true });
         showToast({
             type: "success",

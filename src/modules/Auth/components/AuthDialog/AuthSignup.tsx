@@ -1,5 +1,5 @@
 import { Button } from "../../../../components/Button";
-import { AuthFormMode } from "./AuthDialog";
+import { AuthFormMode } from "./AuthMenuContent";
 import WelcomeCat from '../../../../assets/images/ImageWelcomeCat.svg?react';
 
 export const AuthSignup = (props: {

@@ -1,5 +1,5 @@
 import { Button } from "../../../../components/Button";
-import { AuthFormMode } from "./AuthDialog";
+import { AuthFormMode } from "./AuthMenuContent";
 import WelcomeHand from '../../../../assets/images/ImageWelcomeHand.svg?react';
 
 export const AuthLogin = (props: {

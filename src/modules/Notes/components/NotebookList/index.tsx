@@ -3,6 +3,7 @@ import { useContext, createContext } from "react";
 import { IoAddCircle } from "react-icons/io5";
 import { usePageList } from "../../hooks/usePageList";
 import { PageListItem } from "../PageListItem";
+import { PreferencesToolbar } from "../../../UserPreferences/components/PreferencesToolbar";
 
 // Create a context to optionally receive mobile notes functionality
 const MobileNotesOptionalContext = createContext<{
@@ -53,6 +54,9 @@ export const NotebookList = () => {
                     handleRename={actions.handleRenamePage}
                     handleDelete={actions.handleDeletePage}
                 />)}
+            </div>
+            <div className="notebook-list-footer">
+            <PreferencesToolbar />
             </div>
         </div>
             </div>

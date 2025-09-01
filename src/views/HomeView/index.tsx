@@ -2,8 +2,6 @@ import "./index.css";
 import { Layout } from "../../components/Layout";
 import { CommandCenter } from "../CommandCenter";
 import { NotebookList } from "../../modules/Notes/components/NotebookList";
-import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";
-import { ResponsiveTabs } from "../../components/ResponsiveTabs";
 import { usePrivacyCurtain } from "../../providers/PrivacyCurtainProvider";
 import Clock from "../../components/Clock/Clock";
 import { Sidebar } from "../../components/Sidebar";
@@ -37,24 +35,13 @@ export const HomeView = () => {
                     </div>
                 )}
                     <div className="row home-view">
-                {/* Desktop Layout - Hidden on mobile/tablet */}
-                <div className="desktop-layout">
                     <div className="column panel-col command-center-container">
                             <CommandCenter />
                     </div>
-                </div>
-
-                {/* Mobile/Tablet Layout - Hidden on desktop */}
-                <div className="mobile-layout">
-                    <ResponsiveTabs />
-                </div>
             </div>
             <span className="privacy-curtain-toggle">
                 <p onClick={togglePrivacyCurtain}>{isPrivacyCurtainEnabled ? 'Reveal' : 'Hide'}</p>
             </span>
-            <div className="footer-bar">
-                <PreferencesToolbar />
-            </div>
         </Layout>
     )
 }

@@ -1,19 +1,13 @@
 import React, { useMemo, useState } from 'react';
-import { Dialog } from '../../../../components/Dialog';
 import { useAuth } from '../../hooks/useAuth';
 import './AuthDialog.css';
 import { AuthSignup } from './AuthSignup';
 import { AuthLogin } from './AuthLogin';
 import { Button } from '../../../../components/Button';
 
-interface AuthDialogProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
 export type AuthFormMode = 'login' | 'signup';
 
-export const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
+export const AuthMenuContent: React.FC = () => {
   const { 
     user, 
     isAuthenticated, 
@@ -59,7 +53,6 @@ export const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
           password: formData.password,
         });
       }
-      onClose();
       setFormData({ firstName: undefined, lastName: undefined, email: '', password: '' });
     } catch (error) {
       // Error handled by the hook
@@ -77,7 +70,6 @@ export const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
   const handleLogout = async () => {
     try {
       await logout();
-      onClose();
     } catch (error) {
       console.error('Logout error:', error);
     }
@@ -105,11 +97,6 @@ export const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
   const isLoading = isLoggingIn || isSigningUp || isLoggingOut;
 
   return (
-    <Dialog
-      isOpen={isOpen}
-      onClose={onClose}
-      title={'Your account'}
-    >
       <div className="auth-dialog-content">
         {isAuthenticated && user ? (
           // User is logged in - show profile
@@ -157,6 +144,5 @@ export const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
           </>
         )}
       </div>
-    </Dialog>
   );
 }; 
