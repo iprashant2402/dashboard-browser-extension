@@ -338,13 +338,42 @@ export function SlashCommandPlugin() {
       const range = domSelection.getRangeAt(0);
       const rect = range.getBoundingClientRect();
       
+      // Get viewport dimensions
+      const viewportHeight = window.innerHeight;
+      const viewportWidth = window.innerWidth;
+      
+      // Try to get actual menu dimensions if available
+      const menuElement = document.querySelector('.slash-command-menu') as HTMLElement;
+      const menuHeight = menuElement ? Math.min(menuElement.scrollHeight + 20, 300) : 300;
+      const menuWidth = menuElement ? Math.min(menuElement.scrollWidth + 20, 400) : 300;
+      const menuPadding = 8; // spacing from cursor
+      
+      // Calculate available space
+      const spaceBelow = viewportHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      const spaceRight = viewportWidth - rect.left;
+      
+      // Determine vertical position
+      let y = rect.bottom + menuPadding;
+      if (spaceBelow < menuHeight && spaceAbove > spaceBelow) {
+        // Not enough space below and more space above - position above cursor
+        y = rect.top - menuHeight - menuPadding;
+      }
+      
+      // Determine horizontal position
+      let x = rect.left;
+      if (spaceRight < menuWidth) {
+        // Not enough space on right - align to right edge of viewport
+        x = viewportWidth - menuWidth - 16; // 16px padding from edge
+      }
+      
       // Add scroll offset to handle scrolled content
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
       
       setMenuPosition({
-        x: rect.left + scrollLeft,
-        y: rect.bottom + scrollTop + 8
+        x: x + scrollLeft,
+        y: y + scrollTop
       });
     });
   }, [isMenuOpen]);
@@ -511,7 +540,8 @@ export function SlashCommandPlugin() {
   // Update menu position when menu opens or changes
   useEffect(() => {
     if (isMenuOpen) {
-      updateMenuPosition();
+      // Small delay to ensure menu is rendered before positioning
+      setTimeout(updateMenuPosition, 0);
     }
   }, [isMenuOpen, searchTerm, updateMenuPosition]);
 

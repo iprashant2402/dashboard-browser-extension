@@ -3,8 +3,9 @@
   border: 1px solid var(--card-border-color);
   border-radius: 8px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  min-width: 300px;
+  min-width: 280px;
   max-width: 400px;
+  width: max-content;
   max-height: 300px;
   overflow: hidden;
   font-family: inherit;
@@ -12,6 +13,9 @@
   color: var(--layout-text-color);
   z-index: 9999;
   position: fixed;
+  /* Ensure menu stays within viewport */
+  max-width: min(400px, calc(100vw - 32px));
+  max-height: min(300px, calc(100vh - 32px));
 }
 
 .slash-command-menu-header {
