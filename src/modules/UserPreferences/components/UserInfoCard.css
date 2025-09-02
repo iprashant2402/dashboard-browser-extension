@@ -5,19 +5,18 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    background: var(--card-bg-color);
+    background: transparent;
     backdrop-filter: blur(10px);
-    border: 1px solid var(--card-border-color);
-    border-radius: 4px;
+    border-radius: 0px;
     padding: 8px 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-wrap: nowrap;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    border-radius: 4px;
 
     h4 {
-        text-align: center;
+        text-align: left;
         font-size: 14px;
         font-weight: 500;
         color: var(--muted-text-color);
@@ -27,8 +26,14 @@
         overflow: hidden;
     }
 
+    h4.user-info-card-email {
+        display: block;
+        padding: 0 0 4px 0;
+        border-bottom: 1px dashed var(--card-border-color);
+    }
+
     &:hover {
-        background: transparent;
+        background: var(--card-bg-color);
     }
 }
 

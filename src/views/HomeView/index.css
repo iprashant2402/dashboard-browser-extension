@@ -111,16 +111,29 @@
 
 .privacy-curtain-toggle {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 4px;
+    right: 4px;
     padding: 6px 10px;
     z-index: 1001;
-    background: var(--card-bg-color);
+    background: var(--layout-bg-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    border-radius: 4px;
+    p {
+        font-weight: 600;
+        color: var(--muted-text-color);
+    }
 }
 
 .privacy-curtain-toggle:hover {
     cursor: pointer;
     color: var(--primary-color);
+    background: var(--card-bg-color);
+    p {
+        color: var(--primary-color);
+    }
 }
 
 .privacy-curtain {

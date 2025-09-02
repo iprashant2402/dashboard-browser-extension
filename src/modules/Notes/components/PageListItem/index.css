@@ -27,6 +27,7 @@
 }
 
 .page-list-item-active {
+    background-color: var(--card-bg-color);
     color: var(--primary-color);
 }
 

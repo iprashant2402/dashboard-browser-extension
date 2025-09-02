@@ -8,6 +8,7 @@ import { Sidebar } from "../../components/Sidebar";
 import { NotebookListHeader } from "../../modules/Notes/components/NotebookList/NotebookListHeader";
 import { useEffect } from "react";
 import { useBatchSync } from "../../modules/Notes/hooks/useBatchSync";
+import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 export const HomeView = () => {
     const { isPrivacyCurtainEnabled, setIsPrivacyCurtainEnabled } = usePrivacyCurtain();
@@ -39,8 +40,9 @@ export const HomeView = () => {
                             <CommandCenter />
                     </div>
             </div>
-            <span className="privacy-curtain-toggle">
-                <p onClick={togglePrivacyCurtain}>{isPrivacyCurtainEnabled ? 'Reveal' : 'Hide'}</p>
+            <span className="privacy-curtain-toggle" onClick={togglePrivacyCurtain}>
+                {!isPrivacyCurtainEnabled ? <IoIosEyeOff size={16} /> : <IoIosEye size={16} />}
+                <p>{isPrivacyCurtainEnabled ? 'Reveal' : 'Hide'}</p>
             </span>
         </Layout>
     )

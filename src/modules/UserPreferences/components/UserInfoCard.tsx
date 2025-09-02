@@ -17,15 +17,13 @@ export const UserInfoCard = ({ user, onClick }: { user: User | undefined, onClic
                         <div className="user-avatar">
                             {userInitials}
                         </div>
-                            <h4>{user.email}</h4>
+                            <h4 className="user-info-card-email">{user.email}</h4>
                     </div>
                 ) : (
                     <div className="user-info-card-header">
-                    <div className="user-avatar">
                         <IoSettingsOutline size={16} />
-                    </div>
                         <h4>Settings</h4>
-                </div>
+                    </div>
             )}
         </div>
     );
