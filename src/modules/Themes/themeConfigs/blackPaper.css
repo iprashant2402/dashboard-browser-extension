@@ -6,6 +6,7 @@
     --secondary-color: #FFFFFFD9;
     --tertiary-color: #FFFFFFD9;
     --muted-text-color: rgba(255, 255, 255, 0.6);
+    --hover-bg-color: rgba(255, 255, 255, 0.08);
   
     --card-bg-color: rgba(255, 255, 255, 0.05);
     --card-alt-bg-color: rgba(255, 255, 255, 0.08);

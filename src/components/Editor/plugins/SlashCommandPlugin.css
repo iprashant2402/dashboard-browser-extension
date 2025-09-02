@@ -113,18 +113,6 @@
   background: var(--muted-text-color);
 }
 
-/* Dark theme specific adjustments */
-@media (prefers-color-scheme: dark) {
-  .slash-command-menu {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-  
-  .slash-command-menu-item:hover,
-  .slash-command-menu-item.selected {
-    background-color: rgba(255, 255, 255, 0.08);
-  }
-}
-
 /* Animation for menu appearance */
 .slash-command-menu {
   animation: slash-menu-enter 0.15s ease-out;

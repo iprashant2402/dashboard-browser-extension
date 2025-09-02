@@ -7,6 +7,7 @@
     --secondary-color: #8B949E; /* Muted gray for secondary elements */
     --tertiary-color: #F85149; /* Red for warnings/errors */
     --muted-text-color: rgba(201, 209, 217, 0.4); /* Dim text for less focus */
+    --hover-bg-color: rgba(255, 255, 255, 0.08);
   
     /* Cards */
     --card-bg-color: rgba(22, 27, 34, 0.9); /* Very dark gray with transparency */
