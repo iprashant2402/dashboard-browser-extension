@@ -2,7 +2,6 @@
     height: 100%;
     flex: 1;
     flex-grow: 1;
-    column-gap: 24px;
 }
 
 /* Desktop Layout */
@@ -34,6 +33,8 @@
     position: relative;
     flex: 4;
     overflow-x: hidden;
+    background: var(--layout-bg-color);
+    padding: var(--command-center-padding);
 }
 
 .notes-list-panel {
@@ -46,6 +47,10 @@
     -webkit-backdrop-filter: blur(var(--card-blur));
     overflow: clip;
     view-transition-name: notes-list-panel;
+}
+
+.action-panel {
+    background: var(--notes-list-panel-bg-color);
 }
 
 .project-list-panel {
@@ -101,29 +106,6 @@
     
     .home-view {
         gap: 8px;
-    }
-}
-
-/* Mobile breakpoint (480px and below) */
-@media (max-width: 480px) {
-    .home-view {
-        gap: 4px;
-    }
-    
-    .mobile-footer-bar {
-        padding: 6px 12px;
-        gap: 6px;
-    }
-}
-
-/* Large desktop optimization */
-@media (min-width: 1400px) {
-    .home-view {
-        gap: 16px;
-    }
-    
-    .panel-col {
-        row-gap: 20px;
     }
 }
 

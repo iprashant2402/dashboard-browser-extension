@@ -43,7 +43,8 @@
     --command-center-bg-color: #0C1521;
     --command-center-border-color: none;
     --command-center-border-radius: 8px;
-    --command-center-padding: 16px 24px;
+    --command-center-padding: 0 16px;
+    --editor-padding: 16px 24px 0;
   
     --primary-button-bg-color: #38BDF8;
     --primary-button-text-color: #0C1521;

@@ -1,10 +1,10 @@
-.black-paper {
-    --layout-bg-color: #000000;
+.black-paper-lite {
+    --layout-bg-color: #1a1a1e;
     --layout-text-color: #FFFFFFD9;
-    --primary-color: #FFFFFFD9;
-    --primary-color-100: #FFFFFF1A;
-    --secondary-color: #FFFFFFD9;
-    --tertiary-color: #FFFFFFD9;
+    --primary-color: #21B37A;
+    --primary-color-100: #21B37A1A;
+    --secondary-color: #7A2F67;
+    --tertiary-color: #B86092;
     --muted-text-color: rgba(255, 255, 255, 0.6);
     --hover-bg-color: rgba(255, 255, 255, 0.08);
   
@@ -37,7 +37,7 @@
     --project-list-panel-border-radius: 8px;
     --project-list-panel-padding: 16px 24px;
   
-    --notes-list-panel-bg-color: #000000;
+    --notes-list-panel-bg-color: #131316;
     --notes-list-panel-border-color: rgba(255, 255, 255, 0.1);
     --notes-list-panel-border-radius: 8px;
     --notes-list-panel-padding: 16px 12px;
@@ -78,10 +78,10 @@
     --layout-text-color: #FFFFFF;
 } 
 
-.black-paper .toggle-track {
+.black-paper-lite .toggle-track {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.black-paper .toggle-switch.checked .toggle-track {
+.black-paper-lite .toggle-switch.checked .toggle-track {
     background-color: green;
 }

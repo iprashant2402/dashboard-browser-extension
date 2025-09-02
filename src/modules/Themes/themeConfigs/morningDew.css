@@ -50,7 +50,8 @@
     --command-center-bg-color: #FFFFFF; /* Clear white background */
     --command-center-border-color: none; /* Borderless for minimalism */
     --command-center-border-radius: 8px; /* Rounded for consistency */
-    --command-center-padding: 16px 24px; /* Comfortable padding */
+    --command-center-padding: 0 16px;
+    --editor-padding: 16px 24px 0;
   
     /* Primary Button */
     --primary-button-bg-color: #4CAF50; /* Vibrant green attracting user's attention */
