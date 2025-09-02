@@ -10,7 +10,8 @@
   font-family: inherit;
   font-size: 14px;
   color: var(--layout-text-color);
-  z-index: 1000;
+  z-index: 9999;
+  position: fixed;
 }
 
 .slash-command-menu-header {

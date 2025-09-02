@@ -157,7 +157,7 @@ interface SlashCommandMenuProps {
   searchTerm: string;
   selectedIndex: number;
   onSelect: (command: SlashCommand) => void;
-  onClose: () => void;
+  onSelectedIndexChange: (index: number) => void;
 }
 
 const SlashCommandMenu: React.FC<SlashCommandMenuProps> = ({
@@ -165,7 +165,8 @@ const SlashCommandMenu: React.FC<SlashCommandMenuProps> = ({
   position,
   searchTerm,
   selectedIndex,
-  onSelect
+  onSelect,
+  onSelectedIndexChange
 }) => {
   const commands = SlashCommandsList();
   const menuRef = useRef<HTMLDivElement>(null);
@@ -226,9 +227,7 @@ const SlashCommandMenu: React.FC<SlashCommandMenuProps> = ({
               index === selectedIndex ? 'selected' : ''
             }`}
             onClick={() => onSelect(command)}
-            onMouseEnter={() => {
-              // Update selected index on hover - we'll handle this via a callback if needed
-            }}
+            onMouseEnter={() => onSelectedIndexChange(index)}
           >
             <div className="slash-command-icon">{command.icon}</div>
             <div className="slash-command-content">
@@ -332,18 +331,22 @@ export function SlashCommandPlugin() {
   }, [isMenuOpen, getFilteredCommands, selectedIndex, selectCommand, closeMenu]);
 
   const updateMenuPosition = useCallback(() => {
-    const selection = $getSelection();
-    if (!$isRangeSelection(selection)) return;
+    // Use requestAnimationFrame to ensure DOM is updated
+    requestAnimationFrame(() => {
+      const domSelection = window.getSelection();
+      if (!domSelection || domSelection.rangeCount === 0) return;
 
-    const domSelection = window.getSelection();
-    if (!domSelection || domSelection.rangeCount === 0) return;
-
-    const range = domSelection.getRangeAt(0);
-    const rect = range.getBoundingClientRect();
-    
-    setMenuPosition({
-      x: rect.left,
-      y: rect.bottom + 8
+      const range = domSelection.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+      
+      // Add scroll offset to handle scrolled content
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+      
+      setMenuPosition({
+        x: rect.left + scrollLeft,
+        y: rect.bottom + scrollTop + 8
+      });
     });
   }, []);
 
@@ -417,13 +420,13 @@ export function SlashCommandPlugin() {
           setSearchTerm('');
           setSelectedIndex(0);
           setTriggerNodeKey(textNode.getKey());
-          setTimeout(updateMenuPosition, 0);
+          updateMenuPosition();
         } else if (isMenuOpen && triggerNodeKey === textNode.getKey()) {
           // Update search term
           const newSearchTerm = searchQuery;
           setSearchTerm(newSearchTerm);
           setSelectedIndex(0);
-          setTimeout(updateMenuPosition, 0);
+          updateMenuPosition();
           
           // Close menu if no matches
           const filteredCommands = commands.filter(command => {
@@ -454,7 +457,13 @@ export function SlashCommandPlugin() {
   useEffect(() => {
     return editor.registerCommand(
       KEY_ARROW_DOWN_COMMAND,
-      () => handleKeyCommand('arrow-down'),
+      (event) => {
+        const handled = handleKeyCommand('arrow-down');
+        if (handled) {
+          event?.preventDefault?.();
+        }
+        return handled;
+      },
       COMMAND_PRIORITY_LOW
     );
   }, [editor, handleKeyCommand]);
@@ -462,7 +471,13 @@ export function SlashCommandPlugin() {
   useEffect(() => {
     return editor.registerCommand(
       KEY_ARROW_UP_COMMAND,
-      () => handleKeyCommand('arrow-up'),
+      (event) => {
+        const handled = handleKeyCommand('arrow-up');
+        if (handled) {
+          event?.preventDefault?.();
+        }
+        return handled;
+      },
       COMMAND_PRIORITY_LOW
     );
   }, [editor, handleKeyCommand]);
@@ -470,7 +485,13 @@ export function SlashCommandPlugin() {
   useEffect(() => {
     return editor.registerCommand(
       KEY_ENTER_COMMAND,
-      () => handleKeyCommand('enter'),
+      (event) => {
+        const handled = handleKeyCommand('enter');
+        if (handled) {
+          event?.preventDefault?.();
+        }
+        return handled;
+      },
       COMMAND_PRIORITY_LOW
     );
   }, [editor, handleKeyCommand]);
@@ -486,7 +507,13 @@ export function SlashCommandPlugin() {
   useEffect(() => {
     return editor.registerCommand(
       KEY_TAB_COMMAND,
-      () => handleKeyCommand('tab'),
+      (event) => {
+        const handled = handleKeyCommand('tab');
+        if (handled) {
+          event?.preventDefault?.();
+        }
+        return handled;
+      },
       COMMAND_PRIORITY_LOW
     );
   }, [editor, handleKeyCommand]);
@@ -511,7 +538,7 @@ export function SlashCommandPlugin() {
         searchTerm={searchTerm}
         selectedIndex={selectedIndex}
         onSelect={selectCommand}
-        onClose={closeMenu}
+        onSelectedIndexChange={setSelectedIndex}
       />
     </>
   );
