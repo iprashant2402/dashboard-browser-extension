@@ -39,7 +39,10 @@
 }
 
 .add-page-button {
+    width: 18px;
+    height: 18px;
     visibility: visible;
+    color: var(--primary-color);
 }
 
 .notebook-list-container-title-header:hover {

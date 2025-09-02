@@ -41,7 +41,7 @@ export const NotebookList = () => {
             <div className="notebook-list-container-title-header">
             <p className="notebook-list-container-title">Your pages</p>
             <span className="add-page-button" onClick={actions.handleCreatePageSubmit}>
-            <IoAddCircle size={14} color="var(--muted-text-color)" />
+            <IoAddCircle size={18} color="var(--primary-color)" />
             </span>
             </div>
             <div className="notebook-list-items">
