@@ -294,36 +294,30 @@ export function SlashCommandPlugin() {
     if (!isMenuOpen) return false;
 
     const filteredCommands = getFilteredCommands();
-    console.log('Handling key command:', command, 'Menu open:', isMenuOpen, 'Commands:', filteredCommands.length);
 
     switch (command) {
       case 'arrow-down':
         setSelectedIndex(prev => {
           const newIndex = prev < filteredCommands.length - 1 ? prev + 1 : 0;
-          console.log('Arrow down: changing index from', prev, 'to', newIndex);
           return newIndex;
         });
         return true;
       case 'arrow-up':
         setSelectedIndex(prev => {
           const newIndex = prev > 0 ? prev - 1 : filteredCommands.length - 1;
-          console.log('Arrow up: changing index from', prev, 'to', newIndex);
           return newIndex;
         });
         return true;
       case 'enter':
         if (filteredCommands[selectedIndex]) {
-          console.log('Enter: selecting command', filteredCommands[selectedIndex].title);
           selectCommand(filteredCommands[selectedIndex]);
         }
         return true;
       case 'escape':
-        console.log('Escape: closing menu');
         closeMenu();
         return true;
       case 'tab':
         if (filteredCommands[selectedIndex]) {
-          console.log('Tab: selecting command', filteredCommands[selectedIndex].title);
           selectCommand(filteredCommands[selectedIndex]);
         }
         return true;
@@ -400,9 +394,7 @@ export function SlashCommandPlugin() {
       if (anchor.getNode() !== textNode) return;
 
       const offset = anchor.offset;
-      
-      console.log('Node transform:', textContent, 'offset:', offset, 'menu open:', isMenuOpen, 'trigger key:', triggerNodeKey, 'current key:', textNode.getKey());
-      
+            
       // Look for slash at current position or just before
       let slashIndex = -1;
       let searchQuery = '';
@@ -419,62 +411,55 @@ export function SlashCommandPlugin() {
         }
       }
 
-      console.log('Slash index:', slashIndex, 'search query:', searchQuery, 'is at start:', slashIndex !== -1 ? isAtStartOfLine(textNode, slashIndex) : false);
-
-      // Always check if menu should be open for this node
-      if (isMenuOpen && triggerNodeKey === textNode.getKey()) {
-        // Check if slash still exists and is at start of line
-        if (slashIndex === -1 || !isAtStartOfLine(textNode, slashIndex)) {
-          // Slash was removed or we're no longer at start of line
-          console.log('Closing menu: slash removed or not at start');
-          closeMenu();
-          return;
+              // Always check if menu should be open for this node
+        if (isMenuOpen && triggerNodeKey === textNode.getKey()) {
+          // Check if slash still exists and is at start of line
+          if (slashIndex === -1 || !isAtStartOfLine(textNode, slashIndex)) {
+            // Slash was removed or we're no longer at start of line
+            closeMenu();
+            return;
+          }
+          
+          // Only update search term if it actually changed
+          const newSearchTerm = searchQuery;
+          if (newSearchTerm !== searchTerm) {
+            setSearchTerm(newSearchTerm);
+            setSelectedIndex(0);
+            
+            // Close menu if no matches
+            const filteredCommands = commands.filter(command => {
+              if (!newSearchTerm) return true;
+              const term = newSearchTerm.toLowerCase();
+              return (
+                command.title.toLowerCase().includes(term) ||
+                command.description.toLowerCase().includes(term) ||
+                command.keywords.some(keyword => keyword.toLowerCase().includes(term))
+              );
+            });
+            
+            if (filteredCommands.length === 0) {
+              closeMenu();
+            }
+          }
+        } else if (slashIndex !== -1 && isAtStartOfLine(textNode, slashIndex) && !isMenuOpen && slashIndex === offset - 1) {
+          // Just typed a slash - open menu
+          setIsMenuOpen(true);
+          setSearchTerm('');
+          setSelectedIndex(0);
+          setTriggerNodeKey(textNode.getKey());
+          // Position will be updated by separate effect
         }
-        
-        // Update search term
-        const newSearchTerm = searchQuery;
-        console.log('Updating search term:', newSearchTerm);
-        setSearchTerm(newSearchTerm);
-        setSelectedIndex(0);
-        updateMenuPosition();
-        
-        // Close menu if no matches
-        const filteredCommands = commands.filter(command => {
-          if (!newSearchTerm) return true;
-          const term = newSearchTerm.toLowerCase();
-          return (
-            command.title.toLowerCase().includes(term) ||
-            command.description.toLowerCase().includes(term) ||
-            command.keywords.some(keyword => keyword.toLowerCase().includes(term))
-          );
-        });
-        
-        if (filteredCommands.length === 0) {
-          console.log('Closing menu: no matches');
-          closeMenu();
-        }
-      } else if (slashIndex !== -1 && isAtStartOfLine(textNode, slashIndex) && !isMenuOpen && slashIndex === offset - 1) {
-        // Just typed a slash - open menu
-        console.log('Opening menu: slash typed at start of line');
-        setIsMenuOpen(true);
-        setSearchTerm('');
-        setSelectedIndex(0);
-        setTriggerNodeKey(textNode.getKey());
-        updateMenuPosition();
-      }
     });
 
     return () => {
       removeTransform();
     };
-  }, [editor, isMenuOpen, triggerNodeKey, updateMenuPosition, isAtStartOfLine, closeMenu, commands]);
+  }, [editor, isMenuOpen, triggerNodeKey, isAtStartOfLine, closeMenu, commands, searchTerm]);
 
     // Use direct DOM event listeners for more reliable keyboard handling
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!isMenuOpen) return;
-
-      console.log('Key pressed:', event.key, 'Menu open:', isMenuOpen);
       
       let handled = false;
       
@@ -499,17 +484,17 @@ export function SlashCommandPlugin() {
       if (handled) {
         event.preventDefault();
         event.stopPropagation();
+        event.stopImmediatePropagation();
       }
     };
 
-    const editorElement = editor.getRootElement();
-    if (editorElement) {
-      editorElement.addEventListener('keydown', handleKeyDown, true);
-      return () => {
-        editorElement.removeEventListener('keydown', handleKeyDown, true);
-      };
-    }
-  }, [editor, isMenuOpen, handleKeyCommand]);
+    // Set up listener only once
+    document.addEventListener('keydown', handleKeyDown, true);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown, true);
+    };
+  }, [isMenuOpen, handleKeyCommand]); // Removed editor dependency to prevent re-setup
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -523,6 +508,13 @@ export function SlashCommandPlugin() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMenuOpen, closeMenu]);
 
+  // Update menu position when menu opens or changes
+  useEffect(() => {
+    if (isMenuOpen) {
+      updateMenuPosition();
+    }
+  }, [isMenuOpen, searchTerm, updateMenuPosition]);
+
   // Additional safety check: close menu if we lose focus or text doesn't contain slash
   useEffect(() => {
     if (!isMenuOpen || !triggerNodeKey) return;
@@ -531,7 +523,6 @@ export function SlashCommandPlugin() {
       editor.getEditorState().read(() => {
         const node = $getNodeByKey(triggerNodeKey);
         if (!node || !$isTextNode(node)) {
-          console.log('Safety check: closing menu - node not found or not text');
           closeMenu();
           return;
         }
@@ -539,7 +530,6 @@ export function SlashCommandPlugin() {
         const textContent = node.getTextContent();
         const selection = $getSelection();
         if (!$isRangeSelection(selection) || selection.anchor.getNode() !== node) {
-          console.log('Safety check: closing menu - selection changed');
           closeMenu();
           return;
         }
@@ -549,7 +539,6 @@ export function SlashCommandPlugin() {
         const slashIndex = beforeCursor.lastIndexOf('/');
         
         if (slashIndex === -1 || !isAtStartOfLine(node, slashIndex)) {
-          console.log('Safety check: closing menu - no slash or not at start');
           closeMenu();
         }
       });
