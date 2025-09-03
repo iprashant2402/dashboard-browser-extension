@@ -2,5 +2,21 @@
   "projects": {
     "default": "insquoo-chrome-extension",
     "staging": "insquoo-stage"
-  }
+  },
+   "targets": {
+      "insquoo-chrome-extension": {
+        "hosting": {
+          "prod": [
+            "insquoo-chrome-extension"
+          ]
+        }
+      },
+      "insquoo-stage": {
+        "hosting": {
+         "stage": [
+            "insquoo-stage"
+          ]
+        }
+      }
+    }
 }
