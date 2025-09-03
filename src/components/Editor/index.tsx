@@ -30,7 +30,7 @@ import { CodeNode } from '@lexical/code';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
 import { ListNode } from '@lexical/list';
 import { ListItemNode } from '@lexical/list';
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { AutoLinkPlugin, createLinkMatcherWithRegExp } from '@lexical/react/LexicalAutoLinkPlugin';
 import { EMAIL_REGEX, URL_REGEX } from '../../utils/helpers';
@@ -157,6 +157,7 @@ const constructImportMap = (): DOMConversionMap => {
 
 export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
   const editorStateRef = useRef<EditorState | undefined>(undefined);
+  const [isFocused, setIsFocused] = useState(false);
 
   const editorConfig: InitialConfigType = useMemo(() => {
     return {
@@ -181,6 +182,14 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
     }
   };
 
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
@@ -196,6 +205,8 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
                 ): (
                   <div>{props.placeholder}</div>
                 )}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
               />
             }
             ErrorBoundary={LexicalErrorBoundary}
@@ -209,7 +220,7 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
           <ListPlugin />
           <ListExitPlugin />
           <KeyboardShortcutsPlugin />
-          <SlashCommandPlugin />
+          {isFocused && <SlashCommandPlugin />}
           <ClickableLinkPlugin />
         </div>
       </div>
