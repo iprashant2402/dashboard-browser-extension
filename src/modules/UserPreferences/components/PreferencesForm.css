@@ -32,10 +32,14 @@
     gap: 8px;
 }
 
+.auth-menu-item {
+    padding: 0px 0 8px 0;
+}
+
 .preferences-menu-item label {
     font-size: 14px;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--layout-text-color);
 }
 
 .preferences-menu-item input[type="checkbox"] {
@@ -46,4 +50,20 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.preferences-menu-title-row {
+    display: flex;
+    padding: 0px 0 8px 0;
+}
+
+.preferences-menu-title-row:not(:first-child) {
+    padding: 24px 0 8px 0;
+    border-top: 1px solid var(--card-border-color);
+}
+
+.preferences-menu-title-row h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted-text-color);
 }

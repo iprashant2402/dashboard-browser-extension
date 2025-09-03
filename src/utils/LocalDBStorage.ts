@@ -1,3 +1,5 @@
+import { Page } from "../modules/Notes/types/Page";
+
 /**
  * LocalDBStorage - A class for storing application data in IndexedDB
  */
@@ -5,9 +7,10 @@ export class LocalDBStorage {
   private dbName: string;
   private dbVersion: number;
   private db: IDBDatabase | null = null;
-  private stores = ['projects', 'tasks', 'pages'];
+  private stores = ['projects', 'tasks', 'pages', 'syncQueue'];
   private indexes: { [key: string]: string[] } = {
     tasks: ['projectId'],
+    syncQueue: ['pageId', 'createdAt'],
   }
   
   /**
@@ -50,6 +53,23 @@ export class LocalDBStorage {
             this.indexes[storeName]?.forEach(index => {
               objectStore.createIndex(index, index, { unique: false });
             });
+          }
+          if (storeName === 'pages') {
+            const transaction = (event.target as IDBOpenDBRequest).transaction;
+            if (transaction) {
+              const pagesStore = transaction.objectStore('pages');
+              const getAllRequest = pagesStore.getAll();
+              
+              getAllRequest.onsuccess = () => {
+                const pages = getAllRequest.result as Page[];
+                pages.forEach((page: Page) => {
+                  if (!page.version) {
+                    page.version = 1;
+                    pagesStore.put(page);
+                  }
+                });
+              };
+            }
           }
         });
       };
@@ -255,7 +275,7 @@ export class LocalDBStorage {
   }
 }
 
-const CURRENT_DB_VERSION = 2;
+const CURRENT_DB_VERSION = 3;
 const DB_NAME = 'appDatabase';
 
 // Create and export a singleton instance

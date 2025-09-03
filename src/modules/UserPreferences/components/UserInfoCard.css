@@ -1,0 +1,59 @@
+.user-info-card {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 0px;
+    padding: 8px 12px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 4px;
+
+    h4 {
+        text-align: left;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted-text-color);
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    h4.user-info-card-email {
+        display: block;
+        padding: 0 0 4px 0;
+        border-bottom: 1px dashed var(--card-border-color);
+    }
+
+    &:hover {
+        background: var(--card-bg-color);
+    }
+}
+
+.user-info-card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    flex: 1;
+    text-align: center;
+}
+
+.user-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 4px;
+    background-color: var(--secondary-color);
+}

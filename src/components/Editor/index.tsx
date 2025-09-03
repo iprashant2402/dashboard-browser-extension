@@ -37,6 +37,7 @@ import { EMAIL_REGEX, URL_REGEX } from '../../utils/helpers';
 import { KeyboardShortcutsPlugin } from './plugins/KeyboardShortcutPlugin';
 import { ListExitPlugin } from './plugins/ListExitPlugin';
 import ToolbarPlugin from './plugins/ToolbarPlugin';
+import { SlashCommandPlugin } from './plugins/SlashCommandPlugin';
 
 
 const MATCHERS = [
@@ -199,7 +200,7 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
             }
             ErrorBoundary={LexicalErrorBoundary}
           />
-          <OnChangePlugin onChange={onChange} />
+          <OnChangePlugin onChange={onChange} ignoreSelectionChange={true} />
           <HistoryPlugin />
           <AutoFocusPlugin />
           <LinkPlugin />
@@ -208,6 +209,7 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
           <ListPlugin />
           <ListExitPlugin />
           <KeyboardShortcutsPlugin />
+          <SlashCommandPlugin />
           <ClickableLinkPlugin />
         </div>
       </div>

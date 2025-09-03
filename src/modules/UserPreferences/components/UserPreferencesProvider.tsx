@@ -1,13 +1,9 @@
-import { createContext, useCallback, useContext, useState } from "react";
+import { useCallback, useState } from "react";
 import { DEFAULT_USER_PREFERENCE, UserPreference } from "../types/UserPreference";
 import { storage } from "../../../utils/storage";
 import { Theme, THEMES } from "../../Tasks/types/Theme";
 import { USER_PREFERENCES_KEY } from "../../../utils/constants";
-
-const UserPreferencesContext = createContext({
-    userPreferences: DEFAULT_USER_PREFERENCE,
-    updatePreferences: (_: Partial<UserPreference>) => {},
-});
+import { UserPreferencesContext } from "./UserPreferencesContext";
 
 const loadInitialPreferences = () => {
     const preferences = storage.getItem<UserPreference>(USER_PREFERENCES_KEY);
@@ -36,8 +32,4 @@ export const UserPreferencesProvider = ({ children }: { children: React.ReactNod
     return <UserPreferencesContext.Provider value={{ userPreferences, updatePreferences }}>
         {children}
     </UserPreferencesContext.Provider>
-}
-
-export const useUserPreferences = () => {
-    return useContext(UserPreferencesContext);
 }

@@ -2,6 +2,7 @@
     outline: none;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     cursor: pointer;
 }
@@ -15,7 +16,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 16px;
-    text-align: left;
+    text-align: center;
 }
 
 .button.primary {

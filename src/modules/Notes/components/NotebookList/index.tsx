@@ -3,6 +3,7 @@ import { useContext, createContext } from "react";
 import { IoAddCircle } from "react-icons/io5";
 import { usePageList } from "../../hooks/usePageList";
 import { PageListItem } from "../PageListItem";
+import { PreferencesToolbar } from "../../../UserPreferences/components/PreferencesToolbar";
 
 // Create a context to optionally receive mobile notes functionality
 const MobileNotesOptionalContext = createContext<{
@@ -40,12 +41,11 @@ export const NotebookList = () => {
             <div className="notebook-list-container-title-header">
             <p className="notebook-list-container-title">Your pages</p>
             <span className="add-page-button" onClick={actions.handleCreatePageSubmit}>
-            <IoAddCircle size={14} color="var(--muted-text-color)" />
+            <IoAddCircle size={18} color="var(--primary-color)" />
             </span>
             </div>
             <div className="notebook-list-items">
                 {state.pages?.map((page, index) => <PageListItem 
-                    handleUpdatePageOrder={actions.handleUpdatePageOrder}
                     isActive={state.currentPageId === page.id}
                     key={page.id}
                     order={index}
@@ -54,6 +54,9 @@ export const NotebookList = () => {
                     handleRename={actions.handleRenamePage}
                     handleDelete={actions.handleDeletePage}
                 />)}
+            </div>
+            <div className="notebook-list-footer">
+            <PreferencesToolbar />
             </div>
         </div>
             </div>

@@ -1,4 +1,3 @@
-/// <reference path="./types/global.d.ts" />
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './fonts.css'
@@ -17,6 +16,7 @@ import './modules/Themes/themeConfigs/torvalds.css'
 import './modules/Themes/themeConfigs/comfortLite.css'
 import './modules/Themes/themeConfigs/blackPaper.css'
 import './modules/Themes/themeConfigs/whitePaper.css'
+import './modules/Themes/themeConfigs/blackPaperLite.css'
 import { UserPreferencesProvider } from './modules/UserPreferences/components/UserPreferencesProvider.tsx'
 import { storage } from './utils/storage.ts'
 import { THEMES } from './modules/Tasks/types/Theme.ts'

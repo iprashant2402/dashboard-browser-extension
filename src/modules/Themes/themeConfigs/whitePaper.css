@@ -6,6 +6,7 @@
     --secondary-color: #000000;
     --tertiary-color: #000000;
     --muted-text-color: rgba(0, 0, 0, 0.6);
+    --hover-bg-color: rgba(0, 0, 0, 0.05);
   
     --card-bg-color: rgb(251, 251, 251);
     --card-alt-bg-color: rgba(0, 0, 0, 0.05);
@@ -13,7 +14,7 @@
     --card-alt-text-color: rgba(0, 0, 0, 0.9);
     --card-border-color: rgba(0, 0, 0, 0.1);
     --card-alt-border-color: rgba(0, 0, 0, 0.08);
-    --card-border-radius: 8px;
+    --card-border-radius: 4px;
     --card-padding: 16px 24px;
     --card-blur: 0px;
     --card-hover-bg-color: rgba(0, 0, 0, 0.05);
@@ -44,19 +45,20 @@
     --command-center-bg-color: #FFFFFF;
     --command-center-border-color: none;
     --command-center-border-radius: 8px;
-    --command-center-padding: 16px 24px;
+    --command-center-padding: 0 16px;
+    --editor-padding: 16px 24px 0;
   
     --primary-button-bg-color: #000000;
     --primary-button-text-color: #FFFFFF;
     --primary-button-border-color: none;
     --primary-button-border-radius: 4px;
-    --primary-button-padding: 8px 16px;
+    --primary-button-padding: 12px 16px;
   
     --secondary-button-bg-color: rgba(0, 0, 0, 0.08);
     --secondary-button-text-color: #000000;
     --secondary-button-border-color: rgba(0, 0, 0, 0.15);
     --secondary-button-border-radius: 4px;
-    --secondary-button-padding: 8px 16px;
+    --secondary-button-padding: 12px 16px;
   
     --clear-button-bg-color: transparent;
     --clear-button-text-color: #000000;
@@ -68,12 +70,12 @@
     --outline-button-text-color: #000000;
     --outline-button-border-color: rgba(0, 0, 0, 0.25);
     --outline-button-border-radius: 4px;
-    --outline-button-padding: 8px 16px;
+    --outline-button-padding: 12px 16px;
 
     --code-block-background-color: rgba(0, 0, 0, 0.05);
     --code-block-border-color: rgba(0, 0, 0, 0.12);
     
-    --text-color: #000000;
+    --layout-text-color: #000000;
 } 
 
 .white-paper .preferences-menu-select {

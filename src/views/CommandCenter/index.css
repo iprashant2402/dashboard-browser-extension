@@ -1,19 +1,22 @@
 .command-center {
     width: 100%;
     height: 100%;
-    background-color: var(--layout-bg-color);
+    /* background-color: var(--layout-bg-color); */
     color: var(--card-text-color);
     backdrop-filter: blur(var(--card-blur));
     -webkit-backdrop-filter: blur(var(--card-blur));
-    padding: var(--command-center-padding);
+    /* padding: var(--command-center-padding); */
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    align-items: center;
     row-gap: 12px;
 }
 
 .command-center-content {
     height: 100%;
+    max-width: 834px;
+    width: 100%;
     overflow-y: hidden;
 }
 

@@ -1,12 +1,13 @@
 import "./PreferencesToolbar.css";
-import { IoSettingsOutline } from "react-icons/io5";
 import { useState } from "react";
 import { Dialog } from "../../../components/Dialog";
-import { Button } from "../../../components/Button";
 import { PreferencesForm } from "./PreferencesForm";
+import { useAuth } from "../../Auth";
+import { UserInfoCard } from "./UserInfoCard";
 
 export const PreferencesToolbar = () => {
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
+    const { user } = useAuth();
 
     const handleSettingsMenuOpen = () => {
         setIsSettingsMenuOpen(true);
@@ -19,14 +20,14 @@ export const PreferencesToolbar = () => {
     return (
         <>
         <div className="preferences-toolbar">
-            <Button variant="clear" icon={<IoSettingsOutline size={16} />} onClick={handleSettingsMenuOpen} />
+                <UserInfoCard user={user} onClick={handleSettingsMenuOpen} />
         </div>
         <Dialog
             isOpen={isSettingsMenuOpen}
             onClose={handleSettingsMenuClose}
-            title="Settings"
+            title="Your account"
         >
-            <PreferencesForm onClose={handleSettingsMenuClose} />
+            <PreferencesForm />
         </Dialog>
         </>
     )

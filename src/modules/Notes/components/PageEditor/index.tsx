@@ -1,5 +1,5 @@
 import { Editor } from "../../../../components/Editor";
-import { useUserPreferences } from "../../../UserPreferences/components/UserPreferencesProvider";
+import { useUserPreferences } from "../../../UserPreferences/hooks/useUserPreferences";
 import { usePageEditor } from "../../hooks/usePageEditor";
 import "./index.css";
 

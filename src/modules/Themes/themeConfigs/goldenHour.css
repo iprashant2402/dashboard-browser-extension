@@ -7,6 +7,7 @@
     --secondary-color: #EB5757; /* Warm red used for secondary highlights */
     --tertiary-color: #F2C94C; /* Golden yellow for subtle accents */
     --muted-text-color: rgba(68, 51, 34, 0.5); /* Faded brown for muted/inactive text */
+    --hover-bg-color: rgba(0, 0, 0, 0.05);
   
     /* Cards */
     --card-bg-color: rgba(255, 255, 255, 0.95); /* Slight transparency for layering effect */
@@ -49,21 +50,22 @@
     --command-center-bg-color: #FFFFFF; /* Pure, clean command center */
     --command-center-border-color: none; /* Seamless into layout */
     --command-center-border-radius: 8px; /* Rounded look */
-    --command-center-padding: 16px 24px;
+    --command-center-padding: 0 16px;
+    --editor-padding: 16px 24px 0;
   
     /* Primary Button */
     --primary-button-bg-color: #F2994A; /* Sunset orange for action buttons */
     --primary-button-text-color: #FFFFFF; /* White text for contrast */
     --primary-button-border-color: none; /* Flat, modern button */
     --primary-button-border-radius: 50px; /* Pill-shaped buttons */
-    --primary-button-padding: 8px 12px;
+    --primary-button-padding: 12px 12px;
   
     /* Secondary Button */
     --secondary-button-bg-color: #EB5757; /* Warm red for secondary actions */
     --secondary-button-text-color: #FFFFFF; /* Readable white text */
     --secondary-button-border-color: none;
     --secondary-button-border-radius: 50px;
-    --secondary-button-padding: 8px 12px;
+    --secondary-button-padding: 12px 12px;
   
     /* Clear Button */
     --clear-button-bg-color: transparent; /* No fill */
@@ -77,7 +79,7 @@
     --outline-button-text-color: #F2994A; /* Text and border match for cohesive feel */
     --outline-button-border-color: #F2994A;
     --outline-button-border-radius: 50px;
-    --outline-button-padding: 8px 12px;
+    --outline-button-padding: 12px 12px;
 
     --code-block-background-color: #F0F0F0;
     --code-block-border-color: transparent;

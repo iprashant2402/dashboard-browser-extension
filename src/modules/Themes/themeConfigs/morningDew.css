@@ -7,6 +7,7 @@
     --secondary-color: #81C784; /* Soft secondary green for additional accents */
     --tertiary-color: #A5D6A7; /* Pastel green for subtle highlights */
     --muted-text-color: rgba(58, 74, 58, 0.5); /* Muted text for subtle, less important content */
+    --hover-bg-color: rgba(0, 0, 0, 0.05);
   
     /* Cards */
     --card-bg-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for depth */
@@ -49,21 +50,22 @@
     --command-center-bg-color: #FFFFFF; /* Clear white background */
     --command-center-border-color: none; /* Borderless for minimalism */
     --command-center-border-radius: 8px; /* Rounded for consistency */
-    --command-center-padding: 16px 24px; /* Comfortable padding */
+    --command-center-padding: 0 16px;
+    --editor-padding: 16px 24px 0;
   
     /* Primary Button */
     --primary-button-bg-color: #4CAF50; /* Vibrant green attracting user's attention */
     --primary-button-text-color: #FFFFFF; /* High-contrast white text */
     --primary-button-border-color: none; /* Borderless modern style */
     --primary-button-border-radius: 50px; /* Fully rounded "pill" shape */
-    --primary-button-padding: 8px 12px; /* Compact, comfortable padding */
+    --primary-button-padding: 12px 16px; /* Compact, comfortable padding */
   
     /* Secondary Button */
     --secondary-button-bg-color: #81C784; /* Soft secondary green */
     --secondary-button-text-color: #FFFFFF; /* White for clarity */
     --secondary-button-border-color: none; /* Clean, borderless look */
     --secondary-button-border-radius: 50px; /* Rounded edges for modern feel */
-    --secondary-button-padding: 8px 12px; /* Uniform padding */
+    --secondary-button-padding: 12px 16px; /* Uniform padding */
   
     /* Clear Button */
     --clear-button-bg-color: transparent; /* No background */
@@ -77,7 +79,7 @@
     --outline-button-text-color: #4CAF50; /* Vibrant green text matching the outline */
     --outline-button-border-color: #4CAF50; /* Clear green outline highlighting button */
     --outline-button-border-radius: 50px; /* Fully rounded for consistency */
-    --outline-button-padding: 8px 12px; /* Standardized button padding */
+    --outline-button-padding: 12px 16px; /* Standardized button padding */
 
     --code-block-background-color: #F0F0F0;
     --code-block-border-color: transparent;

@@ -54,19 +54,20 @@
   --command-center-bg-color: rgb(11, 20, 28);
   --command-center-border-color: rgba(255, 255, 255, 0.1);
   --command-center-border-radius: 8px;
-  --command-center-padding: 16px 24px;
+  --command-center-padding: 0 16px;
+  --editor-padding: 16px 24px 0;
 
   --primary-button-bg-color: #16825D;
   --primary-button-text-color: #FFFFFF;
   --primary-button-border-color: none;
   --primary-button-border-radius: 50px;
-  --primary-button-padding: 8px 12px;
+  --primary-button-padding: 12px 16px;
 
   --secondary-button-bg-color: #6A1E55;
   --secondary-button-text-color: #FFFFFF;
   --secondary-button-border-color: none;
   --secondary-button-border-radius: 50px;
-  --secondary-button-padding: 8px 12px;
+  --secondary-button-padding: 12px 16px;
 
   --clear-button-bg-color: transparent;
   --clear-button-text-color: #16825D;
@@ -78,7 +79,7 @@
   --outline-button-text-color: #16825D;
   --outline-button-border-color: #16825D;
   --outline-button-border-radius: 50px;
-  --outline-button-padding: 8px 12px;
+  --outline-button-padding: 12px 16px;
 
   --code-block-background-color: #11141C;
   --code-block-border-color: #222733;

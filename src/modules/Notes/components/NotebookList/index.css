@@ -39,7 +39,10 @@
 }
 
 .add-page-button {
-    visibility: hidden;
+    width: 18px;
+    height: 18px;
+    visibility: visible;
+    color: var(--primary-color);
 }
 
 .notebook-list-container-title-header:hover {
@@ -62,7 +65,5 @@
 .notebook-list-footer {
     position: relative;
     width: 100%;
-    background-color: var(--card-bg-color);
-    padding: var(--project-list-panel-padding);
-    padding: 8px 16px;
+    padding: 0 0 8px 0;
 }

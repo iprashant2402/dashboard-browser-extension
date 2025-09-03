@@ -1,10 +1,22 @@
 import { Theme, THEME_DISPLAY_NAMES, THEMES } from "../../Tasks/types/Theme"
-import { useUserPreferences } from "./UserPreferencesProvider";
 import "./PreferencesForm.css";
 import { Toggle } from "../../../components/Toggle";
+import { useUserPreferences } from "../hooks/useUserPreferences";
+import { AuthMenuContent } from "../../Auth/components/AuthDialog/AuthMenuContent";
+import { useAuth } from "../../Auth";
+import { Button } from "../../../components/Button";
 
-export const PreferencesForm = (_: { onClose: () => void }) => {
+export const PreferencesForm = () => {
     const { userPreferences, updatePreferences } = useUserPreferences();
+    const { user, isAuthenticated, isLoggingOut, logout } = useAuth();
+
+    const handleLogout = async () => {
+        try {
+          await logout();
+        } catch (error) {
+          console.error('Logout error:', error);
+        }
+      };
 
     const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         updatePreferences({ theme: event.target.value as Theme });
@@ -16,6 +28,28 @@ export const PreferencesForm = (_: { onClose: () => void }) => {
 
     return (
         <div className="preferences-menu">
+            {(!isAuthenticated || !user) ? <AuthMenuContent /> : (
+                <>
+                <div className="preferences-menu-title-row">
+                    <h4>Signed in as</h4>
+                </div>
+                <div className="preferences-menu-item auth-menu-item">
+                    <label>
+                        {user.email}
+                    </label>
+                    <Button
+                variant='clear' 
+                label={isLoggingOut ? 'Signing out...' : 'Sign Out'}
+                onClick={handleLogout}
+                className='logout-button'
+                disabled={isLoggingOut}
+              />
+                </div>
+                </>
+            )}
+            <div className="preferences-menu-title-row">
+                <h4>Preferences</h4>
+            </div>
             <div className="preferences-menu-item">
             <label htmlFor="theme-select">Choose theme</label>
             <select className="preferences-menu-select" id="theme-select" value={userPreferences.theme} onChange={handleThemeChange}>

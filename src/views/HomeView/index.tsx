@@ -2,15 +2,25 @@ import "./index.css";
 import { Layout } from "../../components/Layout";
 import { CommandCenter } from "../CommandCenter";
 import { NotebookList } from "../../modules/Notes/components/NotebookList";
-import { PreferencesToolbar } from "../../modules/UserPreferences/components/PreferencesToolbar";
-import { ResponsiveTabs } from "../../components/ResponsiveTabs";
 import { usePrivacyCurtain } from "../../providers/PrivacyCurtainProvider";
 import Clock from "../../components/Clock/Clock";
 import { Sidebar } from "../../components/Sidebar";
 import { NotebookListHeader } from "../../modules/Notes/components/NotebookList/NotebookListHeader";
+import { useEffect } from "react";
+import { useBatchSync } from "../../modules/Notes/hooks/useBatchSync";
+import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 export const HomeView = () => {
     const { isPrivacyCurtainEnabled, setIsPrivacyCurtainEnabled } = usePrivacyCurtain();
+    const { mutateAsync: batchSync } = useBatchSync();
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            batchSync();
+        }, 30_000);
+        return () => clearInterval(interval);
+
+    }, [batchSync])
 
     const togglePrivacyCurtain = () => {
         setIsPrivacyCurtainEnabled(!isPrivacyCurtainEnabled);
@@ -26,32 +36,14 @@ export const HomeView = () => {
                     </div>
                 )}
                     <div className="row home-view">
-                {/* Desktop Layout - Hidden on mobile/tablet */}
-                <div className="desktop-layout">
-                    {/* <div className="column panel-col">
-                    <div className="column notes-list-panel">
-                        <NotebookList />
-                    </div>
-                    </div> */}
                     <div className="column panel-col command-center-container">
                             <CommandCenter />
                     </div>
-                </div>
-
-                {/* Mobile/Tablet Layout - Hidden on desktop */}
-                <div className="mobile-layout">
-                    <ResponsiveTabs />
-                    <div className="mobile-footer-bar">
-                        <PreferencesToolbar />
-                    </div>
-                </div>
             </div>
-            <span className="privacy-curtain-toggle">
-                <p onClick={togglePrivacyCurtain}>{isPrivacyCurtainEnabled ? 'Reveal' : 'Hide'}</p>
+            <span className="privacy-curtain-toggle" onClick={togglePrivacyCurtain}>
+                {!isPrivacyCurtainEnabled ? <IoIosEyeOff size={16} /> : <IoIosEye size={16} />}
+                <p>{isPrivacyCurtainEnabled ? 'Reveal' : 'Hide'}</p>
             </span>
-            <div className="footer-bar">
-                <PreferencesToolbar />
-            </div>
         </Layout>
     )
 }

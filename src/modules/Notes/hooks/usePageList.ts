@@ -1,6 +1,8 @@
 import { useLocation, useNavigate } from "react-router";
 import { useFetchAllPages } from "./useFetchAllPages";
-import { useCreatePage, useDeletePage, useUpdatePage } from "./pageCrud";
+import { useCreatePage } from "./useCreatePage";
+import { useUpdatePage } from "./useUpdatePage";
+import { useDeletePage } from "./useDeletePage";
 import { useCallback, useEffect, useState } from "react";
 import { Page } from "../types/Page";
 import { v4 as uuidv4 } from 'uuid';
@@ -20,17 +22,11 @@ export const usePageList = () => {
     }, [pathname])
 
     const navigate = useNavigate();
-    const { data: pages, isLoading: isFetchingPages, error: fetchPagesError, refetch } = useFetchAllPages();
-    const { mutateAsync: createPage, isPending: isCreatingPage, isError: isCreatingPageError } = useCreatePage(
-        { onSuccess: () => refetch() }
-    );
-    const { mutateAsync: updatePage, isPending: isUpdatingPage, isError: isUpdatingPageError } = useUpdatePage(
-        { onSuccess: () => refetch() }
-    );
+    const { data: pages, isLoading: isFetchingPages, error: fetchPagesError } = useFetchAllPages();
+    const { mutateAsync: createPage, isPending: isCreatingPage, isError: isCreatingPageError } = useCreatePage();
+    const { mutateAsync: updatePage, isPending: isUpdatingPage, isError: isUpdatingPageError } = useUpdatePage();
 
-    const { mutateAsync: deletePage, isPending: isDeletingPage, isError: isDeletingPageError } = useDeletePage(
-        { onSuccess: () => refetch() }
-    );
+    const { mutateAsync: deletePage, isPending: isDeletingPage, isError: isDeletingPageError } = useDeletePage();
 
     const handlePageClick = useCallback((id: string) => {
         navigate(`/editor/${id}`);
@@ -45,6 +41,7 @@ export const usePageList = () => {
                 content: "",
                 createdAt,
                 updatedAt: createdAt,
+                version: 0,
                 order: createdAt.getTime(),
             };
             await createPage(newPage);
@@ -64,15 +61,11 @@ export const usePageList = () => {
     }, [createPage, setIsCreatePageDialogOpen, handlePageClick, showToast]);
 
     const handleUpdatePageSubmit = useCallback(async (args: { id: string, page: Partial<Page> }) => {
-        await updatePage(args);
+        await updatePage({ ...args, sync: false });
     }, [updatePage]);
 
     const handleRenamePage = useCallback(async (id: string, pageTitle: string) => {
-        await updatePage({ id, page: { title: pageTitle } });
-    }, [updatePage]);
-
-    const handleUpdatePageOrder = useCallback(async (id: string, order: number) => {
-        await updatePage({ id, page: { order } });
+        await updatePage({ id, page: { title: pageTitle }, sync: true });
     }, [updatePage]);
 
     const handleDeletePage = useCallback(async (id: string) => {
@@ -110,7 +103,6 @@ export const usePageList = () => {
             handleCloseCreatePageDialog,
             handlePageClick,
             handleRenamePage,
-            handleUpdatePageOrder
         }
     }
 };
