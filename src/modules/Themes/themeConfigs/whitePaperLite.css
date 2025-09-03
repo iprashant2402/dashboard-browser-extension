@@ -1,0 +1,92 @@
+.white-paper-lite {
+    --layout-bg-color: #fbfbfb;
+    --layout-text-color: #000000;
+    --primary-color: #21B37A;
+    --primary-color-100: #21B37A1A;
+    --secondary-color: #7A2F67;
+    --tertiary-color: #B86092;
+    --muted-text-color: rgba(0, 0, 0, 0.6);
+    --hover-bg-color: rgba(0, 0, 0, 0.05);
+  
+    --card-bg-color: rgb(251, 251, 251);
+    --card-alt-bg-color: rgba(0, 0, 0, 0.05);
+    --card-text-color: #000000;
+    --card-alt-text-color: rgba(0, 0, 0, 0.9);
+    --card-border-color: rgba(0, 0, 0, 0.1);
+    --card-alt-border-color: rgba(0, 0, 0, 0.08);
+    --card-border-radius: 4px;
+    --card-padding: 16px 24px;
+    --card-blur: 0px;
+    --card-hover-bg-color: rgba(0, 0, 0, 0.05);
+  
+    --task-board-bg-color: rgba(0, 0, 0, 0.02);
+    --task-board-text-color: #000000;
+    --task-board-border-color: rgba(0, 0, 0, 0.08);
+    --task-board-border-radius: 8px;
+    --task-board-padding: 16px 24px;
+  
+    --task-card-bg-color: rgba(0, 0, 0, 0.04);
+    --task-card-text-color: #000000;
+    --task-card-border-color: rgba(0, 0, 0, 0.12);
+    --task-card-border-radius: 6px;
+    --task-card-padding: 20px 16px;
+  
+    --project-list-panel-bg-color: rgba(0, 0, 0, 0.03);
+    --project-list-panel-text-color: #000000;
+    --project-list-panel-border-color: rgba(0, 0, 0, 0.1);
+    --project-list-panel-border-radius: 8px;
+    --project-list-panel-padding: 16px 24px;
+  
+    --notes-list-panel-bg-color: #ffffff;
+    --notes-list-panel-border-color: rgba(0, 0, 0, 0.1);
+    --notes-list-panel-border-radius: 8px;
+    --notes-list-panel-padding: 16px 12px;
+  
+    --command-center-bg-color: #FFFFFF;
+    --command-center-border-color: none;
+    --command-center-border-radius: 8px;
+    --command-center-padding: 0 16px;
+    --editor-padding: 16px 24px 0;
+  
+    --primary-button-bg-color: #000000;
+    --primary-button-text-color: #FFFFFF;
+    --primary-button-border-color: none;
+    --primary-button-border-radius: 4px;
+    --primary-button-padding: 12px 16px;
+  
+    --secondary-button-bg-color: rgba(0, 0, 0, 0.08);
+    --secondary-button-text-color: #000000;
+    --secondary-button-border-color: rgba(0, 0, 0, 0.15);
+    --secondary-button-border-radius: 4px;
+    --secondary-button-padding: 12px 16px;
+  
+    --clear-button-bg-color: transparent;
+    --clear-button-text-color: #000000;
+    --clear-button-border-color: none;
+    --clear-button-border-radius: 0;
+    --clear-button-padding: 0;
+  
+    --outline-button-bg-color: transparent;
+    --outline-button-text-color: #000000;
+    --outline-button-border-color: rgba(0, 0, 0, 0.25);
+    --outline-button-border-radius: 4px;
+    --outline-button-padding: 12px 16px;
+
+    --code-block-background-color: rgba(0, 0, 0, 0.05);
+    --code-block-border-color: rgba(0, 0, 0, 0.12);
+    
+    --layout-text-color: #000000;
+} 
+
+.white-paper-lite .preferences-menu-select {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.white-paper-lite .page-list-item-active {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+}
+
+.white-paper-lite .page-list-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
