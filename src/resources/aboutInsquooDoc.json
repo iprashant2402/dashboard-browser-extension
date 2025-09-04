@@ -8,7 +8,7 @@
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "👋 Hey there!",
+                        "text": "👋 Welcome to insquoo",
                         "type": "text",
                         "version": 1
                     }
@@ -27,7 +27,7 @@
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "Simplicity of notes with the power of rich text documents.",
+                        "text": "The simplicity of notes ✏️ meets the power of rich-text documents.",
                         "type": "text",
                         "version": 1
                     },
@@ -40,7 +40,25 @@
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "Markdown based text-editor",
+                        "text": "A ",
+                        "type": "text",
+                        "version": 1
+                    },
+                    {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Markdown-based editor",
+                        "type": "text",
+                        "version": 1
+                    },
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " built for speed, clarity, and focus.",
                         "type": "text",
                         "version": 1
                     }
@@ -68,65 +86,7 @@
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "Welcome to ",
-                        "type": "text",
-                        "version": 1
-                    },
-                    {
-                        "detail": 0,
-                        "format": 16,
-                        "mode": "normal",
-                        "style": "",
-                        "text": "insquoo",
-                        "type": "text",
-                        "version": 1
-                    }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "heading",
-                "version": 1,
-                "tag": "h3"
-            },
-            {
-                "children": [
-                    {
-                        "detail": 0,
-                        "format": 0,
-                        "mode": "normal",
-                        "style": "",
-                        "text": "This page aims to help you figure out on how to use insquoo, listing some of the important features.",
-                        "type": "text",
-                        "version": 1
-                    }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-            },
-            {
-                "children": [],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-            },
-            {
-                "children": [
-                    {
-                        "detail": 0,
-                        "format": 0,
-                        "mode": "normal",
-                        "style": "",
-                        "text": "🚀 useful stuff",
+                        "text": "🚀 Features you'll love",
                         "type": "text",
                         "version": 1
                     }
@@ -165,34 +125,16 @@
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " to open the command menu through which you can insert various elements such as ",
+                                "text": " to open the ",
                                 "type": "text",
                                 "version": 1
                             },
                             {
                                 "detail": 0,
-                                "format": 16,
+                                "format": 1,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "Image",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 0,
-                                "mode": "normal",
-                                "style": "",
-                                "text": ", ",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 16,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "Headings",
+                                "text": "command menu",
                                 "type": "text",
                                 "version": 1
                             },
@@ -201,43 +143,7 @@
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": ", ",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 16,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "code snippet",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 0,
-                                "mode": "normal",
-                                "style": "",
-                                "text": ", ",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 16,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "quote",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 0,
-                                "mode": "normal",
-                                "style": "",
-                                "text": " etc.",
+                                "text": " and insert images, headings, code, quotes & more.",
                                 "type": "text",
                                 "version": 1
                             }
@@ -256,25 +162,7 @@
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "Customize ",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 16,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "insquoo",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 0,
-                                "mode": "normal",
-                                "style": "",
-                                "text": " with your preferred 💡 theme from a selection of ",
+                                "text": "Pick from ",
                                 "type": "text",
                                 "version": 1
                             },
@@ -283,7 +171,7 @@
                                 "format": 1,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "10+ ",
+                                "text": "10+ dark & light themes",
                                 "type": "text",
                                 "version": 1
                             },
@@ -292,7 +180,7 @@
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "dark & light 🌈 themes.",
+                                "text": " 🌈 to match your vibe.",
                                 "type": "text",
                                 "version": 1
                             }
@@ -311,7 +199,7 @@
                                 "format": 1,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "Create your 🧑‍💻 account ",
+                                "text": "Create an account",
                                 "type": "text",
                                 "version": 1
                             },
@@ -320,16 +208,16 @@
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "to enable ",
+                                "text": " to unlock ",
                                 "type": "text",
                                 "version": 1
                             },
                             {
                                 "detail": 0,
-                                "format": 17,
+                                "format": 1,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "☁️ Cloud sync",
+                                "text": "☁️ Cloud Sync",
                                 "type": "text",
                                 "version": 1
                             },
@@ -338,7 +226,7 @@
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " so that your pages are always backed up and can be accessed across your devices. ",
+                                "text": " — your pages, always backed up & accessible anywhere.",
                                 "type": "text",
                                 "version": 1
                             }
@@ -358,13 +246,13 @@
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "Use the ",
+                                "text": "Use ",
                                 "type": "text",
                                 "version": 1
                             },
                             {
                                 "detail": 0,
-                                "format": 16,
+                                "format": 1,
                                 "mode": "normal",
                                 "style": "",
                                 "text": "Hide/Reveal",
@@ -376,7 +264,7 @@
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " feature (present on bottom-right corner of your screen) to avoid people peeking 👀 into your stuff when screen sharing 💻",
+                                "text": " (bottom-right) to keep things private during screen shares 👀💻.",
                                 "type": "text",
                                 "version": 1
                             }
@@ -400,6 +288,34 @@
             },
             {
                 "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+            },
+            {
+                "children": [
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "⚡ Pro-tip: Combine shortcuts with the command menu for the fastest editing flow.",
+                        "type": "text",
+                        "version": 1
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "quote",
+                "version": 1
+            },
+            {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -415,7 +331,7 @@
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "⌨️ Helpful shortcuts",
+                        "text": "⌨️ Handy shortcuts",
                         "type": "text",
                         "version": 1
                     }
