@@ -1,11 +1,12 @@
 import "./index.css";
-import { useContext, createContext } from "react";
-import { IoAddCircle } from "react-icons/io5";
+import { useContext, createContext, useMemo } from "react";
+import { IoAddCircle, IoFileTray } from "react-icons/io5";
 import { usePageList } from "../../hooks/usePageList";
 import { PageListItem } from "../PageListItem";
 import { PreferencesToolbar } from "../../../UserPreferences/components/PreferencesToolbar";
 import { RESOURCES } from "../../utils/contants";
 import { useNavigate } from "react-router";
+import { Button } from "../../../../components/Button";
 
 // Create a context to optionally receive mobile notes functionality
 const MobileNotesOptionalContext = createContext<{
@@ -40,6 +41,10 @@ export const NotebookList = () => {
         navigate(`/resource/${resourceId}`);
     };
 
+    const isEmptyState = useMemo(() => {
+        return state.pages && state.pages.length === 0;
+    }, [state.pages]);
+
     return (
         <>
             <div className="notebook-list">
@@ -58,14 +63,23 @@ export const NotebookList = () => {
                 />)}
             </div>
             </div>
-            <div className="notebook-list-section">
+            <div className="notebook-list-section full-height">
             <div className="notebook-list-container-title-header">
             <p className="notebook-list-container-title">Your pages</p>
-            <span className="add-page-button" onClick={actions.handleCreatePageSubmit}>
+            {!isEmptyState && <span className="add-page-button" onClick={actions.handleCreatePageSubmit}>
             <IoAddCircle size={18} color="var(--primary-color)" />
-            </span>
+            </span>}
             </div>
             <div className="notebook-list-items">
+                {isEmptyState && (
+                    <div className="notebook-list-empty-state">
+                        <IoFileTray size={48} color="var(--muted-text-color)" />
+                        <div>
+                        <p>No pages yet</p>
+                        <Button className="empty-state-add-page-button" variant="clear" label="Create" icon={<IoAddCircle size={18} />} onClick={actions.handleCreatePageSubmit} />
+                        </div>
+                    </div>
+                )}
                 {state.pages?.map((page, index) => <PageListItem 
                     isActive={state.currentPageId === page.id}
                     key={page.id}
