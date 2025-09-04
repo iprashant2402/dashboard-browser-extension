@@ -15,6 +15,9 @@ import { Dialog } from "../../Dialog";
 import { Button } from "../../Button";
 import './ImagePlugin.css';
 import { IoCheckmarkCircle } from "react-icons/io5";
+import { isImgUrl } from "../../../utils/helpers";
+
+const ERROR_MESSAGE = 'Nope, that\'s not the correct image URL. Best to double check.';
 
 export type InsertImagePayload = Readonly<ImagePayload>;
 
@@ -32,6 +35,8 @@ export default function ImagesPlugin({
   const [editor] = useLexicalComposerContext();
   const [imageFormOpen, setImageFormOpen] = useState(false);
   const [imagePayload, setImagePayload] = useState<Partial<InsertImagePayload> | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const listener = () => {
@@ -65,22 +70,38 @@ export default function ImagesPlugin({
     );
   }, [captionsEnabled, editor]);
 
-  const insertImage = () => {
+  const insertImage = async () => {
     if(!imagePayload || !imagePayload.src) return;
-    editor.dispatchCommand(INSERT_IMAGE_COMMAND, {
-        ...imagePayload,
-        src: imagePayload.src ?? '',
-        altText: imagePayload.altText ?? '',
-        width: imagePayload.width ?? '100%',
-    });
-    setImageFormOpen(false);
+    setIsLoading(true);
+    try {
+        const isValidUrl = await isImgUrl(imagePayload.src);
+        if (!isValidUrl) {
+            setError(ERROR_MESSAGE);
+            return;
+        }
+        editor.dispatchCommand(INSERT_IMAGE_COMMAND, {
+            ...imagePayload,
+            src: imagePayload.src ?? '',
+            altText: imagePayload.altText ?? '',
+            width: imagePayload.width ?? '100%',
+        });
+        setImageFormOpen(false);
+    } catch (error) {
+        console.error(error);
+        setError(ERROR_MESSAGE);
+    } finally {
+        setIsLoading(false);
+    }
   }
 
     return <Dialog title="Insert image" isOpen={imageFormOpen} onClose={() => setImageFormOpen(false)}>
       <div className="image-form-wrapper">
         <div className="image-form-item">
             <input placeholder="Paste image URL here" type="text" value={imagePayload?.src} onChange={(e) => setImagePayload({...imagePayload, src: e.target.value})} />
-            <Button variant="clear" onClick={insertImage} disabled={!imagePayload?.src} icon={<IoCheckmarkCircle size={32} />} />
+            <Button variant="clear" onClick={insertImage} disabled={!imagePayload?.src || isLoading} icon={<IoCheckmarkCircle size={32} />} />
+        </div>
+        <div className="image-form-error">
+            {error && <p className="error-message">{error}</p>}
         </div>
       </div>
     </Dialog>;

@@ -4,6 +4,17 @@
     gap: 10px;
 }
 
+.image-form-error {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 12px;
+}
+
 .image-form-item {
     display: flex;
     flex-direction: row;

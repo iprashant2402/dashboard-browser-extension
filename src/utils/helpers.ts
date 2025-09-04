@@ -26,3 +26,10 @@ export const EMAIL_REGEX =
 export function validateUrl(url: string): boolean {
     return url === 'https://' || URL_REGEX.test(url);
  }
+
+ export function isImgUrl(url: string): Promise<boolean> {
+    if (!URL_REGEX.test(url)) return Promise.resolve(false);
+    return fetch(url, {method: 'HEAD'}).then(res => {
+      return res.headers.get('Content-Type')?.startsWith('image') ?? false;
+    })
+  }
