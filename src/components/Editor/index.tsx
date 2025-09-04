@@ -1,5 +1,4 @@
 import './index.css'
-import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
 import {MarkdownShortcutPlugin} from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import {InitialConfigType, LexicalComposer} from '@lexical/react/LexicalComposer';
 import {ClickableLinkPlugin} from '@lexical/react/LexicalClickableLinkPlugin';
@@ -38,6 +37,8 @@ import { KeyboardShortcutsPlugin } from './plugins/KeyboardShortcutPlugin';
 import { ListExitPlugin } from './plugins/ListExitPlugin';
 import ToolbarPlugin from './plugins/ToolbarPlugin';
 import { SlashCommandPlugin } from './plugins/SlashCommandPlugin';
+import { ImageNode } from './nodes/ImageNode/ImageNode';
+import ImagesPlugin from './plugins/ImagePlugin';
 
 
 const MATCHERS = [
@@ -163,7 +164,7 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
     return {
       namespace: 'Scratchpad',
       editorState: props.initialState || undefined,
-      nodes: [ParagraphNode, TextNode, HeadingNode, HorizontalRuleNode, CodeNode, LinkNode, ListNode, ListItemNode, QuoteNode, AutoLinkNode] as Array<Klass<LexicalNode>>,
+      nodes: [ParagraphNode, TextNode, HeadingNode, HorizontalRuleNode, CodeNode, LinkNode, ListNode, ListItemNode, QuoteNode, AutoLinkNode, ImageNode] as Array<Klass<LexicalNode>>,
       onError(error: Error) {
         throw error;
       },
@@ -193,7 +194,7 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-        {showToolbar && <ToolbarPlugin />}
+        {showToolbar && <ToolbarPlugin visible={isFocused} />}
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={
@@ -211,9 +212,9 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
             }
             ErrorBoundary={LexicalErrorBoundary}
           />
+          <ImagesPlugin captionsEnabled={true} />
           <OnChangePlugin onChange={onChange} ignoreSelectionChange={true} />
           <HistoryPlugin />
-          <AutoFocusPlugin />
           <LinkPlugin />
           <AutoLinkPlugin matchers={MATCHERS} />
           <MarkdownShortcutPlugin />
