@@ -4,6 +4,8 @@ import { IoAddCircle } from "react-icons/io5";
 import { usePageList } from "../../hooks/usePageList";
 import { PageListItem } from "../PageListItem";
 import { PreferencesToolbar } from "../../../UserPreferences/components/PreferencesToolbar";
+import { RESOURCES } from "../../utils/contants";
+import { useNavigate } from "react-router";
 
 // Create a context to optionally receive mobile notes functionality
 const MobileNotesOptionalContext = createContext<{
@@ -14,7 +16,7 @@ const MobileNotesOptionalContext = createContext<{
 
 export const NotebookList = () => {
     const { state, actions } = usePageList();
-    
+    const navigate = useNavigate();
     // Try to get mobile context if available
     const mobileContext = useContext(MobileNotesOptionalContext);
 
@@ -34,10 +36,29 @@ export const NotebookList = () => {
       }
     };
 
+    const handleResourceClick = (resourceId: string) => {
+        navigate(`/resource/${resourceId}`);
+    };
+
     return (
         <>
             <div className="notebook-list">
-                <div className="notebook-list-container">
+            <div className="notebook-list-container">
+            <div className="notebook-list-section">
+            <div className="notebook-list-container-title-header">
+            <p className="notebook-list-container-title">Resources</p>
+            </div>
+            <div className="notebook-list-items">
+                {RESOURCES.map((page, index) => <PageListItem 
+                    isActive={state.currentPageId === page.id}
+                    key={page.id}
+                    order={index}
+                    page={page} 
+                    handleClick={handleResourceClick}
+                />)}
+            </div>
+            </div>
+            <div className="notebook-list-section">
             <div className="notebook-list-container-title-header">
             <p className="notebook-list-container-title">Your pages</p>
             <span className="add-page-button" onClick={actions.handleCreatePageSubmit}>
@@ -55,11 +76,12 @@ export const NotebookList = () => {
                     handleDelete={actions.handleDeletePage}
                 />)}
             </div>
-            <div className="notebook-list-footer">
-            <PreferencesToolbar />
             </div>
         </div>
-            </div>
+        <div className="notebook-list-footer">
+            <PreferencesToolbar />
+        </div>
+        </div>
         </>
     )
 }

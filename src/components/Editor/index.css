@@ -50,6 +50,7 @@
     font-family: Helvetica, sans-serif, Arial;
     /* Ensure content doesn't hide behind toolbar */
     min-height: 0;
+    padding-bottom: 300px;
   }
   
   .editor-placeholder {
@@ -189,6 +190,7 @@
     font-size: 2rem;
     color: var(--layout-text-color);
     font-weight: 700;
+    margin-block-start: 16px;
     margin-block-end: 18px;
   }
   
@@ -197,6 +199,7 @@
     color: var(--layout-text-color);
     font-weight: 700;
     margin-block-end: 14px;
+    margin-block-start: 14px;
   }
 
   .editor-heading-h3 {
@@ -204,6 +207,7 @@
     color: var(--layout-text-color);
     font-weight: 700;
     margin-block-end: 12px;
+    margin-block-start: 12px;
   }
   
   .editor-quote {

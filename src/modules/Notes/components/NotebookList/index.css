@@ -21,6 +21,7 @@
     overflow-y: scroll;
     padding: 0px 4px;
     padding-bottom: 0px;
+    gap: 16px;
 }
 
 .notebook-list-container-title {
