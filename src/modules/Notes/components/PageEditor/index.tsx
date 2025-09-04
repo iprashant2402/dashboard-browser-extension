@@ -15,8 +15,8 @@ export const PageEditor = () => {
                 initialState={state.page?.content}
                 onSave={actions.handleOnSavePage}
                 placeholder={<div className="page-editor-placeholder">
-                    <p>Jot down your thoughts or anything else...</p>
-                    <p>You can use markdown to format your notes.</p>
+                    <p>Start typing...</p>
+                    <p>or type <span className="instruction-highlight">/</span> to open the command palette.</p>
                     <br />
                     <p>Helpful shortcuts:</p>
                     <br />

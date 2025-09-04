@@ -14,6 +14,7 @@ import { INSERT_UNORDERED_LIST_COMMAND, INSERT_ORDERED_LIST_COMMAND } from '@lex
 import { $setBlocksType } from '@lexical/selection';
 import { createPortal } from 'react-dom';
 import './SlashCommandPlugin.css';
+import { INSERT_IMAGE_COMMAND_SELECTED_EVENT } from './ImagePlugin';
 
 export interface SlashCommand {
   key: string;
@@ -87,6 +88,16 @@ const SlashCommandsList = () => {
               $setBlocksType(selection, () => $createHeadingNode('h3'));
             }
           });
+        }
+      },
+      {
+        key: 'image',
+        title: 'Image',
+        description: 'Add an image.',
+        icon: '📷',
+        keywords: ['image', 'img', 'picture'],
+        onSelect: () => {
+          window.dispatchEvent(new CustomEvent(INSERT_IMAGE_COMMAND_SELECTED_EVENT));
         }
       },
       {

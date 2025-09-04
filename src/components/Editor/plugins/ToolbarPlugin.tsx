@@ -28,7 +28,7 @@ function Divider() {
   return <div className="divider" />;
 }
 
-export default function ToolbarPlugin() {
+export default function ToolbarPlugin({visible}: {visible: boolean}) {
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef(null);
   const [canUndo, setCanUndo] = useState(false);
@@ -84,7 +84,7 @@ export default function ToolbarPlugin() {
   }, [editor, $updateToolbar]);
 
   return (
-    <div className="toolbar" ref={toolbarRef}>
+    <div className="toolbar" ref={toolbarRef} style={{visibility: visible ? 'visible' : 'hidden'}}>
       <button
         disabled={!canUndo}
         onClick={() => {
