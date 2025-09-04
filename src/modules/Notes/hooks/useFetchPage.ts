@@ -5,6 +5,7 @@ import { ACCESS_TOKEN_KEY } from "../utils/contants";
 
 const fetchPage = async (id: string) => {
     const page = await localPageRepository.getPage(id);
+    console.log('page', page);
     const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
     if (!page && isAuthenticated) {
         const remotePage = await pagesSyncRepository.getPage(id);

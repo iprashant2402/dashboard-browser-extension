@@ -1,0 +1,929 @@
+{
+    "root": {
+        "children": [
+            {
+                "children": [
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "👋 Welcome to insquoo",
+                        "type": "text",
+                        "version": 1
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h1"
+            },
+            {
+                "children": [
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "The simplicity of notes ✏️ meets the power of rich-text documents.",
+                        "type": "text",
+                        "version": 1
+                    },
+                    {
+                        "type": "linebreak",
+                        "version": 1
+                    },
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "A ",
+                        "type": "text",
+                        "version": 1
+                    },
+                    {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Markdown-based editor",
+                        "type": "text",
+                        "version": 1
+                    },
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " built for speed, clarity, and focus.",
+                        "type": "text",
+                        "version": 1
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "quote",
+                "version": 1
+            },
+            {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+            },
+            {
+                "children": [
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "🚀 Features you'll love",
+                        "type": "text",
+                        "version": 1
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Type ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "/",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to open the ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 1,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "command menu",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " and insert images, headings, code, quotes & more.",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "value": 1
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Pick from ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 1,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "10+ dark & light themes",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " 🌈 to match your vibe.",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "value": 2
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 1,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Create an account",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to unlock ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 1,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "☁️ Cloud Sync",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " — your pages, always backed up & accessible anywhere.",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 1,
+                        "value": 3
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Use ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 1,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Hide/Reveal",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " (bottom-right) to keep things private during screen shares 👀💻.",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "value": 4
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
+            },
+            {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+            },
+            {
+                "children": [
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "⚡ Pro-tip: Combine shortcuts with the command menu for the fastest editing flow.",
+                        "type": "text",
+                        "version": 1
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "quote",
+                "version": 1
+            },
+            {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+            },
+            {
+                "children": [
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "⌨️ Handy shortcuts",
+                        "type": "text",
+                        "version": 1
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "#",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "space",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create a heading level 1",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 1
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "##",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "space",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create a heading level 2",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 2
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "###",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "space",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create a heading level 3",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 3
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "-",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "space",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create a list",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 4
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": ">",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "space",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create a quote",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 5
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "cmd",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "B",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create a bold text",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 6
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "cmd",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "I",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create an italic text",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 7
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "cmd",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "U",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create an underline text",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 8
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "cmd",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "shift",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "X",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create a strikethrough text",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 9
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "backtick",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create inline code e.g. ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "hello",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 10
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "``` (",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "3 backticks",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": ") + ",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "space",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create a code snippet",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "value": 11
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 16,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "[](url)",
+                                "type": "text",
+                                "version": 1
+                            },
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": " to create a link",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "textFormat": 16,
+                        "value": 12
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "textFormat": 16,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+            }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "root",
+        "version": 1
+    }
+}

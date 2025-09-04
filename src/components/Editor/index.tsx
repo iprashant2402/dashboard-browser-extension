@@ -56,6 +56,7 @@ export interface EditorProps {
   initialState?: string;
   onSave: (content: string) => void;
   showToolbar?: boolean;
+  editable?: boolean;
 }
 
 const DefaultPlaceholder = 'Jot down your thoughts or anything else...';
@@ -156,13 +157,14 @@ const constructImportMap = (): DOMConversionMap => {
     return importMap;
   };
 
-export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
+export const Editor = ({showToolbar = true, editable = true, ...props}: EditorProps) => {
   const editorStateRef = useRef<EditorState | undefined>(undefined);
   const [isFocused, setIsFocused] = useState(false);
 
   const editorConfig: InitialConfigType = useMemo(() => {
     return {
       namespace: 'Scratchpad',
+      editable: editable,
       editorState: props.initialState || undefined,
       nodes: [ParagraphNode, TextNode, HeadingNode, HorizontalRuleNode, CodeNode, LinkNode, ListNode, ListItemNode, QuoteNode, AutoLinkNode, ImageNode] as Array<Klass<LexicalNode>>,
       onError(error: Error) {
@@ -174,7 +176,7 @@ export const Editor = ({showToolbar = true, ...props}: EditorProps) => {
         import: constructImportMap(),
       }
     };
-  }, [props.initialState]);
+  }, [props.initialState, editable]);
 
   const onChange = (content: EditorState) => {
     editorStateRef.current = content;

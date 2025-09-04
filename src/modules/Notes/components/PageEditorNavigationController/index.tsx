@@ -4,6 +4,7 @@ import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useCreatePage } from "../../hooks/useCreatePage";
 import { v4 as uuidv4 } from 'uuid';
+import { RELEASE_NOTES_PAGE_VISITED_KEY } from "../../../../utils/constants";
 
 export const PageEditorNavigationController = () => {
     const navigate = useNavigate();
@@ -39,9 +40,13 @@ export const PageEditorNavigationController = () => {
     useEffect(() => {
         if (status !== 'success') return;
         if (page) {
-            navigate(`/editor/${page.id}`);
+            const hasSeenReleaseNotes = localStorage.getItem(RELEASE_NOTES_PAGE_VISITED_KEY);
+            if (!hasSeenReleaseNotes) {
+                navigate('/resource/releaseNotes');
+            }
+            else navigate(`/editor/${page.id}`);
         } else {
-            createNewPage();
+            navigate('/resource/about');
         }
     }, [page, navigate, status, createNewPage]);
 

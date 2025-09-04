@@ -21,6 +21,7 @@
     overflow-y: scroll;
     padding: 0px 4px;
     padding-bottom: 0px;
+    gap: 16px;
 }
 
 .notebook-list-container-title {
@@ -66,4 +67,33 @@
     position: relative;
     width: 100%;
     padding: 0 0 8px 0;
+}
+
+.notebook-list-empty-state {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+
+    p {
+        font-size: 12px;
+        text-align: center;
+        font-weight: 500;
+        color: var(--muted-text-color);
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        justify-content: center;
+    }
+}
+
+.empty-state-add-page-button {
+    padding: 4px 16px 4px 12px !important;
+}
+
+.notebook-list-section.full-height {
+    height: 100%;
 }
