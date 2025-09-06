@@ -3,7 +3,7 @@ import { authRepository } from '../repository/AuthRepository';
 import { LoginRequest, SignupRequest, GoogleAuthRequest, UpdateProfileRequest } from '../types/User';
 import { AxiosError } from 'axios';
 import { useBatchSync } from '../../Notes/hooks/useBatchSync';
-import { ACCESS_TOKEN_KEY } from '../../Notes/utils/contants';
+import { ACCESS_TOKEN_KEY, PAGES_QUERY_KEYS } from '../../Notes/utils/contants';
 
 // Query keys
 export const AUTH_QUERY_KEYS = {
@@ -41,6 +41,7 @@ export const useAuth = () => {
     onSuccess: (data) => {
       queryClient.setQueryData(AUTH_QUERY_KEYS.profile, data.user);
       queryClient.invalidateQueries({ queryKey: AUTH_QUERY_KEYS.user });
+      queryClient.invalidateQueries({ queryKey: PAGES_QUERY_KEYS.allPages });
       batchSync();
     },
   });
@@ -61,6 +62,7 @@ export const useAuth = () => {
     onSuccess: (data) => {
       queryClient.setQueryData(AUTH_QUERY_KEYS.profile, data.user);
       queryClient.invalidateQueries({ queryKey: AUTH_QUERY_KEYS.user });
+      queryClient.invalidateQueries({ queryKey: PAGES_QUERY_KEYS.allPages });
     },
   });
 

@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.23.6",
     "@lexical/code": "^0.31.1",
     "@lexical/markdown": "^0.31.1",
     "@lexical/react": "^0.31.1",
