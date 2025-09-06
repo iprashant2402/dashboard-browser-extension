@@ -5,12 +5,23 @@ import { useUserPreferences } from "../hooks/useUserPreferences";
 import { AuthMenuContent } from "../../Auth/components/AuthDialog/AuthMenuContent";
 import { useAuth } from "../../Auth";
 import { Button } from "../../../components/Button";
+import { AnalyticsTracker } from "../../../analytics/AnalyticsTracker";
+import { useMountEffect } from "../../../utils/useMountEffect";
 
 export const PreferencesForm = () => {
     const { userPreferences, updatePreferences } = useUserPreferences();
     const { user, isAuthenticated, isLoggingOut, logout } = useAuth();
 
+    useMountEffect(() => {
+        AnalyticsTracker.track('Account center - PV', {
+            isLoggedIn: isAuthenticated,
+            theme: userPreferences.theme,
+            editorToolbarEnabled: userPreferences.editorToolbarEnabled,
+        });
+    })
+
     const handleLogout = async () => {
+        AnalyticsTracker.track('Logout - Click');
         try {
           await logout();
         } catch (error) {
@@ -19,10 +30,16 @@ export const PreferencesForm = () => {
       };
 
     const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        AnalyticsTracker.track('Theme updated', {
+            theme: event.target.value as Theme,
+        });
         updatePreferences({ theme: event.target.value as Theme });
     }
 
     const handleEditorToolbarChange = (checked: boolean) => {
+        AnalyticsTracker.track('Editor toolbar toggle', {
+            editorToolbarEnabled: checked,
+        });
         updatePreferences({ editorToolbarEnabled: checked });
     }
 

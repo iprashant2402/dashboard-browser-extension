@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Page } from "../types/Page";
 import { v4 as uuidv4 } from 'uuid';
 import { useToast } from "../../../components/Toast";
+import { AnalyticsTracker } from "../../../analytics/AnalyticsTracker";
 
 export const usePageList = () => {
     const {pathname} = useLocation();
@@ -33,6 +34,7 @@ export const usePageList = () => {
     }, [navigate]);
 
     const handleCreatePageSubmit = useCallback(async () => {
+        AnalyticsTracker.track('Create new page - Click');
         try {
             const createdAt = new Date();
             const newPage = {

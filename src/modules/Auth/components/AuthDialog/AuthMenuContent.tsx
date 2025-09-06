@@ -4,6 +4,7 @@ import './AuthDialog.css';
 import { AuthSignup } from './AuthSignup';
 import { AuthLogin } from './AuthLogin';
 import { Button } from '../../../../components/Button';
+import { AnalyticsTracker } from '../../../../analytics/AnalyticsTracker';
 
 export type AuthFormMode = 'login' | 'signup';
 
@@ -61,6 +62,8 @@ export const AuthMenuContent: React.FC = () => {
   };
 
   const handleModeSwitch = (mode: AuthFormMode) => {
+    const event = mode === 'login' ? 'Login - Click' : 'Signup - Click';
+    AnalyticsTracker.track(event);
     setAuthMode(mode);
     resetLoginError();
     resetSignupError();
@@ -68,6 +71,7 @@ export const AuthMenuContent: React.FC = () => {
   };
 
   const handleLogout = async () => {
+    AnalyticsTracker.track('Logout - Click');
     try {
       await logout();
     } catch (error) {

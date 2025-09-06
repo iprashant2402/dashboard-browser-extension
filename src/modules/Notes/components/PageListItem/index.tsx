@@ -4,6 +4,7 @@ import { PageSummary } from "../../types/Page";
 import { Button } from "../../../../components/Button";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { IoIosPaper } from "react-icons/io";
+import { AnalyticsTracker } from "../../../../analytics/AnalyticsTracker";
 
 interface PageListItemProps { 
     page: PageSummary, 
@@ -30,7 +31,14 @@ export const PageListItem = ({
         setIsRenaming(false);
         if (!nameRef.current) return;
         const textContent = nameRef.current.textContent;
-        if (textContent && textContent.length > 0) handleRename(page.id, textContent);
+        if (textContent && textContent.length > 0) {
+            handleRename(page.id, textContent);
+            AnalyticsTracker.track('Rename page', {
+                page_id: page.id,
+                new_page_title: textContent,
+                old_page_title: page.title,
+            });
+        }
         else nameRef.current.innerText = page.title;
         nameRef.current?.removeEventListener('blur', onBlur);
     }, [page.id, page.title, handleRename]);
@@ -47,11 +55,19 @@ export const PageListItem = ({
 
     const handleDeletePage = () => {
         if (!handleDelete) return;
+        AnalyticsTracker.track('Delete page', {
+            page_id: page.id,
+            page_title: page.title,
+        });
         handleDelete(page.id);
     }
 
     const openMenu = () => {
         if (!handleRename && !handleDelete) return;
+        AnalyticsTracker.track('Page List Item Menu - Open', {
+            page_id: page.id,
+            page_title: page.title,
+        });
         setIsMenuOpen(true);
     };
 
@@ -59,7 +75,15 @@ export const PageListItem = ({
         setIsMenuOpen(false);
     };
 
-    return <div title={page.title} id={`page-${order}`} className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onDoubleClick={() => setIsRenaming(true)} onClick={() => handleClick(page.id)}>
+    const handlePageClick = () => {
+        handleClick(page.id);
+        AnalyticsTracker.track('View page - Click', {
+            page_id: page.id,
+            page_title: page.title,
+        });
+    }
+
+    return <div title={page.title} id={`page-${order}`} className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onDoubleClick={() => setIsRenaming(true)} onClick={handlePageClick}>
         <div className="row jt-space-between">
             <div className="row item-title-container">
                 <span><IoIosPaper size={14} color="var(--muted-text-color)" /></span>

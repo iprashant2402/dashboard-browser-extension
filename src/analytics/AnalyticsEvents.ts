@@ -1,0 +1,25 @@
+export const ANALYTICS_EVENTS = [
+    'About - PV',
+    'Release Notes - PV',
+    'Create new page - Click',
+    'Page List Item Menu - Open',
+    'Rename page',
+    'Delete page',
+    'Privacy Curtain - Click',
+    'Settings - Click',
+    'Settings - Close',
+    'Editor toolbar toggle',
+    'Theme updated',
+    'Account center - PV',
+    'Logout - Click',
+    'Login - Click',
+    'Signup - Click',
+    'Login - Success',
+    'Signup - Success',
+    'View page - Click',
+    'Page Editor - PV',
+    'Command palette - Trigger',
+    'Command palette - Command selected',
+];
+
+export type AnalyticsEvent = typeof ANALYTICS_EVENTS[number];
