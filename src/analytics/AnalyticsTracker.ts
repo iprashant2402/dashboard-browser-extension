@@ -13,8 +13,11 @@ type AnalyticsUser = {
     l_name?: string;
 }
 
+const isAnalyticsEnabled = AMPLITUDE_API_KEY && AMPLITUDE_API_KEY !== 'false';
+
 export class AnalyticsTracker {
     static init(user: User | null) {
+        if (!isAnalyticsEnabled) return;
         amplitude.init(AMPLITUDE_API_KEY,user?.id, {
             defaultTracking: {
                 pageViews: false,
@@ -34,10 +37,12 @@ export class AnalyticsTracker {
     }
 
     static track(event: AnalyticsEvent, properties?: Record<string, any>) {
+        if (!isAnalyticsEnabled) return;
         amplitude.track(event, properties);
     }
     
     static setProperty(key: string, value: string, setOnce: boolean = false) {
+        if (!isAnalyticsEnabled) return;
         const identifyEvent = new amplitude.Identify();
         if (setOnce) identifyEvent.setOnce(key, value);
         else identifyEvent.set(key, value);
@@ -46,6 +51,7 @@ export class AnalyticsTracker {
     }
 
     static setUser(user: AnalyticsUser) {
+        if (!isAnalyticsEnabled) return;
         amplitude.setUserId(user.id);
         const identifyEvent = new amplitude.Identify();
         identifyEvent.set('email', user.email);
