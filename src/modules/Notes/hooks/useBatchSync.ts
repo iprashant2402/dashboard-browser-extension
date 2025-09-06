@@ -19,6 +19,7 @@ const batchSync = async () => {
     const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
     if (!isAuthenticated) return;
     const pages = await localPageRepository.getPages();
+    if (pages.length === 0) return undefined;
     const pagesStatus = await checkPagesStatus(pages);
     const pagesToSync = pages.filter(page => pagesStatus.find((status) => status.id === page.id)?.status === 'UPDATE_AVAILABLE');
 
@@ -28,7 +29,7 @@ const batchSync = async () => {
     }
     const pagesToUpdateOrCreate = pages.filter(page => ["NOT_FOUND", "OUTDATED"].includes(pagesStatus.find((status) => status.id === page.id)?.status ?? ''));
 
-    if (pagesToUpdateOrCreate.length === 0) return;
+    if (pagesToUpdateOrCreate.length === 0) return undefined;
 
     const batchSyncRequest: BatchSyncRequest = {
         pages: pagesToUpdateOrCreate.map(page => ({
