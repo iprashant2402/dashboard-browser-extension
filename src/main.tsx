@@ -24,6 +24,8 @@ import { THEMES } from './modules/Tasks/types/Theme.ts'
 import { UserPreference } from './modules/UserPreferences/types/UserPreference.ts'
 import { ToastContainer } from './components/Toast/index.ts'
 import { USER_PREFERENCES_KEY } from './utils/constants.ts'
+import { AnalyticsTracker } from './analytics/AnalyticsTracker.ts'
+import { getUserProfileLocalStorage } from './utils/helpers.ts'
 
 localDB.init().then(() => {
   const userPreferences = storage.getItem<UserPreference>(USER_PREFERENCES_KEY);
@@ -31,6 +33,8 @@ if (userPreferences?.theme) {
   document.body.classList.remove(...THEMES);
   document.body.classList.add(userPreferences.theme);
 }
+
+AnalyticsTracker.init(getUserProfileLocalStorage());
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

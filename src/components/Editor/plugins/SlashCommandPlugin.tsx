@@ -15,6 +15,7 @@ import { $setBlocksType } from '@lexical/selection';
 import { createPortal } from 'react-dom';
 import './SlashCommandPlugin.css';
 import { INSERT_IMAGE_COMMAND_SELECTED_EVENT } from './ImagePlugin';
+import { AnalyticsTracker } from '../../../analytics/AnalyticsTracker';
 
 export interface SlashCommand {
   key: string;
@@ -176,6 +177,11 @@ const SlashCommandMenu: React.FC<SlashCommandMenuProps> = ({
   const commands = SlashCommandsList();
   const menuRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    AnalyticsTracker.track('Command palette - Trigger');
+  }, [isOpen])
+
   const filteredCommands = commands.filter(command => {
     if (!searchTerm) return true;
     const term = searchTerm.toLowerCase();
@@ -274,6 +280,10 @@ export function SlashCommandPlugin() {
   }, [commands, searchTerm]);
 
   const selectCommand = useCallback((command: SlashCommand) => {
+    AnalyticsTracker.track('Command palette - Command selected', {
+      command_name: command.title,
+      command_id: command.key,
+    });
     editor.update(() => {
       if (triggerNodeKey) {
         const node = $getNodeByKey(triggerNodeKey);

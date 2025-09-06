@@ -9,6 +9,7 @@ import { NotebookListHeader } from "../../modules/Notes/components/NotebookList/
 import { useEffect } from "react";
 import { useBatchSync } from "../../modules/Notes/hooks/useBatchSync";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+import { AnalyticsTracker } from "../../analytics/AnalyticsTracker";
 
 export const HomeView = () => {
     const { isPrivacyCurtainEnabled, setIsPrivacyCurtainEnabled } = usePrivacyCurtain();
@@ -23,6 +24,10 @@ export const HomeView = () => {
     }, [batchSync])
 
     const togglePrivacyCurtain = () => {
+        AnalyticsTracker.track('Privacy Curtain - Click', {
+            old_value: isPrivacyCurtainEnabled,
+            new_value: !isPrivacyCurtainEnabled,
+        });
         setIsPrivacyCurtainEnabled(!isPrivacyCurtainEnabled);
     }
 

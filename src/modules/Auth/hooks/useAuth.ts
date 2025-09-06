@@ -1,15 +1,28 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { authRepository } from '../repository/AuthRepository';
-import { LoginRequest, SignupRequest, GoogleAuthRequest, UpdateProfileRequest } from '../types/User';
+import { LoginRequest, SignupRequest, GoogleAuthRequest, UpdateProfileRequest, User } from '../types/User';
 import { AxiosError } from 'axios';
 import { useBatchSync } from '../../Notes/hooks/useBatchSync';
-import { ACCESS_TOKEN_KEY } from '../../Notes/utils/contants';
+import { ACCESS_TOKEN_KEY, PAGES_QUERY_KEYS } from '../../Notes/utils/contants';
+import { setUserProfileLocalStorage } from '../../../utils/helpers';
+import { AnalyticsTracker } from '../../../analytics/AnalyticsTracker';
 
 // Query keys
 export const AUTH_QUERY_KEYS = {
   user: ['auth', 'user'] as const,
   profile: ['auth', 'profile'] as const,
 };
+
+export const USER_PROFILE_STORAGE_KEY = 'user_profile';
+
+const setAnalyticsUser = (user: User) => {
+  AnalyticsTracker.setUser({
+    id: user.id,
+    email: user.email,
+    f_name: user.firstName,
+    l_name: user.lastName,
+  });
+}
 
 export const useAuth = () => {
   const queryClient = useQueryClient();
@@ -39,9 +52,13 @@ export const useAuth = () => {
   const loginMutation = useMutation({
     mutationFn: (credentials: LoginRequest) => authRepository.login(credentials),
     onSuccess: (data) => {
+      setUserProfileLocalStorage(data.user);
+      setAnalyticsUser(data.user);
       queryClient.setQueryData(AUTH_QUERY_KEYS.profile, data.user);
       queryClient.invalidateQueries({ queryKey: AUTH_QUERY_KEYS.user });
+      queryClient.invalidateQueries({ queryKey: PAGES_QUERY_KEYS.allPages });
       batchSync();
+      AnalyticsTracker.track('Login - Success');
     },
   });
 
@@ -49,9 +66,12 @@ export const useAuth = () => {
   const signupMutation = useMutation({
     mutationFn: (userData: SignupRequest) => authRepository.signup(userData),
     onSuccess: (data) => {
+      setUserProfileLocalStorage(data.user);
+      setAnalyticsUser(data.user);
       queryClient.setQueryData(AUTH_QUERY_KEYS.profile, data.user);
       queryClient.invalidateQueries({ queryKey: AUTH_QUERY_KEYS.user });
       batchSync();
+      AnalyticsTracker.track('Signup - Success');
     },
   });
 
@@ -59,8 +79,12 @@ export const useAuth = () => {
   const googleAuthMutation = useMutation({
     mutationFn: (googleData: GoogleAuthRequest) => authRepository.googleAuth(googleData),
     onSuccess: (data) => {
+      setUserProfileLocalStorage(data.user);
+      setAnalyticsUser(data.user);
       queryClient.setQueryData(AUTH_QUERY_KEYS.profile, data.user);
       queryClient.invalidateQueries({ queryKey: AUTH_QUERY_KEYS.user });
+      queryClient.invalidateQueries({ queryKey: PAGES_QUERY_KEYS.allPages });
+      AnalyticsTracker.track('Login - Success');
     },
   });
 
@@ -69,6 +93,7 @@ export const useAuth = () => {
     mutationFn: () => authRepository.logout(),
     onSuccess: () => {
       queryClient.clear();
+      localStorage.removeItem(USER_PROFILE_STORAGE_KEY);
       window.location.reload();
     },
   });
@@ -77,6 +102,8 @@ export const useAuth = () => {
   const updateProfileMutation = useMutation({
     mutationFn: (data: UpdateProfileRequest) => authRepository.updateUserProfile(data),
     onSuccess: (updatedUser) => {
+      setUserProfileLocalStorage(updatedUser);
+      setAnalyticsUser(updatedUser);
       queryClient.setQueryData(AUTH_QUERY_KEYS.profile, updatedUser);
     },
   });

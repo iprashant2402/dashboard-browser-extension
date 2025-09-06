@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "insquoo",
-    "version": "1.0.5",
-    "description": "A powerful note-taking friend. Make every new tab a notebook, and create pages seamlessly in your browser.",
+    "version": "1.0.6",
+    "description": "The simplicity of notes meets the power of rich-text documents. A Markdown-based editor built for speed, clarity, and focus.",
     "icons": {
       "48": "images/vire-logo-icon-48.png",
       "128": "images/vire-logo-icon-128.png",

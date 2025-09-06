@@ -1,3 +1,5 @@
+import { User, USER_PROFILE_STORAGE_KEY } from "../modules/Auth";
+
 export const expandToFullscreen = (query: string) => {
     const el = document.querySelector(query);
     if (el) {
@@ -33,3 +35,19 @@ export function validateUrl(url: string): boolean {
       return res.headers.get('Content-Type')?.startsWith('image') ?? false;
     })
   }
+
+export type Platform = 'EXTENSION' | 'WEB' | 'IOS' | 'ANDROID';
+
+export function getCurrentPlatform(): Platform {
+    if (window.chrome && window.chrome.runtime && window.chrome.runtime.id) return 'EXTENSION';
+    return 'WEB';
+}
+
+export function setUserProfileLocalStorage(user: User) {
+    localStorage.setItem(USER_PROFILE_STORAGE_KEY, JSON.stringify(user));
+}
+
+export function getUserProfileLocalStorage(): User | null {
+    const user = localStorage.getItem(USER_PROFILE_STORAGE_KEY);
+    return user ? JSON.parse(user) : null;
+}

@@ -5,6 +5,7 @@ import { useEffect, useMemo } from "react";
 import { Editor } from "../../../../components/Editor";
 import "../PageEditor/index.css";
 import { ABOUT_PAGE_VISITED_KEY, RELEASE_NOTES_PAGE_VISITED_KEY } from "../../../../utils/constants";
+import { AnalyticsTracker } from "../../../../analytics/AnalyticsTracker";
 
 export type ResourceType = "about" | "releaseNotes";
 
@@ -23,8 +24,10 @@ export const ResourceReader = () => {
     const content = useMemo(() => {
         switch (resource) {
             case "about":
+                AnalyticsTracker.track('About - PV');
                 return JSON.stringify(AboutInsquooDoc);
             case "releaseNotes":
+                AnalyticsTracker.track('Release Notes - PV');
                 return JSON.stringify(ReleaseNotes);
             default:
                 return null;

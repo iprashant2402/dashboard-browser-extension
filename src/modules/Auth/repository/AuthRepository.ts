@@ -2,6 +2,8 @@ import { IAuthRepository } from './IAuthRepository';
 import { AuthResponse, LoginRequest, SignupRequest, GoogleAuthRequest, User, UpdateProfileRequest } from '../types/User';
 import { apiManager } from '../../../utils/ApiManager';
 import { ACCESS_TOKEN_KEY } from '../../Notes/utils/contants';
+import { setUserProfileLocalStorage } from '../../../utils/helpers';
+import { USER_PROFILE_STORAGE_KEY } from '../hooks/useAuth';
 
 class AuthRepository implements IAuthRepository {
   async login(credentials: LoginRequest): Promise<AuthResponse> {
@@ -44,16 +46,19 @@ class AuthRepository implements IAuthRepository {
       // Clear tokens regardless of API call success
       localStorage.removeItem(ACCESS_TOKEN_KEY);
       localStorage.removeItem('refresh_token');
+      localStorage.removeItem(USER_PROFILE_STORAGE_KEY);
     }
   }
 
   async getUserProfile(): Promise<User> {
     const response = await apiManager.get<User>('/users/profile');
+    if(response.data && response.data.id) setUserProfileLocalStorage(response.data);
     return response.data;
   }
 
   async updateUserProfile(data: UpdateProfileRequest): Promise<User> {
     const response = await apiManager.patch<User>('/users/profile', data);
+    if(response.data && response.data.id) setUserProfileLocalStorage(response.data);
     return response.data;
   }
 
