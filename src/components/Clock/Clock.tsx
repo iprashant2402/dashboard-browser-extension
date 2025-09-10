@@ -37,7 +37,7 @@ const Clock: React.FC<ClockProps> = ({
     
     // Handle 12-hour format
     if (!use24HourFormat) {
-      period = hours >= 12 ? 'PM' : 'AM';
+      period = hours >= 12 ? 'pm' : 'am';
       hours = hours % 12;
       hours = hours ? hours : 12; // Convert 0 to 12 for 12 AM
     }
@@ -57,17 +57,17 @@ const Clock: React.FC<ClockProps> = ({
   return (
     <div className={`clock ${className}`}>
       <div className="clock-time">
-        <span className="hours">{hours}</span>
-        <span className="time-separator">:</span>
-        <span className="minutes">{minutes}</span>
+        <p className="hours">{hours}</p>
+        <p className="time-separator">:</p>
+        <p className="minutes">{minutes}</p>
         {showSeconds && (
           <>
-            <span className="time-separator">:</span>
-            <span className="seconds">{seconds}</span>
+            <p className="time-separator">:</p>
+            <p className="seconds">{seconds}</p>
           </>
         )}
         {!use24HourFormat && (
-          <span className="period">{period}</span>
+          <p className="period">{period}</p>
         )}
       </div>
       <div className="clock-date">
