@@ -1,0 +1,53 @@
+.privacy-curtain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: var(--layout-bg-color);
+    
+    /* Add fade animations */
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.clock-container {
+    padding: 48px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
+
+    p, h1, h2, h3, h4, h5, h6 {
+        text-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+        -webkit-text-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

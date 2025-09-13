@@ -136,26 +136,6 @@
     }
 }
 
-.privacy-curtain {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-    background: var(--layout-bg-color);
-    
-    /* Add fade animations */
-    opacity: 0;
-    animation: fadeIn 0.3s ease-in-out forwards;
-}
-
 /* Keyframe animations */
 @keyframes fadeIn {
     from {
