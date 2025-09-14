@@ -1,5 +1,19 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ACCESS_TOKEN_KEY } from "../modules/Notes/utils/contants";
+import { QueryClient } from "@tanstack/react-query";
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: true,
+      retry: false,
+      refetchOnMount: true,
+      refetchOnReconnect: true,
+      refetchIntervalInBackground: false,
+      staleTime: 0,
+    },
+  },
+});
 
 const API_ENDPOINTS_TO_SKIP_REFRESH = [
     '/auth/refresh',

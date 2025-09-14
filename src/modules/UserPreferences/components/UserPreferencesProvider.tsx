@@ -4,6 +4,8 @@ import { storage } from "../../../utils/storage";
 import { Theme, THEMES } from "../../Tasks/types/Theme";
 import { USER_PREFERENCES_KEY } from "../../../utils/constants";
 import { UserPreferencesContext } from "./UserPreferencesContext";
+import { setWallpaper, unsetWallpaper } from "../../../utils/wallpaper";
+import { useMountEffect } from "../../../utils/useMountEffect";
 
 const loadInitialPreferences = () => {
     const preferences = storage.getItem<UserPreference>(USER_PREFERENCES_KEY);
@@ -16,9 +18,23 @@ const loadInitialPreferences = () => {
 export const UserPreferencesProvider = ({ children }: { children: React.ReactNode }) => {
     const [userPreferences, setUserPreferences] = useState<UserPreference>(loadInitialPreferences());
 
+    useMountEffect(() => {
+        if (userPreferences.theme === 'glass') {
+            setWallpaper();
+        } else {
+            unsetWallpaper();
+        }
+    });
+
     const updateDOMTheme = useCallback((theme: Theme) => {
         document.body.classList.remove(...THEMES);
         document.body.classList.add(theme);
+        console.log('updateDOMTheme', theme);
+        if (theme === 'glass') {
+            setWallpaper();
+        } else {
+            unsetWallpaper();
+        }
     }, []);
 
     const updatePreferences = useCallback((preferences: Partial<UserPreference>) => {

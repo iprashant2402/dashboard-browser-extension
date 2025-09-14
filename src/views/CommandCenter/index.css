@@ -3,8 +3,6 @@
     height: 100%;
     /* background-color: var(--layout-bg-color); */
     color: var(--card-text-color);
-    backdrop-filter: blur(var(--card-blur));
-    -webkit-backdrop-filter: blur(var(--card-blur));
     /* padding: var(--command-center-padding); */
     overflow: hidden;
     display: flex;
