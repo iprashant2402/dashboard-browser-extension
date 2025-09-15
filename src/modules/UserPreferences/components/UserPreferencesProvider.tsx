@@ -20,7 +20,7 @@ export const UserPreferencesProvider = ({ children }: { children: React.ReactNod
 
     useMountEffect(() => {
         if (userPreferences.theme === 'glass') {
-            setWallpaper();
+            setWallpaper(userPreferences.wallpaper);
         } else {
             unsetWallpaper();
         }
@@ -29,19 +29,23 @@ export const UserPreferencesProvider = ({ children }: { children: React.ReactNod
     const updateDOMTheme = useCallback((theme: Theme) => {
         document.body.classList.remove(...THEMES);
         document.body.classList.add(theme);
-        console.log('updateDOMTheme', theme);
         if (theme === 'glass') {
-            setWallpaper();
+            setWallpaper(userPreferences.wallpaper);
         } else {
             unsetWallpaper();
         }
-    }, []);
+    }, [userPreferences.wallpaper]);
 
     const updatePreferences = useCallback((preferences: Partial<UserPreference>) => {
         const updatedPreferences = { ...userPreferences, ...preferences };
+        if (preferences.wallpaper) updatedPreferences.theme = 'glass';
         storage.setItem(USER_PREFERENCES_KEY, updatedPreferences);
         setUserPreferences(updatedPreferences);
         // update DOM classes if theme is changed
+        if (preferences.wallpaper) {
+            setWallpaper(preferences.wallpaper);
+            updateDOMTheme('glass');
+        }
         if (preferences.theme) updateDOMTheme(preferences.theme)
     }, [userPreferences, updateDOMTheme]);
 

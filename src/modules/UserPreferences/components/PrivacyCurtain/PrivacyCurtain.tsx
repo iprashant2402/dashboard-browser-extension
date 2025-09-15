@@ -3,14 +3,22 @@ import Clock from '../../../../components/Clock/Clock';
 import './PrivacyCurtain.css';
 import { getRandomWallpaper } from '../../../Themes/wallpaper/api';
 import { useEffect, useRef } from 'react';
+import { UserPreference } from '../../types/UserPreference';
+import { useUserPreferences } from '../../hooks/useUserPreferences';
+
+const getWallpaper = async (preferences: UserPreference) => {
+    if (preferences.wallpaper) return preferences.wallpaper;
+    const wallpaper = await getRandomWallpaper();
+    return wallpaper.urls.full;
+}
 
 export const PrivacyCurtain = () => {
     const curtainRef = useRef<HTMLDivElement>(null);
+    const { userPreferences } = useUserPreferences();
 
     const { data: wallpaper } = useQuery({
         queryKey: ['wallpaper'],
-        queryFn: getRandomWallpaper,
-        select: (data) => data.urls.full as string,
+        queryFn: () => getWallpaper(userPreferences),
         staleTime: Infinity,
     });
 

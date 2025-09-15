@@ -23,7 +23,7 @@
 }
 
 .dialog {
-  background-color: var(--card-bg-color, #fff);
+  background-color: var(--dialog-bg-color, --card-bg-color, #fff);
   backdrop-filter: blur(var(--card-blur, 0px));
   color: var(--card-text-color, #000);
   border: 1px solid var(--card-border-color, rgba(255, 255, 255, 0.1));

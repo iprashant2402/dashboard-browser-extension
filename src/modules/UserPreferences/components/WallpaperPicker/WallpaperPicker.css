@@ -1,0 +1,22 @@
+.wallpaper-picker {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.wallpaper-item {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    border: 1px solid var(--card-border-color);
+    cursor: pointer;
+}
+
+.wallpaper-item.selected {
+    border-color: var(--primary-color);
+}
+
+.wallpaper-item.selected:hover {
+    border-color: var(--primary-color);
+}

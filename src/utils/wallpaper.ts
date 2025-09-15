@@ -28,8 +28,8 @@ export const getWallpaper = async () => {
     return wallpaper?.urls.full;
 }
 
-export const setWallpaper = async () => {
-    const wallpaper = await getWallpaper();
+export const setWallpaper = async (savedWallpaper?: string) => {
+    const wallpaper = savedWallpaper || await getWallpaper();
     const rootElement = document.getElementById('root');
     if (rootElement) {
         rootElement.style.background = `url(${wallpaper})`;

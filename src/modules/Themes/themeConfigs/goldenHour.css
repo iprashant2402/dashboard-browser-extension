@@ -8,6 +8,7 @@
     --tertiary-color: #F2C94C; /* Golden yellow for subtle accents */
     --muted-text-color: rgba(68, 51, 34, 0.5); /* Faded brown for muted/inactive text */
     --hover-bg-color: rgba(0, 0, 0, 0.05);
+    --dialog-bg-color: #FFFAF3;
   
     /* Cards */
     --card-bg-color: rgba(255, 255, 255, 0.95); /* Slight transparency for layering effect */

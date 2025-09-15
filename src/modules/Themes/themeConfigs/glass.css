@@ -7,6 +7,7 @@
     --tertiary-color: #B86092;
     --muted-text-color: rgba(255, 255, 255, 0.6);
     --hover-bg-color: rgba(255, 255, 255, 0.08);
+    --dialog-bg-color: rgba(0, 0, 0);
   
     --card-bg-color: rgba(255, 255, 255, 0.05);
     --card-alt-bg-color: rgba(255, 255, 255, 0.08);
@@ -82,11 +83,16 @@
         -webkit-text-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
     }
 
+    .layout {
+        padding: 16px;
+    }
+
     .page-editor, .sidebar {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 24px;
         border-bottom: none;
         border-top: none;
         box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
