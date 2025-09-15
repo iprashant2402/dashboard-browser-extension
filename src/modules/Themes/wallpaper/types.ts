@@ -14,6 +14,9 @@ export interface UnsplashPhoto {
   user: {
     name: string;
     username: string;
+    links: {
+        html: string;
+    }
   };
   description: string | null;
 }

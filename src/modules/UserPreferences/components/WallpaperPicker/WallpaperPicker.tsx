@@ -15,7 +15,11 @@ export const WallpaperPicker = () => {
     const handleWallpaperChange = async (wallpaper: UnsplashPhoto) => {
         try {
             setIsApplyingWallpaper(true);
-            updatePreferences({ wallpaper: wallpaper.urls.full });
+            updatePreferences({ wallpaper: {
+                url: wallpaper.urls.full,
+                author: wallpaper.user.name,
+                authorUrl: wallpaper.user.links.html,
+            } });
             // Apply wallpaper immediately
             await setWallpaper(wallpaper.urls.full);
             AnalyticsTracker.track('Wallpaper - Selected');
@@ -52,8 +56,8 @@ export const WallpaperPicker = () => {
                     title="Click to change wallpaper"
                 >
                     {userPreferences.wallpaper ? (
-                        <img 
-                            src={userPreferences.wallpaper} 
+                            <img 
+                            src={userPreferences.wallpaper.url} 
                             alt="Current wallpaper"
                             className="wallpaper-picker-current-image"
                         />
@@ -64,6 +68,12 @@ export const WallpaperPicker = () => {
                         </div>
                     )}
                 </div>
+                {userPreferences.wallpaper && <span className="attribution">(Photo by&nbsp;
+                        <a href={userPreferences.wallpaper.authorUrl} target="_blank" rel="noopener noreferrer">
+                            {userPreferences.wallpaper.author}
+                        </a>
+                        &nbsp;on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>)
+                </span>}
             </div>
 
             <WallpaperPickerDialog

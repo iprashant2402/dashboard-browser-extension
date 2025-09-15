@@ -1,9 +1,14 @@
 /* Main WallpaperPicker Component */
 .wallpaper-picker {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
     gap: 8px;
+
+    .attribution, a {
+        font-size: 12px;
+        color: var(--muted-text-color);
+    }
 }
 
 .wallpaper-picker-thumbnail {

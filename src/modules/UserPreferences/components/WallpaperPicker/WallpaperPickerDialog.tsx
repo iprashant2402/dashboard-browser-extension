@@ -11,7 +11,11 @@ interface WallpaperPickerDialogProps {
   isOpen: boolean;
   onClose: () => void;
   onWallpaperSelect: (wallpaper: UnsplashPhoto) => void;
-  currentWallpaper?: string;
+  currentWallpaper?: {
+    url: string;
+    author: string;
+    authorUrl: string;
+  };
   isApplyingWallpaper?: boolean;
 }
 
@@ -59,9 +63,9 @@ export const WallpaperPickerDialog = ({
   const getCurrentWallpaperFromList = () => {
     if (!currentWallpaper) return null;
     return displayWallpapers.find(wallpaper => 
-      wallpaper.urls.full === currentWallpaper ||
-      wallpaper.urls.regular === currentWallpaper ||
-      wallpaper.urls.small === currentWallpaper
+      wallpaper.urls.full === currentWallpaper.url ||
+      wallpaper.urls.regular === currentWallpaper.url ||
+      wallpaper.urls.small === currentWallpaper.url
     );
   };
 

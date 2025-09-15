@@ -3,7 +3,11 @@ import { DEFAULT_THEME, Theme } from "../../Tasks/types/Theme";
 export interface UserPreference {
     theme: Theme;
     editorToolbarEnabled: boolean;
-    wallpaper?: string;
+    wallpaper?: {
+        url: string;
+        author: string;
+        authorUrl: string;
+    };
 }
 
 export const DEFAULT_USER_PREFERENCE: UserPreference = {

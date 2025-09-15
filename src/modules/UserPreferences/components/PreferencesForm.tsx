@@ -37,7 +37,11 @@ export const PreferencesForm = () => {
         if (wallpaper) {
             updatePreferences({ wallpaper });
         } else {
-            updatePreferences({ wallpaper: DEFAULT_GLASS_WALLPAPER });
+            updatePreferences({ wallpaper: {
+                url: DEFAULT_GLASS_WALLPAPER,
+                author: 'Unsplash',
+                authorUrl: 'https://unsplash.com',
+            } });
         }
     };
 
