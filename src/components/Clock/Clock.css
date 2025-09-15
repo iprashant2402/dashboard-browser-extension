@@ -7,36 +7,38 @@
 }
 
 .clock-time {
-  font-size: 5rem;
-  font-weight: 600;
-  color: var(--card-text-color);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  font-family: 'Lato', 'sans-serif';
 }
 
 .hours, .minutes, .seconds {
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--card-text-color);
   min-width: 2.5ch;
   text-align: center;
 }
 
 .time-separator {
   margin: 0 2px;
+  font-size: 5rem;
+  font-weight: 600;
   color: var(--primary-color);
 }
 
 .period {
-  font-size: 1rem;
-  margin-left: 8px;
-  align-self: flex-start;
-  margin-top: 8px;
+  min-width: 2.5ch;
+  font-size: 5rem;
+  font-weight: 600;
   color: var(--primary-color);
 }
 
 .clock-date {
   position: relative;
-  left: 10px;
-  top: -18px;
+  top: -14px;
+  left: 14px;
   font-size: 1rem;
   color: var(--muted-text-color);
   justify-content: center;

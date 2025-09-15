@@ -1,3 +1,6 @@
+import { getRandomWallpaper } from "../modules/Themes/wallpaper/api";
+import { UnsplashPhoto } from "../modules/Themes/wallpaper/types";
+import { queryClient } from "./ApiManager";
 import { getAverageRGB } from "./colors";
 
 export const getColorsFromWallpaper = () => {
@@ -14,4 +17,33 @@ export const getColorsFromWallpaper = () => {
             resolve({ r: 0, g: 0, b: 0 });
         }
     });
+}
+
+export const getWallpaper = async () => {
+    const wallpaper = (await queryClient.getQueryData(['wallpaper'])) as UnsplashPhoto | undefined;
+    if (!wallpaper) {
+        const randomWallpaper = await getRandomWallpaper();
+        queryClient.setQueryData(['wallpaper'], randomWallpaper);
+        return randomWallpaper?.urls.full;
+    }
+    return wallpaper?.urls.full;
+}
+
+export const setWallpaper = async (savedWallpaper?: string) => {
+    const wallpaper = savedWallpaper || await getWallpaper();
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+        rootElement.style.background = `url(${wallpaper})`;
+        rootElement.style.backgroundSize = 'cover';
+        rootElement.style.backgroundPosition = 'center';
+        rootElement.style.backgroundRepeat = 'no-repeat';
+        rootElement.style.backgroundAttachment = 'fixed';
+    }
+}
+
+export const unsetWallpaper = () => {
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+        rootElement.style.backgroundImage = '';
+    }
 }

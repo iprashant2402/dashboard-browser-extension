@@ -3,13 +3,13 @@ import { Layout } from "../../components/Layout";
 import { CommandCenter } from "../CommandCenter";
 import { NotebookList } from "../../modules/Notes/components/NotebookList";
 import { usePrivacyCurtain } from "../../providers/PrivacyCurtainProvider";
-import Clock from "../../components/Clock/Clock";
 import { Sidebar } from "../../components/Sidebar";
 import { NotebookListHeader } from "../../modules/Notes/components/NotebookList/NotebookListHeader";
 import { useEffect } from "react";
 import { useBatchSync } from "../../modules/Notes/hooks/useBatchSync";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { AnalyticsTracker } from "../../analytics/AnalyticsTracker";
+import { PrivacyCurtain } from "../../modules/UserPreferences/components/PrivacyCurtain/PrivacyCurtain";
 
 export const HomeView = () => {
     const { isPrivacyCurtainEnabled, setIsPrivacyCurtainEnabled } = usePrivacyCurtain();
@@ -36,9 +36,7 @@ export const HomeView = () => {
             <NotebookList />
         </Sidebar>}>
             {isPrivacyCurtainEnabled && (
-                    <div className="privacy-curtain">
-                        <Clock />
-                    </div>
+                <PrivacyCurtain />
                 )}
                     <div className="row home-view">
                     <div className="column panel-col command-center-container">

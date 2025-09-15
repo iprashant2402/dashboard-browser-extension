@@ -1,0 +1,343 @@
+/* Main WallpaperPicker Component */
+.wallpaper-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+
+    .attribution, a {
+        font-size: 12px;
+        color: var(--muted-text-color);
+    }
+}
+
+.wallpaper-picker-thumbnail {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    border: 2px solid var(--card-border-color);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.2s ease;
+    background: var(--card-bg-color);
+}
+
+.wallpaper-picker-thumbnail:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.02);
+}
+
+.wallpaper-picker-thumbnail:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color-alpha, rgba(59, 130, 246, 0.3));
+}
+
+.wallpaper-picker-current-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wallpaper-picker-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.wallpaper-picker-placeholder svg {
+    opacity: 0.6;
+}
+
+/* WallpaperThumbnail Component */
+.wallpaper-thumbnail {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.wallpaper-thumbnail:hover {
+    transform: scale(1.05);
+    border-color: var(--primary-color-alpha, rgba(59, 130, 246, 0.3));
+}
+
+.wallpaper-thumbnail:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color-alpha, rgba(59, 130, 246, 0.3));
+}
+
+.wallpaper-thumbnail.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color-alpha, rgba(59, 130, 246, 0.3));
+}
+
+.wallpaper-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.wallpaper-thumbnail-small {
+    width: 80px;
+    height: 80px;
+}
+
+.wallpaper-thumbnail-medium {
+    width: 100px;
+    height: 100px;
+}
+
+.wallpaper-thumbnail-large {
+    width: 120px;
+    height: 120px;
+}
+
+.wallpaper-thumbnail-selected-indicator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* SearchBar Component */
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    background: var(--input-bg-color, var(--card-bg-color));
+    border: 1px solid var(--input-border-color, var(--card-border-color));
+    border-radius: 8px;
+    padding: 0 12px;
+    transition: all 0.2s ease;
+}
+
+.search-bar.focused {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color-alpha, rgba(59, 130, 246, 0.3));
+}
+
+.search-bar.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.search-bar-icon {
+    color: var(--text-secondary);
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.search-bar-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 0;
+    font-size: 14px;
+    color: var(--text-primary);
+    outline: none;
+}
+
+.search-bar-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.search-bar-input:disabled {
+    cursor: not-allowed;
+}
+
+.search-bar-clear {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.search-bar-clear:hover {
+    color: var(--text-primary);
+    background: var(--hover-bg-color);
+}
+
+.search-bar-clear:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* WallpaperPickerDialog Component */
+.wallpaper-picker-dialog .dialog-content {
+    padding: 0;
+}
+
+.wallpaper-picker-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-height: 70vh;
+}
+
+.wallpaper-picker-search {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--card-border-color);
+}
+
+.wallpaper-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 16px;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 8px;
+}
+
+.wallpaper-picker-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 16px;
+    color: var(--text-secondary);
+}
+
+.wallpaper-picker-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 16px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.wallpaper-picker-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 8px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.wallpaper-picker-empty-subtitle {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.wallpaper-picker-results-info {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 8px;
+    border-top: 1px solid var(--card-border-color);
+    margin-top: 8px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--card-border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Retry Button */
+.retry-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.retry-button:hover {
+    background: var(--primary-color-dark);
+    transform: translateY(-1px);
+}
+
+.retry-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wallpaper-picker-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 12px;
+    }
+    
+    .wallpaper-picker-dialog-content {
+        padding: 16px;
+    }
+    
+    .wallpaper-picker-thumbnail,
+    .wallpaper-thumbnail-medium {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .search-bar {
+        max-width: 100%;
+    }
+}
+
+/* Legacy styles for existing wallpaper items */
+.wallpaper-item {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    border: 1px solid var(--card-border-color);
+    cursor: pointer;
+}
+
+.wallpaper-item.selected {
+    border-color: var(--primary-color);
+}
+
+.wallpaper-item.selected:hover {
+    border-color: var(--primary-color);
+}

@@ -20,6 +20,8 @@ export const ANALYTICS_EVENTS = [
     'Page Editor - PV',
     'Command palette - Trigger',
     'Command palette - Command selected',
+    'Wallpaper - Selected',
+    'Wallpaper picker - Open',
 ];
 
 export type AnalyticsEvent = typeof ANALYTICS_EVENTS[number];

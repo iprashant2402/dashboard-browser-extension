@@ -81,7 +81,6 @@ export const Dialog: React.FC<DialogProps> = ({
     <div 
       className={`dialog-overlay ${isOpen ? 'dialog-open' : 'dialog-closing'}`}
       onClick={handleOutsideClick}
-      aria-hidden={!isOpen}
     >
       <div 
         ref={dialogRef}

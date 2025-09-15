@@ -8,6 +8,7 @@
     --tertiary-color: #A5D6A7; /* Pastel green for subtle highlights */
     --muted-text-color: rgba(58, 74, 58, 0.5); /* Muted text for subtle, less important content */
     --hover-bg-color: rgba(0, 0, 0, 0.05);
+    --dialog-bg-color: #F9FCF9;
   
     /* Cards */
     --card-bg-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for depth */

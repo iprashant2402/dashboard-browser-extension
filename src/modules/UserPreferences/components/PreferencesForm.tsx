@@ -7,6 +7,9 @@ import { useAuth } from "../../Auth";
 import { Button } from "../../../components/Button";
 import { AnalyticsTracker } from "../../../analytics/AnalyticsTracker";
 import { useMountEffect } from "../../../utils/useMountEffect";
+import { WallpaperPicker } from "./WallpaperPicker/WallpaperPicker";
+
+const DEFAULT_GLASS_WALLPAPER = "https://images.unsplash.com/photo-1756758006047-efc2f2b7d493?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 export const PreferencesForm = () => {
     const { userPreferences, updatePreferences } = useUserPreferences();
@@ -29,11 +32,25 @@ export const PreferencesForm = () => {
         }
       };
 
+    const handleGlassTheme = () => {
+        const wallpaper = userPreferences.wallpaper;
+        if (wallpaper) {
+            updatePreferences({ wallpaper });
+        } else {
+            updatePreferences({ wallpaper: {
+                url: DEFAULT_GLASS_WALLPAPER,
+                author: 'Unsplash',
+                authorUrl: 'https://unsplash.com',
+            } });
+        }
+    };
+
     const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         AnalyticsTracker.track('Theme updated', {
             theme: event.target.value as Theme,
         });
-        updatePreferences({ theme: event.target.value as Theme });
+        if (event.target.value === 'glass') handleGlassTheme();
+        else updatePreferences({ theme: event.target.value as Theme });
     }
 
     const handleEditorToolbarChange = (checked: boolean) => {
@@ -75,6 +92,12 @@ export const PreferencesForm = () => {
                 ))}
             </select>
             </div>
+            {userPreferences.theme === 'glass' && (
+                <div className="preferences-menu-item">
+                    <label htmlFor="wallpaper-enabled">Choose wallpaper</label>
+                    <WallpaperPicker />
+                </div>
+            )}
             <div className="preferences-menu-item">
                 <label htmlFor="editor-toolbar-enabled">Show editor toolbar?</label>
                 <Toggle id="editor-toolbar-enabled" checked={userPreferences.editorToolbarEnabled} onChange={handleEditorToolbarChange} />
