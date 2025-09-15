@@ -88,16 +88,13 @@
     }
 
     .page-editor, .sidebar {
-        background-color: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(0, 0, 0, 0.15);
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         border-radius: 24px;
         border-bottom: none;
         border-top: none;
-        box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
-        -webkit-box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
-        -moz-box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .slash-command-menu {

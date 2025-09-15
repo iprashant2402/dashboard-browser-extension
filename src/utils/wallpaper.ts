@@ -1,4 +1,5 @@
 import { getRandomWallpaper } from "../modules/Themes/wallpaper/api";
+import { UnsplashPhoto } from "../modules/Themes/wallpaper/types";
 import { queryClient } from "./ApiManager";
 import { getAverageRGB } from "./colors";
 
@@ -19,7 +20,7 @@ export const getColorsFromWallpaper = () => {
 }
 
 export const getWallpaper = async () => {
-    const wallpaper = (await queryClient.getQueryData(['wallpaper'])) as { urls: { full: string } } | undefined;
+    const wallpaper = (await queryClient.getQueryData(['wallpaper'])) as UnsplashPhoto | undefined;
     if (!wallpaper) {
         const randomWallpaper = await getRandomWallpaper();
         queryClient.setQueryData(['wallpaper'], randomWallpaper);

@@ -57,6 +57,7 @@ export const AuthLogin = (props: {
                   placeholder="Enter your password"
                   required
                   disabled={isLoading}
+                  autoComplete="current-password"
                 />
               </div>
 

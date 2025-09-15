@@ -41,10 +41,6 @@ export const PreferencesForm = () => {
         }
     };
 
-    const handleWallpaperChange = (wallpaper: string) => {
-        updatePreferences({ wallpaper });
-    }
-
     const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         AnalyticsTracker.track('Theme updated', {
             theme: event.target.value as Theme,
@@ -94,10 +90,8 @@ export const PreferencesForm = () => {
             </div>
             {userPreferences.theme === 'glass' && (
                 <div className="preferences-menu-item">
-                    <div>
                     <label htmlFor="wallpaper-enabled">Choose wallpaper</label>
-                    <WallpaperPicker currentWallpaper={userPreferences.wallpaper} onWallpaperChange={handleWallpaperChange} />
-                    </div>
+                    <WallpaperPicker />
                 </div>
             )}
             <div className="preferences-menu-item">
