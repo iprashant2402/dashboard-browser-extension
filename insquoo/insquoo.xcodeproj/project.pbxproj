@@ -1,0 +1,855 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DBC3A93E2E7A585900DE5EBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC3A93D2E7A585900DE5EBA /* AppDelegate.swift */; };
+		DBC3A9422E7A585900DE5EBA /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A9402E7A585900DE5EBA /* Main.html */; };
+		DBC3A9442E7A585900DE5EBA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A9432E7A585900DE5EBA /* Icon.png */; };
+		DBC3A9462E7A585900DE5EBA /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A9452E7A585900DE5EBA /* Style.css */; };
+		DBC3A9482E7A585900DE5EBA /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A9472E7A585900DE5EBA /* Script.js */; };
+		DBC3A94A2E7A585900DE5EBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC3A9492E7A585900DE5EBA /* ViewController.swift */; };
+		DBC3A94D2E7A585900DE5EBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A94B2E7A585900DE5EBA /* Main.storyboard */; };
+		DBC3A94F2E7A585A00DE5EBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A94E2E7A585A00DE5EBA /* Assets.xcassets */; };
+		DBC3A95C2E7A585A00DE5EBA /* insquooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC3A95B2E7A585A00DE5EBA /* insquooTests.swift */; };
+		DBC3A9662E7A585A00DE5EBA /* insquooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC3A9652E7A585A00DE5EBA /* insquooUITests.swift */; };
+		DBC3A9682E7A585A00DE5EBA /* insquooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC3A9672E7A585A00DE5EBA /* insquooUITestsLaunchTests.swift */; };
+		DBC3A96E2E7A585A00DE5EBA /* insquoo Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DBC3A96D2E7A585A00DE5EBA /* insquoo Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DBC3A9732E7A585A00DE5EBA /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC3A9722E7A585A00DE5EBA /* SafariWebExtensionHandler.swift */; };
+		DBC3A9902E7A585A00DE5EBA /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A9862E7A585A00DE5EBA /* index.html */; };
+		DBC3A9912E7A585A00DE5EBA /* privacy-policy.html in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A9872E7A585A00DE5EBA /* privacy-policy.html */; };
+		DBC3A9922E7A585A00DE5EBA /* images in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A9882E7A585A00DE5EBA /* images */; };
+		DBC3A9932E7A585A00DE5EBA /* registerSW.js in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A9892E7A585A00DE5EBA /* registerSW.js */; };
+		DBC3A9942E7A585A00DE5EBA /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A98A2E7A585A00DE5EBA /* manifest.json */; };
+		DBC3A9952E7A585A00DE5EBA /* workbox-e3490c72.js in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A98B2E7A585A00DE5EBA /* workbox-e3490c72.js */; };
+		DBC3A9962E7A585A00DE5EBA /* manifest.webmanifest in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A98C2E7A585A00DE5EBA /* manifest.webmanifest */; };
+		DBC3A9972E7A585A00DE5EBA /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A98D2E7A585A00DE5EBA /* fonts */; };
+		DBC3A9982E7A585A00DE5EBA /* assets in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A98E2E7A585A00DE5EBA /* assets */; };
+		DBC3A9992E7A585A00DE5EBA /* sw.js in Resources */ = {isa = PBXBuildFile; fileRef = DBC3A98F2E7A585A00DE5EBA /* sw.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DBC3A9582E7A585A00DE5EBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBC3A9322E7A585900DE5EBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBC3A9392E7A585900DE5EBA;
+			remoteInfo = insquoo;
+		};
+		DBC3A9622E7A585A00DE5EBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBC3A9322E7A585900DE5EBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBC3A9392E7A585900DE5EBA;
+			remoteInfo = insquoo;
+		};
+		DBC3A96F2E7A585A00DE5EBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBC3A9322E7A585900DE5EBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBC3A96C2E7A585A00DE5EBA;
+			remoteInfo = "insquoo Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DBC3A97B2E7A585A00DE5EBA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DBC3A96E2E7A585A00DE5EBA /* insquoo Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DBC3A93A2E7A585900DE5EBA /* insquoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = insquoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBC3A93D2E7A585900DE5EBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DBC3A9412E7A585900DE5EBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		DBC3A9432E7A585900DE5EBA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		DBC3A9452E7A585900DE5EBA /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		DBC3A9472E7A585900DE5EBA /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		DBC3A9492E7A585900DE5EBA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DBC3A94C2E7A585900DE5EBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DBC3A94E2E7A585A00DE5EBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DBC3A9502E7A585A00DE5EBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBC3A9512E7A585A00DE5EBA /* insquoo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = insquoo.entitlements; sourceTree = "<group>"; };
+		DBC3A9522E7A585A00DE5EBA /* insquoo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = insquoo.entitlements; sourceTree = "<group>"; };
+		DBC3A9572E7A585A00DE5EBA /* insquooTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = insquooTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBC3A95B2E7A585A00DE5EBA /* insquooTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = insquooTests.swift; sourceTree = "<group>"; };
+		DBC3A9612E7A585A00DE5EBA /* insquooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = insquooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBC3A9652E7A585A00DE5EBA /* insquooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = insquooUITests.swift; sourceTree = "<group>"; };
+		DBC3A9672E7A585A00DE5EBA /* insquooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = insquooUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DBC3A96D2E7A585A00DE5EBA /* insquoo Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "insquoo Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBC3A9722E7A585A00DE5EBA /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		DBC3A9742E7A585A00DE5EBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBC3A9752E7A585A00DE5EBA /* insquoo_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = insquoo_Extension.entitlements; sourceTree = "<group>"; };
+		DBC3A9862E7A585A00DE5EBA /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = index.html; path = ../../dist/index.html; sourceTree = "<group>"; };
+		DBC3A9872E7A585A00DE5EBA /* privacy-policy.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "privacy-policy.html"; path = "../../dist/privacy-policy.html"; sourceTree = "<group>"; };
+		DBC3A9882E7A585A00DE5EBA /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../../dist/images; sourceTree = "<group>"; };
+		DBC3A9892E7A585A00DE5EBA /* registerSW.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = registerSW.js; path = ../../dist/registerSW.js; sourceTree = "<group>"; };
+		DBC3A98A2E7A585A00DE5EBA /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../dist/manifest.json; sourceTree = "<group>"; };
+		DBC3A98B2E7A585A00DE5EBA /* workbox-e3490c72.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "workbox-e3490c72.js"; path = "../../dist/workbox-e3490c72.js"; sourceTree = "<group>"; };
+		DBC3A98C2E7A585A00DE5EBA /* manifest.webmanifest */ = {isa = PBXFileReference; lastKnownFileType = text; name = manifest.webmanifest; path = ../../dist/manifest.webmanifest; sourceTree = "<group>"; };
+		DBC3A98D2E7A585A00DE5EBA /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../dist/fonts; sourceTree = "<group>"; };
+		DBC3A98E2E7A585A00DE5EBA /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../dist/assets; sourceTree = "<group>"; };
+		DBC3A98F2E7A585A00DE5EBA /* sw.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = sw.js; path = ../../dist/sw.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DBC3A9372E7A585900DE5EBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC3A9542E7A585A00DE5EBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC3A95E2E7A585A00DE5EBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC3A96A2E7A585A00DE5EBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DBC3A9312E7A585900DE5EBA = {
+			isa = PBXGroup;
+			children = (
+				DBC3A93C2E7A585900DE5EBA /* insquoo */,
+				DBC3A95A2E7A585A00DE5EBA /* insquooTests */,
+				DBC3A9642E7A585A00DE5EBA /* insquooUITests */,
+				DBC3A9712E7A585A00DE5EBA /* insquoo Extension */,
+				DBC3A93B2E7A585900DE5EBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DBC3A93B2E7A585900DE5EBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DBC3A93A2E7A585900DE5EBA /* insquoo.app */,
+				DBC3A9572E7A585A00DE5EBA /* insquooTests.xctest */,
+				DBC3A9612E7A585A00DE5EBA /* insquooUITests.xctest */,
+				DBC3A96D2E7A585A00DE5EBA /* insquoo Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DBC3A93C2E7A585900DE5EBA /* insquoo */ = {
+			isa = PBXGroup;
+			children = (
+				DBC3A93D2E7A585900DE5EBA /* AppDelegate.swift */,
+				DBC3A9492E7A585900DE5EBA /* ViewController.swift */,
+				DBC3A94B2E7A585900DE5EBA /* Main.storyboard */,
+				DBC3A94E2E7A585A00DE5EBA /* Assets.xcassets */,
+				DBC3A9502E7A585A00DE5EBA /* Info.plist */,
+				DBC3A9512E7A585A00DE5EBA /* insquoo.entitlements */,
+				DBC3A9522E7A585A00DE5EBA /* insquoo.entitlements */,
+				DBC3A93F2E7A585900DE5EBA /* Resources */,
+			);
+			path = insquoo;
+			sourceTree = "<group>";
+		};
+		DBC3A93F2E7A585900DE5EBA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DBC3A9402E7A585900DE5EBA /* Main.html */,
+				DBC3A9432E7A585900DE5EBA /* Icon.png */,
+				DBC3A9452E7A585900DE5EBA /* Style.css */,
+				DBC3A9472E7A585900DE5EBA /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DBC3A95A2E7A585A00DE5EBA /* insquooTests */ = {
+			isa = PBXGroup;
+			children = (
+				DBC3A95B2E7A585A00DE5EBA /* insquooTests.swift */,
+			);
+			path = insquooTests;
+			sourceTree = "<group>";
+		};
+		DBC3A9642E7A585A00DE5EBA /* insquooUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DBC3A9652E7A585A00DE5EBA /* insquooUITests.swift */,
+				DBC3A9672E7A585A00DE5EBA /* insquooUITestsLaunchTests.swift */,
+			);
+			path = insquooUITests;
+			sourceTree = "<group>";
+		};
+		DBC3A9712E7A585A00DE5EBA /* insquoo Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DBC3A9852E7A585A00DE5EBA /* Resources */,
+				DBC3A9722E7A585A00DE5EBA /* SafariWebExtensionHandler.swift */,
+				DBC3A9742E7A585A00DE5EBA /* Info.plist */,
+				DBC3A9752E7A585A00DE5EBA /* insquoo_Extension.entitlements */,
+			);
+			path = "insquoo Extension";
+			sourceTree = "<group>";
+		};
+		DBC3A9852E7A585A00DE5EBA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DBC3A9862E7A585A00DE5EBA /* index.html */,
+				DBC3A9872E7A585A00DE5EBA /* privacy-policy.html */,
+				DBC3A9882E7A585A00DE5EBA /* images */,
+				DBC3A9892E7A585A00DE5EBA /* registerSW.js */,
+				DBC3A98A2E7A585A00DE5EBA /* manifest.json */,
+				DBC3A98B2E7A585A00DE5EBA /* workbox-e3490c72.js */,
+				DBC3A98C2E7A585A00DE5EBA /* manifest.webmanifest */,
+				DBC3A98D2E7A585A00DE5EBA /* fonts */,
+				DBC3A98E2E7A585A00DE5EBA /* assets */,
+				DBC3A98F2E7A585A00DE5EBA /* sw.js */,
+			);
+			name = Resources;
+			path = "insquoo Extension";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DBC3A9392E7A585900DE5EBA /* insquoo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBC3A97C2E7A585A00DE5EBA /* Build configuration list for PBXNativeTarget "insquoo" */;
+			buildPhases = (
+				DBC3A9362E7A585900DE5EBA /* Sources */,
+				DBC3A9372E7A585900DE5EBA /* Frameworks */,
+				DBC3A9382E7A585900DE5EBA /* Resources */,
+				DBC3A97B2E7A585A00DE5EBA /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBC3A9702E7A585A00DE5EBA /* PBXTargetDependency */,
+			);
+			name = insquoo;
+			packageProductDependencies = (
+			);
+			productName = insquoo;
+			productReference = DBC3A93A2E7A585900DE5EBA /* insquoo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DBC3A9562E7A585A00DE5EBA /* insquooTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBC3A97F2E7A585A00DE5EBA /* Build configuration list for PBXNativeTarget "insquooTests" */;
+			buildPhases = (
+				DBC3A9532E7A585A00DE5EBA /* Sources */,
+				DBC3A9542E7A585A00DE5EBA /* Frameworks */,
+				DBC3A9552E7A585A00DE5EBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBC3A9592E7A585A00DE5EBA /* PBXTargetDependency */,
+			);
+			name = insquooTests;
+			packageProductDependencies = (
+			);
+			productName = insquooTests;
+			productReference = DBC3A9572E7A585A00DE5EBA /* insquooTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DBC3A9602E7A585A00DE5EBA /* insquooUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBC3A9822E7A585A00DE5EBA /* Build configuration list for PBXNativeTarget "insquooUITests" */;
+			buildPhases = (
+				DBC3A95D2E7A585A00DE5EBA /* Sources */,
+				DBC3A95E2E7A585A00DE5EBA /* Frameworks */,
+				DBC3A95F2E7A585A00DE5EBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBC3A9632E7A585A00DE5EBA /* PBXTargetDependency */,
+			);
+			name = insquooUITests;
+			packageProductDependencies = (
+			);
+			productName = insquooUITests;
+			productReference = DBC3A9612E7A585A00DE5EBA /* insquooUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		DBC3A96C2E7A585A00DE5EBA /* insquoo Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBC3A9782E7A585A00DE5EBA /* Build configuration list for PBXNativeTarget "insquoo Extension" */;
+			buildPhases = (
+				DBC3A9692E7A585A00DE5EBA /* Sources */,
+				DBC3A96A2E7A585A00DE5EBA /* Frameworks */,
+				DBC3A96B2E7A585A00DE5EBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "insquoo Extension";
+			packageProductDependencies = (
+			);
+			productName = "insquoo Extension";
+			productReference = DBC3A96D2E7A585A00DE5EBA /* insquoo Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DBC3A9322E7A585900DE5EBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					DBC3A9392E7A585900DE5EBA = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					DBC3A9562E7A585A00DE5EBA = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = DBC3A9392E7A585900DE5EBA;
+					};
+					DBC3A9602E7A585A00DE5EBA = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = DBC3A9392E7A585900DE5EBA;
+					};
+					DBC3A96C2E7A585A00DE5EBA = {
+						CreatedOnToolsVersion = 16.2;
+					};
+				};
+			};
+			buildConfigurationList = DBC3A9352E7A585900DE5EBA /* Build configuration list for PBXProject "insquoo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DBC3A9312E7A585900DE5EBA;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DBC3A93B2E7A585900DE5EBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DBC3A9392E7A585900DE5EBA /* insquoo */,
+				DBC3A9562E7A585A00DE5EBA /* insquooTests */,
+				DBC3A9602E7A585A00DE5EBA /* insquooUITests */,
+				DBC3A96C2E7A585A00DE5EBA /* insquoo Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DBC3A9382E7A585900DE5EBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBC3A9442E7A585900DE5EBA /* Icon.png in Resources */,
+				DBC3A94D2E7A585900DE5EBA /* Main.storyboard in Resources */,
+				DBC3A9482E7A585900DE5EBA /* Script.js in Resources */,
+				DBC3A9422E7A585900DE5EBA /* Main.html in Resources */,
+				DBC3A94F2E7A585A00DE5EBA /* Assets.xcassets in Resources */,
+				DBC3A9462E7A585900DE5EBA /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC3A9552E7A585A00DE5EBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC3A95F2E7A585A00DE5EBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC3A96B2E7A585A00DE5EBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBC3A9922E7A585A00DE5EBA /* images in Resources */,
+				DBC3A9962E7A585A00DE5EBA /* manifest.webmanifest in Resources */,
+				DBC3A9902E7A585A00DE5EBA /* index.html in Resources */,
+				DBC3A9982E7A585A00DE5EBA /* assets in Resources */,
+				DBC3A9992E7A585A00DE5EBA /* sw.js in Resources */,
+				DBC3A9942E7A585A00DE5EBA /* manifest.json in Resources */,
+				DBC3A9912E7A585A00DE5EBA /* privacy-policy.html in Resources */,
+				DBC3A9952E7A585A00DE5EBA /* workbox-e3490c72.js in Resources */,
+				DBC3A9932E7A585A00DE5EBA /* registerSW.js in Resources */,
+				DBC3A9972E7A585A00DE5EBA /* fonts in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DBC3A9362E7A585900DE5EBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBC3A94A2E7A585900DE5EBA /* ViewController.swift in Sources */,
+				DBC3A93E2E7A585900DE5EBA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC3A9532E7A585A00DE5EBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBC3A95C2E7A585A00DE5EBA /* insquooTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC3A95D2E7A585A00DE5EBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBC3A9662E7A585A00DE5EBA /* insquooUITests.swift in Sources */,
+				DBC3A9682E7A585A00DE5EBA /* insquooUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC3A9692E7A585A00DE5EBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBC3A9732E7A585A00DE5EBA /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DBC3A9592E7A585A00DE5EBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBC3A9392E7A585900DE5EBA /* insquoo */;
+			targetProxy = DBC3A9582E7A585A00DE5EBA /* PBXContainerItemProxy */;
+		};
+		DBC3A9632E7A585A00DE5EBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBC3A9392E7A585900DE5EBA /* insquoo */;
+			targetProxy = DBC3A9622E7A585A00DE5EBA /* PBXContainerItemProxy */;
+		};
+		DBC3A9702E7A585A00DE5EBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBC3A96C2E7A585A00DE5EBA /* insquoo Extension */;
+			targetProxy = DBC3A96F2E7A585A00DE5EBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DBC3A9402E7A585900DE5EBA /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBC3A9412E7A585900DE5EBA /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		DBC3A94B2E7A585900DE5EBA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBC3A94C2E7A585900DE5EBA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DBC3A9762E7A585A00DE5EBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DBC3A9772E7A585A00DE5EBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		DBC3A9792E7A585A00DE5EBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "insquoo Extension/insquoo_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4GF73WF7JD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "insquoo Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = insquoo;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.insquoo.extension.app.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DBC3A97A2E7A585A00DE5EBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "insquoo Extension/insquoo_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4GF73WF7JD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "insquoo Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = insquoo;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.insquoo.extension.app.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DBC3A97D2E7A585A00DE5EBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = insquoo/insquoo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4GF73WF7JD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = insquoo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = insquoo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.insquoo.extension.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DBC3A97E2E7A585A00DE5EBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = insquoo/insquoo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4GF73WF7JD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = insquoo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = insquoo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.insquoo.extension.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DBC3A9802E7A585A00DE5EBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourCompany.insquooTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/insquoo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/insquoo";
+			};
+			name = Debug;
+		};
+		DBC3A9812E7A585A00DE5EBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourCompany.insquooTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/insquoo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/insquoo";
+			};
+			name = Release;
+		};
+		DBC3A9832E7A585A00DE5EBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourCompany.insquooUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = insquoo;
+			};
+			name = Debug;
+		};
+		DBC3A9842E7A585A00DE5EBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourCompany.insquooUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = insquoo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DBC3A9352E7A585900DE5EBA /* Build configuration list for PBXProject "insquoo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBC3A9762E7A585A00DE5EBA /* Debug */,
+				DBC3A9772E7A585A00DE5EBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBC3A9782E7A585A00DE5EBA /* Build configuration list for PBXNativeTarget "insquoo Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBC3A9792E7A585A00DE5EBA /* Debug */,
+				DBC3A97A2E7A585A00DE5EBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBC3A97C2E7A585A00DE5EBA /* Build configuration list for PBXNativeTarget "insquoo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBC3A97D2E7A585A00DE5EBA /* Debug */,
+				DBC3A97E2E7A585A00DE5EBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBC3A97F2E7A585A00DE5EBA /* Build configuration list for PBXNativeTarget "insquooTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBC3A9802E7A585A00DE5EBA /* Debug */,
+				DBC3A9812E7A585A00DE5EBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBC3A9822E7A585A00DE5EBA /* Build configuration list for PBXNativeTarget "insquooUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBC3A9832E7A585A00DE5EBA /* Debug */,
+				DBC3A9842E7A585A00DE5EBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DBC3A9322E7A585900DE5EBA /* Project object */;
+}
