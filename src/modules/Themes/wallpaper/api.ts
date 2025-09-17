@@ -52,3 +52,13 @@ export const searchWallpapers = async (query: string, page: number = 1, perPage:
     });
     return handleResponse(response);
 };
+
+export const triggerUnsplashDownloadEvent = async (downloadLocation: string) => {
+    const response = await fetch(downloadLocation, {
+        headers: {
+            'Accept-Version': 'v1',
+            'Authorization': `Client-ID ${UNSPLASH_ACCESS_KEY}`,
+        },
+    });
+    return handleResponse(response);
+};

@@ -34,7 +34,7 @@ export const WallpaperPickerDialog = ({
     data: randomWallpapers,
     isLoading: isLoadingRandom,
     error: randomError
-  } = useRandomWallpapers(10);
+  } = useRandomWallpapers(14);
 
   // Fetch search results
   const {

@@ -6,6 +6,7 @@ import { WallpaperPickerDialog } from './WallpaperPickerDialog';
 import { AnalyticsTracker } from '../../../../analytics/AnalyticsTracker';
 import { setWallpaper } from '../../../../utils/wallpaper';
 import './WallpaperPicker.css';
+import { triggerUnsplashDownloadEvent } from '../../../Themes/wallpaper/api';
 
 export const WallpaperPicker = () => {
     const { userPreferences, updatePreferences } = useUserPreferences();
@@ -19,10 +20,12 @@ export const WallpaperPicker = () => {
                 url: wallpaper.urls.full,
                 author: wallpaper.user.name,
                 authorUrl: wallpaper.user.links.html,
+                downloadLocation: wallpaper.links.download_location,
             } });
             // Apply wallpaper immediately
             await setWallpaper(wallpaper.urls.full);
             AnalyticsTracker.track('Wallpaper - Selected');
+            triggerUnsplashDownloadEvent(wallpaper.links.download_location);
         } catch (error) {
             console.error('Failed to set wallpaper:', error);
         } finally {

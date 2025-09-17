@@ -1,13 +1,16 @@
 import { DEFAULT_THEME, Theme } from "../../Tasks/types/Theme";
 
+export interface Wallpaper {
+    url: string;
+    author: string;
+    authorUrl: string;
+    downloadLocation: string;
+}
+
 export interface UserPreference {
     theme: Theme;
     editorToolbarEnabled: boolean;
-    wallpaper?: {
-        url: string;
-        author: string;
-        authorUrl: string;
-    };
+    wallpaper?: Wallpaper;
 }
 
 export const DEFAULT_USER_PREFERENCE: UserPreference = {

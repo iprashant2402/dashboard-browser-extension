@@ -7,7 +7,7 @@ import { UserPreference } from '../../types/UserPreference';
 import { useUserPreferences } from '../../hooks/useUserPreferences';
 
 const getWallpaper = async (preferences: UserPreference) => {
-    if (preferences.wallpaper) return preferences.wallpaper;
+    if (preferences.wallpaper) return preferences.wallpaper.url;
     const wallpaper = await getRandomWallpaper();
     return wallpaper.urls.full;
 }

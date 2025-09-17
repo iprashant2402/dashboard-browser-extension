@@ -11,6 +11,9 @@ export interface UnsplashPhoto {
     small: string;
     thumb: string;
   };
+  links: {
+    download_location: string;
+  }
   user: {
     name: string;
     username: string;

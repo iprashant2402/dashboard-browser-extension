@@ -11,7 +11,7 @@ export const useRandomWallpapers = (count: number = 10) => {
   return useQuery<UnsplashPhoto[], Error>({
     queryKey: [...WALLPAPER_QUERY_KEYS.randomWallpapers, count],
     queryFn: () => getRandomWallpapers(count),
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: Infinity,
     retry: 3,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });

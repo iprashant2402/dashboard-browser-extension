@@ -41,6 +41,7 @@ export const PreferencesForm = () => {
                 url: DEFAULT_GLASS_WALLPAPER,
                 author: 'Unsplash',
                 authorUrl: 'https://unsplash.com',
+                downloadLocation: 'https://unsplash.com',
             } });
         }
     };
