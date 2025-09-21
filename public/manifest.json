@@ -1,5 +1,5 @@
 {
-    "manifest_version": 4,
+    "manifest_version": 3,
     "name": "insquoo",
     "version": "1.0.8",
     "description": "The simplicity of notes, power of rich-text documents & tasks management. Speed, clarity, and focus.",
