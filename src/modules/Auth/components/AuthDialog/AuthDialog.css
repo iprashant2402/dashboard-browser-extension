@@ -4,11 +4,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1024px) {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .auth-login, .auth-signup {
   min-width: 300px;
   max-width: 350px;
+
+  @media (max-width: 1024px) {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+  }
 }
 
 .auth-form {
@@ -16,6 +27,10 @@
   flex-direction: column;
   gap: 16px;
   padding: 8px 0;
+
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
 }
 
 .auth-form-group {
@@ -218,32 +233,16 @@
   border-color: #ef4444;
 }
 
-/* Mobile responsive */
-@media (max-width: 480px) {
-  .auth-dialog-content {
-    min-width: unset;
-    max-width: 90vw;
-    margin: 0 16px;
-  }
-  
-  .auth-form-row {
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .user-profile-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-  }
-}
-
 .auth-login-title {
     display: flex;
     align-items: center;
     gap: 16px;
     justify-content: center;
     padding: 16px;
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
   }
   
   .auth-login-title p {
@@ -257,3 +256,23 @@
   .logout-button {
     text-decoration: underline;
   }
+
+@media (hover: none) and (pointer: coarse) {
+  .auth-form-submit:hover {
+    background: var(--primary-color-hover);
+  }
+
+  .auth-form-toggle button:hover {
+    color: var(--primary-color-hover);
+  }
+
+  .user-profile-action:hover {
+    background: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+  }
+
+  .logout-action:hover {
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+}

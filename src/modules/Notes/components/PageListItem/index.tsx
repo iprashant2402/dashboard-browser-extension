@@ -1,10 +1,11 @@
-import { IoEllipsisHorizontal, IoPencil, IoTrash } from "react-icons/io5";
+import { IoChevronForward, IoEllipsisHorizontal, IoPencil, IoTrash } from "react-icons/io5";
 import './index.css';
 import { PageSummary } from "../../types/Page";
 import { Button } from "../../../../components/Button";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { IoIosPaper } from "react-icons/io";
 import { AnalyticsTracker } from "../../../../analytics/AnalyticsTracker";
+import { useMediaQuery } from "react-responsive";
 
 interface PageListItemProps { 
     page: PageSummary, 
@@ -25,6 +26,7 @@ export const PageListItem = ({
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isRenaming, setIsRenaming] = useState(false);
     const nameRef = useRef<HTMLHeadingElement>(null);
+    const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
 
     const onBlur = useCallback(() => {
         if (!handleRename) return;
@@ -83,15 +85,28 @@ export const PageListItem = ({
         });
     }
 
-    return <div title={page.title} id={`page-${order}`} className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} onDoubleClick={() => setIsRenaming(true)} onClick={handlePageClick}>
-        <div className="row jt-space-between">
+    const enableRenaming = (e: React.MouseEvent<HTMLDivElement>) => {
+        setIsRenaming(true);
+        e.stopPropagation();
+    }
+
+    return <div 
+    title={page.title} 
+    id={`page-${order}`} 
+    className={`page-list-item ${isActive ? 'page-list-item-active' : ''}`} 
+    onDoubleClick={enableRenaming} 
+    onClick={handlePageClick}>
+        <div className="row jt-space-between" style={{ alignItems: 'center' }}>
             <div className="row item-title-container">
-                <span><IoIosPaper size={14} color="var(--muted-text-color)" /></span>
+                {!isMobile && <span><IoIosPaper size={isMobile ? 18 : 14} color="var(--muted-text-color)" /></span>}
                 <div className="item-title">
+                <span className="item-title-text">
                 <h4 contentEditable={isRenaming ? 'plaintext-only' : 'false'} ref={nameRef} id="page-list-item-name">{page.title || "Untitled"}</h4>
+                </span>
                 </div>
             </div>
             {(handleRename || handleDelete) && <IoEllipsisHorizontal onClick={openMenu} className="page-list-item-settings-cta" />}
+            {isMobile && <IoChevronForward size={18} color="var(--muted-text-color)" />}
             {isMenuOpen && <PageItemMenu handleClose={closeMenu} handleRename={setIsRenaming.bind(null, true)} handleDelete={handleDeletePage} />}
         </div>
     </div>;

@@ -18,10 +18,10 @@ export const Layout: React.FC<LayoutProps> = ({
 }) => {
     const layoutClasses = [
         'layout',
-        className,
         sidebar ? 'layout--with-sidebar' : '',
         sidebar && sidebarPosition === 'right' ? 'layout--sidebar-right' : '',
-        sidebar && sidebarCollapsed ? 'layout--sidebar-collapsed' : ''
+        sidebar && sidebarCollapsed ? 'layout--sidebar-collapsed' : '',
+        className,
     ].filter(Boolean).join(' ');
 
     return (

@@ -1,5 +1,5 @@
 import "./index.css";
-import { useContext, createContext, useMemo } from "react";
+import { createContext, useMemo } from "react";
 import { IoAddCircle, IoFileTray } from "react-icons/io5";
 import { usePageList } from "../../hooks/usePageList";
 import { PageListItem } from "../PageListItem";
@@ -19,22 +19,9 @@ export const NotebookList = () => {
     const { state, actions } = usePageList();
     const navigate = useNavigate();
     // Try to get mobile context if available
-    const mobileContext = useContext(MobileNotesOptionalContext);
-
     const handlePageClick = (pageId: string) => {
       // Call the original page click handler
       actions.handlePageClick(pageId);
-      
-      // If in mobile context, switch to editor view
-      if (mobileContext?.setShowEditor && mobileContext?.setSelectedPageId && mobileContext?.setSelectedPageTitle) {
-        // Find the page title
-        const page = state.pages?.find(p => p.id === pageId);
-        const pageTitle = page?.title || "Untitled";
-        
-        mobileContext.setSelectedPageId(pageId);
-        mobileContext.setSelectedPageTitle(pageTitle);
-        mobileContext.setShowEditor(true);
-      }
     };
 
     const handleResourceClick = (resourceId: string) => {

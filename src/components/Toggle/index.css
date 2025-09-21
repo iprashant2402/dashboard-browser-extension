@@ -217,3 +217,19 @@
     transition: none;
   }
 } 
+
+@media (hover: none) and (pointer: coarse) {
+  /* Hover states */
+.toggle-switch:hover:not(.disabled) .toggle-track {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.toggle-switch.checked:hover:not(.disabled) .toggle-track {
+  background-color: transparent;
+}
+
+.toggle-switch:hover:not(.disabled) .toggle-thumb {
+  box-shadow: none;
+}
+}

@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ACCESS_TOKEN_KEY } from "../modules/Notes/utils/contants";
 import { QueryClient } from "@tanstack/react-query";
+import { v4 as uuidv4 } from 'uuid';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,7 +45,7 @@ class ApiManager {
         // Add request interceptor to include common headers
         this.api.interceptors.request.use((config) => {
           config.headers['rm-timestamp'] = Date.now().toString();
-          config.headers['rm-request-id'] = crypto.randomUUID();
+          config.headers['rm-request-id'] = uuidv4();
           
           // Add device ID
           const deviceId = localStorage.getItem('device_id');
@@ -93,7 +94,7 @@ class ApiManager {
       private initializeDeviceId(): void {
         const existingDeviceId = localStorage.getItem('device_id');
         if (!existingDeviceId) {
-          const deviceId = import.meta.env.VITE_DEVICE_ID || `device-${crypto.randomUUID()}`;
+          const deviceId = import.meta.env.VITE_DEVICE_ID || `device-${uuidv4()}`;
           localStorage.setItem('device_id', deviceId);
         }
       }

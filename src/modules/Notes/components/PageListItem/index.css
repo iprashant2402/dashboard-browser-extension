@@ -4,6 +4,16 @@
     padding: 6px 12px;
     text-wrap: nowrap;
     text-overflow: ellipsis;
+
+    @media (max-width: 1024px) {
+        padding: 12px 24px;
+        background-color: var(--card-bg-color);
+        box-shadow: var(--card-box-shadow);
+        border-radius: 0px;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        border-bottom: 1px solid var(--card-border-color);
+    }
 }
 
 .item-title {
@@ -13,6 +23,10 @@
     overflow: hidden;
     flex: 1;
     min-width: 0;
+
+    .item-title-text {
+        width: fit-content;
+    }
 }
 
 .item-subtitle {
@@ -52,6 +66,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+
+    @media (max-width: 1024px) {
+        font-size: 18px;
+        letter-spacing: 0.2px;
+    }
 }
 
 .page-list-item h4[contenteditable="plaintext-only"] {
@@ -106,5 +125,20 @@
 .page-list-item-icon {
     path {
         fill: var(--secondary-color);
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .page-list-item-settings-cta{
+        visibility: hidden;
+    }
+    
+    .page-list-item:hover {
+        background-color: var(--card-bg-color);
+        color: var(--layout-text-color);
+    }
+
+    .page-list-item:hover .page-list-item-settings-cta {
+        visibility: hidden;
     }
 }
