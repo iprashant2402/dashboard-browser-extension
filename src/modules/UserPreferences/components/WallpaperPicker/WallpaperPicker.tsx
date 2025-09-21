@@ -72,10 +72,10 @@ export const WallpaperPicker = () => {
                     )}
                 </div>
                 {userPreferences.wallpaper && <span className="attribution">(Photo by&nbsp;
-                        <a href={userPreferences.wallpaper.authorUrl} target="_blank" rel="noopener noreferrer">
+                        <a href={userPreferences.wallpaper.authorUrl + '?utm_source=insquoo&utm_medium=referral'} target="_blank" rel="noopener noreferrer">
                             {userPreferences.wallpaper.author}
                         </a>
-                        &nbsp;on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>)
+                        &nbsp;on <a href="https://unsplash.com?utm_source=insquoo&utm_medium=referral" target="_blank" rel="noopener noreferrer">Unsplash</a>)
                 </span>}
             </div>
 
