@@ -132,3 +132,14 @@
     transform: translateY(0) scale(1);
   }
 } 
+
+@media (hover: none) and (pointer: coarse) {
+  .slash-command-menu-item:hover,
+  .slash-command-menu-item.selected {
+    background-color: transparent;
+  }
+
+  .slash-command-menu-items::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+  }
+}

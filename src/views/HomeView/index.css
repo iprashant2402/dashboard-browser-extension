@@ -9,7 +9,6 @@
     display: flex;
     height: 100%;
     width: 100%;
-    gap: 24px;
 }
 
 /* Mobile Layout - Hidden by default */
@@ -18,7 +17,6 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    gap: 8px;
 }
 
 .panel-col {
@@ -97,11 +95,12 @@
 /* Tablet breakpoint (768px and below) */
 @media (max-width: 1024px) {
     .desktop-layout {
-        display: none;
+        display: none !important;
     }
     
     .mobile-layout {
-        display: flex;
+        display: flex !important;
+        flex-direction: column;
     }
     
     .home-view {

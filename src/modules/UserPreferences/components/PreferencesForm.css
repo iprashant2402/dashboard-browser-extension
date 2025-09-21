@@ -20,6 +20,13 @@
     border: 1px solid var(--card-border-color);
 }
 
+@media (hover: none) and (pointer: coarse) {
+    .preferences-menu-select:hover {
+        background-color: var(--card-bg-color);
+        border: none;
+    }
+}
+
 .preferences-menu-select:focus {
     outline: none;
 }
