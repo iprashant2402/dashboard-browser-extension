@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "insquoo",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "The simplicity of notes, power of rich-text documents & tasks management. Speed, clarity, and focus.",
     "icons": {
       "48": "images/vire-logo-icon-48.png",
