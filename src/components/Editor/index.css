@@ -98,7 +98,7 @@
   }
   
   .editor-link {
-    color: rgb(33, 111, 219);
+    color: var(--link-color, #07a);
     text-decoration: none;
   }
   
@@ -235,6 +235,10 @@
   .editor-listitem {
     margin: 8px 18px 8px 18px;
     font-size: 16px;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: var(--card-bg-color);
+    margin-bottom: 8px;
   }
   
   .editor-nested-listitem {
