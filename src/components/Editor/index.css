@@ -235,10 +235,9 @@
   .editor-listitem {
     margin: 8px 18px 8px 18px;
     font-size: 16px;
-    padding: 12px;
+    padding-left: 12px;
     border-radius: 4px;
-    background-color: var(--card-bg-color);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   
   .editor-nested-listitem {
