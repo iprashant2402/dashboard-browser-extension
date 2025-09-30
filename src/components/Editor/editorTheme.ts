@@ -30,6 +30,7 @@ export default {
   placeholder: 'editor-placeholder',
   quote: 'editor-quote',
   rtl: 'rtl',
+  taskboard: 'editor-taskboard',
   text: {
     bold: 'editor-text-bold',
     code: 'editor-text-code',

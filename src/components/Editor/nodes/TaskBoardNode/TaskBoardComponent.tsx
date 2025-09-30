@@ -1,0 +1,313 @@
+import React, { useState, useCallback } from 'react';
+import { 
+  DndContext, 
+  DragEndEvent,
+  DragOverEvent,
+  DragStartEvent,
+  closestCorners,
+  PointerSensor,
+  useSensor,
+  useSensors
+} from '@dnd-kit/core';
+import { TaskBoardData, Task, TaskBoardPayload } from './types';
+import { TaskColumn } from './TaskColumn';
+import { TaskListView } from './TaskListView';
+import { 
+  createDefaultTaskBoard, 
+  addTask, 
+  updateTask, 
+  deleteTask, 
+  updateColumn,
+  addColumn,
+  moveTask
+} from './utils';
+import { IoSettings, IoGrid, IoList, IoAdd, IoCreate } from 'react-icons/io5';
+import './TaskBoard.css';
+
+interface TaskBoardComponentProps {
+  nodeKey: string;
+  data?: TaskBoardData;
+  onDataChange: (data: TaskBoardData) => void;
+}
+
+export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
+  nodeKey,
+  data: initialData,
+  onDataChange
+}) => {
+  const [data, setData] = useState<TaskBoardData>(() => 
+    initialData || createDefaultTaskBoard()
+  );
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+  const [editTitle, setEditTitle] = useState(data.title);
+  const [showSettings, setShowSettings] = useState(false);
+  const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    })
+  );
+
+  const updateData = useCallback((newData: TaskBoardData) => {
+    setData(newData);
+    onDataChange(newData);
+  }, [onDataChange]);
+
+  const handleTaskUpdate = useCallback((taskId: string, updates: Partial<Task>) => {
+    const newData = updateTask(data, taskId, updates);
+    updateData(newData);
+  }, [data, updateData]);
+
+  const handleTaskDelete = useCallback((taskId: string) => {
+    const newData = deleteTask(data, taskId);
+    updateData(newData);
+  }, [data, updateData]);
+
+  const handleTaskAdd = useCallback((task: Task, columnId: string) => {
+    const newData = addTask(data, task, columnId);
+    updateData(newData);
+  }, [data, updateData]);
+
+  const handleColumnUpdate = useCallback((columnId: string, updates: Partial<any>) => {
+    const newData = updateColumn(data, columnId, updates);
+    updateData(newData);
+  }, [data, updateData]);
+
+  const handleViewModeChange = useCallback((viewMode: 'kanban' | 'list') => {
+    const newData = { ...data, viewMode, updatedAt: new Date().toISOString() };
+    updateData(newData);
+  }, [data, updateData]);
+
+  const handleTitleSave = () => {
+    if (editTitle.trim() && editTitle.trim() !== data.title) {
+      const newData = { ...data, title: editTitle.trim(), updatedAt: new Date().toISOString() };
+      updateData(newData);
+    }
+    setIsEditingTitle(false);
+  };
+
+  const handleTitleCancel = () => {
+    setEditTitle(data.title);
+    setIsEditingTitle(false);
+  };
+
+  const handleAddColumn = () => {
+    const title = prompt('Enter column title:');
+    if (title?.trim()) {
+      const newData = addColumn(data, title.trim());
+      updateData(newData);
+    }
+  };
+
+  const handleDragStart = (event: DragStartEvent) => {
+    setActiveTaskId(event.active.id as string);
+  };
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    setActiveTaskId(null);
+
+    if (!over) return;
+
+    const taskId = active.id as string;
+    const overId = over.id as string;
+
+    // Find source column
+    const sourceColumnId = Object.keys(data.columns).find(columnId =>
+      data.columns[columnId].taskIds.includes(taskId)
+    );
+
+    if (!sourceColumnId) return;
+
+    // Determine destination column
+    let destinationColumnId = overId;
+    
+    // If dropped on a task, find its column
+    if (Object.keys(data.tasks).includes(overId)) {
+      destinationColumnId = Object.keys(data.columns).find(columnId =>
+        data.columns[columnId].taskIds.includes(overId)
+      ) || sourceColumnId;
+    }
+
+    // If dropped on column header or column area
+    if (Object.keys(data.columns).includes(overId)) {
+      destinationColumnId = overId;
+    }
+
+    const sourceColumn = data.columns[sourceColumnId];
+    const destinationColumn = data.columns[destinationColumnId];
+
+    if (!sourceColumn || !destinationColumn) return;
+
+    const sourceIndex = sourceColumn.taskIds.indexOf(taskId);
+    let destinationIndex = destinationColumn.taskIds.length;
+
+    // If dropped on a specific task, insert before it
+    if (Object.keys(data.tasks).includes(overId) && destinationColumnId !== sourceColumnId) {
+      destinationIndex = destinationColumn.taskIds.indexOf(overId);
+    } else if (Object.keys(data.tasks).includes(overId) && destinationColumnId === sourceColumnId) {
+      destinationIndex = destinationColumn.taskIds.indexOf(overId);
+      if (sourceIndex < destinationIndex) {
+        destinationIndex--;
+      }
+    }
+
+    const newData = moveTask(
+      data,
+      taskId,
+      sourceColumnId,
+      destinationColumnId,
+      sourceIndex,
+      destinationIndex
+    );
+
+    updateData(newData);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleTitleSave();
+    } else if (e.key === 'Escape') {
+      handleTitleCancel();
+    }
+  };
+
+  const renderKanbanView = () => (
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCorners}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+    >
+      <div className="task-board-kanban">
+        <div className="task-columns">
+          {data.columnOrder.map(columnId => {
+            const column = data.columns[columnId];
+            const tasks = column.taskIds.map(taskId => data.tasks[taskId]).filter(Boolean);
+            
+            return (
+              <TaskColumn
+                key={columnId}
+                column={column}
+                tasks={tasks}
+                onTaskUpdate={handleTaskUpdate}
+                onTaskDelete={handleTaskDelete}
+                onTaskAdd={handleTaskAdd}
+                onColumnUpdate={handleColumnUpdate}
+                activeTaskId={activeTaskId}
+              />
+            );
+          })}
+          
+          <div className="add-column">
+            <button onClick={handleAddColumn} className="add-column-btn">
+              <IoAdd /> Add Column
+            </button>
+          </div>
+        </div>
+      </div>
+    </DndContext>
+  );
+
+  return (
+    <div className="task-board-container">
+      <div className="task-board-header">
+        <div className="board-title-section">
+          {isEditingTitle ? (
+            <input
+              type="text"
+              value={editTitle}
+              onChange={(e) => setEditTitle(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onBlur={handleTitleSave}
+              className="board-title-input"
+              autoFocus
+            />
+          ) : (
+            <h2 
+              className="board-title"
+              onClick={() => setIsEditingTitle(true)}
+            >
+              {data.title}
+              <IoCreate className="edit-icon" />
+            </h2>
+          )}
+        </div>
+        
+        <div className="board-controls">
+          {data.viewMode === 'list' ? (
+            <button 
+              onClick={() => handleViewModeChange('kanban')}
+              className="view-toggle"
+              title="Switch to Kanban view"
+            >
+              <IoGrid /> Kanban
+            </button>
+          ) : (
+            <button 
+              onClick={() => handleViewModeChange('list')}
+              className="view-toggle"
+              title="Switch to List view"
+            >
+              <IoList /> List
+            </button>
+          )}
+          
+          <button 
+            onClick={() => setShowSettings(!showSettings)}
+            className="settings-btn"
+            title="Board settings"
+          >
+            <IoSettings />
+          </button>
+        </div>
+      </div>
+
+      {showSettings && (
+        <div className="board-settings">
+          <div className="settings-content">
+            <h4>Board Settings</h4>
+            <div className="setting-item">
+              <label>Board Title:</label>
+              <input
+                type="text"
+                value={data.title}
+                onChange={(e) => {
+                  const newData = { ...data, title: e.target.value, updatedAt: new Date().toISOString() };
+                  updateData(newData);
+                }}
+              />
+            </div>
+            <div className="setting-item">
+              <label>Default View:</label>
+              <select
+                value={data.viewMode}
+                onChange={(e) => handleViewModeChange(e.target.value as 'kanban' | 'list')}
+              >
+                <option value="kanban">Kanban</option>
+                <option value="list">List</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="task-board-content">
+        {data.viewMode === 'kanban' ? (
+          renderKanbanView()
+        ) : (
+          <TaskListView
+            data={data}
+            onTaskUpdate={handleTaskUpdate}
+            onTaskDelete={handleTaskDelete}
+            onTaskAdd={handleTaskAdd}
+            onViewModeChange={handleViewModeChange}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
