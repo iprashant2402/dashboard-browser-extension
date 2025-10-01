@@ -144,9 +144,6 @@ export class TaskBoardNode extends DecoratorNode<React.JSX.Element> {
         <TaskBoardComponent
           nodeKey={this.getKey()}
           data={this.__data}
-          onDataChange={(data: TaskBoardData) => {
-            this.updateData(data);
-          }}
         />
       </Suspense>
     );

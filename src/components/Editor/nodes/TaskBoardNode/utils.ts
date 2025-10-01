@@ -36,7 +36,7 @@ export const createDefaultTaskBoard = (title: string = 'Task Board'): TaskBoardD
   };
 };
 
-export const createTask = (title: string, columnId: string): Task => {
+export const createTask = (title: string): Task => {
   return {
     id: `task-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
     title,

@@ -1,15 +1,16 @@
 import React, { useState, useCallback } from 'react';
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { 
   DndContext, 
   DragEndEvent,
-  DragOverEvent,
   DragStartEvent,
   closestCorners,
   PointerSensor,
   useSensor,
   useSensors
 } from '@dnd-kit/core';
-import { TaskBoardData, Task, TaskBoardPayload } from './types';
+import { $getNodeByKey } from 'lexical';
+import { TaskBoardData, Task, Column } from './types';
 import { TaskColumn } from './TaskColumn';
 import { TaskListView } from './TaskListView';
 import { 
@@ -22,22 +23,29 @@ import {
   moveTask
 } from './utils';
 import { IoSettings, IoGrid, IoList, IoAdd, IoCreate } from 'react-icons/io5';
+import { $isTaskBoardNode } from './TaskBoardNode';
 import './TaskBoard.css';
 
 interface TaskBoardComponentProps {
   nodeKey: string;
   data?: TaskBoardData;
-  onDataChange: (data: TaskBoardData) => void;
 }
 
 export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
   nodeKey,
-  data: initialData,
-  onDataChange
+  data: initialData
 }) => {
+  const [editor] = useLexicalComposerContext();
   const [data, setData] = useState<TaskBoardData>(() => 
     initialData || createDefaultTaskBoard()
   );
+
+  // Sync with initial data changes (e.g., when loading from saved state)
+  React.useEffect(() => {
+    if (initialData) {
+      setData(initialData);
+    }
+  }, [initialData]);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [editTitle, setEditTitle] = useState(data.title);
   const [showSettings, setShowSettings] = useState(false);
@@ -52,9 +60,28 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
   );
 
   const updateData = useCallback((newData: TaskBoardData) => {
+    console.log("Setting new data", newData);
     setData(newData);
-    onDataChange(newData);
-  }, [onDataChange]);
+    
+    // Update the lexical node data for persistence
+    editor.update(() => {
+      const node = $getNodeByKey(nodeKey);
+      
+      if (node && (node.getType() === 'taskboard' || $isTaskBoardNode(node))) {
+        // Cast to TaskBoardNode since we know it's the right type
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const taskBoardNode = node as any;
+        taskBoardNode.updateData(newData);
+      } else {
+        console.warn("TaskBoard node not found or invalid type", {
+          node,
+          nodeKey,
+          nodeType: node?.getType(),
+          isTaskBoardNode: node ? $isTaskBoardNode(node) : false
+        });
+      }
+    });
+  }, [editor, nodeKey]);
 
   const handleTaskUpdate = useCallback((taskId: string, updates: Partial<Task>) => {
     const newData = updateTask(data, taskId, updates);
@@ -71,7 +98,7 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
     updateData(newData);
   }, [data, updateData]);
 
-  const handleColumnUpdate = useCallback((columnId: string, updates: Partial<any>) => {
+  const handleColumnUpdate = useCallback((columnId: string, updates: Partial<Column>) => {
     const newData = updateColumn(data, columnId, updates);
     updateData(newData);
   }, [data, updateData]);

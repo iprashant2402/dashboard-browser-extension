@@ -2,7 +2,7 @@
 .task-board-container {
   border: 1px solid var(--task-board-border-color, var(--card-border-color));
   border-radius: var(--task-board-border-radius, var(--card-border-radius));
-  background: var(--task-board-bg-color, var(--card-bg-color));
+  background: var(--task-board-bg-color, transparent);
   color: var(--task-board-text-color, var(--card-text-color));
   margin: 16px 0;
   overflow: hidden;
@@ -157,7 +157,7 @@
 
 .task-column {
   flex: 0 0 280px;
-  background: var(--card-alt-bg-color);
+  background: var(--layout-bg-color);
   border-radius: var(--card-border-radius);
   border: 1px solid var(--card-border-color);
   padding: 16px;
@@ -174,6 +174,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  column-gap: 8px;
   margin-bottom: 16px;
 }
 
@@ -183,16 +184,19 @@
 
 .column-title {
   cursor: pointer;
-  border-left: 4px solid var(--primary-color);
-  padding-left: 12px;
+  border: 1px solid var(--primary-color);
+  padding: 2px 6px;
   transition: all 0.2s;
+  width: fit-content;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .column-title:hover {
   background: var(--hover-bg-color, rgba(255, 255, 255, 0.1));
   border-radius: var(--card-border-radius);
-  padding: 4px 8px 4px 12px;
-  margin: -4px -8px;
 }
 
 .column-title h3 {
@@ -202,7 +206,7 @@
   color: var(--task-board-text-color, var(--card-text-color));
   display: flex;
   align-items: center;
-  gap: 8px;
+  text-transform: capitalize;
 }
 
 .task-count {
@@ -294,6 +298,7 @@
   color: var(--task-card-text-color, var(--card-text-color));
   transition: all 0.2s;
   cursor: pointer;
+  position: relative;
 }
 
 .task-card:hover {
@@ -319,16 +324,21 @@
 }
 
 .task-priority-indicator {
-  width: 4px;
-  height: 16px;
-  border-radius: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
 }
 
 .task-card-menu {
-  position: relative;
+  position: absolute;
+  right: 4px;
+  top: 10px;
 }
 
 .menu-toggle {
+  position: absolute;
+  right: 4px;
+  top: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -355,7 +365,8 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background: var(--task-card-bg-color, var(--card-bg-color));
+  background: var(--notes-list-panel-bg-color);
+  padding: 4px;
   border: 1px solid var(--card-border-color);
   border-radius: var(--card-border-radius);
   box-shadow: 0 4px 12px var(--primary-color-100);
@@ -388,11 +399,6 @@
   color: var(--secondary-color);
 }
 
-.task-menu button.delete-btn:hover {
-  background: var(--secondary-color);
-  color: var(--task-card-bg-color, var(--card-bg-color));
-}
-
 .task-card-content {
   display: flex;
   flex-direction: column;
@@ -402,7 +408,7 @@
 .task-title {
   margin: 0;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--task-card-text-color, var(--card-text-color));
   line-height: 1.3;
 }

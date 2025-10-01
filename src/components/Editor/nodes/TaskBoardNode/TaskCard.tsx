@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Task } from './types';
-import { IoEllipsisVertical, IoCreate, IoTrash } from 'react-icons/io5';
+import { Button } from '../../../Button';
 
 interface TaskCardProps {
   task: Task;
@@ -28,7 +28,6 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(task.title);
   const [editDescription, setEditDescription] = useState(task.description || '');
-  const [showMenu, setShowMenu] = useState(false);
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -100,8 +99,8 @@ export const TaskCard: React.FC<TaskCardProps> = ({
           </div>
         </div>
         <div className="task-card-actions">
-          <button onClick={handleSave} className="save-btn">Save</button>
-          <button onClick={handleCancel} className="cancel-btn">Cancel</button>
+          <Button variant="secondary" label="Cancel" onClick={handleCancel} />
+          <Button variant="primary" label="Save" onClick={handleSave} />
         </div>
       </div>
     );
@@ -114,33 +113,13 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       className={`task-card ${isDragging || sortableIsDragging ? 'dragging' : ''}`}
       {...attributes}
       {...listeners}
+      onDoubleClick={() => setIsEditing(true)}
     >
       <div className="task-card-header">
         <div 
           className="task-priority-indicator"
           style={{ backgroundColor: getPriorityColor(task.priority || 'medium') }}
         />
-        <div className="task-card-menu">
-          <button 
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowMenu(!showMenu);
-            }}
-            className="menu-toggle"
-          >
-            <IoEllipsisVertical />
-          </button>
-          {showMenu && (
-            <div className="task-menu" onClick={(e) => e.stopPropagation()}>
-              <button onClick={() => { setIsEditing(true); setShowMenu(false); }}>
-                <IoCreate /> Edit
-              </button>
-              <button onClick={() => { onDelete(task.id); setShowMenu(false); }} className="delete-btn">
-                <IoTrash /> Delete
-              </button>
-            </div>
-          )}
-        </div>
       </div>
       <div className="task-card-content">
         <h4 className="task-title">{task.title}</h4>

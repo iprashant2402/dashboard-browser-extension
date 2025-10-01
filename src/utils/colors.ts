@@ -362,3 +362,15 @@ export function randomMultiGradient(stops: number = 3, direction: string = '45de
   const colors = Array.from({ length: stops }, () => randomHex());
   return `linear-gradient(${direction}, ${colors.join(', ')})`;
 }
+
+export const addAlphaToColor = (color: string | null, alpha: number): string => {
+  if (!color) return '';
+  if (color.startsWith('rgba')) {
+    return color;
+  }
+  const rgb = hexToRgb(color);
+  if (!rgb) {
+    return color;
+  }
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
+}

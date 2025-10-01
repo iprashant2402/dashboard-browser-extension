@@ -3,8 +3,10 @@ import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Column, Task } from './types';
 import { TaskCard } from './TaskCard';
-import { IoAdd, IoCreate } from 'react-icons/io5';
+import { IoAdd } from 'react-icons/io5';
 import { createTask } from './utils';
+import { addAlphaToColor } from '../../../../utils/colors';
+import { Button } from '../../../Button';
 
 interface TaskColumnProps {
   column: Column;
@@ -38,7 +40,7 @@ export const TaskColumn: React.FC<TaskColumnProps> = ({
 
   const handleAddTask = () => {
     if (newTaskTitle.trim()) {
-      const newTask = createTask(newTaskTitle.trim(), column.id);
+      const newTask = createTask(newTaskTitle.trim());
       onTaskAdd(newTask, column.id);
       setNewTaskTitle('');
       setIsAddingTask(false);
@@ -96,12 +98,11 @@ export const TaskColumn: React.FC<TaskColumnProps> = ({
           <div className="column-title-wrapper">
             <div 
               className="column-title"
-              style={{ borderColor: column.color }}
               onClick={() => setIsEditingTitle(true)}
+              style={{ borderColor: column.color, backgroundColor: addAlphaToColor(column.color ?? null, 0.1) }}
             >
-              <h3>{column.title}</h3>
-              <span className="task-count">({tasks.length})</span>
-              <IoCreate className="edit-icon" />
+              <h3 style={{ color: column.color }}>{column.title?.toLowerCase()}</h3>
+              <span style={{ color: column.color }} className="task-count">({tasks.length})</span>
             </div>
           </div>
         )}
@@ -138,16 +139,19 @@ export const TaskColumn: React.FC<TaskColumnProps> = ({
                 autoFocus
               />
               <div className="new-task-actions">
-                <button onClick={handleAddTask} className="add-btn">Add</button>
-                <button 
+              <Button
+                  variant='secondary' 
                   onClick={() => {
                     setIsAddingTask(false);
                     setNewTaskTitle('');
                   }} 
-                  className="cancel-btn"
-                >
-                  Cancel
-                </button>
+                  label="Cancel"
+                />
+                <Button 
+                variant='primary' 
+                onClick={handleAddTask} 
+                label="Add"
+                />
               </div>
             </div>
           )}
