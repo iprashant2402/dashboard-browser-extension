@@ -3,6 +3,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Task } from './types';
 import { Button } from '../../../Button';
+import { IoTrashBin } from 'react-icons/io5';
 
 interface TaskCardProps {
   task: Task;
@@ -68,6 +69,9 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   if (isEditing) {
     return (
       <div className="task-card editing">
+        <div className="task-card-header">
+          <Button variant='clear' icon={<IoTrashBin />} onClick={() => onDelete(task.id)} />
+        </div>
         <div className="task-card-content">
           <input
             type="text"

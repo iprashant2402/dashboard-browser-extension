@@ -142,6 +142,9 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
     const taskId = active.id as string;
     const overId = over.id as string;
 
+    // Don't do anything if dropped on itself
+    if (taskId === overId) return;
+
     // Find source column
     const sourceColumnId = Object.keys(data.columns).find(columnId =>
       data.columns[columnId].taskIds.includes(taskId)
@@ -149,38 +152,37 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
 
     if (!sourceColumnId) return;
 
-    // Determine destination column
-    let destinationColumnId = overId;
-    
-    // If dropped on a task, find its column
-    if (Object.keys(data.tasks).includes(overId)) {
+    const sourceColumn = data.columns[sourceColumnId];
+    const sourceIndex = sourceColumn.taskIds.indexOf(taskId);
+
+    let destinationColumnId = sourceColumnId;
+    let destinationIndex = sourceColumn.taskIds.length - 1; // Default to end of same column
+
+    // Determine destination based on what was dropped on
+    if (Object.keys(data.columns).includes(overId)) {
+      // Dropped on a column - move to end of that column
+      destinationColumnId = overId;
+      destinationIndex = data.columns[overId].taskIds.length;
+    } else if (Object.keys(data.tasks).includes(overId)) {
+      // Dropped on a task - find which column it's in and insert before it
       destinationColumnId = Object.keys(data.columns).find(columnId =>
         data.columns[columnId].taskIds.includes(overId)
       ) || sourceColumnId;
+      
+      const targetColumn = data.columns[destinationColumnId];
+      destinationIndex = targetColumn.taskIds.indexOf(overId);
     }
 
-    // If dropped on column header or column area
-    if (Object.keys(data.columns).includes(overId)) {
-      destinationColumnId = overId;
+    // Skip if no actual movement
+    if (sourceColumnId === destinationColumnId && sourceIndex === destinationIndex) {
+      return;
     }
 
-    const sourceColumn = data.columns[sourceColumnId];
-    const destinationColumn = data.columns[destinationColumnId];
-
-    if (!sourceColumn || !destinationColumn) return;
-
-    const sourceIndex = sourceColumn.taskIds.indexOf(taskId);
-    let destinationIndex = destinationColumn.taskIds.length;
-
-    // If dropped on a specific task, insert before it
-    if (Object.keys(data.tasks).includes(overId) && destinationColumnId !== sourceColumnId) {
-      destinationIndex = destinationColumn.taskIds.indexOf(overId);
-    } else if (Object.keys(data.tasks).includes(overId) && destinationColumnId === sourceColumnId) {
-      destinationIndex = destinationColumn.taskIds.indexOf(overId);
-      if (sourceIndex < destinationIndex) {
-        destinationIndex--;
-      }
+    // For same column moves, adjust destination index if needed
+    if (sourceColumnId === destinationColumnId && sourceIndex < destinationIndex) {
+      destinationIndex--;
     }
+
 
     const newData = moveTask(
       data,

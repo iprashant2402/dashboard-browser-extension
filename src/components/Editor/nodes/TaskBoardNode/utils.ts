@@ -62,11 +62,33 @@ export const moveTask = (
     return taskBoardData;
   }
 
-  // Remove task from source column
+  // Handle same column moves
+  if (sourceColumnId === destinationColumnId) {
+    const newTaskIds = Array.from(sourceColumn.taskIds);
+    
+    // Remove the task from its current position
+    newTaskIds.splice(sourceIndex, 1);
+    
+    // Insert it at the new position
+    newTaskIds.splice(destinationIndex, 0, taskId);
+
+    return {
+      ...taskBoardData,
+      columns: {
+        ...taskBoardData.columns,
+        [sourceColumnId]: {
+          ...sourceColumn,
+          taskIds: newTaskIds
+        }
+      },
+      updatedAt: new Date().toISOString()
+    };
+  }
+
+  // Handle cross-column moves
   const newSourceTaskIds = Array.from(sourceColumn.taskIds);
   newSourceTaskIds.splice(sourceIndex, 1);
 
-  // Add task to destination column
   const newDestinationTaskIds = Array.from(destinationColumn.taskIds);
   newDestinationTaskIds.splice(destinationIndex, 0, taskId);
 
