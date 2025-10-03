@@ -319,8 +319,16 @@
 .task-card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-bottom: 8px;
+  position: relative;
+  height: 16px;
+
+  button {
+    position: absolute;
+    top: -12px;
+    right: -8px;
+  }
 }
 
 .task-priority-indicator {

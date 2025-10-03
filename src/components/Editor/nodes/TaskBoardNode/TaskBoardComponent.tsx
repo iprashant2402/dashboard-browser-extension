@@ -12,7 +12,7 @@ import {
 import { $getNodeByKey } from 'lexical';
 import { TaskBoardData, Task, Column } from './types';
 import { TaskColumn } from './TaskColumn';
-import { TaskListView } from './TaskListView';
+// import { TaskListView } from './TaskListView'; // Temporarily disabled
 import { 
   createDefaultTaskBoard, 
   addTask, 
@@ -22,7 +22,7 @@ import {
   addColumn,
   moveTask
 } from './utils';
-import { IoSettings, IoGrid, IoList, IoAdd, IoCreate } from 'react-icons/io5';
+import { IoSettings, /* IoGrid, IoList, */ IoAdd, IoCreate } from 'react-icons/io5';
 import { $isTaskBoardNode } from './TaskBoardNode';
 import './TaskBoard.css';
 
@@ -267,7 +267,8 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
         </div>
         
         <div className="board-controls">
-          {data.viewMode === 'list' ? (
+          {/* List view temporarily disabled */}
+          {/* {data.viewMode === 'list' ? (
             <button 
               onClick={() => handleViewModeChange('kanban')}
               className="view-toggle"
@@ -283,7 +284,7 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
             >
               <IoList /> List
             </button>
-          )}
+          )} */}
           
           <button 
             onClick={() => setShowSettings(!showSettings)}
@@ -310,7 +311,8 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
                 }}
               />
             </div>
-            <div className="setting-item">
+            {/* List view temporarily disabled */}
+            {/* <div className="setting-item">
               <label>Default View:</label>
               <select
                 value={data.viewMode}
@@ -319,23 +321,14 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
                 <option value="kanban">Kanban</option>
                 <option value="list">List</option>
               </select>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
 
       <div className="task-board-content">
-        {data.viewMode === 'kanban' ? (
-          renderKanbanView()
-        ) : (
-          <TaskListView
-            data={data}
-            onTaskUpdate={handleTaskUpdate}
-            onTaskDelete={handleTaskDelete}
-            onTaskAdd={handleTaskAdd}
-            onViewModeChange={handleViewModeChange}
-          />
-        )}
+        {/* Always render Kanban view - List view temporarily disabled */}
+        {renderKanbanView()}
       </div>
     </div>
   );

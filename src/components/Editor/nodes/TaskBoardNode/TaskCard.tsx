@@ -3,7 +3,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Task } from './types';
 import { Button } from '../../../Button';
-import { IoTrashBin } from 'react-icons/io5';
+import { IoCloseCircle, IoTrashBin } from 'react-icons/io5';
 
 interface TaskCardProps {
   task: Task;
@@ -71,7 +71,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
     return (
       <div className="task-card editing">
         <div className="task-card-header">
-          <Button variant='clear' icon={<IoTrashBin />} onClick={() => onDelete(task.id)} />
+          <Button variant='clear' icon={<IoCloseCircle size={20} color='var(--danger-color)' />} onClick={() => onDelete(task.id)} />
         </div>
         <div className="task-card-content">
           <input
