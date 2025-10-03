@@ -60,7 +60,6 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
   );
 
   const updateData = useCallback((newData: TaskBoardData) => {
-    console.log("Setting new data", newData);
     setData(newData);
     
     // Update the lexical node data for persistence
@@ -100,11 +99,6 @@ export const TaskBoardComponent: React.FC<TaskBoardComponentProps> = ({
 
   const handleColumnUpdate = useCallback((columnId: string, updates: Partial<Column>) => {
     const newData = updateColumn(data, columnId, updates);
-    updateData(newData);
-  }, [data, updateData]);
-
-  const handleViewModeChange = useCallback((viewMode: 'kanban' | 'list') => {
-    const newData = { ...data, viewMode, updatedAt: new Date().toISOString() };
     updateData(newData);
   }, [data, updateData]);
 
