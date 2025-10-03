@@ -30,9 +30,19 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   const [editTitle, setEditTitle] = useState(task.title);
   const [editDescription, setEditDescription] = useState(task.description || '');
 
+  const getPriorityColor = (priority: string) => {
+    switch (priority) {
+      case 'high': return '#ff4757';
+      case 'medium': return '#ffa726';
+      case 'low': return '#66bb6a';
+      default: return '#9e9e9e';
+    }
+  };
+
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    borderLeft: `4px solid ${getPriorityColor(task.priority || 'medium')}`,
   };
 
   const handleSave = () => {
@@ -54,15 +64,6 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       handleSave();
     } else if (e.key === 'Escape') {
       handleCancel();
-    }
-  };
-
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high': return '#ff4757';
-      case 'medium': return '#ffa726';
-      case 'low': return '#66bb6a';
-      default: return '#9e9e9e';
     }
   };
 
@@ -119,12 +120,6 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       {...listeners}
       onDoubleClick={() => setIsEditing(true)}
     >
-      <div className="task-card-header">
-        <div 
-          className="task-priority-indicator"
-          style={{ backgroundColor: getPriorityColor(task.priority || 'medium') }}
-        />
-      </div>
       <div className="task-card-content">
         <h4 className="task-title">{task.title}</h4>
         {task.description && (

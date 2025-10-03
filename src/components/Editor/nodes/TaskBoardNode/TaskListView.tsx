@@ -12,6 +12,8 @@ interface TaskListViewProps {
   onViewModeChange: (mode: 'kanban' | 'list') => void;
 }
 
+const priorityOrder = { high: 3, medium: 2, low: 1 };
+
 export const TaskListView: React.FC<TaskListViewProps> = ({
   data,
   onTaskUpdate,
@@ -48,7 +50,6 @@ export const TaskListView: React.FC<TaskListViewProps> = ({
   const sortedTasks = [...filteredTasks].sort((a, b) => {
     switch (sortBy) {
       case 'priority':
-        const priorityOrder = { high: 3, medium: 2, low: 1 };
         return (priorityOrder[b.priority || 'medium'] || 2) - (priorityOrder[a.priority || 'medium'] || 2);
       case 'title':
         return a.title.localeCompare(b.title);
@@ -60,7 +61,7 @@ export const TaskListView: React.FC<TaskListViewProps> = ({
 
   const handleAddTask = () => {
     if (newTaskTitle.trim() && newTaskColumn) {
-      const newTask = createTask(newTaskTitle.trim(), newTaskColumn);
+      const newTask = createTask(newTaskTitle.trim());
       onTaskAdd(newTask, newTaskColumn);
       setNewTaskTitle('');
       setIsAddingTask(false);
