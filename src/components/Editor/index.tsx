@@ -39,6 +39,8 @@ import ToolbarPlugin from './plugins/ToolbarPlugin';
 import { SlashCommandPlugin } from './plugins/SlashCommandPlugin';
 import { ImageNode } from './nodes/ImageNode/ImageNode';
 import ImagesPlugin from './plugins/ImagePlugin';
+import { TaskBoardNode } from './nodes/TaskBoardNode/TaskBoardNode';
+import TaskBoardPlugin from './nodes/TaskBoardNode/TaskBoardPlugin';
 
 
 const MATCHERS = [
@@ -166,7 +168,7 @@ export const Editor = ({showToolbar = true, editable = true, ...props}: EditorPr
       namespace: 'Scratchpad',
       editable: editable,
       editorState: props.initialState || undefined,
-      nodes: [ParagraphNode, TextNode, HeadingNode, HorizontalRuleNode, CodeNode, LinkNode, ListNode, ListItemNode, QuoteNode, AutoLinkNode, ImageNode] as Array<Klass<LexicalNode>>,
+      nodes: [ParagraphNode, TextNode, HeadingNode, HorizontalRuleNode, CodeNode, LinkNode, ListNode, ListItemNode, QuoteNode, AutoLinkNode, ImageNode, TaskBoardNode] as Array<Klass<LexicalNode>>,
       onError(error: Error) {
         throw error;
       },
@@ -215,6 +217,7 @@ export const Editor = ({showToolbar = true, editable = true, ...props}: EditorPr
             ErrorBoundary={LexicalErrorBoundary}
           />
           <ImagesPlugin captionsEnabled={true} />
+          <TaskBoardPlugin />
           <OnChangePlugin onChange={onChange} ignoreSelectionChange={true} />
           <HistoryPlugin />
           <LinkPlugin />

@@ -10,6 +10,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --danger-color: #ff4757;
+
   --layout-bg-color: #030d17;
   --layout-text-color: #FFFFFFD9;
   --primary-color: #16825D;

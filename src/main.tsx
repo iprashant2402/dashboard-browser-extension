@@ -37,6 +37,8 @@ if (userPreferences?.theme) {
 
 AnalyticsTracker.init(getUserProfileLocalStorage());
 
+localStorage.removeItem('releaseNotesPageVisited');
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ReactQueryProvider>

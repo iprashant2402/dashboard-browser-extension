@@ -15,6 +15,7 @@ import { $setBlocksType } from '@lexical/selection';
 import { createPortal } from 'react-dom';
 import './SlashCommandPlugin.css';
 import { INSERT_IMAGE_COMMAND_SELECTED_EVENT } from './ImagePlugin';
+import { INSERT_TASK_BOARD_COMMAND_SELECTED_EVENT } from '../nodes/TaskBoardNode/TaskBoardPlugin';
 import { AnalyticsTracker } from '../../../analytics/AnalyticsTracker';
 
 export interface SlashCommand {
@@ -149,6 +150,16 @@ const SlashCommandsList = () => {
         keywords: ['ol', 'list', 'numbered', 'ordered'],
         onSelect: () => {
           editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
+        }
+      },
+      {
+        key: 'task-board',
+        title: 'Task Board',
+        description: 'Create a kanban-style task board.',
+        icon: '📋',
+        keywords: ['task', 'board', 'kanban', 'todo', 'project', 'organize'],
+        onSelect: () => {
+          window.dispatchEvent(new CustomEvent(INSERT_TASK_BOARD_COMMAND_SELECTED_EVENT));
         }
       }
     ];
