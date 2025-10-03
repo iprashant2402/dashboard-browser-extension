@@ -3,7 +3,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Task } from './types';
 import { Button } from '../../../Button';
-import { IoCloseCircle, IoTrashBin } from 'react-icons/io5';
+import { IoCloseCircle } from 'react-icons/io5';
 
 interface TaskCardProps {
   task: Task;
