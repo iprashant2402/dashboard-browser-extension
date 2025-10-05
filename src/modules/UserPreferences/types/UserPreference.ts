@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, Theme } from "../../Tasks/types/Theme";
+import { DEFAULT_THEME, Theme } from "../../Themes/Theme";
 
 export interface Wallpaper {
     url: string;

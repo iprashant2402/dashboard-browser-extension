@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { DEFAULT_USER_PREFERENCE, UserPreference } from "../types/UserPreference";
 import { storage } from "../../../utils/storage";
-import { Theme, THEMES } from "../../Tasks/types/Theme";
+import { Theme, THEMES } from "../../Themes/Theme";
 import { USER_PREFERENCES_KEY } from "../../../utils/constants";
 import { UserPreferencesContext } from "./UserPreferencesContext";
 import { setWallpaper, unsetWallpaper } from "../../../utils/wallpaper";
