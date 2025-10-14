@@ -5,12 +5,15 @@ import { useFetchPage } from "./useFetchPage";
 import { useUpdatePage } from "./useUpdatePage";
 import { useDeletePage } from "./useDeletePage";
 import { AnalyticsTracker } from "../../../analytics/AnalyticsTracker";
+import { useMakePagePublic } from "./useMakePagePublic";
+import { useAuth } from "../../Auth";
 
 export const usePageEditor = () => {
     const { id } = useParams();
     const { data: page, isLoading: isFetchingPage, isError: isPageFetchError, status: pageFetchStatus } = useFetchPage(id);
     const navigate = useNavigate();
     const { showToast } = useToast();
+    const { user } = useAuth();
 
     useEffect(() => {
         if (!page) return;
@@ -23,6 +26,15 @@ export const usePageEditor = () => {
     const { mutateAsync: updatePage, isPending: isUpdatingPage, isError: isUpdatingPageError } = useUpdatePage();
 
     const { mutateAsync: deletePage, isPending: isDeletingPage, isError: isDeletingPageError } = useDeletePage();
+
+    const { mutateAsync: makePagePublic, isPending: isPagePublishInProgress } = useMakePagePublic({
+        onError: () => {
+            showToast({
+                type: "error",
+                message: "Oops! Something went wrong. Failed to share page."
+            });
+        }
+    });
 
     const handleDeletePage = useCallback(async (id: string) => {
         AnalyticsTracker.track('Delete page', {
@@ -37,6 +49,16 @@ export const usePageEditor = () => {
         });
     }, [deletePage, navigate, page?.title, showToast]);
 
+    const sharePage = useCallback(async (id: string) => {
+        const response = await makePagePublic(id);
+        if (response?.isPublic) {
+            await navigator.clipboard.writeText(`${window.location.origin}/view/page/` + id);
+            showToast({
+                type: "success",
+                message: "Link copied"
+            });
+        }
+    }, [makePagePublic, showToast]);
 
     const handleOnSavePage = useCallback(async (content: string) => {
         await updatePage({ id: id!, page: { content }, sync: false });
@@ -60,12 +82,15 @@ export const usePageEditor = () => {
             isPageFetchError,
             isUpdatingPageError,
             isDeletingPageError,
-            pageFetchStatus
+            pageFetchStatus,
+            isPagePublishInProgress,
+            isShareEnabled: !!user?.id
         },
         actions: {
             handleDeletePage,
             handleOnSavePage,
             handleOnSavePageTitle,
+            sharePage,
         }
     }
 }

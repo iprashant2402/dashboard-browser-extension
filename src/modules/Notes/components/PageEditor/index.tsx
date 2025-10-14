@@ -11,6 +11,11 @@ export const PageEditor = () => {
         <div className="page-editor">
             {state.pageFetchStatus === "success" && <Editor 
                 showToolbar={userPreferences.editorToolbarEnabled}
+                shareCta={state.isShareEnabled ? {
+                    label: "Share",
+                    onClick: () => actions.sharePage(state.id!),
+                    isLoading: state.isPagePublishInProgress
+                } : undefined}
                 onChange={actions.handleOnSavePage}
                 initialState={state.page?.content}
                 onSave={actions.handleOnSavePage}

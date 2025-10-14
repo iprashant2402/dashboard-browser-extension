@@ -23,7 +23,7 @@ export const PreferencesToolbar = () => {
     return (
         <>
         <div className="preferences-toolbar">
-                <UserInfoCard user={user} onClick={handleSettingsMenuOpen} />
+            <UserInfoCard user={user} onClick={handleSettingsMenuOpen} />
         </div>
         <Dialog
             isOpen={isSettingsMenuOpen}

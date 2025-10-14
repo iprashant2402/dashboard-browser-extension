@@ -59,6 +59,11 @@ export interface EditorProps {
   onSave: (content: string) => void;
   showToolbar?: boolean;
   editable?: boolean;
+  shareCta?: {
+    label: string;
+    isLoading?: boolean;
+    onClick: () => void | Promise<void>;
+  }
 }
 
 const DefaultPlaceholder = 'Jot down your thoughts or anything else...';
@@ -198,7 +203,7 @@ export const Editor = ({showToolbar = true, editable = true, ...props}: EditorPr
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-        {showToolbar && <ToolbarPlugin visible={isFocused} />}
+        {showToolbar && <ToolbarPlugin visible={true} shareCta={props.shareCta} />}
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={
