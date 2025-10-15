@@ -53,6 +53,21 @@ class PagesSyncRepository {
         const response = await apiManager.get<SyncStatus>('/pages/sync/status');
         return response.data;
     }
+
+    async makePagePublic(pageId: string) {
+        const response = await apiManager.put<PageCloudRef>(`/pages/${pageId}/public`);
+        return response.data;
+    }
+
+    async makePagePrivate(pageId: string) {
+        const response = await apiManager.put<PageCloudRef>(`/pages/${pageId}/private`);
+        return response.data;
+    }
+
+    async getPublicPageById(pageId: string) {
+        const response = await apiManager.get<PageCloudRef>('/pages/public/' + pageId);
+        return response.data;
+    }
 }
 
 export const pagesSyncRepository = new PagesSyncRepository();

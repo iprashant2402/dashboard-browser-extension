@@ -38,6 +38,7 @@ export const ResourceReader = () => {
         {content && <Editor 
         key={resource}
         initialState={content} 
+        showToolbar={false}
         onChange={() => {}}
         onSave={() => {}}
         editable={false}

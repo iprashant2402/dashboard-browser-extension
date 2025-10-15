@@ -8,9 +8,15 @@ export const PageEditor = () => {
     const { userPreferences } = useUserPreferences();
 
     return (
+        <>
         <div className="page-editor">
             {state.pageFetchStatus === "success" && <Editor 
                 showToolbar={userPreferences.editorToolbarEnabled}
+                shareCta={{
+                    label: "Share",
+                    onClick: () => actions.sharePage(state.id!),
+                    isLoading: state.isPagePublishInProgress
+                }}
                 onChange={actions.handleOnSavePage}
                 initialState={state.page?.content}
                 onSave={actions.handleOnSavePage}
@@ -35,5 +41,6 @@ export const PageEditor = () => {
                 </div>}
             />}
         </div>
+        </>
     )
 }

@@ -21,6 +21,8 @@ import {
 import {useCallback, useEffect, useRef, useState} from 'react';
 import { BiAlignJustify, BiAlignLeft, BiAlignMiddle, BiAlignRight, BiBold, BiItalic, BiStrikethrough, BiUnderline } from 'react-icons/bi';
 import { IoArrowRedo, IoArrowUndo } from 'react-icons/io5';
+import { Button } from '../../Button';
+import { MdIosShare } from 'react-icons/md';
 
 const LowPriority = 1;
 
@@ -28,7 +30,7 @@ function Divider() {
   return <div className="divider" />;
 }
 
-export default function ToolbarPlugin({visible}: {visible: boolean}) {
+export default function ToolbarPlugin({visible, shareCta}: {visible: boolean, shareCta?: {label: string, onClick: () => void, isLoading?: boolean}}) {
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef(null);
   const [canUndo, setCanUndo] = useState(false);
@@ -169,6 +171,18 @@ export default function ToolbarPlugin({visible}: {visible: boolean}) {
         aria-label="Justify Align">
         <BiAlignJustify size={18} />
       </button>{' '}
+      {shareCta && (
+        <>
+        <Divider />
+        <Button
+          variant="primary"
+          onClick={shareCta.onClick}
+          className="toolbar-item share-cta spaced"
+          aria-label="Share"
+          icon={<MdIosShare size={18} />}
+        />
+        </>
+      )}
     </div>
   );
 }

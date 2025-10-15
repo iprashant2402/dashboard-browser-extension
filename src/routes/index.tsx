@@ -1,12 +1,12 @@
 import { createBrowserRouter, createMemoryRouter, RouteObject } from "react-router";
 import { HomeView } from "../views/HomeView";
-import { TaskBoardView } from "../modules/Tasks/components/TaskBoardView";
 import { PageEditorNavigationController } from "../modules/Notes/components/PageEditorNavigationController";
 import { PageEditor } from "../modules/Notes/components/PageEditor";
 import { ResourceReader } from "../modules/Notes/components/ResourceReader/ResourceReader";
 import { MobileHomeView } from "../views/MobileHomeView";
 import { PreferencesView } from "../views/PreferencesView";
 import { getCurrentPlatform } from "../utils/helpers";
+import { PageViewer } from "../modules/Notes/components/PageViewer";
 
 const routes: RouteObject[] = [
     {
@@ -34,8 +34,8 @@ const routes: RouteObject[] = [
                 element: <ResourceReader />,
             },
             {
-                path: 'task-board/:id',
-                element: <TaskBoardView />,
+                path: 'view/page/:id',
+                element: <PageViewer />,
             }
         ]
     },

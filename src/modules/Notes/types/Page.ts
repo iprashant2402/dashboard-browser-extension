@@ -6,6 +6,7 @@ export interface Page {
     updatedAt: Date;
     createdAt: Date;
     syncedAt?: string;
+    isPublic?: boolean;
 }
 
 export interface PageCloudRef {
@@ -16,6 +17,7 @@ export interface PageCloudRef {
     updatedAt: string;
     createdAt: string;
     syncedAt: string;
+    isPublic: boolean;
   }
 
 export interface PagesListResponse {

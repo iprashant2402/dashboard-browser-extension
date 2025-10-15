@@ -1,4 +1,4 @@
-import { Theme, THEME_DISPLAY_NAMES, THEMES } from "../../Tasks/types/Theme"
+import { Theme, THEME_DISPLAY_NAMES, THEMES } from "../../Themes/Theme"
 import "./PreferencesForm.css";
 import { Toggle } from "../../../components/Toggle";
 import { useUserPreferences } from "../hooks/useUserPreferences";
