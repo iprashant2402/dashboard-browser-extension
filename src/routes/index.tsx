@@ -6,6 +6,7 @@ import { ResourceReader } from "../modules/Notes/components/ResourceReader/Resou
 import { MobileHomeView } from "../views/MobileHomeView";
 import { PreferencesView } from "../views/PreferencesView";
 import { getCurrentPlatform } from "../utils/helpers";
+import { PageViewer } from "../modules/Notes/components/PageViewer";
 
 const routes: RouteObject[] = [
     {
@@ -31,6 +32,10 @@ const routes: RouteObject[] = [
             {
                 path: 'resource/:resource',
                 element: <ResourceReader />,
+            },
+            {
+                path: 'view/page/:id',
+                element: <PageViewer />,
             }
         ]
     },
