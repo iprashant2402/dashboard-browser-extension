@@ -50,6 +50,13 @@ export const usePageEditor = () => {
     }, [deletePage, navigate, page?.title, showToast]);
 
     const sharePage = useCallback(async (id: string) => {
+        if (!user?.id) {
+            showToast({
+                type: "warning",
+                message: "You need to sign in to share a page. Find the Sign in option under Settings."
+            });
+            return;
+        }
         const response = await makePagePublic(id);
         if (response?.isPublic) {
             await navigator.clipboard.writeText(`${window.location.origin}/view/page/` + id);
@@ -58,7 +65,7 @@ export const usePageEditor = () => {
                 message: "Link copied"
             });
         }
-    }, [makePagePublic, showToast]);
+    }, [makePagePublic, showToast, user?.id]);
 
     const handleOnSavePage = useCallback(async (content: string) => {
         await updatePage({ id: id!, page: { content }, sync: false });
@@ -84,7 +91,6 @@ export const usePageEditor = () => {
             isDeletingPageError,
             pageFetchStatus,
             isPagePublishInProgress,
-            isShareEnabled: !!user?.id
         },
         actions: {
             handleDeletePage,

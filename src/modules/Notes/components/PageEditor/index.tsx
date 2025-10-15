@@ -8,6 +8,7 @@ export const PageEditor = () => {
     const { userPreferences } = useUserPreferences();
 
     return (
+        <>
         <div className="page-editor">
             {state.pageFetchStatus === "success" && <Editor 
                 showToolbar={userPreferences.editorToolbarEnabled}
@@ -40,5 +41,6 @@ export const PageEditor = () => {
                 </div>}
             />}
         </div>
+        </>
     )
 }
