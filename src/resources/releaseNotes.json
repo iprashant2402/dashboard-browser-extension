@@ -67,7 +67,7 @@
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "Just select ",
+                                "text": "Select ",
                                 "type": "text",
                                 "version": 1
                             },
@@ -104,6 +104,84 @@
                                 "mode": "normal",
                                 "style": "",
                                 "text": " on a new line)",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "value": 2
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+            },
+            {
+                "children": [
+                    {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "🔗 ",
+                        "type": "text",
+                        "version": 1
+                    },
+                    {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Publish pages",
+                        "type": "text",
+                        "version": 1
+                    }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Now you can share read-only links with anyone.",
+                                "type": "text",
+                                "version": 1
+                            }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "listitem",
+                        "version": 1,
+                        "value": 1
+                    },
+                    {
+                        "children": [
+                            {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Find share option on the toolbar when your page is open",
                                 "type": "text",
                                 "version": 1
                             }
@@ -202,116 +280,6 @@
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
-            },
-            {
-                "children": [
-                    {
-                        "detail": 0,
-                        "format": 0,
-                        "mode": "normal",
-                        "style": "",
-                        "text": "Coming soon",
-                        "type": "text",
-                        "version": 1
-                    }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "heading",
-                "version": 1,
-                "tag": "h1"
-            },
-            {
-                "children": [
-                    {
-                        "children": [
-                            {
-                                "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "Publish pages",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 0,
-                                "mode": "normal",
-                                "style": "",
-                                "text": ": Share read-only links with anyone.",
-                                "type": "text",
-                                "version": 1
-                            }
-                        ],
-                        "direction": "ltr",
-                        "format": "",
-                        "indent": 0,
-                        "type": "listitem",
-                        "version": 1,
-                        "textFormat": 1,
-                        "value": 1
-                    },
-                    {
-                        "children": [
-                            {
-                                "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "Sub-pages",
-                                "type": "text",
-                                "version": 1
-                            },
-                            {
-                                "detail": 0,
-                                "format": 0,
-                                "mode": "normal",
-                                "style": "",
-                                "text": ": Organize your content like a pro.",
-                                "type": "text",
-                                "version": 1
-                            }
-                        ],
-                        "direction": "ltr",
-                        "format": "",
-                        "indent": 0,
-                        "type": "listitem",
-                        "version": 1,
-                        "textFormat": 1,
-                        "value": 2
-                    }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "list",
-                "version": 1,
-                "textFormat": 1,
-                "listType": "bullet",
-                "start": 1,
-                "tag": "ul"
-            },
-            {
-                "children": [
-                    {
-                        "detail": 0,
-                        "format": 2,
-                        "mode": "normal",
-                        "style": "",
-                        "text": "…and more surprises on the way.",
-                        "type": "text",
-                        "version": 1
-                    }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 2,
-                "textStyle": ""
             }
         ],
         "direction": "ltr",
