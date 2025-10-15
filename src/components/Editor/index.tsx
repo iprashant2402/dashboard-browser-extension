@@ -203,7 +203,7 @@ export const Editor = ({showToolbar = true, editable = true, ...props}: EditorPr
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-        {showToolbar && <ToolbarPlugin visible={true} shareCta={props.shareCta} />}
+        {<ToolbarPlugin visible={showToolbar} shareCta={props.shareCta} />}
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={
