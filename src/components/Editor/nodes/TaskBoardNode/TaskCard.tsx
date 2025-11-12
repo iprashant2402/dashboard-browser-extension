@@ -42,7 +42,6 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    borderLeft: `4px solid ${getPriorityColor(task.priority || 'medium')}`,
   };
 
   const handleSave = () => {
@@ -121,7 +120,9 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       onDoubleClick={() => setIsEditing(true)}
     >
       <div className="task-card-content">
-        <h4 className="task-title">{task.title}</h4>
+        <h4 className="task-title"><span style={{
+          color: getPriorityColor(task.priority || 'medium'),
+        }}>&gt;&gt;&nbsp;</span>{task.title}</h4>
         {task.description && (
           <p className="task-description">{task.description}</p>
         )}

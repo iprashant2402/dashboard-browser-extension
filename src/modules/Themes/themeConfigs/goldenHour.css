@@ -29,7 +29,7 @@
     --task-board-padding: 16px 24px; /* Standard internal spacing */
   
     /* Task Card */
-    --task-card-bg-color: #FFF4E8; /* Gentle light orange background */
+    --task-card-bg-color: #FFFFFF; /* Gentle light orange background */
     --task-card-text-color: #443322; /* High-contrast text */
     --task-card-border-color: rgba(242, 153, 74, 0.15); /* Soft border with warmth */
     --task-card-border-radius: 8px; /* Friendly, consistent rounding */
