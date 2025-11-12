@@ -1,8 +1,6 @@
 /* TaskBoard Container */
 .task-board-container {
-  border: 1px solid var(--task-board-border-color, var(--card-border-color));
-  border-radius: var(--task-board-border-radius, var(--card-border-radius));
-  background: var(--task-board-bg-color, transparent);
+  border-radius: 6px;
   color: var(--task-board-text-color, var(--card-text-color));
   margin: 16px 0;
   overflow: hidden;
@@ -25,9 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--task-board-padding, 16px 20px);
-  border-bottom: 1px solid var(--card-border-color);
-  background: var(--card-alt-bg-color, var(--card-bg-color));
+  padding: 16px 0px
 }
 
 .board-title-section {
@@ -145,21 +141,20 @@
 
 /* Kanban View */
 .task-board-kanban {
-  padding: 20px;
+  padding: 0px;
 }
 
 .task-columns {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   overflow-x: auto;
   padding-bottom: 8px;
 }
 
 .task-column {
   flex: 0 0 280px;
-  background: var(--layout-bg-color);
-  border-radius: var(--card-border-radius);
-  border: 1px solid var(--card-border-color);
+  background: var(--notes-list-panel-bg-color);
+  border-radius: 6px;
   padding: 16px;
   min-height: 400px;
   transition: all 0.2s;
@@ -292,8 +287,8 @@
 /* Task Cards */
 .task-card {
   background: var(--task-card-bg-color, var(--card-bg-color));
-  border: 1px solid var(--task-card-border-color, var(--card-border-color));
-  border-radius: var(--task-card-border-radius, var(--card-border-radius));
+  box-shadow: var(--task-card-box-shadow, 0 2px 8px #0000001a);
+  border-radius: 4px;
   padding: var(--task-card-padding, 12px);
   color: var(--task-card-text-color, var(--card-text-color));
   transition: all 0.2s;
@@ -419,6 +414,9 @@
   font-weight: 600;
   color: var(--task-card-text-color, var(--card-text-color));
   line-height: 1.3;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .task-description {

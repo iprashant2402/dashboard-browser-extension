@@ -109,3 +109,7 @@
 .glass .toggle-switch.checked .toggle-track {
     background-color: green;
 }
+
+.glass .task-board-header {
+    padding: 16px;
+}

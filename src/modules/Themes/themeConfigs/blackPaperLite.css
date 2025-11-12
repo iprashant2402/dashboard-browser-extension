@@ -25,10 +25,11 @@
     --task-board-border-radius: 8px;
     --task-board-padding: 16px 24px;
   
-    --task-card-bg-color: rgba(255, 255, 255, 0.08);
+    --task-card-bg-color: #1a1a1e;
+    --task-card-box-shadow: 0 2px 8px #0000001a;
     --task-card-text-color: #FFFFFF;
     --task-card-border-color: rgba(255, 255, 255, 0.15);
-    --task-card-border-radius: 6px;
+    --task-card-border-radius: 2px;
     --task-card-padding: 20px 16px;
   
     --project-list-panel-bg-color: rgba(255, 255, 255, 0.05);

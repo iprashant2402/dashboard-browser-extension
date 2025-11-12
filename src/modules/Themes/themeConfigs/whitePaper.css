@@ -26,7 +26,8 @@
     --task-board-border-radius: 8px;
     --task-board-padding: 16px 24px;
   
-    --task-card-bg-color: rgba(0, 0, 0, 0.04);
+    --task-card-bg-color: #FFFFFF;
+    --task-card-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.01);
     --task-card-text-color: #000000;
     --task-card-border-color: rgba(0, 0, 0, 0.12);
     --task-card-border-radius: 6px;
@@ -81,4 +82,13 @@
 
 .white-paper .preferences-menu-select {
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+.white-paper .task-card {
+    border: 1px dashed var(--task-card-border-color);
+    
+}
+
+.white-paper .task-column {
+    padding: 16px 16px 16px 0;
 }

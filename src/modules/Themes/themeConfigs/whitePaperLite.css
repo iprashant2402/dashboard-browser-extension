@@ -26,7 +26,8 @@
     --task-board-border-radius: 8px;
     --task-board-padding: 16px 24px;
   
-    --task-card-bg-color: rgba(0, 0, 0, 0.04);
+    --task-card-bg-color: #FFFFFF;
+    --task-card-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
     --task-card-text-color: #000000;
     --task-card-border-color: rgba(0, 0, 0, 0.12);
     --task-card-border-radius: 6px;
@@ -38,7 +39,7 @@
     --project-list-panel-border-radius: 8px;
     --project-list-panel-padding: 16px 24px;
   
-    --notes-list-panel-bg-color: #ffffff;
+    --notes-list-panel-bg-color: #f6f5f5;
     --notes-list-panel-border-color: rgba(0, 0, 0, 0.1);
     --notes-list-panel-border-radius: 8px;
     --notes-list-panel-padding: 16px 12px;

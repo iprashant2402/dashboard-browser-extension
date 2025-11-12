@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Task } from './types';
 import { Button } from '../../../Button';
-import { IoCloseCircle } from 'react-icons/io5';
+import { IoChevronForward, IoCloseCircle } from 'react-icons/io5';
 
 interface TaskCardProps {
   task: Task;
@@ -11,6 +11,25 @@ interface TaskCardProps {
   onDelete: (taskId: string) => void;
   isDragging?: boolean;
 }
+
+const getPriorityColor = (priority: string) => {
+  switch (priority) {
+    case 'high': return '#ff4757';
+    case 'medium': return '#ffa726';
+    case 'low': return '#66bb6a';
+    default: return '#9e9e9e';
+  }
+};
+
+const getPriorityIcon = (priority: string) => {
+
+  switch (priority) {
+    case 'high': return <IoChevronForward style={{marginBlockStart: '2px'}} width={24} height={24} color={`${getPriorityColor('high')}`} />;
+    case 'medium': return <IoChevronForward style={{marginBlockStart: '2px'}} width={24} height={24} color={`${getPriorityColor('medium')}`} />;
+    case 'low': return <IoChevronForward style={{marginBlockStart: '2px'}} width={24} height={24} color={`${getPriorityColor('low')}`} />;
+    default: return <IoChevronForward style={{marginBlockStart: '2px'}} width={24} height={24} color={`${getPriorityColor('medium')}`} />;
+  }
+};
 
 export const TaskCard: React.FC<TaskCardProps> = ({
   task,
@@ -30,19 +49,16 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   const [editTitle, setEditTitle] = useState(task.title);
   const [editDescription, setEditDescription] = useState(task.description || '');
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high': return '#ff4757';
-      case 'medium': return '#ffa726';
-      case 'low': return '#66bb6a';
-      default: return '#9e9e9e';
+  const { priorityIcon } = useMemo(() => {
+    return {
+      priorityColor: getPriorityColor(task.priority || 'medium'),
+      priorityIcon: getPriorityIcon(task.priority || 'medium'),
     }
-  };
+  }, [task.priority])
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    borderLeft: `4px solid ${getPriorityColor(task.priority || 'medium')}`,
   };
 
   const handleSave = () => {
@@ -121,7 +137,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       onDoubleClick={() => setIsEditing(true)}
     >
       <div className="task-card-content">
-        <h4 className="task-title">{task.title}</h4>
+        <h4 className="task-title">{priorityIcon}{task.title}</h4>
         {task.description && (
           <p className="task-description">{task.description}</p>
         )}

@@ -18,13 +18,14 @@
     --card-padding: 16px 24px;
     --card-blur: 16px;
   
-    --task-board-bg-color: #121B28;
+    --task-board-bg-color: #0c121c;
+    --task-card-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
     --task-board-text-color: #D0F2FF;
     --task-board-border-color: none;
     --task-board-border-radius: 8px;
     --task-board-padding: 16px 24px;
   
-    --task-card-bg-color: #162130;
+    --task-card-bg-color: #0f1521;
     --task-card-text-color: #FFFFFFD9;
     --task-card-border-color: rgba(56, 189, 248, 0.1);
     --task-card-border-radius: 8px;
