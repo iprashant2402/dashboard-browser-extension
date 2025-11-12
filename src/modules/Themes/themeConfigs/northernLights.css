@@ -19,6 +19,7 @@
     --card-blur: 16px;
   
     --task-board-bg-color: #0c121c;
+    --task-card-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
     --task-board-text-color: #D0F2FF;
     --task-board-border-color: none;
     --task-board-border-radius: 8px;

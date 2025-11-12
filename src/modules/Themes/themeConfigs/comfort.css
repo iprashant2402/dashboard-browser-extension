@@ -27,6 +27,7 @@
   
     --task-card-bg-color: #FFFFFF;
     --task-card-text-color: #2C3643;
+    --task-card-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.02);
     --task-card-border-color: rgba(0, 0, 0, 0.05);
     --task-card-border-radius: 10px;
     --task-card-padding: 20px 16px;
@@ -36,7 +37,7 @@
     --project-list-panel-border-radius: 12px;
     --project-list-panel-padding: 20px 24px;
   
-    --notes-list-panel-bg-color: #fbfbfb;
+    --notes-list-panel-bg-color: #FFFFFF;
     --notes-list-panel-border-color: rgba(0, 0, 0, 0.05);
     --notes-list-panel-border-radius: 12px;
     --notes-list-panel-padding: 20px 24px;
@@ -74,6 +75,10 @@
     --code-block-background-color: #e9ecf1;
     --code-block-border-color: transparent;
   }
+
+.comfort .task-card {
+    border: 1px solid var(--task-card-border-color);
+}
   
 html, body {
     text-shadow: none;
