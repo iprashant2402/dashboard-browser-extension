@@ -31,7 +31,7 @@ export const PrivacyCurtain = () => {
             curtainRef.current.style.backgroundAttachment = 'fixed';
             curtainRef.current.style.opacity = '0.5';
             curtainRef.current.style.transition = 'opacity 0.3s ease-in-out';
-            curtainRef.current.style.zIndex = '1000';
+            curtainRef.current.style.zIndex = '1001';
         }
     }, [wallpaper]);
 
