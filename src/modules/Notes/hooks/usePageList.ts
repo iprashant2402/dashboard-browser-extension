@@ -30,7 +30,7 @@ export const usePageList = () => {
     const { mutateAsync: deletePage, isPending: isDeletingPage, isError: isDeletingPageError } = useDeletePage();
 
     const handlePageClick = useCallback((id: string) => {
-        navigate(`/editor/${id}`);
+        navigate(`/notebook/editor/${id}`);
     }, [navigate]);
 
     const handleCreatePageSubmit = useCallback(async () => {
@@ -72,7 +72,7 @@ export const usePageList = () => {
 
     const handleDeletePage = useCallback(async (id: string) => {
         await deletePage(id);
-        navigate("/");
+        navigate("/notebook");
     }, [deletePage, navigate]);
 
     const handleOpenCreatePageDialog = useCallback(() => {

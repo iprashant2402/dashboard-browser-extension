@@ -2,7 +2,7 @@ export type Theme = 'ocean' | 'morning-dew' | 'golden-hour' | 'midnight-ember' |
 
 export const THEMES: Theme[] = ['black-paper-lite', 'white-paper-lite', 'ocean', 'morning-dew', 'golden-hour', 'midnight-ember', 'northern-lights', 'comfort', 'linus', 'black-paper', 'white-paper', 'glass'];
 
-export const DEFAULT_THEME: Theme = 'black-paper-lite';
+export const DEFAULT_THEME: Theme = 'glass';
 
 export const THEME_DISPLAY_NAMES: Record<Theme, string> = {
     'black-paper-lite': 'Dark (Default)',

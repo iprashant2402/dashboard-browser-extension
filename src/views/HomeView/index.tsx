@@ -17,12 +17,12 @@ const TABS = [
     {
         label: 'Home',
         icon: <IoIosHome />,
-        path: '/home',
+        path: '/notebook/home',
     },
     {
         label: 'Settings',
         icon: <IoIosSettings />,
-        path: '/preferences',
+        path: '/notebook/preferences',
     }
 ]
 

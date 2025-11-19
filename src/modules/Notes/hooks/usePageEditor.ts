@@ -42,7 +42,7 @@ export const usePageEditor = () => {
             page_title: page?.title,
         });
         await deletePage(id);
-        navigate("/");
+        navigate("/notebook");
         showToast({
             type: "success",
             message: "Page deleted successfully"

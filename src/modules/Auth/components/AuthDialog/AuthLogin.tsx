@@ -24,7 +24,7 @@ export const AuthLogin = (props: {
                 <WelcomeHand height={50} width={50} />
                 <div className="auth-login-title-text">
                     <h3>Glad to have you back!</h3>
-                    <p>Sign in to your account to continue.</p>
+                    <p>Sign in to your account to access your notebook.</p>
                 </div>
             </div>
 

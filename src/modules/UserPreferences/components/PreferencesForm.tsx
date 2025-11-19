@@ -2,7 +2,6 @@ import { Theme, THEME_DISPLAY_NAMES, THEMES } from "../../Themes/Theme"
 import "./PreferencesForm.css";
 import { Toggle } from "../../../components/Toggle";
 import { useUserPreferences } from "../hooks/useUserPreferences";
-import { AuthMenuContent } from "../../Auth/components/AuthDialog/AuthMenuContent";
 import { useAuth } from "../../Auth";
 import { Button } from "../../../components/Button";
 import { AnalyticsTracker } from "../../../analytics/AnalyticsTracker";
@@ -63,14 +62,13 @@ export const PreferencesForm = () => {
 
     return (
         <div className="preferences-menu">
-            {(!isAuthenticated || !user) ? <AuthMenuContent /> : (
-                <>
+            
                 <div className="preferences-menu-title-row">
                     <h4>Signed in as</h4>
                 </div>
                 <div className="preferences-menu-item auth-menu-item">
                     <label>
-                        {user.email}
+                        {user?.email ?? ''}
                     </label>
                     <Button
                 variant='clear' 
@@ -80,8 +78,6 @@ export const PreferencesForm = () => {
                 disabled={isLoggingOut}
               />
                 </div>
-                </>
-            )}
             <div className="preferences-menu-title-row">
                 <h4>Preferences</h4>
             </div>

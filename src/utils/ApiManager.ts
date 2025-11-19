@@ -2,6 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ACCESS_TOKEN_KEY } from "../modules/Notes/utils/contants";
 import { QueryClient } from "@tanstack/react-query";
 import { v4 as uuidv4 } from 'uuid';
+import { getCurrentPlatform } from "./helpers";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,7 +33,7 @@ class ApiManager {
           baseURL: this.baseURL,
           headers: {
             'Content-Type': 'application/json',
-            'rm-platform': 'WEB',
+            'rm-platform': getCurrentPlatform(),
             'rm-app-version': import.meta.env.VITE_APP_VERSION,
             'rm-os-version': '0.0.0',
           },

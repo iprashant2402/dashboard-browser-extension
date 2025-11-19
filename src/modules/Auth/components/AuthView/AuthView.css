@@ -1,0 +1,64 @@
+.auth-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 48px;
+    z-index: 1000;
+
+    .clock-container {
+        padding: 48px;
+        border-radius: 16px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        background: var(--card-bg-color);
+        border: 1px solid var(--card-border-color);
+        box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
+
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+            -webkit-text-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .form-container {
+        padding: 12px;
+        border-radius: 16px;
+        opacity: 1;
+
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+            -webkit-text-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .wallpaper-attribution {
+
+        p,
+        a,
+        span {
+            font-size: 10px;
+            color: var(--muted-text-color);
+            text-align: center;
+        }
+    }
+}
