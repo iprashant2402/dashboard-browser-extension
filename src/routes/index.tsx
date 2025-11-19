@@ -1,4 +1,4 @@
-import { createBrowserRouter, createMemoryRouter, RouteObject } from "react-router";
+import { createBrowserRouter, createMemoryRouter, Navigate, RouteObject } from "react-router";
 import { HomeView } from "../views/HomeView";
 import { PageEditorNavigationController } from "../modules/Notes/components/PageEditorNavigationController";
 import { PageEditor } from "../modules/Notes/components/PageEditor";
@@ -55,6 +55,10 @@ const routes: RouteObject[] = [
             authRoutes,
         ]
     },
+    {
+        path: '*',
+        element: <Navigate to="/notebook" replace />,
+    }
 ]
 
 const platform = getCurrentPlatform();
