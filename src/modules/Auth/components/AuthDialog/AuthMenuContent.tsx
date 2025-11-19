@@ -3,22 +3,21 @@ import { useAuth } from '../../hooks/useAuth';
 import './AuthDialog.css';
 import { AuthSignup } from './AuthSignup';
 import { AuthLogin } from './AuthLogin';
-import { Button } from '../../../../components/Button';
 import { AnalyticsTracker } from '../../../../analytics/AnalyticsTracker';
+import { GoogleSigninButton } from '../GoogleSigninButton';
 
 export type AuthFormMode = 'login' | 'signup';
 
 export const AuthMenuContent: React.FC = () => {
   const { 
-    user, 
-    isAuthenticated, 
     login, 
-    signup, 
-    logout,
+    googleAuth,
+    signup,
     isLoggingIn, 
     isSigningUp,
     isLoggingOut,
     loginError, 
+    loginWithGoogleError,
     signupError,
     resetLoginError,
     resetSignupError,
@@ -61,6 +60,8 @@ export const AuthMenuContent: React.FC = () => {
     }
   };
 
+  
+
   const handleModeSwitch = (mode: AuthFormMode) => {
     const event = mode === 'login' ? 'Login - Click' : 'Signup - Click';
     AnalyticsTracker.track(event);
@@ -70,17 +71,9 @@ export const AuthMenuContent: React.FC = () => {
     setFormData({ firstName: undefined, lastName: undefined, email: '', password: '' });
   };
 
-  const handleLogout = async () => {
-    AnalyticsTracker.track('Logout - Click');
-    try {
-      await logout();
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
-  };
-
   const getErrorMessage = useMemo(() => {
-    const error = authMode === 'login' ? loginError : signupError;
+    let error = authMode === 'login' ? loginError : signupError;
+    if (loginWithGoogleError) error = loginWithGoogleError;
     if (!error) return null;
     
     if (typeof error === 'object' && error !== null && 'message' in error) {
@@ -90,44 +83,15 @@ export const AuthMenuContent: React.FC = () => {
       return 'Oops! Something went wrong.';
     }
     return 'Oops! Something went wrong.';
-  }, [authMode, loginError, signupError]);
-
-  const userInitials = useMemo(() => {
-    if (!user) return '';
-    if (!user.firstName || !user.lastName) return `${user.email.charAt(0)}`;
-    return `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`.toUpperCase();
-  }, [user]);
+  }, [authMode, loginError, signupError, loginWithGoogleError]);
 
   const isLoading = isLoggingIn || isSigningUp || isLoggingOut;
 
   return (
       <div className="auth-dialog-content">
-        {isAuthenticated && user ? (
-          // User is logged in - show profile
-          <div className="user-profile">
-            <div className="user-profile-header">
-              <div className="user-avatar">
-                {userInitials}
-              </div>
-              <div className="user-info">
-                {(user.firstName || user.lastName) && <h3>{user.firstName ?? ''} {user.lastName ?? ''}</h3>}
-                <p>{user.email}</p>
-              </div>
-            </div>
-
-            <div className="user-profile-actions">
-              <Button
-                variant='clear' 
-                label={isLoggingOut ? 'Signing out...' : 'Sign Out'}
-                onClick={handleLogout}
-                className='logout-button'
-                disabled={isLoading}
-              />
-            </div>
-          </div>
-        ) : (
-          // User is not logged in - show auth forms
-          <>
+        <div className="auth-dialog-content-header">
+        <h1 className="auth-dialog-content-header-title">insqu<span>oo</span></h1>
+        </div>
             {authMode === 'login' ? <AuthLogin 
               errorMessage={getErrorMessage}
               emailValue={formData.email}
@@ -145,8 +109,11 @@ export const AuthMenuContent: React.FC = () => {
               handleInputChange={handleInputChange}
               handleModeSwitch={handleModeSwitch}
             />}
-          </>
-        )}
+            <hr />
+            <p className='continue-with-text'>or continue with</p>
+            <GoogleSigninButton
+              onAuthResponse={googleAuth}
+            />
       </div>
   );
 }; 

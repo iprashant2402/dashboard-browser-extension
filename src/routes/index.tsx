@@ -7,36 +7,52 @@ import { MobileHomeView } from "../views/MobileHomeView";
 import { PreferencesView } from "../views/PreferencesView";
 import { getCurrentPlatform } from "../utils/helpers";
 import { PageViewer } from "../modules/Notes/components/PageViewer";
+import { AppManager } from "../AppManager";
+import { AuthView } from "../modules/Auth/components/AuthView/AuthView";
+
+const authRoutes: RouteObject = {
+    path: '/auth',
+    element: <AuthView />,
+};
+
+const protectedRoutes: RouteObject = {
+    path: '/notebook',
+    element: <HomeView />,
+    children: [
+        {
+            index: true,
+            element: <PageEditorNavigationController />,
+        },
+        {
+            path: 'home',
+            element: <MobileHomeView />,
+        },
+        {
+            path: 'preferences',
+            element: <PreferencesView />,
+        },
+        {
+            path: 'editor/:id',
+            element: <PageEditor />,
+        },
+        {
+            path: 'resource/:resource',
+            element: <ResourceReader />,
+        },
+        {
+            path: 'view/page/:id',
+            element: <PageViewer />,
+        }
+    ]
+};
 
 const routes: RouteObject[] = [
     {
         path: '/',
-        element: <HomeView />,
+        element: <AppManager />,
         children: [
-            {
-                index: true,
-                element: <PageEditorNavigationController />,
-            },
-            {
-                path: 'home',
-                element: <MobileHomeView />,
-            },
-            {
-                path: 'preferences',
-                element: <PreferencesView />,
-            },
-            {
-                path: 'editor/:id',
-                element: <PageEditor />,
-            },
-            {
-                path: 'resource/:resource',
-                element: <ResourceReader />,
-            },
-            {
-                path: 'view/page/:id',
-                element: <PageViewer />,
-            }
+            protectedRoutes,
+            authRoutes,
         ]
     },
 ]

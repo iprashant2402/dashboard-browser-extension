@@ -48,7 +48,7 @@ export const PageViewer = () => {
                 type: "success",
                 message: "Page copied successfully"
             });
-            navigate(`/editor/${newPage.id}`);
+            navigate(`/notebook/editor/${newPage.id}`);
         } catch (error) {
             console.error(error);
             showToast({

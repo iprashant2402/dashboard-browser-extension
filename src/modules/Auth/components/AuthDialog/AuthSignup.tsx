@@ -23,8 +23,8 @@ export const AuthSignup = (props: {
             <div className="auth-login-title">
                 <WelcomeCat height={150} width={150} color="var(--layout-text-color)" />
                 <div className="auth-login-title-text">
-                    <h3>Create your account</h3>
-                    <p>to sync your data across all your devices.</p>
+                    <h3>Create account</h3>
+                    <p>to access your notebook.</p>
                 </div>
             </div>
 

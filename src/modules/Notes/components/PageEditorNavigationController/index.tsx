@@ -31,7 +31,7 @@ export const PageEditorNavigationController = () => {
                 version: 0,
             };
             await createPage(newPage);
-            navigate(`/editor/${newPage.id}`);
+            navigate(`/notebook/editor/${newPage.id}`);
         } catch (error) {
             console.error(error);
         }
@@ -42,11 +42,11 @@ export const PageEditorNavigationController = () => {
         if (page) {
             const hasSeenReleaseNotes = localStorage.getItem(RELEASE_NOTES_PAGE_VISITED_KEY);
             if (!hasSeenReleaseNotes) {
-                navigate('/resource/releaseNotes');
+                navigate('/notebook/resource/releaseNotes');
             }
-            else navigate(`/editor/${page.id}`);
+            else navigate(`/notebook/editor/${page.id}`);
         } else {
-            navigate('/resource/about');
+            navigate('/notebook/resource/about');
         }
     }, [page, navigate, status, createNewPage]);
 

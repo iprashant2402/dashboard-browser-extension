@@ -123,19 +123,21 @@ export const useAuth = () => {
     updateProfile: updateProfileMutation.mutateAsync,
 
     // Loading states
-    isLoggingIn: loginMutation.isPending,
-    isSigningUp: signupMutation.isPending,
+    isLoggingIn: loginMutation.isPending || googleAuthMutation.isPending,
+    isSigningUp: signupMutation.isPending || googleAuthMutation.isPending,
     isLoggingOut: logoutMutation.isPending,
     isUpdatingProfile: updateProfileMutation.isPending,
 
     // Error states
     loginError: loginMutation.error,
+    loginWithGoogleError: googleAuthMutation.error,
     signupError: signupMutation.error,
     logoutError: logoutMutation.error,
     updateProfileError: updateProfileMutation.error,
 
     // Reset functions
     resetLoginError: loginMutation.reset,
+    resetLoginWithGoogleError: googleAuthMutation.reset,
     resetSignupError: signupMutation.reset,
   };
 }; 

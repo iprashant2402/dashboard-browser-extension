@@ -25,7 +25,7 @@ export const NotebookList = () => {
     };
 
     const handleResourceClick = (resourceId: string) => {
-        navigate(`/resource/${resourceId}`);
+        navigate(`/notebook/resource/${resourceId}`);
     };
 
     const isEmptyState = useMemo(() => {
