@@ -59,7 +59,7 @@ export const usePageEditor = () => {
         }
         const response = await makePagePublic(id);
         if (response?.isPublic) {
-            await navigator.clipboard.writeText(`${window.location.origin}/view/page/` + id);
+            await navigator.clipboard.writeText(`${window.location.origin}/notebook/view/page/` + id);
             showToast({
                 type: "success",
                 message: "Link copied"
