@@ -89,6 +89,9 @@ export const AuthMenuContent: React.FC = () => {
 
   return (
       <div className="auth-dialog-content">
+        <div className="auth-dialog-content-header">
+        <h1 className="auth-dialog-content-header-title">insqu<span>oo</span></h1>
+        </div>
             {authMode === 'login' ? <AuthLogin 
               errorMessage={getErrorMessage}
               emailValue={formData.email}

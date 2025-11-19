@@ -9,10 +9,16 @@ export const AppManager = () => {
 
     useEffect(() => {
         const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
-        if (user?.id && isAuthenticated) {
-            navigate("/notebook");
+        if (user?.id || isAuthenticated) {
+            const currentPath = window.location.pathname;
+            if (currentPath.includes('/auth')) {
+                navigate("/notebook");
+            }
         } else {
-            navigate("/auth");
+            const currentPath = window.location.pathname;
+            if (!currentPath.includes('/auth')) {
+                navigate("/auth");
+            }
         }
     }, [user, navigate]);
 
