@@ -11,7 +11,7 @@ export const AppManager = () => {
         const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_KEY);
         if (user?.id || isAuthenticated) {
             const currentPath = window.location.pathname;
-            if (currentPath.includes('/auth')) {
+            if (!currentPath.includes('/notebook')) {
                 navigate("/notebook");
             }
         } else {
