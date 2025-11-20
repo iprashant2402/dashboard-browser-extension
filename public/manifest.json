@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "insquoo",
+  "name": "insquoo: Minimalistic Task Management and Productivity Tool",
   "version": "1.1.0",
-  "description": "The simplicity of notes, power of rich-text documents & tasks management. Speed, clarity, and focus.",
+  "description": "Save extension to experience simplicity of note-taking and the power of rich-text documents.",
   "icons": {
     "48": "images/vire-logo-icon-48.png",
     "128": "images/vire-logo-icon-128.png",
