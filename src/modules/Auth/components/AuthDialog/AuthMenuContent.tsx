@@ -110,9 +110,10 @@ export const AuthMenuContent: React.FC = () => {
               handleModeSwitch={handleModeSwitch}
             />}
             <hr />
-            <p className='continue-with-text'>or continue with</p>
+            <p className='continue-with-text'>or</p>
             <GoogleSigninButton
               onAuthResponse={googleAuth}
+              isLoading={isLoading}
             />
       </div>
   );

@@ -9,11 +9,6 @@
   border-radius: 16px;
   padding: 24px;
 
-  @media (max-width: 1024px) {
-    padding: 0;
-    margin: 0;
-  }
-
   .continue-with-text {
     text-align: center;
     font-size: 14px;
@@ -26,17 +21,15 @@
   height: 50px;
 }
 
+#google-auth-button-extension {
+  background-color: #1a73e8;
+}
+
 .auth-login, .auth-signup {
   min-width: 300px;
   max-width: 350px;
   align-items: center;
   justify-content: center;
-
-  @media (max-width: 1024px) {
-    min-width: unset;
-    max-width: unset;
-    width: 100%;
-  }
 }
 
 .auth-form {
@@ -44,10 +37,6 @@
   flex-direction: column;
   gap: 16px;
   padding: 8px 0;
-
-  @media (max-width: 1024px) {
-    padding: 0;
-  }
 }
 
 .auth-form-group {

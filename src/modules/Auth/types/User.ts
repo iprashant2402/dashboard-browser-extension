@@ -26,7 +26,7 @@ export interface SignupRequest {
 }
 
 export interface GoogleAuthRequest {
-  token: string;
+  token: string | chrome.identity.GetAuthTokenResult;
 }
 
 export interface UpdateProfileRequest {

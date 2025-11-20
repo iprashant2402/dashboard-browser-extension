@@ -30,50 +30,58 @@ import { getCurrentPlatform, getUserProfileLocalStorage } from './utils/helpers.
 
 localDB.init().then(() => {
   const userPreferences = storage.getItem<UserPreference>(USER_PREFERENCES_KEY);
-if (userPreferences?.theme) {
-  document.body.classList.remove(...THEMES);
-  document.body.classList.add(userPreferences.theme);
-}
-
-AnalyticsTracker.init(getUserProfileLocalStorage());
-
-localStorage.removeItem('releaseNotesPageVisited');
-
-function handleCredentialResponse(response: {
-  credential: string;
-}) {
-  const event =new CustomEvent('GOOGLE_AUTH_RESPONSE', { detail: {
-    token: response.credential
-  } });
-  document.dispatchEvent(event);
-}
-window.onload = function () {
-  const platform = getCurrentPlatform();
-  const clientId = platform === 'EXTENSION' ? import.meta.env.VITE_GOOGLE_CLIENT_ID_EXTENSION : import.meta.env.VITE_GOOGLE_CLIENT_ID_WEB;
-  if (!clientId) {
-    console.error('Google client ID not found');
-    return;
+  if (userPreferences?.theme) {
+    document.body.classList.remove(...THEMES);
+    document.body.classList.add(userPreferences.theme);
   }
-  window?.google?.accounts?.id?.initialize({
-    client_id: clientId,
-    color_scheme: 'dark',
-    use_fedcm_for_button: true,
-    use_fedcm_for_popup: true,
-    callback: handleCredentialResponse
-  });
-  const googleScriptInitializeEvent = new CustomEvent('GOOGLE_SCRIPT_INITIALIZE');
-  document.dispatchEvent(googleScriptInitializeEvent);
-}
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <ReactQueryProvider>
+  AnalyticsTracker.init(getUserProfileLocalStorage());
+
+  localStorage.removeItem('releaseNotesPageVisited');
+
+  function handleCredentialResponse(response: {
+    credential: string;
+  }) {
+    const event = new CustomEvent('GOOGLE_AUTH_RESPONSE', {
+      detail: {
+        token: response.credential
+      }
+    });
+    document.dispatchEvent(event);
+  }
+  window.onload = function () {
+    const platform = getCurrentPlatform();
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID_WEB;
+    switch (platform) {
+      case 'EXTENSION':
+        break;
+      default:
+        if (!clientId) {
+          console.error('Google client ID not found');
+          return;
+        }
+        window?.google?.accounts?.id?.initialize({
+          client_id: clientId,
+          color_scheme: 'dark',
+          use_fedcm_for_button: true,
+          use_fedcm_for_popup: true,
+          callback: handleCredentialResponse
+        });
+        break;
+    }
+    const googleScriptInitializeEvent = new CustomEvent('GOOGLE_SCRIPT_INITIALIZE');
+    document.dispatchEvent(googleScriptInitializeEvent);
+  }
+
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <ReactQueryProvider>
         <UserPreferencesProvider>
           <ToastContainer>
-          <App />
+            <App />
           </ToastContainer>
         </UserPreferencesProvider>
-    </ReactQueryProvider>
-  </StrictMode>,
-)
+      </ReactQueryProvider>
+    </StrictMode>,
+  )
 });
